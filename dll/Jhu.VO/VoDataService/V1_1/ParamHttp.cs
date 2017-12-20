@@ -9,8 +9,8 @@ using System.Xml.Serialization;
 
 namespace Jhu.VO.VoDataService.V1_1
 {
-    [XmlType(TypeName = Constants.TypeParamHttp, Namespace = Constants.VoDataServiceNamespaceV1_0)]
-    [XmlRoot(VoResource.Constants.TagInterface, Namespace = Constants.VoDataServiceNamespaceV1_0)]
+    [XmlType(TypeName = Constants.TypeParamHttp, Namespace = Constants.VoDataServiceNamespaceV1_1)]
+    [XmlRoot(VoResource.Constants.TagInterface, Namespace = Constants.VoDataServiceNamespaceV1_1)]
     public class ParamHttp : VoResource.V1_0.Interface
     {
         [XmlElement(Constants.TagQueryType, Form = XmlSchemaForm.Unqualified)]
@@ -21,5 +21,8 @@ namespace Jhu.VO.VoDataService.V1_1
 
         [XmlElement(Constants.TagParam, Form = XmlSchemaForm.Unqualified)]
         public InputParam[] ParamList { get; set; }
+
+        [XmlElement(Constants.TagTestQuery, Form = XmlSchemaForm.Unqualified)]
+        public string[] TestQueryList { get; set; }
     }
 }

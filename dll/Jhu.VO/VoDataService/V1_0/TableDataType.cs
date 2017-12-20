@@ -7,13 +7,15 @@ using System.Xml;
 using System.Xml.Schema;
 using System.Xml.Serialization;
 
-namespace Jhu.VO.VoDataService.V1_1
+namespace Jhu.VO.VoDataService.V1_0
 {
-
     [XmlType(Namespace = Constants.VoDataServiceNamespaceV1_0)]
-    public class Catalog
+    public class TableDataType
     {
-        [XmlElement(Constants.TagTable, Form = XmlSchemaForm.Unqualified)]
-        public Table[] TableList { get; set; }
+        [XmlText]
+        public string Value { get; set; }
+
+        [XmlAttribute(Constants.AttributeArraySize, Form = XmlSchemaForm.Unqualified)]
+        public string ArraySize { get; set; }
     }
 }

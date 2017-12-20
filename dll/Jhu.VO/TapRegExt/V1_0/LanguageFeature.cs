@@ -3,12 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
+using System.Xml.Schema;
+using System.Xml.Serialization;
 
 namespace Jhu.VO.TapRegExt.V1_0
 {
+    [XmlType(Namespace = Constants.TapRegExtNamespace)]
     public class LanguageFeature
     {
+        [XmlElement(Constants.TagForm, Form = XmlSchemaForm.Unqualified)]
         public string Form { get; set; }
+
+        [XmlElement(VoResource.Constants.TagDescription, Form = XmlSchemaForm.Unqualified)]
         public string Description { get; set; }
     }
 }

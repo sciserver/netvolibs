@@ -9,7 +9,7 @@ using System.Xml.Serialization;
 
 namespace Jhu.VO.VoDataService.V1_1
 {
-    [XmlType(Namespace = Constants.VoDataServiceNamespaceV1_0)]
+    [XmlType(Namespace = Constants.VoDataServiceNamespaceV1_1)]
     public class Format
     {
         [XmlText]

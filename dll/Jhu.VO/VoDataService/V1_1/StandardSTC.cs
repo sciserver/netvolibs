@@ -9,11 +9,10 @@ using System.Xml.Serialization;
 
 namespace Jhu.VO.VoDataService.V1_1
 {
-    [XmlType(Namespace = Constants.VoDataServiceNamespaceV1_0)]
+    [XmlType(Namespace = Constants.VoDataServiceNamespaceV1_1)]
     public class StandardStc : VoResource.V1_0.Resource
     {
-        // TODO StcResourceProfile ???
-        [XmlElement(Stc.Constants.TagStcResourceProfile, Form = XmlSchemaForm.Unqualified)]
-        public Stc.V1_30.astroSTCDescriptionType[] StcResourceProfileList { get; set; }
+        [XmlElement(Constants.TagStcDefinitions, Form = XmlSchemaForm.Unqualified)]
+        public Stc.V1_30.stcDescriptionType[] StcDefinitionsList { get; set; }
     }
 }

@@ -32,25 +32,29 @@ namespace Jhu.VO.Vosi
         }
         
         [TestMethod]
-        public void AvailabilityTest()
+        public void AvailabilityVizierTest()
         {
-            var xml = 
-@"<?xml version=""1.0"" encoding=""UTF-8""?>
-<availability xmlns=""http://www.ivoa.net/xml/VOSIAvailability/v1.0"" xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"" xsi:schemaLocation=""http://www.ivoa.net/xml/VOSIAvailability/v1.0 http://www.ivoa.net/xml/VOSIAvailability/v1.0"">
-        <available>true</available>
-        <note>VizieR TAP service available </note>
-</availability>";
+            string path = GetTestFilePath(@"modules\netvolibs\test\files\vosi\vizier_availability.xml");
+            var xml = File.ReadAllText(path);
             var e = ReadElementHelper<VO.Vosi.Availability.V1_0.Availability>(xml);
 
             Assert.IsTrue(e.Available);
         }
-
+        
         [TestMethod]
-        public void CapabilitiesTest()
+        public void CapabilitiesVizierTest()
         {
             string path = GetTestFilePath(@"modules\netvolibs\test\files\vosi\vizier_capabilities.xml");
             var xml = File.ReadAllText(path);
             var e = ReadElementHelper<VO.Vosi.Capabilities.V1_0.Capabilities>(xml);
+        }
+
+        [TestMethod]
+        public void TablesVizierTest()
+        {
+            string path = GetTestFilePath(@"modules\netvolibs\test\files\vosi\vizier_tables.xml");
+            var xml = File.ReadAllText(path);
+            var e = ReadElementHelper<VO.Vosi.Tables.V1_0.TableSet>(xml);
         }
     }
 }

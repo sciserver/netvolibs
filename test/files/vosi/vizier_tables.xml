@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vosi:tableset xmlns:vosi="http://www.ivoa.net/xml/VOSITables/v1.0" xmlns:vod="http://www.ivoa.net/xml/VODataService/v1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.ivoa.net/xml/VODataService/v1.1 http://www.ivoa.net/xml/VODataService/v1.1 http://www.ivoa.net/xml/VOSITables/v1.0 http://vo.ari.uni-heidelberg.de/docs/schemata/VOSITables-v1.0.xsd">
+	<schema>
+		<name>viz7</name>
+		<table>
+			<name>"J/AJ/144/129/refs"</name>
+			<description>References ( Cho S.-H., Kim J.)</description>
+		</table>
+		<table>
+			<name>"J/ApJ/814/159/table2"</name>
+			<description>The Navy Precision Optical Interferometer (NPOI) H{alpha} interferometric visibilities of {omicron} Aquarii ( Sigut T.A.A., Tycner C., Jansen B., Zavala R.T.)</description>
+		</table>
+		<table>
+			<name>"J/ApJ/819/62/table5"</name>
+			<description>COSMOS-Legacy Survey point source catalog ( Civano F., Marchesi S., Comastri A., et al.)</description>
+		</table>
+		
+		<table>
+			<name>"J/AJ/141/63/table1"</name>
+			<description>Relative radial velocity measurements of HAT-P-14 (P=4.6276690+/-0.0000050) ( Winn J.N., Howard A.W., Johnson J.A., Marcy G.W., Isaacson H., Shporer A., Bakos G.A., Hartman J.D., Holman M.J., Albrecht S., Crepp J.R., Morton T.D.)</description>
+		</table>
+	</schema>
+	<schema>
+		<name>viz6</name>
+		<table>
+			<name>"J/other/IBVS/4678/table1"</name>
+			<description>Positions and identifications ( Skiff B.A.)</description>
+		</table>
+		<table>
+			<name>"J/ApJ/645/955/ext_sources"</name>
+			<description>X-ray extended sources ( Barkhouse W.A., Green P.J., Vikhlinin A., Kim D.-W., Perley D., Cameron R., Silverman J., Mossman A., Burenin R., Jannuzi B.T., Kim M., Smith M.G., Smith R.C., Tananbaum H., Wilkes B.J.)</description>
+		</table>
+		<table>
+			<name>"J/MNRAS/369/783/table2"</name>
+			<description>New heliocentric radial velocities ( Menzies J.W., Feast M.W., Whitelock P.A.)</description>
+		</table>
+		<table>
+			<name>"J/AJ/131/2245/table2"</name>
+			<description>SN 2004dj photometric observations ( Zhang T., Wang X., Li W., Zhou X., Ma J., Jiang Z., Chen J.)</description>
+		</table>
+	</schema>
+	<schema>
+		<name>vcds1</name>
+		<table>
+			<name>"B/eso/eso_arc"</name>
+			<description>Full ESO science archive log from 1991 ( )</description>
+		</table>
+		<table>
+			<name>"B/hst/obscore"</name>
+			<description>The HST logs observations (CADC) ( STScI Team)</description>
+		</table>
+		<table>
+			<name>"B/cfht/obscore"</name>
+			<description>The CFHT Observation Log (since 2013) ( National Research Council, Herzberg Institute of Astrophysics)</description>
+		</table>
+		<table>
+			<name>"B/astorb/astorb"</name>
+			<description>The catalog of Orbits (2014-01-05) ( Bowell E.)</description>
+		</table>
+		<table>
+			<name>"B/cfht/cfht"</name>
+			<description>The CFHT Observation Log (October 2002 to 2007) ( National Research Council, Herzberg Institute of Astrophysics)</description>
+		</table>
+	</schema>
+	<schema>
+		<name>ivoa</name>
+		<table>
+			<name>"B/assocdata/obscore"</name>
+			<description>VizieR Spectra, images gathered in a table ( G.Landais, Laurent Michel, Pierre Ocvirk)</description>
+		</table>
+	</schema>
+</vosi:tableset>

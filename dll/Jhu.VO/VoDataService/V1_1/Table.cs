@@ -9,19 +9,32 @@ using System.Xml.Serialization;
 
 namespace Jhu.VO.VoDataService.V1_1
 {
-    [XmlType(Namespace = Constants.VoDataServiceNamespaceV1_0)]
+    [XmlType(Namespace = Constants.VoDataServiceNamespaceV1_1)]
+    [XmlInclude(typeof(Vosi.Tables.V1_0.Table))]
     public class Table
     {
         [XmlElement(Constants.TagName, Form = XmlSchemaForm.Unqualified)]
         public string Name { get; set; }
 
+        [XmlElement(Constants.TagTitle, Form = XmlSchemaForm.Unqualified)]
+        public string Title { get; set; }
+
         [XmlElement(Constants.TagDescription, Form = XmlSchemaForm.Unqualified)]
         public string Description { get; set; }
+
+        [XmlElement(Constants.TagUtype, Form = XmlSchemaForm.Unqualified)]
+        public string Utype { get; set; }
 
         [XmlElement(Constants.TagColumn, Form = XmlSchemaForm.Unqualified)]
         public TableParam[] ColumnList { get; set; }
 
-        [XmlAttribute(VoResource.Constants.AttributeRole, Form = XmlSchemaForm.Unqualified)]
-        public string Role { get; set; }
+        [XmlElement(Constants.TagForeignKey, Form = XmlSchemaForm.Unqualified)]
+        public ForeignKey[] ForeignKeyList { get; set; }
+
+        [XmlAttribute(Constants.AttributeIsMimeType, Form = XmlSchemaForm.Unqualified)]
+        public string Type { get; set; }
+
+        [XmlAnyAttribute]
+        public XmlAttribute[] Attributes { get; set; }
     }
 }

@@ -9,13 +9,11 @@ using System.Xml.Serialization;
 
 namespace Jhu.VO.VoDataService.V1_1
 {
-    [XmlType(Namespace = Constants.VoDataServiceNamespaceV1_0)]
-    public class TableDataType
+    [XmlType(Namespace = Constants.VoDataServiceNamespaceV1_1)]
+    [XmlInclude(typeof(TapDataType))]
+    [XmlInclude(typeof(TapType))]
+    [XmlInclude(typeof(VOTableType))]
+    public class TableDataType : DataType
     {
-        [XmlText]
-        public string Value { get; set; }
-
-        [XmlAttribute(Constants.AttributeArraySize, Form = XmlSchemaForm.Unqualified)]
-        public string ArraySize { get; set; }
     }
 }

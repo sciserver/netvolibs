@@ -45,6 +45,8 @@ namespace Jhu.VO.VoResource
         public const string TagContent = "content";
         public const string TagWsdlUrl = "wsdlURL";
 
+        public const string TypeInterface = "Interface";
+
         public const string AttributeStandardID = "standardID";
         public const string AttributeUse = "use";
         public const string AttributeStd = "std";

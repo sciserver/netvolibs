@@ -9,7 +9,7 @@ using System.Xml.Serialization;
 
 namespace Jhu.VO.VoDataService.V1_1
 {
-    [XmlType(Namespace = Constants.VoDataServiceNamespaceV1_0)]
+    [XmlType(Namespace = Constants.VoDataServiceNamespaceV1_1)]
     [XmlInclude(typeof(InputParam))]
     [XmlInclude(typeof(TableParam))]
     public class BaseParam
@@ -29,6 +29,7 @@ namespace Jhu.VO.VoDataService.V1_1
         [XmlElement(Constants.TagUtype, Form = XmlSchemaForm.Unqualified)]
         public string Utype { get; set; }
 
-        // TODO: anyattribute?
+        [XmlAnyAttribute]
+        public XmlAttribute[] Attributes { get; set; }
     }
 }

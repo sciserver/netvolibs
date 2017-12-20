@@ -9,7 +9,7 @@ using System.Xml.Serialization;
 
 namespace Jhu.VO.VoDataService.V1_1
 {
-    [XmlType(Namespace = Constants.VoDataServiceNamespaceV1_0)]
+    [XmlType(Namespace = Constants.VoDataServiceNamespaceV1_1)]
     public class Coverage
     {
         // TODO: this is an element reference, how does this translated to c#?
@@ -21,5 +21,8 @@ namespace Jhu.VO.VoDataService.V1_1
 
         [XmlElement(Constants.TagWaveband, Form = XmlSchemaForm.Unqualified)]
         public string[] WavebandList { get; set; }
+
+        [XmlElement(Constants.TagRegionOfRegard, Form = XmlSchemaForm.Unqualified)]
+        public float? RegionOfRegard { get; set; }
     }
 }

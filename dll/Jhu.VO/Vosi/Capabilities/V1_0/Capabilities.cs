@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Schema;
 using System.Xml.Serialization;
-using Jhu.VO.VoResource.V1_0;
 
 namespace Jhu.VO.Vosi.Capabilities.V1_0
 {
@@ -16,6 +15,6 @@ namespace Jhu.VO.Vosi.Capabilities.V1_0
     public class Capabilities
     {
         [XmlElement(VoResource.Constants.TagCapability, Form = XmlSchemaForm.Unqualified)]
-        public Capability[] CapabilityList { get; set; }
+        public VoResource.V1_0.Capability[] CapabilityList { get; set; }
     }
 }

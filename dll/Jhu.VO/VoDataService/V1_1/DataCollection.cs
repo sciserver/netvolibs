@@ -9,7 +9,7 @@ using System.Xml.Serialization;
 
 namespace Jhu.VO.VoDataService.V1_1
 {
-    [XmlType(Namespace = Constants.VoDataServiceNamespaceV1_0)]
+    [XmlType(Namespace = Constants.VoDataServiceNamespaceV1_1)]
     public class DataCollection
     {
         [XmlElement(VoResource.Constants.TagFacility, Form = XmlSchemaForm.Unqualified)]
@@ -27,8 +27,8 @@ namespace Jhu.VO.VoDataService.V1_1
         [XmlElement(Constants.TagCoverage, Form = XmlSchemaForm.Unqualified)]
         public Coverage Coverage { get; set; }
 
-        [XmlElement(Constants.TagCatalog, Form = XmlSchemaForm.Unqualified)]
-        public Catalog[] CatalogList { get; set; }
+        [XmlElement(Constants.TagTableSet, Form = XmlSchemaForm.Unqualified)]
+        public TableSet TableSet { get; set; }
 
         [XmlElement(VoResource.Constants.TagAccessUrl, Form = XmlSchemaForm.Unqualified)]
         public VoResource.V1_0.AccessUrl AccessUrl { get; set; }

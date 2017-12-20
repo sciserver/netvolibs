@@ -75,6 +75,29 @@
     <Compile Include="VoDataService\V1_0\TableDataType.cs" />
     <Compile Include="VoDataService\V1_0\TableParam.cs" />
     <Compile Include="VoDataService\V1_0\TableService.cs" />
+    <Compile Include="VoDataService\V1_1\BaseParam.cs" />
+    <Compile Include="VoDataService\V1_1\CatalogService.cs" />
+    <Compile Include="VoDataService\V1_1\Coverage.cs" />
+    <Compile Include="VoDataService\V1_1\DataCollection.cs" />
+    <Compile Include="VoDataService\V1_1\DataService.cs" />
+    <Compile Include="VoDataService\V1_1\DataType.cs" />
+    <Compile Include="VoDataService\V1_1\FKColumn.cs" />
+    <Compile Include="VoDataService\V1_1\ForeignKey.cs" />
+    <Compile Include="VoDataService\V1_1\Format.cs" />
+    <Compile Include="VoDataService\V1_1\InputParam.cs" />
+    <Compile Include="VoDataService\V1_1\ParamHttp.cs" />
+    <Compile Include="VoDataService\V1_1\ServiceReference.cs" />
+    <Compile Include="VoDataService\V1_1\SimpleDataType.cs" />
+    <Compile Include="VoDataService\V1_1\StandardSTC.cs" />
+    <Compile Include="VoDataService\V1_1\Table.cs" />
+    <Compile Include="VoDataService\V1_1\TableDataType.cs" />
+    <Compile Include="VoDataService\V1_1\TableParam.cs" />
+    <Compile Include="VoDataService\V1_1\TableSchema.cs" />
+    <Compile Include="VoDataService\V1_1\TableService.cs" />
+    <Compile Include="VoDataService\V1_1\TableSet.cs" />
+    <Compile Include="VoDataService\V1_1\TapDataType.cs" />
+    <Compile Include="VoDataService\V1_1\VOTableType.cs" />
+    <Compile Include="VoDataService\V1_1\TapType.cs" />
     <Compile Include="VoResource\Constants.cs" />
     <Compile Include="VoResource\V1_0\AccessUrl.cs" />
     <Compile Include="VoResource\V1_0\Capability.cs" />
@@ -98,10 +121,10 @@
     <Compile Include="Vosi\Availability\V1_0\Availability.cs" />
     <Compile Include="Vosi\Capabilities\V1_0\Capabilities.cs" />
     <Compile Include="Vosi\Constants.cs" />
+    <Compile Include="Vosi\Tables\V1_0\Table.cs" />
+    <Compile Include="Vosi\Tables\V1_0\TableSet.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Vosi\Tables\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="Stc\Resources\stc-v1.30.xsd">
       <SubType>Designer</SubType>
@@ -113,6 +136,9 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="VoDataService\Resources\vodataservice-v1.0.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="VoDataService\Resources\vodataservice-v1.1.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="VoResource\Resources\voresource-v1.0.xsd">

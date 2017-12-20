@@ -9,10 +9,11 @@ using System.Xml.Serialization;
 
 namespace Jhu.VO.VoResource.V1_0
 {
-    [XmlType(Namespace = Constants.VoResourceNamespaceV1_0)]
+    [XmlType(TypeName = Constants.TypeInterface, Namespace = Constants.VoResourceNamespaceV1_0)]
     [XmlInclude(typeof(WebBrowser))]
     [XmlInclude(typeof(WebService))]
     [XmlInclude(typeof(VoDataService.V1_0.ParamHttp))]
+    [XmlInclude(typeof(VoDataService.V1_1.ParamHttp))]
     public class Interface
     {
         [XmlElement(Constants.TagAccessUrl, Form = XmlSchemaForm.Unqualified)]

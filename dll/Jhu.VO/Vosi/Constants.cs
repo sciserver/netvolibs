@@ -10,6 +10,7 @@ namespace Jhu.VO.Vosi
     {
         public const string VosiAvailabilityNamespaceV1_0 = "http://www.ivoa.net/xml/VOSIAvailability/v1.0";
         public const string VosiCapabilitiesNamespaceV1_0 = "http://www.ivoa.net/xml/VOSICapabilities/v1.0";
+        public const string VosiTablesNamespaceV1_0 = "http://www.ivoa.net/xml/VOSITables/v1.0";
 
         public const string TagCapabilities = "capabilities";
         public const string TagAvailability = "availability";
@@ -18,5 +19,7 @@ namespace Jhu.VO.Vosi
         public const string TagDownAt = "downAt";
         public const string TagBackAt = "backAt";
         public const string TagNote = "note";
+        public const string TagTableSet = "tableset";
+        public const string TagTable = "table";
     }
 }

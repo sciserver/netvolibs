@@ -9,10 +9,10 @@ using System.Xml.Serialization;
 
 namespace Jhu.VO.VoDataService.V1_1
 {
-    [XmlType(Namespace = Constants.VoDataServiceNamespaceV1_0)]
+    [XmlType(Namespace = Constants.VoDataServiceNamespaceV1_1)]
     public class CatalogService : DataService
     {
-        [XmlElement(Constants.TagTable, Form = XmlSchemaForm.Unqualified)]
-        public Table[] TableList { get; set; }
+        [XmlElement(Constants.TagTableSet, Form = XmlSchemaForm.Unqualified)]
+        public TableSet TableSet { get; set; }
     }
 }

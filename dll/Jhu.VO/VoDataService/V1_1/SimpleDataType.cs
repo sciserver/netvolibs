@@ -9,13 +9,8 @@ using System.Xml.Serialization;
 
 namespace Jhu.VO.VoDataService.V1_1
 {
-    [XmlType(Namespace = Constants.VoDataServiceNamespaceV1_0)]
-    public class SimpleDataType
+    [XmlType(Namespace = Constants.VoDataServiceNamespaceV1_1)]
+    public class SimpleDataType : DataType
     {
-        [XmlText]
-        public string Value { get; set; }
-
-        [XmlAttribute(Constants.AttributeArraySize, Form = XmlSchemaForm.Unqualified)]
-        public string ArraySize { get; set; }
     }
 }
