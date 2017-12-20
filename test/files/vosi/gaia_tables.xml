@@ -1,0 +1,2596 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl"  href="/css/tables.xsl"?>
+<vosi:tableset xmlns:vosi="http://www.ivoa.net/xml/VOSITables/v1.0" xmlns:vod="http://www.ivoa.net/xml/VODataService/v1.1" xmlns:stat="http://gaia.ari.uni-heidelberg.de/tap-stats" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.ivoa.net/xml/VODataService/v1.1 http://www.ivoa.net/xml/VODataService/v1.1 http://www.ivoa.net/xml/VOSITables/v1.0 http://vo.ari.uni-heidelberg.de/docs/schemata/VOSITables-v1.0.xsd http://gaia.ari.uni-heidelberg.de/tap-stats http://gaia.ari.uni-heidelberg.de/tap-stats.xsd">
+	<schema>
+		<name>gaiadr1</name>
+		<table stat:size="1142679808">
+			<name>gaiadr1.gaia_source</name>
+			<description>This table has an entry for every Gaia observed source as listed in the Main Database accumulating catalogue version from which the catalogue release has been generated. It contains the basic source parameters, that is only final data (no epoch data) and no spectra (neither final nor epoch).</description>
+			<column>
+				<name>source_id</name>
+				<description>Unique source identifier</description>
+				<ucd>meta.id;meta.main</ucd>
+				<dataType xsi:type="vod:TAPType">BIGINT</dataType>
+				<flag>indexed</flag>
+				<flag>primary</flag>
+			</column>
+			<column>
+				<name>ra</name>
+				<description>Right ascension</description>
+				<unit>deg</unit>
+				<ucd>pos.eq.ra;meta.main</ucd>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+				<flag>indexed</flag>
+			</column>
+			<column>
+				<name>dec</name>
+				<description>Declination</description>
+				<unit>deg</unit>
+				<ucd>pos.eq.dec;meta.main</ucd>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+				<flag>indexed</flag>
+			</column>
+			<column>
+				<name>l</name>
+				<description>Galactic longitude</description>
+				<unit>deg</unit>
+				<ucd>pos.galactic.lon</ucd>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+				<flag>indexed</flag>
+			</column>
+			<column>
+				<name>b</name>
+				<description>Galactic latitude</description>
+				<unit>deg</unit>
+				<ucd>pos.galactic.lat</ucd>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+				<flag>indexed</flag>
+			</column>
+			<column>
+				<name>ecl_lon</name>
+				<description>Ecliptic longitude</description>
+				<unit>deg</unit>
+				<ucd>pos.ecliptic.lon</ucd>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+				<flag>indexed</flag>
+			</column>
+			<column>
+				<name>ecl_lat</name>
+				<description>Ecliptic latitude</description>
+				<unit>deg</unit>
+				<ucd>pos.ecliptic.lat</ucd>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+				<flag>indexed</flag>
+			</column>
+			<column stat:min="-24.819952295536908" stat:median="1.780196549704283" stat:max="295.80363766060833" stat:q1="1.0305096267660643" stat:q3="3.015704398901945" stat:mean="2.4776271138465464" stat:stddev="2.9101834101879556" stat:filling="2057050">
+				<name>parallax</name>
+				<description>Parallax</description>
+				<unit>mas</unit>
+				<ucd>pos.parallax</ucd>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+				<flag>indexed</flag>
+			</column>
+			<column stat:min="-3259.3578072487257" stat:median="-1.8060411703146813" stat:max="2890.4306825726935" stat:q1="-7.772669780335178" stat:q3="4.022266588700598" stat:mean="-1.7409494763747195" stat:stddev="25.175474736018273" stat:filling="2057050">
+				<name>pmra</name>
+				<description>Proper motion in right ascension direction</description>
+				<unit>mas/yr</unit>
+				<ucd>pos.pm;pos.eq.ra</ucd>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+				<flag>indexed</flag>
+			</column>
+			<column stat:min="-3159.3392826386125" stat:median="-2.936583455460432" stat:max="1858.5267176658213" stat:q1="-9.62681336910327" stat:q3="2.2980248448291185" stat:mean="-5.25172884479363" stat:stddev="23.55802369531788" stat:filling="2057050">
+				<name>pmdec</name>
+				<description>Proper motion in declination direction</description>
+				<unit>mas/yr</unit>
+				<ucd>pos.pm;pos.eq.dec</ucd>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+				<flag>indexed</flag>
+			</column>
+			<column stat:min="3.154632590572973" stat:median="19.01946567211159" stat:max="28.612919515769953" stat:q1="17.85709830446156" stat:q3="19.84308195300536" stat:mean="18.655132400234972" stat:stddev="1.604725368441027" stat:filling="1142679769">
+				<name>phot_g_mean_mag</name>
+				<description>G-band mean magnitude</description>
+				<unit>mag</unit>
+				<ucd>phot.mag;stat.mean;em.opt</ucd>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+				<flag>indexed</flag>
+			</column>
+			<column>
+				<name>ref_epoch</name>
+				<description>Reference epoch</description>
+				<unit>yr</unit>
+				<ucd>meta.ref;time.epoch</ucd>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+			</column>
+			<column stat:min="0.0170973889108387" stat:median="1.7853220134362546" stat:max="99.99107832415217" stat:q1="0.6420885963055476" stat:q3="5.9707032362967905" stat:mean="4.825731251638425" stat:stddev="7.958054004833042" stat:filling="1142679769">
+				<name>ra_error</name>
+				<description>Standard error of right ascension</description>
+				<unit>mas</unit>
+				<ucd>stat.error;pos.eq.ra</ucd>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+			</column>
+			<column stat:min="0.02259030894929065" stat:median="1.55745218644499" stat:max="99.99651762598833" stat:q1="0.5700181434477305" stat:q3="4.855698134450783" stat:mean="4.101433763644639" stat:stddev="6.675772016418522" stat:filling="1142679769">
+				<name>dec_error</name>
+				<description>Standard error of declination</description>
+				<unit>mas</unit>
+				<ucd>stat.error;pos.eq.dec</ucd>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+			</column>
+			<column stat:min="0.2039740449756699" stat:median="0.32201234208326257" stat:max="0.9999984791154206" stat:q1="0.26816030159298115" stat:q3="0.4360008731175299" stat:mean="0.38500516814395774" stat:stddev="0.1699271713852731" stat:filling="2057050">
+				<name>parallax_error</name>
+				<description>Standard error of parallax</description>
+				<unit>mas</unit>
+				<ucd>stat.error;pos.parallax</ucd>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+				<flag>indexed</flag>
+			</column>
+			<column stat:min="0.011826390987127431" stat:median="1.1320816667610754" stat:max="18.34328858941566" stat:q1="0.7556081601400371" stat:q3="1.7706058255836874" stat:mean="1.4033978529145725" stat:stddev="1.027792332761128" stat:filling="2057050">
+				<name>pmra_error</name>
+				<description>Standard error of proper motion in right ascension direction</description>
+				<unit>mas/yr</unit>
+				<ucd>stat.error;pos.pm;pos.eq.ra</ucd>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+				<flag>indexed</flag>
+			</column>
+			<column stat:min="0.011840334123277773" stat:median="0.8665084271292555" stat:max="18.85443391842016" stat:q1="0.6267498598313288" stat:q3="1.2702856378698915" stat:mean="1.09590898730398" stat:stddev="0.8885110787007205" stat:filling="2057050">
+				<name>pmdec_error</name>
+				<description>Standard error of proper motion in declination direction</description>
+				<unit>mas/yr</unit>
+				<ucd>stat.error;pos.pm;pos.eq.dec</ucd>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+				<flag>indexed</flag>
+			</column>
+			<column>
+				<name>astrometric_delta_q</name>
+				<description>Hipparcos/Gaia data discrepancy (Hipparcos subset of TGAS only)</description>
+				<ucd>stat.value</ucd>
+				<dataType xsi:type="vod:TAPType">REAL</dataType>
+			</column>
+			<column stat:min="0.0" stat:median="0.5928723225782904" stat:max="19.99999958041818" stat:q1="0.0" stat:q3="1.2328561572309207" stat:mean="1.0034432150913764" stat:stddev="1.5689513547433123" stat:filling="1142679769">
+				<name>astrometric_excess_noise</name>
+				<description>Excess noise of the source</description>
+				<unit>mas</unit>
+				<ucd>stat.value</ucd>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+			</column>
+			<column stat:min="-1.5058189513468322E-14" stat:median="1.131411232588078" stat:max="3.478718661685737E24" stat:q1="0.0" stat:q3="3.790990400536819" stat:mean="3.9450597580395495E15" stat:stddev="1.073194766142939E20" stat:filling="1142679769">
+				<name>astrometric_excess_noise_sig</name>
+				<description>Significance of excess noise</description>
+				<ucd>stat.value</ucd>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+			</column>
+			<column stat:min="0.0" stat:median="0.0" stat:max="118.0" stat:q1="0.0" stat:q3="0.0" stat:mean="0.03755037864856081" stat:stddev="0.5244971337582337" stat:filling="1142679769">
+				<name>astrometric_n_bad_obs_ac</name>
+				<description>Number of bad observations AC</description>
+				<ucd>meta.number</ucd>
+				<dataType xsi:type="vod:TAPType">INTEGER</dataType>
+			</column>
+			<column stat:min="0.0" stat:median="0.0" stat:max="1981.0" stat:q1="0.0" stat:q3="1.0" stat:mean="0.5636882576154194" stat:stddev="1.4678769192946366" stat:filling="1142679769">
+				<name>astrometric_n_bad_obs_al</name>
+				<description>Number of bad observations AL</description>
+				<ucd>meta.number</ucd>
+				<dataType xsi:type="vod:TAPType">INTEGER</dataType>
+			</column>
+			<column stat:min="0.0" stat:median="0.0" stat:max="1920.0" stat:q1="0.0" stat:q3="0.0" stat:mean="0.6579323082423454" stat:stddev="9.100762542740542" stat:filling="1142679769">
+				<name>astrometric_n_good_obs_ac</name>
+				<description>Number of good observations AC</description>
+				<ucd>meta.number</ucd>
+				<dataType xsi:type="vod:TAPType">INTEGER</dataType>
+			</column>
+			<column stat:min="1.0" stat:median="71.0" stat:max="2062.0" stat:q1="53.0" stat:q3="105.0" stat:mean="88.65077312224646" stat:stddev="59.80766461346024" stat:filling="1142679769">
+				<name>astrometric_n_good_obs_al</name>
+				<description>Number of good observations AL</description>
+				<ucd>meta.number</ucd>
+				<dataType xsi:type="vod:TAPType">INTEGER</dataType>
+			</column>
+			<column stat:min="0.0" stat:median="0.0" stat:max="1977.0" stat:q1="0.0" stat:q3="0.0" stat:mean="0.6954826868909062" stat:stddev="9.556820271190734" stat:filling="1142679769">
+				<name>astrometric_n_obs_ac</name>
+				<description>Total number of observations AC</description>
+				<ucd>meta.number</ucd>
+				<dataType xsi:type="vod:TAPType">INTEGER</dataType>
+			</column>
+			<column stat:min="1.0" stat:median="72.0" stat:max="2066.0" stat:q1="53.0" stat:q3="106.0" stat:mean="89.21446137986189" stat:stddev="60.137424053086264" stat:filling="1142679769">
+				<name>astrometric_n_obs_al</name>
+				<description>Total number of observations AL</description>
+				<ucd>meta.number</ucd>
+				<dataType xsi:type="vod:TAPType">INTEGER</dataType>
+			</column>
+			<column>
+				<name>astrometric_primary_flag</name>
+				<description>Primary or seconday</description>
+				<ucd>meta.code</ucd>
+				<dataType xsi:type="vod:TAPType">SMALLINT</dataType>
+			</column>
+			<column stat:min="2.0" stat:median="2.0" stat:max="5.0" stat:q1="2.0" stat:q3="2.0" stat:mean="2.0052367077481703" stat:stddev="0.12457452975825765" stat:filling="1142679769">
+				<name>astrometric_priors_used</name>
+				<description>Type of prior used in the astrometric solution</description>
+				<dataType xsi:type="vod:TAPType">INTEGER</dataType>
+			</column>
+			<column>
+				<name>astrometric_relegation_factor</name>
+				<description>Relegation factor</description>
+				<ucd>arith.factor</ucd>
+				<dataType xsi:type="vod:TAPType">REAL</dataType>
+			</column>
+			<column stat:min="9.49108312E-7" stat:median="0.01169347905" stat:max="6.9689188" stat:q1="0.0017153566000000001" stat:q3="0.6242115500000001" stat:mean="0.35710875073955095" stat:stddev="0.5539610494327148" stat:filling="14619643">
+				<name>astrometric_weight_ac</name>
+				<description>Mean astrometric weight of the source</description>
+				<unit>mas^-2</unit>
+				<ucd>stat.weight;stat.mean</ucd>
+				<dataType xsi:type="vod:TAPType">REAL</dataType>
+			</column>
+			<column stat:min="9.99966801E-7" stat:median="0.158885166" stat:max="556.865723" stat:q1="0.0542810634" stat:q3="0.563347161" stat:mean="0.5697850007083994" stat:stddev="1.0553568509696092" stat:filling="1142679769">
+				<name>astrometric_weight_al</name>
+				<description>Mean astrometric weight of the source</description>
+				<unit>mas^-2</unit>
+				<ucd>stat.weight;stat.mean</ucd>
+				<dataType xsi:type="vod:TAPType">REAL</dataType>
+			</column>
+			<column stat:min="-0.99615711" stat:median="0.162056193" stat:max="0.997952163" stat:q1="-0.302441761" stat:q3="0.5883694589999999" stat:mean="0.13186400609328847" stat:stddev="0.49861296934029026" stat:filling="2057050">
+				<name>dec_parallax_corr</name>
+				<description>Correlation between declination and parallax</description>
+				<ucd>stat.correlation</ucd>
+				<dataType xsi:type="vod:TAPType">REAL</dataType>
+			</column>
+			<column stat:min="-0.999646187" stat:median="-0.585774362" stat:max="0.998897374" stat:q1="-0.7964715659999999" stat:q3="-0.21739280249999998" stat:mean="-0.4677400730288509" stat:stddev="0.40946686659199755" stat:filling="2057050">
+				<name>dec_pmdec_corr</name>
+				<description>Correlation between declination and proper motion in declination</description>
+				<ucd>stat.correlation</ucd>
+				<dataType xsi:type="vod:TAPType">REAL</dataType>
+			</column>
+			<column stat:min="-0.999119341" stat:median="-9.00499872E-4" stat:max="0.999225557" stat:q1="-0.5144279005" stat:q3="0.5187547205" stat:mean="-3.828606671542141E-4" stat:stddev="0.5692559338571994" stat:filling="2057050">
+				<name>dec_pmra_corr</name>
+				<description>Correlation between declination and proper motion in right ascension</description>
+				<ucd>stat.correlation</ucd>
+				<dataType xsi:type="vod:TAPType">REAL</dataType>
+			</column>
+			<column>
+				<name>duplicated_source</name>
+				<description>Source with duplicate sources</description>
+				<dataType xsi:type="vod:TAPType">SMALLINT</dataType>
+			</column>
+			<column>
+				<name>matched_observations</name>
+				<description>Amount of observations matched to this source</description>
+				<ucd>meta.number</ucd>
+				<dataType xsi:type="vod:TAPType">SMALLINT</dataType>
+			</column>
+			<column stat:min="-0.996898413" stat:median="-0.160854533" stat:max="0.996262014" stat:q1="-0.567399055" stat:q3="0.1813488675" stat:mean="-0.15960477339674703" stat:stddev="0.4847452407881" stat:filling="2057050">
+				<name>parallax_pmdec_corr</name>
+				<description>Correlation between parallax and proper motion in declination</description>
+				<ucd>stat.correlation</ucd>
+				<dataType xsi:type="vod:TAPType">REAL</dataType>
+			</column>
+			<column stat:min="-0.998572707" stat:median="0.0452261604" stat:max="0.99876225" stat:q1="-0.612125009" stat:q3="0.6500710249999999" stat:mean="0.024629766961658056" stat:stddev="0.6401993266204986" stat:filling="2057050">
+				<name>parallax_pmra_corr</name>
+				<description>Correlation between parallax and proper motion in right ascension</description>
+				<ucd>stat.correlation</ucd>
+				<dataType xsi:type="vod:TAPType">REAL</dataType>
+			</column>
+			<column stat:min="0.05817551267605631" stat:median="400.05689142280823" stat:max="8.872683486780761E8" stat:q1="187.35929496333154" stat:q3="1166.9942086692974" stat:mean="6705.784227185928" stat:stddev="292346.9351910375" stat:filling="1142679769">
+				<name>phot_g_mean_flux</name>
+				<description>G-band mean flux</description>
+				<unit>e-/s</unit>
+				<ucd>phot.flux;stat.mean;em.opt</ucd>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+			</column>
+			<column stat:min="0.0017103401096079704" stat:median="2.8856291714189846" stat:max="4.578040972688047E7" stat:q1="2.152647149982865" stat:q3="4.625146747418025" stat:mean="14.33453530060567" stat:stddev="4200.32232515185" stat:filling="1142679769">
+				<name>phot_g_mean_flux_error</name>
+				<description>Error on G-band mean flux</description>
+				<unit>e-/s</unit>
+				<ucd>stat.error;phot.flux;stat.mean;em.opt</ucd>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+			</column>
+			<column stat:min="11.0" stat:median="80.0" stat:max="2076.0" stat:q1="59.0" stat:q3="119.0" stat:mean="97.34369373524805" stat:stddev="62.92035887255841" stat:filling="1142679769">
+				<name>phot_g_n_obs</name>
+				<description>Number of observations contributing to G photometry</description>
+				<ucd>meta.number</ucd>
+				<dataType xsi:type="vod:TAPType">INTEGER</dataType>
+			</column>
+			<column>
+				<name>phot_variable_flag</name>
+				<description>Photometric variability flag</description>
+				<ucd>meta.code;src.var</ucd>
+				<dataType xsi:type="vod:TAPType">VARCHAR</dataType>
+			</column>
+			<column stat:min="-0.999750078" stat:median="0.0103440862" stat:max="0.999722242" stat:q1="-0.5509738024999999" stat:q3="0.5518702265" stat:mean="0.003191990363294864" stat:stddev="0.6218198540458116" stat:filling="2057050">
+				<name>pmra_pmdec_corr</name>
+				<description>Correlation between proper motion in right ascension and proper motion in declination</description>
+				<ucd>stat.correlation</ucd>
+				<dataType xsi:type="vod:TAPType">REAL</dataType>
+			</column>
+			<column>
+				<name>ra_dec_corr</name>
+				<description>Correlation between right ascension and declination</description>
+				<ucd>stat.correlation</ucd>
+				<dataType xsi:type="vod:TAPType">REAL</dataType>
+			</column>
+			<column>
+				<name>random_index</name>
+				<description>Random index used to select subsets</description>
+				<ucd>meta.code</ucd>
+				<dataType xsi:type="vod:TAPType">BIGINT</dataType>
+				<flag>indexed</flag>
+			</column>
+			<column stat:min="-0.998475552" stat:median="-0.0427706502" stat:max="0.997721851" stat:q1="-0.485525772" stat:q3="0.4342707845" stat:mean="-0.021998714556163392" stat:stddev="0.5409333243535308" stat:filling="2057050">
+				<name>ra_parallax_corr</name>
+				<description>Correlation between right ascension and parallax</description>
+				<ucd>stat.correlation</ucd>
+				<dataType xsi:type="vod:TAPType">REAL</dataType>
+			</column>
+			<column stat:min="-0.999416769" stat:median="-0.00762905506" stat:max="0.999383092" stat:q1="-0.4632278085" stat:q3="0.44701810200000003" stat:mean="-0.007006195662816042" stat:stddev="0.5511258778279432" stat:filling="2057050">
+				<name>ra_pmdec_corr</name>
+				<description>Correlation between right ascension and proper motion in declination</description>
+				<ucd>stat.correlation</ucd>
+				<dataType xsi:type="vod:TAPType">REAL</dataType>
+			</column>
+			<column stat:min="-0.9998824" stat:median="-0.706212223" stat:max="0.998936057" stat:q1="-0.86039868" stat:q3="-0.4310174285" stat:mean="-0.5910385746756055" stat:stddev="0.3599108421173573" stat:filling="2057050">
+				<name>ra_pmra_corr</name>
+				<description>Correlation between right ascension and proper motion in right ascension</description>
+				<ucd>stat.correlation</ucd>
+				<dataType xsi:type="vod:TAPType">REAL</dataType>
+			</column>
+			<column stat:min="-180.0" stat:median="-66.2312317" stat:max="180.0" stat:q1="-106.268372" stat:q3="8.08938122" stat:mean="-39.253380414900555" stat:stddev="95.6541029908852" stat:filling="1142679769">
+				<name>scan_direction_mean_k1</name>
+				<description>Mean position angle of scan directions across the source</description>
+				<unit>deg</unit>
+				<dataType xsi:type="vod:TAPType">REAL</dataType>
+			</column>
+			<column stat:min="-90.0" stat:median="-25.2524414" stat:max="90.0" stat:q1="-43.0887756" stat:q3="21.9290104" stat:mean="-12.351384776863938" stat:stddev="43.084125591362074" stat:filling="1142679769">
+				<name>scan_direction_mean_k2</name>
+				<description>Mean position angle of scan directions across the source</description>
+				<unit>deg</unit>
+				<dataType xsi:type="vod:TAPType">REAL</dataType>
+			</column>
+			<column stat:min="-60.0" stat:median="-15.5767517" stat:max="60.0" stat:q1="-33.2104378" stat:q3="19.3903847" stat:mean="-7.154933180722364" stat:stddev="32.11758073720756" stat:filling="1142679769">
+				<name>scan_direction_mean_k3</name>
+				<description>Mean position angle of scan directions across the source</description>
+				<unit>deg</unit>
+				<dataType xsi:type="vod:TAPType">REAL</dataType>
+			</column>
+			<column stat:min="-45.0" stat:median="-4.26211929" stat:max="45.0" stat:q1="-35.3596687" stat:q3="33.7772141" stat:mean="-1.3543281891958863" stat:stddev="33.05078660512741" stat:filling="1142679769">
+				<name>scan_direction_mean_k4</name>
+				<description>Mean position angle of scan directions across the source</description>
+				<unit>deg</unit>
+				<dataType xsi:type="vod:TAPType">REAL</dataType>
+			</column>
+			<column stat:min="4.26404813E-6" stat:median="0.405865401" stat:max="1.0" stat:q1="0.291312546" stat:q3="0.534893394" stat:mean="0.4247271176246148" stat:stddev="0.19349449348699102" stat:filling="1142679769">
+				<name>scan_direction_strength_k1</name>
+				<description>Degree of concentration of scan directions across the source</description>
+				<dataType xsi:type="vod:TAPType">REAL</dataType>
+			</column>
+			<column stat:min="3.09885053E-7" stat:median="0.443370789" stat:max="1.0" stat:q1="0.27536577" stat:q3="0.633265615" stat:mean="0.46239520929677147" stat:stddev="0.23594345664760227" stat:filling="1142679769">
+				<name>scan_direction_strength_k2</name>
+				<description>Degree of concentration of scan directions across the source</description>
+				<dataType xsi:type="vod:TAPType">REAL</dataType>
+			</column>
+			<column stat:min="2.47509604E-7" stat:median="0.408351719" stat:max="1.0" stat:q1="0.262253821" stat:q3="0.562562883" stat:mean="0.4229867160297275" stat:stddev="0.20999772678416834" stat:filling="1142679769">
+				<name>scan_direction_strength_k3</name>
+				<description>Degree of concentration of scan directions across the source</description>
+				<dataType xsi:type="vod:TAPType">REAL</dataType>
+			</column>
+			<column stat:min="1.12745442E-6" stat:median="0.694589853" stat:max="1.0" stat:q1="0.428306997" stat:q3="0.895052254" stat:mean="0.6474000033740304" stat:stddev="0.2678135373506187" stat:filling="1142679769">
+				<name>scan_direction_strength_k4</name>
+				<description>Degree of concentration of scan directions across the source</description>
+				<dataType xsi:type="vod:TAPType">REAL</dataType>
+			</column>
+			<column>
+				<name>solution_id</name>
+				<description>Solution Identifier</description>
+				<ucd>meta.id;meta.version</ucd>
+				<dataType xsi:type="vod:TAPType">BIGINT</dataType>
+			</column>
+		</table>
+		<table stat:size="2057111">
+			<name>gaiadr1.tgas_source</name>
+			<description>This table is a subset of GaiaSource comprising those stars in the Hipparcos and Tycho-2 Catalogues for which a full 5-parameter astrometric solution has been possible in Gaia Data Release 1. This is possible because the early Hipparcos epoch positions break some degeneracies due to the limited Gaia time coverage.  This table contains a substantial fraction of the around 2.5 million stars in the Hipparcos and Tycho-2 catalogue. Many stars have been excluded due to several reasons, such as saturation, cross-match errors or bad astrometric solution.</description>
+			<column>
+				<name>source_id</name>
+				<description>Unique source identifier</description>
+				<ucd>meta.id;meta.main</ucd>
+				<dataType xsi:type="vod:TAPType">BIGINT</dataType>
+				<flag>indexed</flag>
+				<flag>primary</flag>
+			</column>
+			<column>
+				<name>ra</name>
+				<description>Right ascension</description>
+				<unit>deg</unit>
+				<ucd>pos.eq.ra;meta.main</ucd>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+				<flag>indexed</flag>
+			</column>
+			<column>
+				<name>dec</name>
+				<description>Declination</description>
+				<unit>deg</unit>
+				<ucd>pos.eq.dec;meta.main</ucd>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+				<flag>indexed</flag>
+			</column>
+			<column>
+				<name>l</name>
+				<description>Galactic longitude</description>
+				<unit>deg</unit>
+				<ucd>pos.galactic.lon</ucd>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+				<flag>indexed</flag>
+			</column>
+			<column>
+				<name>b</name>
+				<description>Galactic latitude</description>
+				<unit>deg</unit>
+				<ucd>pos.galactic.lat</ucd>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+				<flag>indexed</flag>
+			</column>
+			<column>
+				<name>ecl_lon</name>
+				<description>Ecliptic longitude</description>
+				<unit>deg</unit>
+				<ucd>pos.ecliptic.lon</ucd>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+				<flag>indexed</flag>
+			</column>
+			<column>
+				<name>ecl_lat</name>
+				<description>Ecliptic latitude</description>
+				<unit>deg</unit>
+				<ucd>pos.ecliptic.lat</ucd>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+				<flag>indexed</flag>
+			</column>
+			<column stat:min="-24.819952295536908" stat:median="1.780196549704283" stat:max="295.80363766060833" stat:q1="1.0305096267660643" stat:q3="3.015704398901945" stat:mean="2.4776271138462507" stat:stddev="2.910183410188284" stat:filling="2057050">
+				<name>parallax</name>
+				<description>Parallax</description>
+				<unit>mas</unit>
+				<ucd>pos.parallax</ucd>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+				<flag>indexed</flag>
+			</column>
+			<column stat:min="-3259.3578072487257" stat:median="-1.8060411703146813" stat:max="2890.4306825726935" stat:q1="-7.772669780335178" stat:q3="4.022266588700598" stat:mean="-1.7409494763748845" stat:stddev="25.175474736017456" stat:filling="2057050">
+				<name>pmra</name>
+				<description>Proper motion in right ascension direction</description>
+				<unit>mas/yr</unit>
+				<ucd>pos.pm;pos.eq.ra</ucd>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+				<flag>indexed</flag>
+			</column>
+			<column stat:min="-3159.3392826386125" stat:median="-2.936583455460432" stat:max="1858.5267176658213" stat:q1="-9.62681336910327" stat:q3="2.2980248448291185" stat:mean="-5.251728844793644" stat:stddev="23.558023695317402" stat:filling="2057050">
+				<name>pmdec</name>
+				<description>Proper motion in declination direction</description>
+				<unit>mas/yr</unit>
+				<ucd>pos.pm;pos.eq.dec</ucd>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+				<flag>indexed</flag>
+			</column>
+			<column stat:min="4.39512239003086" stat:median="11.03648334770537" stat:max="19.30785743194954" stat:q1="10.197746765713184" stat:q3="11.637431364451814" stat:mean="10.814073743893694" stat:stddev="1.1323812079329707" stat:filling="2057050">
+				<name>phot_g_mean_mag</name>
+				<description>G-band mean magnitude</description>
+				<unit>mag</unit>
+				<ucd>phot.mag;stat.mean;em.opt</ucd>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+				<flag>indexed</flag>
+			</column>
+			<column>
+				<name>ref_epoch</name>
+				<description>Reference epoch</description>
+				<unit>yr</unit>
+				<ucd>meta.ref;time.epoch</ucd>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+			</column>
+			<column stat:min="0.03532307790448653" stat:median="0.254007094292456" stat:max="19.06266421532726" stat:q1="0.18299052236040936" stat:q3="0.3964672379830134" stat:mean="0.3463369322335376" stat:stddev="0.37360121149428305" stat:filling="2057050">
+				<name>ra_error</name>
+				<description>Standard error of right ascension</description>
+				<unit>mas</unit>
+				<ucd>stat.error;pos.eq.ra</ucd>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+			</column>
+			<column stat:min="0.03801273922129526" stat:median="0.23333385841468005" stat:max="18.528107764984238" stat:q1="0.17745286787172915" stat:q3="0.33998378748147245" stat:mean="0.31625050853800635" stat:stddev="0.3642628199525442" stat:filling="2057050">
+				<name>dec_error</name>
+				<description>Standard error of declination</description>
+				<unit>mas</unit>
+				<ucd>stat.error;pos.eq.dec</ucd>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+			</column>
+			<column stat:min="0.2039740449756699" stat:median="0.32201234208326257" stat:max="0.9999984791154206" stat:q1="0.26816030159298115" stat:q3="0.4360008731175299" stat:mean="0.38500516814397284" stat:stddev="0.1699271713852058" stat:filling="2057050">
+				<name>parallax_error</name>
+				<description>Standard error of parallax</description>
+				<unit>mas</unit>
+				<ucd>stat.error;pos.parallax</ucd>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+				<flag>indexed</flag>
+			</column>
+			<column stat:min="0.011826390987127431" stat:median="1.1320816667610754" stat:max="18.34328858941566" stat:q1="0.7556081601400371" stat:q3="1.7706058255836874" stat:mean="1.4033978529145406" stat:stddev="1.027792332761126" stat:filling="2057050">
+				<name>pmra_error</name>
+				<description>Standard error of proper motion in right ascension direction</description>
+				<unit>mas/yr</unit>
+				<ucd>stat.error;pos.pm;pos.eq.ra</ucd>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+				<flag>indexed</flag>
+			</column>
+			<column stat:min="0.011840334123277773" stat:median="0.8665084271292555" stat:max="18.85443391842016" stat:q1="0.6267498598313288" stat:q3="1.2702856378698915" stat:mean="1.095908987303942" stat:stddev="0.8885110787007502" stat:filling="2057050">
+				<name>pmdec_error</name>
+				<description>Standard error of proper motion in declination direction</description>
+				<unit>mas/yr</unit>
+				<ucd>stat.error;pos.pm;pos.eq.dec</ucd>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+				<flag>indexed</flag>
+			</column>
+			<column>
+				<name>astrometric_delta_q</name>
+				<description>Hipparcos/Gaia data discrepancy (Hipparcos subset of TGAS only)</description>
+				<ucd>stat.value</ucd>
+				<dataType xsi:type="vod:TAPType">REAL</dataType>
+			</column>
+			<column stat:min="0.0" stat:median="0.47797222892574687" stat:max="5.296921880184702" stat:q1="0.3723841940426086" stat:q3="0.6304363007050622" stat:mean="0.5511334620178802" stat:stddev="0.3055373149724993" stat:filling="2057050">
+				<name>astrometric_excess_noise</name>
+				<description>Excess noise of the source</description>
+				<unit>mas</unit>
+				<ucd>stat.value</ucd>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+			</column>
+			<column stat:min="0.0" stat:median="220.10049582815995" stat:max="1.0292213112865954E24" stat:q1="140.1048019567134" stat:q3="363.6735527467781" stat:mean="5.0033849993275219E17" stat:stddev="7.176064708375469E20" stat:filling="2057050">
+				<name>astrometric_excess_noise_sig</name>
+				<description>Significance of excess noise</description>
+				<ucd>stat.value</ucd>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+			</column>
+			<column stat:min="0.0" stat:median="4.0" stat:max="100.0" stat:q1="2.0" stat:q3="7.0" stat:mean="4.606366398483265" stat:stddev="3.5353554910311056" stat:filling="2057050">
+				<name>astrometric_n_bad_obs_ac</name>
+				<description>Number of bad observations AC</description>
+				<ucd>meta.number</ucd>
+				<dataType xsi:type="vod:TAPType">INTEGER</dataType>
+			</column>
+			<column stat:min="0.0" stat:median="0.0" stat:max="70.0" stat:q1="0.0" stat:q3="1.0" stat:mean="0.7764113657908169" stat:stddev="1.4605908254645241" stat:filling="2057050">
+				<name>astrometric_n_bad_obs_al</name>
+				<description>Number of bad observations AL</description>
+				<ucd>meta.number</ucd>
+				<dataType xsi:type="vod:TAPType">INTEGER</dataType>
+			</column>
+			<column stat:min="0.0" stat:median="96.0" stat:max="1791.0" stat:q1="70.0" stat:q3="133.0" stat:mean="108.9519972776549" stat:stddev="57.1584422039541" stat:filling="2057050">
+				<name>astrometric_n_good_obs_ac</name>
+				<description>Number of good observations AC</description>
+				<ucd>meta.number</ucd>
+				<dataType xsi:type="vod:TAPType">INTEGER</dataType>
+			</column>
+			<column stat:min="11.0" stat:median="99.0" stat:max="1866.0" stat:q1="72.0" stat:q3="139.0" stat:mean="113.50674509613282" stat:stddev="58.99620345662859" stat:filling="2057050">
+				<name>astrometric_n_good_obs_al</name>
+				<description>Number of good observations AL</description>
+				<ucd>meta.number</ucd>
+				<dataType xsi:type="vod:TAPType">INTEGER</dataType>
+			</column>
+			<column stat:min="0.0" stat:median="99.0" stat:max="1871.0" stat:q1="72.0" stat:q3="140.0" stat:mean="113.55836367613816" stat:stddev="59.1723661856387" stat:filling="2057050">
+				<name>astrometric_n_obs_ac</name>
+				<description>Total number of observations AC</description>
+				<ucd>meta.number</ucd>
+				<dataType xsi:type="vod:TAPType">INTEGER</dataType>
+			</column>
+			<column stat:min="11.0" stat:median="99.0" stat:max="1878.0" stat:q1="72.0" stat:q3="140.0" stat:mean="114.28315646192362" stat:stddev="59.39164973852139" stat:filling="2057050">
+				<name>astrometric_n_obs_al</name>
+				<description>Total number of observations AL</description>
+				<ucd>meta.number</ucd>
+				<dataType xsi:type="vod:TAPType">INTEGER</dataType>
+			</column>
+			<column>
+				<name>astrometric_primary_flag</name>
+				<description>Primary or seconday</description>
+				<ucd>meta.code</ucd>
+				<dataType xsi:type="vod:TAPType">SMALLINT</dataType>
+			</column>
+			<column stat:min="3.0" stat:median="5.0" stat:max="5.0" stat:q1="5.0" stat:q3="5.0" stat:mean="4.908961862861865" stat:stddev="0.4168793786540434" stat:filling="2057050">
+				<name>astrometric_priors_used</name>
+				<description>Type of prior used in the astrometric solution</description>
+				<dataType xsi:type="vod:TAPType">INTEGER</dataType>
+			</column>
+			<column>
+				<name>astrometric_relegation_factor</name>
+				<description>Relegation factor</description>
+				<ucd>arith.factor</ucd>
+				<dataType xsi:type="vod:TAPType">REAL</dataType>
+			</column>
+			<column stat:min="1.53261033E-6" stat:median="2.75871826E-5" stat:max="0.00871281885" stat:q1="2.337659405E-5" stat:q3="3.14950703E-5" stat:mean="2.72947789945424E-5" stat:stddev="9.688918928819566E-6" stat:filling="2054858">
+				<name>astrometric_weight_ac</name>
+				<description>Mean astrometric weight of the source</description>
+				<unit>mas^-2</unit>
+				<ucd>stat.weight;stat.mean</ucd>
+				<dataType xsi:type="vod:TAPType">REAL</dataType>
+			</column>
+			<column stat:min="0.0351490378" stat:median="4.10238934" stat:max="205.475296" stat:q1="2.3992537250000003" stat:q3="6.590682505" stat:mean="5.078120840194718" stat:stddev="4.056023904731465" stat:filling="2057050">
+				<name>astrometric_weight_al</name>
+				<description>Mean astrometric weight of the source</description>
+				<unit>mas^-2</unit>
+				<ucd>stat.weight;stat.mean</ucd>
+				<dataType xsi:type="vod:TAPType">REAL</dataType>
+			</column>
+			<column stat:min="-0.99615711" stat:median="0.162056193" stat:max="0.997952163" stat:q1="-0.302441761" stat:q3="0.5883694589999999" stat:mean="0.1318640060932886" stat:stddev="0.4986129693402764" stat:filling="2057050">
+				<name>dec_parallax_corr</name>
+				<description>Correlation between declination and parallax</description>
+				<ucd>stat.correlation</ucd>
+				<dataType xsi:type="vod:TAPType">REAL</dataType>
+			</column>
+			<column stat:min="-0.999646187" stat:median="-0.585774362" stat:max="0.998897374" stat:q1="-0.7964715659999999" stat:q3="-0.21739280249999998" stat:mean="-0.46774007302885084" stat:stddev="0.4094668665919864" stat:filling="2057050">
+				<name>dec_pmdec_corr</name>
+				<description>Correlation between declination and proper motion in declination</description>
+				<ucd>stat.correlation</ucd>
+				<dataType xsi:type="vod:TAPType">REAL</dataType>
+			</column>
+			<column stat:min="-0.999119341" stat:median="-9.00499872E-4" stat:max="0.999225557" stat:q1="-0.5144279005" stat:q3="0.5187547205" stat:mean="-3.8286066715422407E-4" stat:stddev="0.5692559338571997" stat:filling="2057050">
+				<name>dec_pmra_corr</name>
+				<description>Correlation between declination and proper motion in right ascension</description>
+				<ucd>stat.correlation</ucd>
+				<dataType xsi:type="vod:TAPType">REAL</dataType>
+			</column>
+			<column>
+				<name>duplicated_source</name>
+				<description>Source with duplicate sources</description>
+				<dataType xsi:type="vod:TAPType">SMALLINT</dataType>
+			</column>
+			<column>
+				<name>hip</name>
+				<description>Hipparcos identifier</description>
+				<ucd>meta.id.cross</ucd>
+				<dataType xsi:type="vod:TAPType">INTEGER</dataType>
+			</column>
+			<column>
+				<name>matched_observations</name>
+				<description>Amount of observations matched to this source</description>
+				<ucd>meta.number</ucd>
+				<dataType xsi:type="vod:TAPType">SMALLINT</dataType>
+			</column>
+			<column stat:min="-0.996898413" stat:median="-0.160854533" stat:max="0.996262014" stat:q1="-0.567399055" stat:q3="0.1813488675" stat:mean="-0.1596047733967466" stat:stddev="0.4847452407881015" stat:filling="2057050">
+				<name>parallax_pmdec_corr</name>
+				<description>Correlation between parallax and proper motion in declination</description>
+				<ucd>stat.correlation</ucd>
+				<dataType xsi:type="vod:TAPType">REAL</dataType>
+			</column>
+			<column stat:min="-0.998572707" stat:median="0.0452261604" stat:max="0.99876225" stat:q1="-0.612125009" stat:q3="0.6500710249999999" stat:mean="0.024629766961658205" stat:stddev="0.6401993266205133" stat:filling="2057050">
+				<name>parallax_pmra_corr</name>
+				<description>Correlation between parallax and proper motion in right ascension</description>
+				<ucd>stat.correlation</ucd>
+				<dataType xsi:type="vod:TAPType">REAL</dataType>
+			</column>
+			<column stat:min="306.7362139416077" stat:median="624186.6761179754" stat:max="2.830473345661523E8" stat:q1="358867.60409649956" stat:q3="1351475.9245682429" stat:mean="1675342.4905985617" stat:stddev="4549677.20101913" stat:filling="2057050">
+				<name>phot_g_mean_flux</name>
+				<description>G-band mean flux</description>
+				<unit>e-/s</unit>
+				<ucd>phot.flux;stat.mean;em.opt</ucd>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+			</column>
+			<column stat:min="1.0490200840630977" stat:median="1028.4380043689885" stat:max="4356961.232501469" stat:q1="370.32748711437534" stat:q3="2121.3874267018805" stat:mean="2553.8718432822225" stat:stddev="19715.415055924197" stat:filling="2057050">
+				<name>phot_g_mean_flux_error</name>
+				<description>Error on G-band mean flux</description>
+				<unit>e-/s</unit>
+				<ucd>stat.error;phot.flux;stat.mean;em.opt</ucd>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+			</column>
+			<column stat:min="11.0" stat:median="115.0" stat:max="1866.0" stat:q1="82.0" stat:q3="156.0" stat:mean="126.98269269098952" stat:stddev="62.21384174098345" stat:filling="2057050">
+				<name>phot_g_n_obs</name>
+				<description>Number of observations contributing to G photometry</description>
+				<ucd>meta.number</ucd>
+				<dataType xsi:type="vod:TAPType">INTEGER</dataType>
+			</column>
+			<column>
+				<name>phot_variable_flag</name>
+				<description>Photometric variability flag</description>
+				<ucd>meta.code;src.var</ucd>
+				<dataType xsi:type="vod:TAPType">VARCHAR</dataType>
+			</column>
+			<column stat:min="-0.999750078" stat:median="0.0103440862" stat:max="0.999722242" stat:q1="-0.5509738024999999" stat:q3="0.5518702265" stat:mean="0.003191990363294885" stat:stddev="0.6218198540458262" stat:filling="2057050">
+				<name>pmra_pmdec_corr</name>
+				<description>Correlation between proper motion in right ascension and proper motion in declination</description>
+				<ucd>stat.correlation</ucd>
+				<dataType xsi:type="vod:TAPType">REAL</dataType>
+			</column>
+			<column>
+				<name>ra_dec_corr</name>
+				<description>Correlation between right ascension and declination</description>
+				<ucd>stat.correlation</ucd>
+				<dataType xsi:type="vod:TAPType">REAL</dataType>
+			</column>
+			<column>
+				<name>random_index</name>
+				<description>Random index used to select subsets</description>
+				<ucd>meta.code</ucd>
+				<dataType xsi:type="vod:TAPType">BIGINT</dataType>
+				<flag>indexed</flag>
+			</column>
+			<column stat:min="-0.998475552" stat:median="-0.0427706502" stat:max="0.997721851" stat:q1="-0.485525772" stat:q3="0.4342707845" stat:mean="-0.021998714556163403" stat:stddev="0.5409333243535147" stat:filling="2057050">
+				<name>ra_parallax_corr</name>
+				<description>Correlation between right ascension and parallax</description>
+				<ucd>stat.correlation</ucd>
+				<dataType xsi:type="vod:TAPType">REAL</dataType>
+			</column>
+			<column stat:min="-0.999416769" stat:median="-0.00762905506" stat:max="0.999383092" stat:q1="-0.4632278085" stat:q3="0.44701810200000003" stat:mean="-0.00700619566281599" stat:stddev="0.5511258778279328" stat:filling="2057050">
+				<name>ra_pmdec_corr</name>
+				<description>Correlation between right ascension and proper motion in declination</description>
+				<ucd>stat.correlation</ucd>
+				<dataType xsi:type="vod:TAPType">REAL</dataType>
+			</column>
+			<column stat:min="-0.9998824" stat:median="-0.706212223" stat:max="0.998936057" stat:q1="-0.86039868" stat:q3="-0.4310174285" stat:mean="-0.591038574675605" stat:stddev="0.3599108421173602" stat:filling="2057050">
+				<name>ra_pmra_corr</name>
+				<description>Correlation between right ascension and proper motion in right ascension</description>
+				<ucd>stat.correlation</ucd>
+				<dataType xsi:type="vod:TAPType">REAL</dataType>
+			</column>
+			<column stat:min="-179.999832" stat:median="-77.5320663" stat:max="179.999634" stat:q1="-109.8399885" stat:q3="-25.9824314" stat:mean="-54.83192987048611" stat:stddev="84.75632022455486" stat:filling="2057050">
+				<name>scan_direction_mean_k1</name>
+				<description>Mean position angle of scan directions across the source</description>
+				<unit>deg</unit>
+				<dataType xsi:type="vod:TAPType">REAL</dataType>
+			</column>
+			<column stat:min="-89.9998779" stat:median="-0.211715743" stat:max="89.9999466" stat:q1="-42.64907455" stat:q3="41.710487400000005" stat:mean="-0.27006088956217245" stat:stddev="49.65957510195438" stat:filling="2057050">
+				<name>scan_direction_mean_k2</name>
+				<description>Mean position angle of scan directions across the source</description>
+				<unit>deg</unit>
+				<dataType xsi:type="vod:TAPType">REAL</dataType>
+			</column>
+			<column stat:min="-59.9999695" stat:median="-7.7685957" stat:max="59.9999466" stat:q1="-31.932025" stat:q3="26.621356" stat:mean="-3.1988848854643197" stat:stddev="34.13713285834652" stat:filling="2057050">
+				<name>scan_direction_mean_k3</name>
+				<description>Mean position angle of scan directions across the source</description>
+				<unit>deg</unit>
+				<dataType xsi:type="vod:TAPType">REAL</dataType>
+			</column>
+			<column stat:min="-44.9999771" stat:median="0.424751371" stat:max="44.9999962" stat:q1="-28.321138400000002" stat:q3="27.6064291" stat:mean="-0.14362967734432613" stat:stddev="29.815992533272986" stat:filling="2057050">
+				<name>scan_direction_mean_k4</name>
+				<description>Mean position angle of scan directions across the source</description>
+				<unit>deg</unit>
+				<dataType xsi:type="vod:TAPType">REAL</dataType>
+			</column>
+			<column stat:min="1.91387575E-4" stat:median="0.352883756" stat:max="0.999985456" stat:q1="0.23693634549999998" stat:q3="0.4704450965" stat:mean="0.3586573311262952" stat:stddev="0.16444558977950696" stat:filling="2057050">
+				<name>scan_direction_strength_k1</name>
+				<description>Degree of concentration of scan directions across the source</description>
+				<dataType xsi:type="vod:TAPType">REAL</dataType>
+			</column>
+			<column stat:min="9.12868054E-5" stat:median="0.350004822" stat:max="0.999941766" stat:q1="0.2212560325" stat:q3="0.511361152" stat:mean="0.37678847027604423" stat:stddev="0.199100370711313" stat:filling="2057050">
+				<name>scan_direction_strength_k2</name>
+				<description>Degree of concentration of scan directions across the source</description>
+				<dataType xsi:type="vod:TAPType">REAL</dataType>
+			</column>
+			<column stat:min="2.51233752E-4" stat:median="0.320886642" stat:max="0.999868929" stat:q1="0.1962457745" stat:q3="0.475843325" stat:mean="0.3445588710562615" stat:stddev="0.18605566542912344" stat:filling="2057050">
+				<name>scan_direction_strength_k3</name>
+				<description>Degree of concentration of scan directions across the source</description>
+				<dataType xsi:type="vod:TAPType">REAL</dataType>
+			</column>
+			<column stat:min="3.05265246E-4" stat:median="0.51459837" stat:max="0.999992907" stat:q1="0.318608016" stat:q3="0.7486604155000001" stat:mean="0.528373720181276" stat:stddev="0.2579556374026442" stat:filling="2057050">
+				<name>scan_direction_strength_k4</name>
+				<description>Degree of concentration of scan directions across the source</description>
+				<dataType xsi:type="vod:TAPType">REAL</dataType>
+			</column>
+			<column>
+				<name>solution_id</name>
+				<description>Solution Identifier</description>
+				<ucd>meta.id;meta.version</ucd>
+				<dataType xsi:type="vod:TAPType">BIGINT</dataType>
+			</column>
+			<column>
+				<name>tycho2_id</name>
+				<description>Tycho 2 identifier</description>
+				<ucd>meta.id.cross</ucd>
+				<dataType xsi:type="vod:TAPType">VARCHAR</dataType>
+			</column>
+		</table>
+		<table stat:size="599">
+			<name>gaiadr1.cepheid</name>
+			<description>This table describes the Cepheid stars identified in table VariableSummary as classification="CEP". In the analyses only observations with rejectedByVariabilityProcessing=false are included, as found in table PhotVariableTimeSeriesGfov.</description>
+			<column>
+				<name>source_id</name>
+				<description>Unique source identifier</description>
+				<ucd>meta.id;meta.main</ucd>
+				<dataType xsi:type="vod:TAPType">BIGINT</dataType>
+				<flag>indexed</flag>
+				<flag>primary</flag>
+			</column>
+			<column stat:min="1583.863018852647" stat:median="1665.3834710581145" stat:max="1688.8202264215254" stat:q1="1660.7144067280688" stat:q3="1672.3829840713906" stat:mean="1665.9454281581159" stat:stddev="11.297959983485244" stat:filling="599">
+				<name>epoch_g</name>
+				<description>Epoch of the maximum of the light curve in the G band. (Barycentric JD in TCB - 2455197.5)</description>
+				<unit>day</unit>
+				<ucd>time.epoch;stat.max</ucd>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+			</column>
+			<column stat:min="1.220950415964936E-6" stat:median="3.127697650211664E-5" stat:max="0.011549483737232264" stat:q1="1.6213460499631905E-5" stat:q3="5.657562504279757E-5" stat:mean="1.7020806471619058E-4" stat:stddev="9.649523485537594E-4" stat:filling="599">
+				<name>epoch_g_error</name>
+				<description>Uncertainty on the epoch parameter epochG</description>
+				<unit>day</unit>
+				<ucd>stat.error;time.epoch</ucd>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+			</column>
+			<column stat:min="12.382594485154154" stat:median="15.71879302407565" stat:max="18.84061554860171" stat:q1="15.387700804115793" stat:q3="16.02449629476704" stat:mean="15.82775781255799" stat:stddev="0.8381219547564748" stat:filling="599">
+				<name>int_average_g</name>
+				<description>Intensity-averaged magnitude in the G band</description>
+				<unit>mag</unit>
+				<ucd>phot.mag;em.opt</ucd>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+			</column>
+			<column stat:min="4.01406356481999E-5" stat:median="1.408166555833615E-4" stat:max="0.0028152101844914784" stat:q1="1.0111948234311092E-4" stat:q3="1.8906802854439664E-4" stat:mean="1.7733994300564733E-4" stat:stddev="1.710058252019943E-4" stat:filling="599">
+				<name>int_average_g_error</name>
+				<description>Uncertainty on intAverageG parameter</description>
+				<unit>mag</unit>
+				<ucd>stat.error;phot.mag;em.opt</ucd>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+			</column>
+			<column>
+				<name>mode_best_classification</name>
+				<description>Best mode classification estimate out of: {"FUNDAMENTAL", "FIRST_OVERTONE", "SECOND_OVERTONE", "UNDEFINED", "NOT_APPLICABLE"}</description>
+				<ucd>meta.code.class;src.class</ucd>
+				<dataType xsi:type="vod:TAPType">VARCHAR</dataType>
+			</column>
+			<column stat:min="1.0" stat:median="3.0" stat:max="8.0" stat:q1="2.0" stat:q3="4.0" stat:mean="3.370617696160267" stat:stddev="1.392600411259034" stat:filling="599">
+				<name>num_harmonics_for_p1</name>
+				<description>Number of harmonics used to model P1 of the light curve</description>
+				<ucd>meta.number</ucd>
+				<dataType xsi:type="vod:TAPType">INTEGER</dataType>
+			</column>
+			<column stat:min="0.28700699727533097" stat:median="2.9030267521627486" stat:max="36.58807891908117" stat:q1="1.9059116520839154" stat:q3="3.805004930036645" stat:mean="3.4876050970592503" stat:stddev="3.454544754165694" stat:filling="599">
+				<name>p1</name>
+				<description>Period corresponding to the maximum power peak in the periodogram of G band time series</description>
+				<unit>day</unit>
+				<ucd>time.period</ucd>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+			</column>
+			<column stat:min="8.633423186213421E-7" stat:median="2.211616217965898E-5" stat:max="0.008166718269800683" stat:q1="1.1464647865789947E-5" stat:q3="4.000500811762961E-5" stat:mean="1.2035527677345715E-4" stat:stddev="6.823243491842482E-4" stat:filling="599">
+				<name>p1_error</name>
+				<description>Uncertainty on the p1 period</description>
+				<unit>day</unit>
+				<ucd>stat.error;time.period</ucd>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+			</column>
+			<column stat:min="0.07514522026175285" stat:median="0.41359698044076953" stat:max="1.3662916371555944" stat:q1="0.29656452680172674" stat:q3="0.6373504015244116" stat:mean="0.4685777843675605" stat:stddev="0.22007075364224285" stat:filling="599">
+				<name>peak_to_peak_g</name>
+				<description>Peak-to-peak amplitude of the G band light curve</description>
+				<unit>mag</unit>
+				<ucd>src.var.amplitude;em.opt</ucd>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+			</column>
+			<column stat:min="5.676743133596124E-5" stat:median="1.9914482413401088E-4" stat:max="0.003981308423838712" stat:q1="1.430045433497742E-4" stat:q3="2.6738257017862923E-4" stat:mean="2.507965525490585E-4" stat:stddev="2.4183875724546287E-4" stat:filling="599">
+				<name>peak_to_peak_g_error</name>
+				<description>Uncertainty on the peakToPeakG parameter</description>
+				<unit>mag</unit>
+				<ucd>stat.error;src.var.amplitude;em.opt</ucd>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+			</column>
+			<column stat:min="1.054012525621852" stat:median="4.315420455628703" stat:max="6.99766823939202" stat:q1="4.1734406898375696" stat:q3="4.472846700548921" stat:mean="4.2845284697557675" stat:stddev="0.5807991926345767" stat:filling="575">
+				<name>phi21_g</name>
+				<description>Fourier decomposition parameter phi21G: phi2 - 2*phi1 (for G band)</description>
+				<ucd>stat.Fourier</ucd>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+			</column>
+			<column stat:min="0.0014838661859850862" stat:median="0.011767575335820898" stat:max="3.2520338749697997" stat:q1="0.006416152097079482" stat:q3="0.023466351840040506" stat:mean="0.044666721746640506" stat:stddev="0.2438619058243588" stat:filling="575">
+				<name>phi21_g_error</name>
+				<description>Uncertainty on the phi21G parameter: phi2 - 2*phi1 (for G band)</description>
+				<ucd>stat.error</ucd>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+			</column>
+			<column stat:min="0.023416220563797135" stat:median="0.28919627658423847" stat:max="0.5410176434327217" stat:q1="0.15352429859237865" stat:q3="0.44163190639837524" stat:mean="0.2914263629972871" stat:stddev="0.1499447505380547" stat:filling="575">
+				<name>r21_g</name>
+				<description>Fourier decomposition parameter r21G: A2/A1 (for G band)</description>
+				<ucd>stat.Fourier</ucd>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+			</column>
+			<column stat:min="3.2976907145318906E-4" stat:median="0.0024079055301132425" stat:max="0.1159863895416059" stat:q1="0.001574874540803741" stat:q3="0.003466942103345775" stat:mean="0.0033730785054063204" stat:stddev="0.006284241859016926" stat:filling="575">
+				<name>r21_g_error</name>
+				<description>Uncertainty on the r21G parameter: A2/A1 (for G band)</description>
+				<ucd>stat.error</ucd>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+			</column>
+			<column>
+				<name>solution_id</name>
+				<description>Solution Identifier</description>
+				<ucd>meta.id;meta.version</ucd>
+				<dataType xsi:type="vod:TAPType">BIGINT</dataType>
+			</column>
+			<column>
+				<name>type2_best_sub_classification</name>
+				<description>Best subclassification estimate for typeBestClassification="T2CEP" out of: {"BL_HER", "W_VIR","RV_TAU"}</description>
+				<ucd>meta.code.class;src.class</ucd>
+				<dataType xsi:type="vod:TAPType">VARCHAR</dataType>
+			</column>
+			<column>
+				<name>type_best_classification</name>
+				<description>Best type classification estimate out of: {"DCEP", "T2CEP", "ACEP"}</description>
+				<ucd>meta.code.class;src.class</ucd>
+				<dataType xsi:type="vod:TAPType">VARCHAR</dataType>
+			</column>
+		</table>
+		<table stat:size="2595">
+			<name>gaiadr1.rrlyrae</name>
+			<description>This table describes the RRLyrae stars identified in table VariableSummary as classification="RRLYR". In the analyses only observations with rejectedByVariabilityProcessing=false are included, as found in table PhotVariableTimeSeriesGfov.</description>
+			<column>
+				<name>source_id</name>
+				<description>Unique source identifier</description>
+				<ucd>meta.id;meta.main</ucd>
+				<dataType xsi:type="vod:TAPType">BIGINT</dataType>
+				<flag>indexed</flag>
+				<flag>primary</flag>
+			</column>
+			<column>
+				<name>best_classification</name>
+				<description>Best RR Lyrae classification estimate out of: {"RRC", "RRAB"}</description>
+				<ucd>meta.code.class;src.class</ucd>
+				<dataType xsi:type="vod:TAPType">VARCHAR</dataType>
+			</column>
+			<column stat:min="1664.2387860185195" stat:median="1671.9264376919732" stat:max="1690.9131176641474" stat:q1="1665.7097521625574" stat:q3="1680.4341181372513" stat:mean="1673.8180255565644" stat:stddev="8.162738770112497" stat:filling="2595">
+				<name>epoch_g</name>
+				<description>Epoch of the maximum of the light curve in the G band. (Barycentric JD in TCB - 2455197.5)</description>
+				<unit>day</unit>
+				<ucd>time.epoch;stat.max</ucd>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+			</column>
+			<column stat:min="9.436723644580389E-8" stat:median="3.7127507267464025E-6" stat:max="3.642622084138216E-4" stat:q1="2.2977530404743255E-6" stat:q3="6.527736228418882E-6" stat:mean="7.064067929280383E-6" stat:stddev="1.5460831291858803E-5" stat:filling="2595">
+				<name>epoch_g_error</name>
+				<description>Uncertainty on the epoch parameter epochG</description>
+				<unit>day</unit>
+				<ucd>stat.error;time.epoch</ucd>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+			</column>
+			<column stat:min="11.625697158987316" stat:median="19.135685931902916" stat:max="20.192984980533243" stat:q1="19.025194221532995" stat:q3="19.251314474969686" stat:mean="19.062432846484135" stat:stddev="0.6440948818500755" stat:filling="2595">
+				<name>int_average_g</name>
+				<description>Intensity-averaged magnitude in the G band</description>
+				<unit>mag</unit>
+				<ucd>phot.mag;em.opt</ucd>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+			</column>
+			<column stat:min="3.689346937933341E-5" stat:median="7.8070213824489E-4" stat:max="0.023999555215847505" stat:q1="6.395493166428276E-4" stat:q3="0.0010150196340887995" stat:mean="9.536830780146831E-4" stat:stddev="9.228544630158052E-4" stat:filling="2595">
+				<name>int_average_g_error</name>
+				<description>Uncertainty on intAverageG parameter</description>
+				<unit>mag</unit>
+				<ucd>stat.error;phot.mag;em.opt</ucd>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+			</column>
+			<column stat:min="1.0" stat:median="4.0" stat:max="8.0" stat:q1="3.0" stat:q3="4.0" stat:mean="3.6111753371868978" stat:stddev="1.3441491929468272" stat:filling="2595">
+				<name>num_harmonics_for_p1</name>
+				<description>Number of harmonics used to model P1 of the light curve</description>
+				<ucd>meta.number</ucd>
+				<dataType xsi:type="vod:TAPType">INTEGER</dataType>
+			</column>
+			<column stat:min="0.2127138530744666" stat:median="0.5518011650264247" stat:max="0.8957673136527304" stat:q1="0.3816751963408478" stat:q3="0.6068970435325941" stat:mean="0.5170140496515765" stat:stddev="0.12830469099932432" stat:filling="2595">
+				<name>p1</name>
+				<description>Period corresponding to the maximum power peak in the periodogram of G band time series</description>
+				<unit>day</unit>
+				<ucd>time.period</ucd>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+			</column>
+			<column stat:min="6.672771281266224E-8" stat:median="2.625311215737664E-6" stat:max="2.575722776994007E-4" stat:q1="1.624756756411403E-6" stat:q3="4.6158065529120884E-6" stat:mean="4.995050335556574E-6" stat:stddev="1.093245864925453E-5" stat:filling="2595">
+				<name>p1_error</name>
+				<description>Uncertainty on the p1 period</description>
+				<unit>day</unit>
+				<ucd>stat.error;time.period</ucd>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+			</column>
+			<column stat:min="0.12416267037051654" stat:median="0.6541855829278518" stat:max="1.5440091018397197" stat:q1="0.4502911842903323" stat:q3="0.9056538655873112" stat:mean="0.6862720473568229" stat:stddev="0.26984644161274834" stat:filling="2595">
+				<name>peak_to_peak_g</name>
+				<description>Peak-to-peak amplitude of the G band light curve</description>
+				<unit>mag</unit>
+				<ucd>src.var.amplitude;em.opt</ucd>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+			</column>
+			<column stat:min="5.21752447592498E-5" stat:median="0.0011040795520795984" stat:max="0.033940496477173496" stat:q1="9.04459317402732E-4" stat:q3="0.0014354545326033567" stat:mean="0.0013487115431340848" stat:stddev="0.0013051132976934904" stat:filling="2595">
+				<name>peak_to_peak_g_error</name>
+				<description>Uncertainty on the peakToPeakG parameter</description>
+				<unit>mag</unit>
+				<ucd>stat.error;src.var.amplitude;em.opt</ucd>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+			</column>
+			<column stat:min="0.9774570637561002" stat:median="4.1092144416222975" stat:max="5.924277485198154" stat:q1="3.9619746278436665" stat:q3="4.415735452788432" stat:mean="4.216153561588678" stat:stddev="0.37048486977415257" stat:filling="2499">
+				<name>phi21_g</name>
+				<description>Fourier decomposition parameter phi21G: phi2 - 2*phi1 (for G band)</description>
+				<ucd>stat.Fourier</ucd>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+			</column>
+			<column stat:min="0.001148753488940708" stat:median="0.03831189603558674" stat:max="2.828559127256447" stat:q1="0.026448364659420742" stat:q3="0.061638831035799334" stat:mean="0.08212157345586225" stat:stddev="0.23046195042639148" stat:filling="2499">
+				<name>phi21_g_error</name>
+				<description>Uncertainty on the phi21G parameter: phi2 - 2*phi1 (for G band)</description>
+				<ucd>stat.error</ucd>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+			</column>
+			<column stat:min="0.051387053728393785" stat:median="0.4340457839659896" stat:max="0.6732535557611277" stat:q1="0.2920815348739341" stat:q3="0.47936642930459866" stat:mean="0.3829631776922308" stat:stddev="0.1365152125012324" stat:filling="2499">
+				<name>r21_g</name>
+				<description>Fourier decomposition parameter r21G: A2/A1 (for G band)</description>
+				<ucd>stat.Fourier</ucd>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+			</column>
+			<column stat:min="4.919593593494118E-4" stat:median="0.010792556384134566" stat:max="0.15631218759267138" stat:q1="0.00804855770486088" stat:q3="0.014551404714525925" stat:mean="0.01307035381510372" stat:stddev="0.010576736941786067" stat:filling="2499">
+				<name>r21_g_error</name>
+				<description>Uncertainty on the r21G parameter: A2/A1 (for G band)</description>
+				<ucd>stat.error</ucd>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+			</column>
+			<column>
+				<name>solution_id</name>
+				<description>Solution Identifier</description>
+				<ucd>meta.id;meta.version</ucd>
+				<dataType xsi:type="vod:TAPType">BIGINT</dataType>
+			</column>
+		</table>
+		<table stat:size="233181">
+			<name>gaiadr1.phot_variable_time_series_gfov</name>
+			<description>Field-of-view time series of sources that have photVariableFlag = "VARIABLE" in the GaiaSource table.</description>
+			<column>
+				<name>source_id</name>
+				<description>Unique source identifier</description>
+				<ucd>meta.id;meta.main</ucd>
+				<dataType xsi:type="vod:TAPType">BIGINT</dataType>
+				<flag>indexed</flag>
+				<flag>primary</flag>
+			</column>
+			<column stat:min="1666.46929519792" stat:median="1681.9857818813648" stat:max="2084.6738807864763" stat:q1="1674.9783125475592" stat:q3="1690.9144539440472" stat:mean="1708.3815684373815" stat:stddev="78.48439068642736" stat:filling="233181">
+				<name>observation_time</name>
+				<description>Barycentric light-travel time corrected timestamp for each FOV observation. (Barycentric JD in TCB - 2455197.5)</description>
+				<unit>day</unit>
+				<ucd>time.epoch</ucd>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+			</column>
+			<column stat:min="3.0254252963397024" stat:median="378.9224608585812" stat:max="1600988.651255424" stat:q1="303.5156372461015" stat:q3="553.8207034361805" stat:mean="2619.591224572189" stat:stddev="9843.276358055227" stat:filling="233181">
+				<name>g_flux</name>
+				<description>G-band flux for each FOV observation</description>
+				<unit>e-/s</unit>
+				<ucd>phot.flux;em.opt</ucd>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+			</column>
+			<column stat:min="0.18409438449904486" stat:median="6.459695831159145" stat:max="310835.87736543355" stat:q1="4.766558686291663" stat:q3="10.900809244305613" stat:mean="16.20904502299779" stat:stddev="647.0909618919378" stat:filling="233181">
+				<name>g_flux_error</name>
+				<description>Estimated G-band flux uncertainty for each FOV observation</description>
+				<unit>e-/s</unit>
+				<ucd>stat.error;phot.flux;em.opt</ucd>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+			</column>
+			<column stat:min="10.013799430348682" stat:median="19.07838908173357" stat:max="24.322803979286167" stat:q1="18.6663412752997" stat:q3="19.31930662604976" stat:mean="18.462117503394147" stat:stddev="1.4614853190306283" stat:filling="233181">
+				<name>g_magnitude</name>
+				<description>G-band magnitude for each FOV observation</description>
+				<unit>mag</unit>
+				<ucd>phot.mag;em.opt</ucd>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+			</column>
+			<column>
+				<name>rejected_by_variability_processing</name>
+				<description>True when this FOV observation was excluded from variability analyses</description>
+				<ucd>meta.code</ucd>
+				<dataType xsi:type="vod:TAPType">SMALLINT</dataType>
+			</column>
+			<column>
+				<name>solution_id</name>
+				<description>Solution Identifier</description>
+				<ucd>meta.id;meta.version</ucd>
+				<dataType xsi:type="vod:TAPType">BIGINT</dataType>
+			</column>
+		</table>
+		<table stat:size="3194">
+			<name>gaiadr1.phot_variable_time_series_gfov_statistical_parameters</name>
+			<description>Statistical parameters of field-of-view time series, only including observations with rejectedByVariabilityProcessing=false as found in table PhotVariableTimeSeriesGfov. Note that only sources are included that have photVariableFlag = "VARIABLE" in the GaiaSource table.</description>
+			<column>
+				<name>source_id</name>
+				<description>Unique source identifier</description>
+				<ucd>meta.id;meta.main</ucd>
+				<dataType xsi:type="vod:TAPType">BIGINT</dataType>
+				<flag>indexed</flag>
+				<flag>primary</flag>
+			</column>
+			<column stat:min="16.0" stat:median="63.0" stat:max="230.0" stat:q1="49.0" stat:q3="83.0" stat:mean="72.64245460237946" stat:stddev="36.96758673333863" stat:filling="3194">
+				<name>num_observations_processed</name>
+				<description>Number of processed G-band observations for variability analyses</description>
+				<ucd>meta.number</ucd>
+				<dataType xsi:type="vod:TAPType">INTEGER</dataType>
+			</column>
+			<column stat:min="1677.407394928924" stat:median="1711.6412692618826" stat:max="1782.134303804539" stat:q1="1701.6023182199729" stat:q3="1723.5642010057873" stat:mean="1713.7698765384669" stat:stddev="17.039768054856705" stat:filling="3194">
+				<name>mean_obs_time</name>
+				<description>Mean observation time (with respect to T0) of G-band time series</description>
+				<unit>day</unit>
+				<ucd>time.epoch;stat.mean</ucd>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+			</column>
+			<column stat:min="14.509637146128853" stat:median="348.7229897886907" stat:max="418.203927163413" stat:q1="338.96635044821164" stat:q3="354.4771983116045" stat:mean="347.8523203513823" stat:stddev="26.015453695315255" stat:filling="3194">
+				<name>time_duration</name>
+				<description>Time duration of the G-band time series</description>
+				<unit>day</unit>
+				<ucd>time.duration</ucd>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+			</column>
+			<column stat:min="0.11549830686528573" stat:median="0.6775193642363107" stat:max="4.663003107653177" stat:q1="0.49881439688838825" stat:q3="0.9201430611522952" stat:mean="0.71319242910176" stat:stddev="0.2830379568812677" stat:filling="3194">
+				<name>range</name>
+				<description>Difference between the highest and lowest magnitude of the G-band time series</description>
+				<unit>mag</unit>
+				<ucd>phot.mag;arith.diff</ucd>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+			</column>
+			<column stat:min="11.060425553874396" stat:median="18.63530672105818" stat:max="19.946601653663546" stat:q1="18.323882279368306" stat:q3="18.855793373980156" stat:mean="18.060122645056712" stat:stddev="1.388247795941707" stat:filling="3194">
+				<name>minimum</name>
+				<description>Minimum magnitude of the G-band time series</description>
+				<unit>mag</unit>
+				<ucd>phot.mag;stat.min</ucd>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+			</column>
+			<column stat:min="12.047212227992468" stat:median="19.410840199170647" stat:max="20.88508854203723" stat:q1="19.151224346188293" stat:q3="19.568141122846104" stat:mean="18.77331507415851" stat:stddev="1.4786182748681402" stat:filling="3194">
+				<name>maximum</name>
+				<description>Maximum magnitude of the G-band time series</description>
+				<unit>mag</unit>
+				<ucd>phot.mag;stat.max</ucd>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+			</column>
+			<column stat:min="11.687853058790362" stat:median="19.10688425049071" stat:max="20.116612182001603" stat:q1="18.86698120890628" stat:q3="19.24153192631183" stat:mean="18.474604359773885" stat:stddev="1.4391137519914294" stat:filling="3194">
+				<name>mean</name>
+				<description>Mean magnitude of the G-band time series</description>
+				<unit>mag</unit>
+				<ucd>phot.mag;stat.mean</ucd>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+			</column>
+			<column stat:min="11.767772659793124" stat:median="19.14938969601706" stat:max="20.088370066621348" stat:q1="18.908170917707597" stat:q3="19.301092988232135" stat:mean="18.51611241301913" stat:stddev="1.4493586624861008" stat:filling="3194">
+				<name>median</name>
+				<description>Median magnitude of the G-band time series</description>
+				<unit>mag</unit>
+				<ucd>phot.mag;stat.median</ucd>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+			</column>
+			<column stat:min="0.033811496158389485" stat:median="0.21182548333425485" stat:max="0.6584203866167087" stat:q1="0.1757354198771216" stat:q3="0.25046585452682485" stat:mean="0.21397482855015218" stat:stddev="0.06163251197742488" stat:filling="3194">
+				<name>median_absolute_deviation</name>
+				<description>Median Absolute Deviation (MAD) of the G-band time series values</description>
+				<unit>mag</unit>
+				<ucd>phot.mag;stat.value</ucd>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+			</column>
+			<column stat:min="0.03402868866341364" stat:median="0.18971067346931111" stat:max="0.9009440647159456" stat:q1="0.1455009548521083" stat:q3="0.2550989777911559" stat:mean="0.20108459374352522" stat:stddev="0.0737644582364988" stat:filling="3194">
+				<name>std_dev</name>
+				<description>Square root of the unweighted variance of the G-band time series values</description>
+				<unit>mag</unit>
+				<ucd>phot.mag;stat.stdev</ucd>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+			</column>
+			<column stat:min="-6.33905821421066" stat:median="-0.38927421321405953" stat:max="4.876376456658232" stat:q1="-0.6463592745038894" stat:q3="-0.10214286411718027" stat:mean="-0.3791681315022301" stat:stddev="0.42104683387820147" stat:filling="3194">
+				<name>skewness</name>
+				<description>Standardized unweighted skewness of the G-band time series values</description>
+				<ucd>stat.value</ucd>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+			</column>
+			<column stat:min="-2.0125540936414104" stat:median="-1.0237959318727967" stat:max="54.291023272136414" stat:q1="-1.308473344291223" stat:q3="-0.6981477075360114" stat:mean="-0.84099667095369" stat:stddev="1.6532644032891797" stat:filling="3194">
+				<name>kurtosis</name>
+				<description>Standardized unweighted kurtosis of the G-band time series values</description>
+				<ucd>stat.value</ucd>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+			</column>
+			<column stat:min="0.03090742199521455" stat:median="1.0362658183371085" stat:max="1.6324667285799048" stat:q1="0.8883092739209089" stat:q3="1.1500733573144168" stat:mean="0.9378525604422181" stat:stddev="0.3331016627833522" stat:filling="3194">
+				<name>abbe</name>
+				<description>Abbe value of the G-band time series values</description>
+				<ucd>stat.value</ucd>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+			</column>
+			<column stat:min="0.046389156104620355" stat:median="0.3272229510841669" stat:max="0.8789831104739747" stat:q1="0.262815662868487" stat:q3="0.40153723069578007" stat:mean="0.3360421905016079" stat:stddev="0.10974769933424622" stat:filling="3194">
+				<name>iqr</name>
+				<description>Interquartile range of the time series values</description>
+				<unit>mag</unit>
+				<ucd>phot.mag;stat.value</ucd>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+			</column>
+			<column>
+				<name>solution_id</name>
+				<description>Solution Identifier</description>
+				<ucd>meta.id;meta.version</ucd>
+				<dataType xsi:type="vod:TAPType">BIGINT</dataType>
+			</column>
+		</table>
+		<table stat:size="3194">
+			<name>gaiadr1.variable_summary</name>
+			<description>Table with variability summary of sources with photVariableFlag = "VARIABLE" in the GaiaSource table.</description>
+			<column>
+				<name>source_id</name>
+				<description>Unique source identifier</description>
+				<ucd>meta.id;meta.main</ucd>
+				<dataType xsi:type="vod:TAPType">BIGINT</dataType>
+				<flag>indexed</flag>
+				<flag>primary</flag>
+			</column>
+			<column>
+				<name>classification</name>
+				<description>Photometric variability classification "RRLYR" (RR Lyrae) or "CEP" (Cepheid)</description>
+				<ucd>meta.code.class;src.var</ucd>
+				<dataType xsi:type="vod:TAPType">VARCHAR</dataType>
+				<flag>indexed</flag>
+				<flag>primary</flag>
+			</column>
+			<column stat:min="0.027331306522313383" stat:median="1.7358308945871468" stat:max="4.701151267519569" stat:q1="1.5104466565685528" stat:q3="2.080660330520643" stat:mean="1.7845939354045435" stat:stddev="0.8748541205350324" stat:filling="3194">
+				<name>phot_variable_fundam_freq1</name>
+				<description>Fundamental frequency  1</description>
+				<unit>day^-1</unit>
+				<ucd>src.var.pulse</ucd>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+				<flag>indexed</flag>
+				<flag>primary</flag>
+			</column>
+			<column>
+				<name>solution_id</name>
+				<description>Solution Identifier</description>
+				<ucd>meta.id;meta.version</ucd>
+				<dataType xsi:type="vod:TAPType">BIGINT</dataType>
+			</column>
+		</table>
+		<table stat:size="2191">
+			<name>gaiadr1.aux_qso_icrf2_match</name>
+			<description>This table has an entry for all sources in the auxiliary QSO solution matched to the ICRF2 sources and passing all quality filters discussed in the corresponding documentation.</description>
+			<column>
+				<name>source_id</name>
+				<description>Unique source identifier</description>
+				<ucd>meta.id;meta.main</ucd>
+				<dataType xsi:type="vod:TAPType">BIGINT</dataType>
+			</column>
+			<column>
+				<name>icrf2_match</name>
+				<description>ICRF2 designation of the source matched to this Gaia source</description>
+				<ucd>meta.id.cross</ucd>
+				<dataType xsi:type="vod:TAPType">VARCHAR</dataType>
+			</column>
+			<column>
+				<name>ra</name>
+				<description>Right ascension</description>
+				<unit>deg</unit>
+				<ucd>meta.main;pos.eq.ra</ucd>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+			</column>
+			<column>
+				<name>dec</name>
+				<description>Declination</description>
+				<unit>deg</unit>
+				<ucd>meta.main;pos.eq.dec</ucd>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+			</column>
+			<column>
+				<name>ref_epoch</name>
+				<description>Reference epoch</description>
+				<unit>yr</unit>
+				<ucd>meta.ref;time.epoch</ucd>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+			</column>
+			<column stat:min="0.10041031132147535" stat:median="0.6257906783748121" stat:max="67.93851182940948" stat:q1="0.3611363579939748" stat:q3="1.224211668533937" stat:mean="1.5213058338092948" stat:stddev="4.153694865029129" stat:filling="2191">
+				<name>ra_error</name>
+				<description>Standard error of right ascension</description>
+				<unit>mas</unit>
+				<ucd>pos.eq.ra;stat.error</ucd>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+			</column>
+			<column stat:min="0.09739104726393122" stat:median="0.5635397261289685" stat:max="93.79141383679006" stat:q1="0.32371696468884426" stat:q3="1.137316887933594" stat:mean="1.4651141427302683" stat:stddev="4.628831573884696" stat:filling="2191">
+				<name>dec_error</name>
+				<description>Standard error of declination</description>
+				<unit>mas</unit>
+				<ucd>pos.eq.dec;stat.error</ucd>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+			</column>
+			<column stat:min="-0.999593019" stat:median="-0.02781700065" stat:max="0.999940991" stat:q1="-0.441541508" stat:q3="0.39138948949999997" stat:mean="-0.02106570872181809" stat:stddev="0.5055719886134606" stat:filling="2191">
+				<name>ra_dec_corr</name>
+				<description>Correlation between right ascension and declination</description>
+				<ucd>stat.correlation</ucd>
+				<dataType xsi:type="vod:TAPType">REAL</dataType>
+			</column>
+			<column stat:min="12.435723580680317" stat:median="18.681719388480797" stat:max="21.034719765228797" stat:q1="17.8110488024816" stat:q3="19.46475613456295" stat:mean="18.54238650181424" stat:stddev="1.2519403186730245" stat:filling="2152">
+				<name>phot_g_mean_mag</name>
+				<description>G-band mean magnitude</description>
+				<unit>mag</unit>
+				<ucd>em.opt;phot.mag;stat.mean</ucd>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+			</column>
+			<column stat:min="0.0" stat:median="0.0" stat:max="3.0" stat:q1="0.0" stat:q3="0.0" stat:mean="0.3541761752624372" stat:stddev="0.9673102773159564" stat:filling="2191">
+				<name>rot_flag</name>
+				<description>Flag indicating how this source was used to fix the orientation of the reference frame of the Gaia DR1 solution</description>
+				<ucd>meta.code</ucd>
+				<dataType xsi:type="vod:TAPType">INTEGER</dataType>
+			</column>
+			<column stat:min="3.0" stat:median="6.0" stat:max="6.0" stat:q1="6.0" stat:q3="6.0" stat:mean="5.998630762209037" stat:stddev="0.06409144539553693" stat:filling="2191">
+				<name>astrometric_priors_used</name>
+				<description>Type of prior used in in the astrometric solution</description>
+				<ucd>meta.code</ucd>
+				<dataType xsi:type="vod:TAPType">INTEGER</dataType>
+			</column>
+			<column>
+				<name>solution_id</name>
+				<description>Solution Identifier</description>
+				<ucd>meta.id;meta.version</ucd>
+				<dataType xsi:type="vod:TAPType">BIGINT</dataType>
+			</column>
+		</table>
+	</schema>
+	<schema>
+		<name>extcat</name>
+		<description>Some well-known catalogs imported into this TAP service for crossmatch purpose.</description>
+		<table stat:size="117955">
+			<name>hipparcos</name>
+			<description>Hipparcos, the New Reduction (van Leeuwen, 2007). (copy of the VizieR table I/311/hip2)</description>
+			<column>
+				<name>hip</name>
+				<description>Hipparcos identifier</description>
+				<ucd>meta.id;meta.main</ucd>
+				<dataType xsi:type="vod:TAPType">INTEGER</dataType>
+				<flag>indexed</flag>
+				<flag>primary</flag>
+			</column>
+			<column stat:min="9.118508717948024E-4" stat:median="181.9692107905104" stat:max="359.97879164179693" stat:q1="93.42447793657317" stat:q3="271.74445516114054" stat:mean="181.4663796540143" stat:stddev="103.26168467879099" stat:filling="117955">
+				<name>ra</name>
+				<description>Right Ascension in ICRS, Ep=1991.25</description>
+				<unit>deg</unit>
+				<ucd>pos.eq.ra;meta.main</ucd>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+				<flag>indexed</flag>
+				<flag>primary</flag>
+			</column>
+			<column stat:min="-89.78245382121695" stat:median="-1.9460645297263575" stat:max="89.56940863242227" stat:q1="-36.637995135835695" stat:q3="31.43561462532472" stat:mean="-2.1432502422990054" stat:stddev="41.01639686887676" stat:filling="117955">
+				<name>dec</name>
+				<description>Declination in ICRS, Ep=1991.25</description>
+				<unit>deg</unit>
+				<ucd>pos.eq.dec;meta.main</ucd>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+				<flag>indexed</flag>
+				<flag>primary</flag>
+			</column>
+			<column stat:min="-258.450012" stat:median="4.61000013" stat:max="796.919983" stat:q1="2.52999997" stat:q3="8.43000031" stat:mean="7.2107695333551165" stat:stddev="11.492073358944852" stat:filling="117955">
+				<name>plx</name>
+				<description>Parallax</description>
+				<unit>mas</unit>
+				<ucd>pos.parallax</ucd>
+				<dataType xsi:type="vod:TAPType">REAL</dataType>
+				<flag>indexed</flag>
+				<flag>primary</flag>
+			</column>
+			<column stat:min="-4410.43" stat:median="-1.68" stat:max="6768.2" stat:q1="-15.14" stat:q3="11.79" stat:mean="-1.329275825526696" stat:stddev="98.23945247545875" stat:filling="117955">
+				<name>pmra</name>
+				<description>Proper motion in Right Ascension</description>
+				<unit>mas/yr</unit>
+				<ucd>pos.pm;pos.eq.ra</ucd>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+				<flag>indexed</flag>
+				<flag>primary</flag>
+			</column>
+			<column stat:min="-5813.62" stat:median="-5.64" stat:max="10328.12" stat:q1="-21.75" stat:q3="3.71" stat:mean="-16.613292442033334" stat:stddev="93.83416547886003" stat:filling="117955">
+				<name>pmdec</name>
+				<description>Proper motion in Declination</description>
+				<unit>mas/yr</unit>
+				<ucd>pos.pm;pos.eq.dec</ucd>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+				<flag>indexed</flag>
+				<flag>primary</flag>
+			</column>
+			<column stat:min="-1.08759999" stat:median="8.55085039" stat:max="14.5621996" stat:q1="7.74329996" stat:q3="9.25469971" stat:mean="8.472923067043329" stat:stddev="1.3170123927227122" stat:filling="117955">
+				<name>hpmag</name>
+				<description>Hipparcos magnitude</description>
+				<unit>mag</unit>
+				<ucd>phot.mag;em.opt.V</ucd>
+				<dataType xsi:type="vod:TAPType">REAL</dataType>
+			</column>
+			<column stat:min="-0.400000006" stat:median="0.606000006" stat:max="5.46000004" stat:q1="0.333999991" stat:q3="1.074" stat:mean="0.699318528389707" stat:stddev="0.492122428144352" stat:filling="117955">
+				<name>b_v</name>
+				<description>Colour index</description>
+				<unit>mag</unit>
+				<ucd>phot.color;em.opt.B;em.opt.V</ucd>
+				<dataType xsi:type="vod:TAPType">REAL</dataType>
+			</column>
+			<column stat:min="-0.49000001" stat:median="0.670000017" stat:max="9.02999973" stat:q1="0.389999986" stat:q3="1.03999996" stat:mean="0.7549590090326584" stat:stddev="0.5650504948741081" stat:filling="117955">
+				<name>v_i</name>
+				<description>V-I colour index</description>
+				<unit>mag</unit>
+				<ucd>phot.color;em.opt.V;em.opt.I</ucd>
+				<dataType xsi:type="vod:TAPType">REAL</dataType>
+			</column>
+			<column stat:min="0.0599999987" stat:median="0.699999988" stat:max="168.399994" stat:q1="0.5" stat:q3="0.980000019" stat:mean="0.8923090152589629" stat:stddev="1.3952541764190622" stat:filling="117955">
+				<name>e_ra</name>
+				<description>Formal error on RArad</description>
+				<unit>mas</unit>
+				<ucd>stat.error</ucd>
+				<dataType xsi:type="vod:TAPType">REAL</dataType>
+			</column>
+			<column stat:min="0.0700000003" stat:median="0.600000024" stat:max="75.8199997" stat:q1="0.449999988" stat:q3="0.810000002" stat:mean="0.7447739383250224" stat:stddev="1.0394775557573777" stat:filling="117955">
+				<name>e_dec</name>
+				<description>Formal error on DErad</description>
+				<unit>mas</unit>
+				<ucd>stat.error</ucd>
+				<dataType xsi:type="vod:TAPType">REAL</dataType>
+			</column>
+			<column stat:min="0.0900000036" stat:median="0.899999976" stat:max="259.410004" stat:q1="0.660000026" stat:q3="1.23000002" stat:mean="1.118004831563198" stat:stddev="1.6681941697886489" stat:filling="117955">
+				<name>e_plx</name>
+				<description>Formal error on Plx</description>
+				<unit>mas</unit>
+				<ucd>stat.error;pos.parallax</ucd>
+				<dataType xsi:type="vod:TAPType">REAL</dataType>
+				<flag>indexed</flag>
+			</column>
+			<column stat:min="0.0599999987" stat:median="0.860000014" stat:max="141.75" stat:q1="0.600000024" stat:q3="1.24000001" stat:mean="1.114525369094667" stat:stddev="1.7113900256730348" stat:filling="117955">
+				<name>e_pmra</name>
+				<description>Formal error on pmRA</description>
+				<unit>mas/yr</unit>
+				<ucd>stat.error;pos.pm;pos.eq.ra</ucd>
+				<dataType xsi:type="vod:TAPType">REAL</dataType>
+				<flag>indexed</flag>
+			</column>
+			<column stat:min="0.0700000003" stat:median="0.730000019" stat:max="162.839996" stat:q1="0.529999971" stat:q3="1.00999999" stat:mean="0.9217893255919914" stat:stddev="1.3775768393170726" stat:filling="117955">
+				<name>e_pmdec</name>
+				<description>Formal error on pmDE</description>
+				<unit>mas/yr</unit>
+				<ucd>stat.error;pos.pm;pos.eq.dec</ucd>
+				<dataType xsi:type="vod:TAPType">REAL</dataType>
+				<flag>indexed</flag>
+			</column>
+			<column stat:min="1.99999995E-4" stat:median="0.00179999997" stat:max="0.931699991" stat:q1="0.0013" stat:q3="0.00249999994" stat:mean="0.003712793033058482" stat:stddev="0.016326645768045486" stat:filling="117955">
+				<name>e_hpmag</name>
+				<description>Error on mean Hpmag</description>
+				<unit>mag</unit>
+				<ucd>stat.error;phot.mag;em.IR.H</ucd>
+				<dataType xsi:type="vod:TAPType">REAL</dataType>
+			</column>
+			<column stat:min="0.0" stat:median="0.0149999997" stat:max="0.600000024" stat:q1="0.00999999978" stat:q3="0.0260000005" stat:mean="0.027860133132248024" stat:stddev="0.05759101783460973" stat:filling="117955">
+				<name>e_b_v</name>
+				<description>Formal error on colour index</description>
+				<unit>mag</unit>
+				<ucd>stat.error;phot.color;em.opt.B</ucd>
+				<dataType xsi:type="vod:TAPType">REAL</dataType>
+			</column>
+			<column stat:min="0.0" stat:median="0.0" stat:max="5.0" stat:q1="0.0" stat:q3="0.0" stat:mean="0.13092280954601332" stat:stddev="0.452043935010964" stat:filling="117955">
+				<name>f1</name>
+				<description>Percentage rejected data</description>
+				<unit>%</unit>
+				<ucd>stat.value;arith.ratio</ucd>
+				<dataType xsi:type="vod:TAPType">SMALLINT</dataType>
+			</column>
+			<column stat:min="-5.11999989" stat:median="0.639999986" stat:max="99.0" stat:q1="-0.25" stat:q3="1.66999996" stat:mean="1.3968003053567584" stat:stddev="5.445246974869643" stat:filling="117955">
+				<name>f2</name>
+				<description>Goodness of fit</description>
+				<ucd>stat.fit.goodness</ucd>
+				<dataType xsi:type="vod:TAPType">REAL</dataType>
+			</column>
+			<column stat:min="1.0" stat:median="1.0" stat:max="4.0" stat:q1="1.0" stat:q3="1.0" stat:mean="1.0964520367936925" stat:stddev="0.29940320189736114" stat:filling="117955">
+				<name>nc</name>
+				<description>Number of components</description>
+				<ucd>meta.number</ucd>
+				<dataType xsi:type="vod:TAPType">SMALLINT</dataType>
+			</column>
+			<column>
+				<name>n_hip</name>
+				<description>Existence of a note in the first version of Hipparcos catalog on Duplicity (D), Photometry (P) or a General (G) note; letters W, X, Y, Z indicate notes on several topics (field H70 of the 1997 edition, Cat. I/239)</description>
+				<ucd>meta.note</ucd>
+				<dataType xsi:type="vod:TAPType" size="1">CHAR</dataType>
+			</column>
+			<column stat:min="20.0" stat:median="111.0" stat:max="388.0" stat:q1="85.0" stat:q3="139.0" stat:mean="115.9677504132932" stat:stddev="42.75505610742793" stat:filling="117955">
+				<name>ntr</name>
+				<description>Number of field transits used</description>
+				<ucd>meta.id;obs.field</ucd>
+				<dataType xsi:type="vod:TAPType">SMALLINT</dataType>
+			</column>
+			<column>
+				<name>shp</name>
+				<description>Scatter of Hpmag</description>
+				<unit>mag</unit>
+				<ucd>stat.error</ucd>
+				<dataType xsi:type="vod:TAPType">REAL</dataType>
+			</column>
+			<column stat:min="0.0" stat:median="5.0" stat:max="115.0" stat:q1="5.0" stat:q3="5.0" stat:mean="8.340621423424187" stat:stddev="13.717211741605288" stat:filling="117955">
+				<name>sn</name>
+				<description>[0,159] Solution type new reduction (1)</description>
+				<ucd>meta.id;stat.fit</ucd>
+				<dataType xsi:type="vod:TAPType">SMALLINT</dataType>
+			</column>
+			<column stat:min="0.0" stat:median="0.0" stat:max="5.0" stat:q1="0.0" stat:q3="0.0" stat:mean="0.40487474036708915" stat:stddev="1.006066163558906" stat:filling="117955">
+				<name>so</name>
+				<description>[0,5] Solution type old reduction (2)</description>
+				<ucd>meta.id;stat.fit</ucd>
+				<dataType xsi:type="vod:TAPType">SMALLINT</dataType>
+			</column>
+			<column stat:min="0.0" stat:median="0.0" stat:max="2.0" stat:q1="0.0" stat:q3="0.0" stat:mean="0.11653596710609979" stat:stddev="0.4433227504797883" stat:filling="117955">
+				<name>va</name>
+				<description>[0,2] Reference to variability annex</description>
+				<ucd>meta.note</ucd>
+				<dataType xsi:type="vod:TAPType">SMALLINT</dataType>
+			</column>
+			<column stat:min="0.0" stat:median="0.0" stat:max="126.599998" stat:q1="0.0" stat:q3="0.0" stat:mean="0.09206731365007066" stat:stddev="1.710605271898757" stat:filling="117955">
+				<name>var</name>
+				<description>Cosmic dispersion added (stochastic solution)</description>
+				<ucd>stat.fit.residual</ucd>
+				<dataType xsi:type="vod:TAPType">REAL</dataType>
+			</column>
+		</table>
+		<table stat:size="910468688">
+			<name>ppmxl</name>
+			<description>PPMXL is a catalog of positions, proper motions, 2MASS- and optical photometry of 900 million stars and galaxies, aiming to be complete down to about V=20 full-sky. It is the result of a re-reduction of USNO-B1 together with 2MASS to the ICRS as represented by PPMX.  This service additionally provides improved proper motions computed according to :bibcode:`2016AJ....151...99V`.</description>
+			<column>
+				<name>ipix</name>
+				<description>Identifier (Q3C ipix of the USNO-B 1.0 object)</description>
+				<ucd>meta.id;meta.main</ucd>
+				<dataType xsi:type="vod:TAPType">BIGINT</dataType>
+				<flag>indexed</flag>
+				<flag>primary</flag>
+			</column>
+			<column stat:min="0.0" stat:median="238.060941" stat:max="360.0" stat:q1="128.822398" stat:q3="281.436067" stat:mean="208.51410388777478" stat:stddev="92.67081374873668" stat:filling="910468688">
+				<name>raj2000</name>
+				<description>Right Ascension J2000.0, epoch 2000.0</description>
+				<unit>deg</unit>
+				<ucd>pos.eq.ra;meta.main</ucd>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+				<flag>indexed</flag>
+				<flag>primary</flag>
+			</column>
+			<column stat:min="-89.992844" stat:median="-17.901714" stat:max="89.990081" stat:q1="-43.615596" stat:q3="20.926788" stat:mean="-10.900281937256251" stat:stddev="40.12205499638746" stat:filling="910468688">
+				<name>dej2000</name>
+				<description>Declination J2000.0, epoch 2000.0</description>
+				<unit>deg</unit>
+				<ucd>pos.eq.dec;meta.main</ucd>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+				<flag>indexed</flag>
+				<flag>primary</flag>
+			</column>
+			<column stat:min="2.77999987E-7" stat:median="3.1399999E-5" stat:max="5.83000001E-5" stat:q1="2.11000006E-5" stat:q3="3.69000009E-5" stat:mean="3.035537617515934E-5" stat:stddev="9.429207431683767E-6" stat:filling="910468688">
+				<name>e_deepde</name>
+				<description>Mean error in Dec at mean epoch</description>
+				<unit>deg</unit>
+				<ucd>stat.error;pos.eq.dec;meta.main</ucd>
+				<dataType xsi:type="vod:TAPType">REAL</dataType>
+			</column>
+			<column stat:min="-0.00273329997" stat:median="-4.6388999E-7" stat:max="0.00274830009" stat:q1="-2.81939992E-6" stat:q3="1.76670005E-6" stat:mean="-7.908569607102534E-7" stat:stddev="2.347973909464038E-5" stat:filling="910468688">
+				<name>pmra</name>
+				<description>Proper Motion in RA*cos(delta)</description>
+				<unit>deg/yr</unit>
+				<ucd>pos.pm;pos.eq.ra</ucd>
+				<dataType xsi:type="vod:TAPType">REAL</dataType>
+			</column>
+			<column stat:min="-0.00273340009" stat:median="-7.83329995E-7" stat:max="0.00286890008" stat:q1="-3.11939993E-6" stat:q3="1.60829995E-6" stat:mean="-8.598629230042681E-7" stat:stddev="2.7687853369279434E-5" stat:filling="910468688">
+				<name>pmde</name>
+				<description>Proper Motion in Dec</description>
+				<unit>deg/yr</unit>
+				<ucd>pos.pm;pos.eq.dec</ucd>
+				<dataType xsi:type="vod:TAPType">REAL</dataType>
+			</column>
+			<column stat:min="-4.00699997" stat:median="14.9610004" stat:max="24.2919998" stat:q1="13.8669996" stat:q3="15.6300001" stat:mean="14.571000515883451" stat:stddev="1.4656218138408046" stat:filling="412410224">
+				<name>hmag</name>
+				<description>H selected default magnitude from 2MASS</description>
+				<unit>mag</unit>
+				<ucd>phot.mag;em.IR.H</ucd>
+				<dataType xsi:type="vod:TAPType">REAL</dataType>
+			</column>
+			<column stat:min="-2.98900008" stat:median="15.5209999" stat:max="22.0330009" stat:q1="14.4540005" stat:q3="16.2140007" stat:mean="15.153444266356551" stat:stddev="1.4261594320045838" stat:filling="412410361">
+				<name>jmag</name>
+				<description>J selected default magnitude from 2MASS</description>
+				<unit>mag</unit>
+				<ucd>phot.mag;em.IR.J</ucd>
+				<dataType xsi:type="vod:TAPType">REAL</dataType>
+			</column>
+			<column stat:min="-4.37799978" stat:median="14.7559996" stat:max="20.5319996" stat:q1="13.6789999" stat:q3="15.3459997" stat:mean="14.352748929378661" stat:stddev="1.4721240901975745" stat:filling="412410058">
+				<name>kmag</name>
+				<description>K_s selected default magnitude from 2MASS</description>
+				<unit>mag</unit>
+				<ucd>phot.mag;em.IR.K</ucd>
+				<dataType xsi:type="vod:TAPType">REAL</dataType>
+			</column>
+			<column stat:min="-1.5" stat:median="19.4300003" stat:max="64.8799973" stat:q1="18.0100002" stat:q3="20.2600002" stat:mean="18.951395670462315" stat:stddev="1.8798163014583928" stat:filling="365283791">
+				<name>b1mag</name>
+				<description>B mag from USNO-B, first epoch</description>
+				<unit>mag</unit>
+				<ucd>phot.mag;em.opt.B</ucd>
+				<dataType xsi:type="vod:TAPType">REAL</dataType>
+			</column>
+			<column stat:min="-1.42999995" stat:median="19.2099991" stat:max="65.5199966" stat:q1="17.8299999" stat:q3="20.3500004" stat:mean="18.98521278826993" stat:stddev="1.9094878479522666" stat:filling="777565674">
+				<name>b2mag</name>
+				<description>B mag from USNO-B, second epoch</description>
+				<unit>mag</unit>
+				<ucd>phot.mag;em.opt.B</ucd>
+				<dataType xsi:type="vod:TAPType">REAL</dataType>
+			</column>
+			<column stat:min="-5.78999996" stat:median="17.9200001" stat:max="65.5299988" stat:q1="16.5400009" stat:q3="18.9599991" stat:mean="17.650487732779464" stat:stddev="1.9705012120968384" stat:filling="722629013">
+				<name>r1mag</name>
+				<description>R mag from USNO-B, first epoch</description>
+				<unit>mag</unit>
+				<ucd>phot.mag;em.opt.R</ucd>
+				<dataType xsi:type="vod:TAPType">REAL</dataType>
+			</column>
+			<column stat:min="0.0199999996" stat:median="18.2399998" stat:max="65.5299988" stat:q1="16.8899994" stat:q3="19.2999992" stat:mean="18.0706044946396" stat:stddev="2.1174438116308707" stat:filling="734154742">
+				<name>r2mag</name>
+				<description>R mag from USNO-B, second epoch</description>
+				<unit>mag</unit>
+				<ucd>phot.mag;em.opt.R</ucd>
+				<dataType xsi:type="vod:TAPType">REAL</dataType>
+			</column>
+			<column stat:min="1915.65002" stat:median="1984.64001" stat:max="2005.16003" stat:q1="1978.59998" stat:q3="1989.89001" stat:mean="1984.0001500970118" stat:stddev="7.621856830447612" stat:filling="910468688">
+				<name>epra</name>
+				<description>Mean Epoch (RA)</description>
+				<unit>yr</unit>
+				<ucd>time.epoch;pos.eq.ra</ucd>
+				<dataType xsi:type="vod:TAPType">REAL</dataType>
+			</column>
+			<column stat:min="-1.12" stat:median="17.25" stat:max="65.5100021" stat:q1="15.9399996" stat:q3="18.1299992" stat:mean="16.911848955477808" stat:stddev="1.83385963146186" stat:filling="669786127">
+				<name>imag</name>
+				<description>I mag from USNO-B</description>
+				<unit>mag</unit>
+				<ucd>phot.mag;em.opt.I</ucd>
+				<dataType xsi:type="vod:TAPType">REAL</dataType>
+			</column>
+			<column stat:min="1909.68994" stat:median="1984.64001" stat:max="2005.14001" stat:q1="1978.59998" stat:q3="1989.89001" stat:mean="1984.0005641009134" stat:stddev="7.623727290798003" stat:filling="910468688">
+				<name>epde</name>
+				<description>Mean Epoch (Dec)</description>
+				<unit>yr</unit>
+				<ucd>time.epoch;pos.eq.dec</ucd>
+				<dataType xsi:type="vod:TAPType">REAL</dataType>
+			</column>
+			<column stat:min="5.5600001E-8" stat:median="2.10999997E-6" stat:max="2.47999997E-5" stat:q1="1.44000001E-6" stat:q3="3.5600001E-6" stat:mean="2.7752572220899197E-6" stat:stddev="1.773771295279657E-6" stat:filling="910468688">
+				<name>e_pmra</name>
+				<description>Mean error in pmRA*cos(delta)</description>
+				<unit>deg/yr</unit>
+				<ucd>stat.error;pos.pm;pos.eq.ra</ucd>
+				<dataType xsi:type="vod:TAPType">REAL</dataType>
+			</column>
+			<column stat:min="2.78000005E-8" stat:median="2.10999997E-6" stat:max="2.47999997E-5" stat:q1="1.44000001E-6" stat:q3="3.5600001E-6" stat:mean="2.7758245418483443E-6" stat:stddev="1.7738557876585606E-6" stat:filling="910468688">
+				<name>e_pmde</name>
+				<description>Mean error in pmDE</description>
+				<unit>deg/yr</unit>
+				<ucd>stat.error;pos.pm;pos.eq.dec</ucd>
+				<dataType xsi:type="vod:TAPType">REAL</dataType>
+			</column>
+			<column stat:min="0.0" stat:median="0.0780000016" stat:max="9.9989996" stat:q1="0.0419999994" stat:q3="0.128999993" stat:mean="0.0908788066217348" stat:stddev="0.062074063797583456" stat:filling="381634032">
+				<name>e_hmag</name>
+				<description>H total magnitude uncertainty</description>
+				<unit>mag</unit>
+				<ucd>stat.error;phot.mag;em.IR.H</ucd>
+				<dataType xsi:type="vod:TAPType">REAL</dataType>
+			</column>
+			<column stat:min="0.0130000003" stat:median="0.0659999996" stat:max="9.9989996" stat:q1="0.0370000005" stat:q3="0.107000001" stat:mean="0.0758201849542026" stat:stddev="0.04651949891352331" stat:filling="406047178">
+				<name>e_jmag</name>
+				<description>J total magnitude uncertainty</description>
+				<unit>mag</unit>
+				<ucd>stat.error;phot.mag;em.IR.J</ucd>
+				<dataType xsi:type="vod:TAPType">REAL</dataType>
+			</column>
+			<column stat:min="0.0" stat:median="0.0890000015" stat:max="9.9989996" stat:q1="0.0439999998" stat:q3="0.152999997" stat:mean="0.10377840306580827" stat:stddev="0.07518175736547633" stat:filling="322119256">
+				<name>e_kmag</name>
+				<description>K_s total magnitude uncertainty</description>
+				<unit>mag</unit>
+				<ucd>stat.error;phot.mag;em.IR.K</ucd>
+				<dataType xsi:type="vod:TAPType">REAL</dataType>
+			</column>
+			<column stat:min="2.77999987E-7" stat:median="3.1399999E-5" stat:max="5.83000001E-5" stat:q1="2.11000006E-5" stat:q3="3.69000009E-5" stat:mean="3.0337580448830027E-5" stat:stddev="9.41714541939529E-6" stat:filling="910468688">
+				<name>e_raepra</name>
+				<description>Mean error in RA*cos(delta) at mean epoch</description>
+				<unit>deg</unit>
+				<ucd>stat.error;pos.eq.ra;meta.main</ucd>
+				<dataType xsi:type="vod:TAPType">REAL</dataType>
+			</column>
+			<column>
+				<name>flags</name>
+				<description>Flags</description>
+				<ucd>meta.code</ucd>
+				<dataType xsi:type="vod:TAPType">SMALLINT</dataType>
+			</column>
+			<column>
+				<name>magsurveys</name>
+				<description>Surveys the USNO-B magnitudes are taken from</description>
+				<ucd>meta.code</ucd>
+				<dataType xsi:type="vod:TAPType">VARCHAR</dataType>
+			</column>
+			<column stat:min="2.0" stat:median="4.0" stat:max="17.0" stat:q1="3.0" stat:q3="5.0" stat:mean="4.060203733792953" stat:stddev="1.3462996200499031" stat:filling="910333123">
+				<name>nobs</name>
+				<description>Number of observations used</description>
+				<ucd>meta.number;obs</ucd>
+				<dataType xsi:type="vod:TAPType">SMALLINT</dataType>
+			</column>
+		</table>
+		<table stat:size="470992970">
+			<name>twomass</name>
+			<description>The 2MASS Point Source Catalogue, short a couple of exotic fields. We provide this data mainly for matching with other catalogs within our TAP service.</description>
+			<column>
+				<name>mainid</name>
+				<description>Source designation</description>
+				<ucd>meta.id;meta.main</ucd>
+				<dataType xsi:type="vod:TAPType">VARCHAR</dataType>
+				<flag>indexed</flag>
+				<flag>primary</flag>
+			</column>
+			<column stat:min="2.0E-6" stat:median="250.727057" stat:max="359.999997" stat:q1="143.562841" stat:q3="283.321968" stat:mean="216.90196289678283" stat:stddev="88.15463265000795" stat:filling="470992970">
+				<name>raj2000</name>
+				<description>Right ascension (J2000)</description>
+				<unit>deg</unit>
+				<ucd>pos.eq.ra;meta.main</ucd>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+				<flag>indexed</flag>
+				<flag>primary</flag>
+			</column>
+			<column stat:min="-89.992844" stat:median="-16.854492" stat:max="89.990128" stat:q1="-44.486694" stat:q3="20.21132" stat:mean="-11.015313987859793" stat:stddev="39.515069269618365" stat:filling="470992970">
+				<name>dej2000</name>
+				<description>Declination (J2000)</description>
+				<unit>deg</unit>
+				<ucd>pos.eq.dec;meta.main</ucd>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+				<flag>indexed</flag>
+				<flag>primary</flag>
+			</column>
+			<column stat:min="-4.00699997" stat:median="14.9090004" stat:max="24.2919998" stat:q1="13.8109999" stat:q3="15.6049995" stat:mean="14.541306293597522" stat:stddev="1.4554298399722854" stat:filling="470992564">
+				<name>hmag</name>
+				<description>2MASS H magnitude</description>
+				<unit>mag</unit>
+				<ucd>phot.mag;em.IR.H</ucd>
+				<dataType xsi:type="vod:TAPType">REAL</dataType>
+				<flag>indexed</flag>
+				<flag>primary</flag>
+			</column>
+			<column stat:min="-2.98900008" stat:median="15.5489998" stat:max="25.8600006" stat:q1="14.5050001" stat:q3="16.2380009" stat:mean="15.19927785535458" stat:stddev="1.4079168915516234" stat:filling="470992951">
+				<name>jmag</name>
+				<description>2MASS J magnitude</description>
+				<unit>mag</unit>
+				<ucd>phot.mag;em.IR.J</ucd>
+				<dataType xsi:type="vod:TAPType">REAL</dataType>
+				<flag>indexed</flag>
+				<flag>primary</flag>
+			</column>
+			<column stat:min="-4.37799978" stat:median="14.6660004" stat:max="24.8719997" stat:q1="13.5439997" stat:q3="15.3100004" stat:mean="14.278246728602223" stat:stddev="1.486508736875406" stat:filling="470992071">
+				<name>kmag</name>
+				<description>2MASS K_s magnitude</description>
+				<unit>mag</unit>
+				<ucd>phot.mag;em.IR.K</ucd>
+				<dataType xsi:type="vod:TAPType">REAL</dataType>
+				<flag>indexed</flag>
+				<flag>primary</flag>
+			</column>
+			<column stat:min="0.00999999978" stat:median="0.0790000036" stat:max="9.9989996" stat:q1="0.0430000015" stat:q3="0.128999993" stat:mean="0.09146448000471526" stat:stddev="0.06786752094658927" stat:filling="428365755">
+				<name>e_hmag</name>
+				<description>2MASS H total magnitude uncertainty</description>
+				<unit>mag</unit>
+				<ucd>stat.error;phot.mag;em.IR.H</ucd>
+				<dataType xsi:type="vod:TAPType">REAL</dataType>
+			</column>
+			<column stat:min="0.0130000003" stat:median="0.0689999983" stat:max="9.9989996" stat:q1="0.0390000008" stat:q3="0.109999999" stat:mean="0.07830492314483256" stat:stddev="0.05229120651144756" stat:filling="449188545">
+				<name>e_jmag</name>
+				<description>2MASS J total magnitude uncertainty</description>
+				<unit>mag</unit>
+				<ucd>stat.error;phot.mag;em.IR.J</ucd>
+				<dataType xsi:type="vod:TAPType">REAL</dataType>
+			</column>
+			<column stat:min="0.0109999999" stat:median="0.0860000029" stat:max="9.9989996" stat:q1="0.0439999998" stat:q3="0.149000004" stat:mean="0.1019484625428483" stat:stddev="0.0812131594844822" stat:filling="362812640">
+				<name>e_kmag</name>
+				<description>2MASS K_s total magnitude uncertainty</description>
+				<unit>mag</unit>
+				<ucd>stat.error;phot.mag;em.IR.K</ucd>
+				<dataType xsi:type="vod:TAPType">REAL</dataType>
+			</column>
+			<column>
+				<name>aflg</name>
+				<description>Association with asteroid or comet</description>
+				<ucd>meta.code</ucd>
+				<dataType xsi:type="vod:TAPType" size="3">CHAR</dataType>
+			</column>
+			<column>
+				<name>bflg</name>
+				<description>JHK blend flag</description>
+				<ucd>meta.code</ucd>
+				<dataType xsi:type="vod:TAPType" size="3">CHAR</dataType>
+			</column>
+			<column>
+				<name>cflg</name>
+				<description>Contamination and confusion flag</description>
+				<ucd>meta.code</ucd>
+				<dataType xsi:type="vod:TAPType" size="3">CHAR</dataType>
+			</column>
+			<column>
+				<name>"date"</name>
+				<description>Observation date</description>
+				<unit>yr</unit>
+				<ucd>time.epoch;obs</ucd>
+				<dataType xsi:type="vod:TAPType">TIMESTAMP</dataType>
+			</column>
+			<column>
+				<name>dup</name>
+				<description>Flag indicating duplicate source</description>
+				<ucd>meta.code</ucd>
+				<dataType xsi:type="vod:TAPType" size="1">CHAR</dataType>
+			</column>
+			<column>
+				<name>edge</name>
+				<description>flag indicating to which edges the edgeNS and edgeEW values refer</description>
+				<ucd>pos.cartesian;instr.det</ucd>
+				<dataType xsi:type="vod:TAPType" size="2">CHAR</dataType>
+			</column>
+			<column stat:min="10.0" stat:median="148.0" stat:max="259.0" stat:q1="95.0" stat:q3="200.0" stat:mean="147.32325447235445" stat:stddev="61.59355314827212" stat:filling="470992970">
+				<name>edgeew</name>
+				<description>Distance from the source to the nearest East or West scan edge</description>
+				<unit>deg</unit>
+				<ucd>pos;arith.diff</ucd>
+				<dataType xsi:type="vod:TAPType">REAL</dataType>
+			</column>
+			<column stat:min="10.0" stat:median="5673.0" stat:max="11088.0" stat:q1="2971.0" stat:q3="8376.0" stat:mean="5670.41544941106" stat:stddev="3123.2599106510193" stat:filling="470992970">
+				<name>edgens</name>
+				<description>Distance from the source to the nearest North or South scan edge</description>
+				<unit>deg</unit>
+				<ucd>pos;arith.diff</ucd>
+				<dataType xsi:type="vod:TAPType">REAL</dataType>
+			</column>
+			<column>
+				<name>errmaj</name>
+				<description>Major axis of position error ellipse</description>
+				<unit>deg</unit>
+				<ucd>stat.error;pos.eq</ucd>
+				<dataType xsi:type="vod:TAPType">REAL</dataType>
+			</column>
+			<column stat:min="1.3888889E-5" stat:median="2.22222225E-5" stat:max="2.77777785E-4" stat:q1="1.66666669E-5" stat:q3="4.44444449E-5" stat:mean="3.1295804351844026E-5" stat:stddev="1.8918447388716135E-5" stat:filling="470992970">
+				<name>errmin</name>
+				<description>Minor axis of position error ellipse</description>
+				<unit>deg</unit>
+				<ucd>stat.error;pos.eq</ucd>
+				<dataType xsi:type="vod:TAPType">REAL</dataType>
+			</column>
+			<column stat:min="0.0" stat:median="45.0" stat:max="180.0" stat:q1="12.0" stat:q3="90.0" stat:mean="62.16560687731709" stat:stddev="50.267599350356306" stat:filling="470992970">
+				<name>errpa</name>
+				<description>Position angle of error ellipse major axis (E of N)</description>
+				<unit>deg</unit>
+				<ucd>stat.error;pos.eq</ucd>
+				<dataType xsi:type="vod:TAPType">REAL</dataType>
+			</column>
+			<column stat:min="0.00100000005" stat:median="0.0780000016" stat:max="9.9989996" stat:q1="0.0419999994" stat:q3="0.128999993" stat:mean="0.09082708883399837" stat:stddev="0.06817587531437433" stat:filling="428365755">
+				<name>hcmsig</name>
+				<description>H default magnitude uncertainty</description>
+				<unit>mag</unit>
+				<ucd>stat.error;phot.mag;em.IR.H</ucd>
+				<dataType xsi:type="vod:TAPType">REAL</dataType>
+			</column>
+			<column stat:min="0.0" stat:median="15.1999998" stat:max="1000000.0" stat:q1="8.60000038" stat:q3="37.2999992" stat:mean="172.08237058034857" stat:stddev="5205.862697896519" stat:filling="428365755">
+				<name>hsnr</name>
+				<description>H Signal-to-noise ratio</description>
+				<ucd>stat.snr;phot.mag;em.IR.H</ucd>
+				<dataType xsi:type="vod:TAPType">REAL</dataType>
+			</column>
+			<column stat:min="0.00100000005" stat:median="0.0680000037" stat:max="9.9989996" stat:q1="0.0370000005" stat:q3="0.108999997" stat:mean="0.07690558648889453" stat:stddev="0.052966860529211526" stat:filling="449188545">
+				<name>jcmsig</name>
+				<description>J default magnitude uncertainty</description>
+				<unit>mag</unit>
+				<ucd>stat.error;phot.mag;em.IR.J</ucd>
+				<dataType xsi:type="vod:TAPType">REAL</dataType>
+			</column>
+			<column>
+				<name>jd</name>
+				<description>Julian date of detection</description>
+				<unit>d</unit>
+				<ucd>time.epoch</ucd>
+				<dataType xsi:type="vod:TAPType">TIMESTAMP</dataType>
+			</column>
+			<column stat:min="0.0" stat:median="17.7999992" stat:max="1000000.0" stat:q1="10.1000004" stat:q3="43.7999992" stat:mean="185.30021178433037" stat:stddev="5177.6454348425705" stat:filling="449188545">
+				<name>jsnr</name>
+				<description>J Signal-to-noise ratio</description>
+				<ucd>stat.snr;phot.mag;em.IR.J</ucd>
+				<dataType xsi:type="vod:TAPType">REAL</dataType>
+			</column>
+			<column stat:min="0.00100000005" stat:median="0.0850000009" stat:max="9.9989996" stat:q1="0.0430000015" stat:q3="0.149000004" stat:mean="0.10130692204069393" stat:stddev="0.08156750145382524" stat:filling="362812640">
+				<name>kcmsig</name>
+				<description>magnitude uncertainty</description>
+				<unit>mag</unit>
+				<ucd>stat.error;phot.mag;em.IR.K</ucd>
+				<dataType xsi:type="vod:TAPType">REAL</dataType>
+			</column>
+			<column stat:min="0.0" stat:median="13.1999998" stat:max="1000000.0" stat:q1="7.30000019" stat:q3="32.9000015" stat:mean="153.8925213892202" stat:stddev="4823.896969129367" stat:filling="362812640">
+				<name>ksnr</name>
+				<description>K Signal-to-noise ratio</description>
+				<ucd>stat.snr;phot.mag;em.IR.K</ucd>
+				<dataType xsi:type="vod:TAPType">REAL</dataType>
+			</column>
+			<column>
+				<name>pts_key</name>
+				<description>Unique source identifier in catalogue</description>
+				<ucd>meta.id;meta.table</ucd>
+				<dataType xsi:type="vod:TAPType">BIGINT</dataType>
+				<flag>indexed</flag>
+			</column>
+			<column>
+				<name>qflg</name>
+				<description>JHK photometric quality flag</description>
+				<ucd>meta.code.qual;phot</ucd>
+				<dataType xsi:type="vod:TAPType" size="3">CHAR</dataType>
+			</column>
+			<column>
+				<name>rflg</name>
+				<description>JHK default magnitude read flag</description>
+				<ucd>meta.ref</ucd>
+				<dataType xsi:type="vod:TAPType" size="3">CHAR</dataType>
+			</column>
+			<column>
+				<name>scan</name>
+				<description>Scan number (within date)</description>
+				<ucd>obs.field</ucd>
+				<dataType xsi:type="vod:TAPType">SMALLINT</dataType>
+			</column>
+			<column>
+				<name>use_src</name>
+				<description>Use source flag</description>
+				<ucd>meta.code</ucd>
+				<dataType xsi:type="vod:TAPType" size="1">CHAR</dataType>
+			</column>
+			<column>
+				<name>xflg</name>
+				<description>Extended source contamination</description>
+				<ucd>meta.code</ucd>
+				<dataType xsi:type="vod:TAPType" size="3">CHAR</dataType>
+			</column>
+			<column stat:min="-249.800003" stat:median="-0.800000012" stat:max="248.0" stat:q1="-104.800003" stat:q3="103.5" stat:mean="-0.5949014001167586" stat:stddev="121.80564827322836" stat:filling="470992970">
+				<name>xscan</name>
+				<description>Distance of source from focal plane centerline</description>
+				<unit>deg</unit>
+				<ucd>pos.cartesian;instr.det</ucd>
+				<dataType xsi:type="vod:TAPType">REAL</dataType>
+			</column>
+		</table>
+		<table stat:size="2539913">
+			<name>tycho2</name>
+			<description>The Tycho-2 Catalogue (Hog+ 2000)</description>
+			<column>
+				<name>id</name>
+				<description>Concatenation of tyc1, tyc2 and tyc3.</description>
+				<ucd>meta.id.part;meta.main</ucd>
+				<dataType xsi:type="vod:TAPType">VARCHAR</dataType>
+				<flag>indexed</flag>
+			</column>
+			<column>
+				<name>tyc1</name>
+				<description>TYC1 from TYC or GSC</description>
+				<ucd>meta.id.part;meta.main</ucd>
+				<dataType xsi:type="vod:TAPType">SMALLINT</dataType>
+				<flag>indexed</flag>
+				<flag>primary</flag>
+			</column>
+			<column>
+				<name>tyc2</name>
+				<description>TYC2 from TYC or GSC</description>
+				<ucd>meta.id.part;meta.main</ucd>
+				<dataType xsi:type="vod:TAPType">SMALLINT</dataType>
+				<flag>indexed</flag>
+				<flag>primary</flag>
+			</column>
+			<column>
+				<name>tyc3</name>
+				<description>TYC3 from TYC</description>
+				<ucd>meta.id.part;meta.main</ucd>
+				<dataType xsi:type="vod:TAPType">SMALLINT</dataType>
+				<flag>indexed</flag>
+				<flag>primary</flag>
+			</column>
+			<column stat:min="2.8639E-4" stat:median="188.037005" stat:max="359.99990778" stat:q1="105.74386458000001" stat:q3="281.426207085" stat:mean="189.15494262211035" stat:stddev="100.32108939352614" stat:filling="2539913">
+				<name>ra</name>
+				<description>Observed Tycho-2 Right Ascension, ICRS</description>
+				<unit>deg</unit>
+				<ucd>pos.eq.ra;meta.main</ucd>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+				<flag>indexed</flag>
+				<flag>primary</flag>
+			</column>
+			<column stat:min="-89.88963861" stat:median="-4.073139585" stat:max="89.83232222" stat:q1="-39.209103334999995" stat:q3="32.23192263999999" stat:mean="-3.187941876152986" stat:stddev="41.735131998024606" stat:filling="2539913">
+				<name>dec</name>
+				<description>Observed Tycho-2 Declination, ICRS</description>
+				<unit>deg</unit>
+				<ucd>pos.eq.dec;meta.main</ucd>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+				<flag>indexed</flag>
+				<flag>primary</flag>
+			</column>
+			<column stat:min="-4418.0" stat:median="-1.70000005" stat:max="6544.2002" stat:q1="-8.5" stat:q3="4.80000019" stat:mean="-1.7402560332767856" stat:stddev="27.14005735342245" stat:filling="2430468">
+				<name>pmra</name>
+				<description>prop. mot. in RA*cos(dec)</description>
+				<unit>mas/yr</unit>
+				<ucd>pos.pm;pos.eq.ra</ucd>
+				<dataType xsi:type="vod:TAPType">REAL</dataType>
+				<flag>indexed</flag>
+				<flag>primary</flag>
+			</column>
+			<column stat:min="-5774.2998" stat:median="-3.5999999" stat:max="10277.2998" stat:q1="-10.8000002" stat:q3="2.5" stat:mean="-5.825093109469038" stat:stddev="25.94303537272263" stat:filling="2430468">
+				<name>pmde</name>
+				<description>prop. mot. in Dec</description>
+				<unit>mas/yr</unit>
+				<ucd>pos.pm;pos.eq.dec</ucd>
+				<dataType xsi:type="vod:TAPType">REAL</dataType>
+				<flag>indexed</flag>
+				<flag>primary</flag>
+			</column>
+			<column stat:min="2.18300009" stat:median="12.1829996" stat:max="16.5809994" stat:q1="11.4870005" stat:q3="12.7880001" stat:mean="12.015462856011743" stat:stddev="1.1870636888058637" stat:filling="2539822">
+				<name>btmag</name>
+				<description>Tycho-2 BT magnitude</description>
+				<unit>mag</unit>
+				<ucd>phot.mag;em.opt.B</ucd>
+				<dataType xsi:type="vod:TAPType">REAL</dataType>
+				<flag>indexed</flag>
+			</column>
+			<column stat:min="1.90499997" stat:median="11.4110003" stat:max="15.1929998" stat:q1="10.6719999" stat:q3="11.9239998" stat:mean="11.177034314306832" stat:stddev="1.0955328907239041" stat:filling="2539893">
+				<name>vtmag</name>
+				<description>Tycho-2 VT magnitude</description>
+				<unit>mag</unit>
+				<ucd>phot.mag;em.opt.V</ucd>
+				<dataType xsi:type="vod:TAPType">REAL</dataType>
+				<flag>indexed</flag>
+			</column>
+			<column stat:min="3.0999999" stat:median="61.2999992" stat:max="200.0" stat:q1="35.0999985" stat:q3="87.0" stat:mean="63.566337782484425" stat:stddev="36.61170275057289" stat:filling="2539913">
+				<name>e_radeg</name>
+				<description>s.e.RA*cos(dec), of observed Tycho-2 RA</description>
+				<unit>mas</unit>
+				<ucd>stat.error</ucd>
+				<dataType xsi:type="vod:TAPType">REAL</dataType>
+			</column>
+			<column stat:min="3.0999999" stat:median="67.0" stat:max="200.0" stat:q1="38.2000008" stat:q3="98.1999969" stat:mean="70.91299698131981" stat:stddev="41.65461704900443" stat:filling="2539913">
+				<name>e_dedeg</name>
+				<description>s.e. of observed Tycho-2 Dec</description>
+				<unit>mas</unit>
+				<ucd>stat.error</ucd>
+				<dataType xsi:type="vod:TAPType">REAL</dataType>
+			</column>
+			<column stat:min="0.200000003" stat:median="2.4000001" stat:max="11.5" stat:q1="1.79999995" stat:q3="3.0" stat:mean="2.551681769659389" stat:stddev="1.0577924176547395" stat:filling="2430468">
+				<name>e_pmra</name>
+				<description>s.e. RA*cos(dec),at mean epoch</description>
+				<unit>mas</unit>
+				<ucd>stat.error</ucd>
+				<dataType xsi:type="vod:TAPType">REAL</dataType>
+			</column>
+			<column stat:min="0.200000003" stat:median="2.29999995" stat:max="10.3000002" stat:q1="1.79999995" stat:q3="3.0" stat:mean="2.513561787909604" stat:stddev="1.0319571904264324" stat:filling="2430468">
+				<name>e_pmde</name>
+				<description>s.e. of Dec at mean epoch</description>
+				<unit>mas</unit>
+				<ucd>stat.error</ucd>
+				<dataType xsi:type="vod:TAPType">REAL</dataType>
+			</column>
+			<column stat:min="0.0140000004" stat:median="0.143000007" stat:max="1.977" stat:q1="0.0670000017" stat:q3="0.243000001" stat:mean="0.1666542494437606" stat:stddev="0.12153028433551391" stat:filling="2539822">
+				<name>e_btmag</name>
+				<description>s.e. of BT</description>
+				<unit>mag</unit>
+				<ucd>stat.error</ucd>
+				<dataType xsi:type="vod:TAPType">REAL</dataType>
+				<flag>indexed</flag>
+			</column>
+			<column stat:min="0.00899999961" stat:median="0.100000001" stat:max="1.46800005" stat:q1="0.0529999994" stat:q3="0.163000003" stat:mean="0.11093851404753055" stat:stddev="0.07020610316168045" stat:filling="2539893">
+				<name>e_vtmag</name>
+				<description>s.e. of VT</description>
+				<unit>mag</unit>
+				<ucd>stat.error</ucd>
+				<dataType xsi:type="vod:TAPType">REAL</dataType>
+				<flag>indexed</flag>
+			</column>
+			<column>
+				<name>hip</name>
+				<description>Hipparcos number</description>
+				<ucd>meta.id</ucd>
+				<dataType xsi:type="vod:TAPType">INTEGER</dataType>
+				<flag>indexed</flag>
+			</column>
+		</table>
+	</schema>
+	<schema>
+		<name>TAP_SCHEMA</name>
+		<description>Set of tables listing and describing the schemas, tables and columns published in this TAP service.</description>
+		<table>
+			<name>TAP_SCHEMA.schemas</name>
+			<description>List of schemas published in this TAP service.</description>
+			<column std="true">
+				<name>schema_name</name>
+				<description>schema name, possibly qualified</description>
+				<dataType xsi:type="vod:TAPType">VARCHAR</dataType>
+				<flag>indexed</flag>
+				<flag>primary</flag>
+			</column>
+			<column std="true">
+				<name>description</name>
+				<description>brief description of schema</description>
+				<dataType xsi:type="vod:TAPType">VARCHAR</dataType>
+				<flag>primary</flag>
+			</column>
+			<column std="true">
+				<name>utype</name>
+				<description>UTYPE if schema corresponds to a data model</description>
+				<dataType xsi:type="vod:TAPType">VARCHAR</dataType>
+			</column>
+		</table>
+		<table>
+			<name>TAP_SCHEMA.tables</name>
+			<description>List of tables published in this TAP service.</description>
+			<column std="true">
+				<name>table_index</name>
+				<description>this index is used to recommend table ordering for clients</description>
+				<dataType xsi:type="vod:TAPType">INTEGER</dataType>
+			</column>
+			<column std="true">
+				<name>schema_name</name>
+				<description>the schema name from TAP_SCHEMA.schemas</description>
+				<dataType xsi:type="vod:TAPType">VARCHAR</dataType>
+				<flag>primary</flag>
+			</column>
+			<column std="true">
+				<name>table_name</name>
+				<description>table name as it should be used in queries</description>
+				<dataType xsi:type="vod:TAPType">VARCHAR</dataType>
+				<flag>indexed</flag>
+				<flag>primary</flag>
+			</column>
+			<column std="true">
+				<name>table_type</name>
+				<description>one of: table, view</description>
+				<dataType xsi:type="vod:TAPType">VARCHAR</dataType>
+			</column>
+			<column std="true">
+				<name>description</name>
+				<description>brief description of table</description>
+				<dataType xsi:type="vod:TAPType">VARCHAR</dataType>
+				<flag>primary</flag>
+			</column>
+			<column std="true">
+				<name>utype</name>
+				<description>UTYPE if table corresponds to a data model</description>
+				<dataType xsi:type="vod:TAPType">VARCHAR</dataType>
+			</column>
+			<column>
+				<name>row_count</name>
+				<description>Number of rows inside this table.</description>
+				<ucd>stat.filling</ucd>
+				<dataType xsi:type="vod:TAPType">BIGINT</dataType>
+			</column>
+		</table>
+		<table>
+			<name>TAP_SCHEMA.columns</name>
+			<description>List of columns of all tables listed in TAP_SCHEMA.TABLES and published in this TAP service.</description>
+			<column std="true">
+				<name>column_index</name>
+				<description>this index is used to recommend column ordering for clients</description>
+				<dataType xsi:type="vod:TAPType">INTEGER</dataType>
+			</column>
+			<column std="true">
+				<name>table_name</name>
+				<description>table name from TAP_SCHEMA.tables</description>
+				<dataType xsi:type="vod:TAPType">VARCHAR</dataType>
+				<flag>indexed</flag>
+				<flag>primary</flag>
+			</column>
+			<column std="true">
+				<name>column_name</name>
+				<description>column name</description>
+				<dataType xsi:type="vod:TAPType">VARCHAR</dataType>
+				<flag>indexed</flag>
+				<flag>primary</flag>
+			</column>
+			<column std="true">
+				<name>datatype</name>
+				<description>an XType or a TAPType</description>
+				<dataType xsi:type="vod:TAPType">VARCHAR</dataType>
+				<flag>primary</flag>
+			</column>
+			<column std="true">
+				<name>arraysize</name>
+				<description>length of variable length datatypes</description>
+				<dataType xsi:type="vod:TAPType">INTEGER</dataType>
+			</column>
+			<column std="true">
+				<name>"size"</name>
+				<description>same as "arraysize" but kept for backward compatibility only</description>
+				<dataType xsi:type="vod:TAPType">INTEGER</dataType>
+			</column>
+			<column std="true">
+				<name>description</name>
+				<description>brief description of column</description>
+				<dataType xsi:type="vod:TAPType">VARCHAR</dataType>
+				<flag>primary</flag>
+			</column>
+			<column std="true">
+				<name>utype</name>
+				<description>UTYPE of column if any</description>
+				<dataType xsi:type="vod:TAPType">VARCHAR</dataType>
+			</column>
+			<column std="true">
+				<name>unit</name>
+				<description>unit in VO standard format</description>
+				<dataType xsi:type="vod:TAPType">VARCHAR</dataType>
+				<flag>primary</flag>
+			</column>
+			<column std="true">
+				<name>ucd</name>
+				<description>UCD of column if any</description>
+				<dataType xsi:type="vod:TAPType">VARCHAR</dataType>
+				<flag>primary</flag>
+			</column>
+			<column std="true">
+				<name>indexed</name>
+				<description>an indexed column; 1 means true, 0 means false</description>
+				<dataType xsi:type="vod:TAPType">INTEGER</dataType>
+			</column>
+			<column std="true">
+				<name>principal</name>
+				<description>a principal column; 1 means true, 0 means false</description>
+				<dataType xsi:type="vod:TAPType">INTEGER</dataType>
+			</column>
+			<column std="true">
+				<name>std</name>
+				<description>a standard column; 1 means true, 0 means false</description>
+				<dataType xsi:type="vod:TAPType">INTEGER</dataType>
+			</column>
+			<column>
+				<name>min_value</name>
+				<description>Minimum value of this column in the whole table.</description>
+				<ucd>stat.min</ucd>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+			</column>
+			<column>
+				<name>max_value</name>
+				<description>Maximum value of this column in the whole table.</description>
+				<ucd>stat.max</ucd>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+			</column>
+			<column>
+				<name>mean</name>
+				<description>Mean value of this column in the whole table.</description>
+				<ucd>stat.mean</ucd>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+			</column>
+			<column>
+				<name>std_dev</name>
+				<description>Standard deviation of this column in the whole table.</description>
+				<ucd>stat.stdev</ucd>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+			</column>
+			<column>
+				<name>q1</name>
+				<description>First quartile of this column in the whole table.</description>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+			</column>
+			<column>
+				<name>median</name>
+				<description>Median (or 2nd quartile) of this column in the whole table.</description>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+			</column>
+			<column>
+				<name>q3</name>
+				<description>Third quartile of this column in the whole table.</description>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+			</column>
+			<column>
+				<name>filling</name>
+				<description>Number of valid values (neither NaN nor NULL) for this column in the whole table.</description>
+				<ucd>stat.filling</ucd>
+				<dataType xsi:type="vod:TAPType">BIGINT</dataType>
+			</column>
+			<column>
+				<name>coosys_id</name>
+				<description>ID of the used coordinate systems (if any).</description>
+				<dataType xsi:type="vod:TAPType">VARCHAR</dataType>
+			</column>
+			<foreignKey>
+				<targetTable>TAP_SCHEMA.coosys</targetTable>
+				<description>Coordinate system specification for a column containing a coordinate.</description>
+				<fkColumn>
+					<fromColumn>coosys_id</fromColumn>
+					<targetColumn>id</targetColumn>
+				</fkColumn>
+			</foreignKey>
+		</table>
+		<table>
+			<name>TAP_SCHEMA.keys</name>
+			<description>List all foreign keys but provides just the tables linked by the foreign key. To know which columns of these tables are linked, see in TAP_SCHEMA.key_columns using the key_id.</description>
+			<column std="true">
+				<name>key_id</name>
+				<description>unique key identifier</description>
+				<dataType xsi:type="vod:TAPType">VARCHAR</dataType>
+				<flag>indexed</flag>
+				<flag>primary</flag>
+			</column>
+			<column std="true">
+				<name>from_table</name>
+				<description>fully qualified table name</description>
+				<dataType xsi:type="vod:TAPType">VARCHAR</dataType>
+				<flag>primary</flag>
+			</column>
+			<column std="true">
+				<name>target_table</name>
+				<description>fully qualified table name</description>
+				<dataType xsi:type="vod:TAPType">VARCHAR</dataType>
+				<flag>primary</flag>
+			</column>
+			<column std="true">
+				<name>description</name>
+				<description>description of this key</description>
+				<dataType xsi:type="vod:TAPType">VARCHAR</dataType>
+				<flag>primary</flag>
+			</column>
+			<column std="true">
+				<name>utype</name>
+				<description>utype of this key</description>
+				<dataType xsi:type="vod:TAPType">VARCHAR</dataType>
+			</column>
+		</table>
+		<table>
+			<name>TAP_SCHEMA.coosys</name>
+			<description>List of coordinate systems of coordinate columns published in this TAP service.</description>
+			<column>
+				<name>id</name>
+				<description>ID of the coordinate system definition as it must be in the VOTable.</description>
+				<dataType xsi:type="vod:TAPType">VARCHAR</dataType>
+				<flag>indexed</flag>
+			</column>
+			<column>
+				<name>system</name>
+				<description>The coordinate system among: ICRS, eq_FK5, eq_FK4, ecl_FK4, ecl_FK5, galactic, supergalactic, xy, barycentric, geo_app.</description>
+				<dataType xsi:type="vod:TAPType">VARCHAR</dataType>
+			</column>
+			<column>
+				<name>equinox</name>
+				<description>Required to fix the equatorial or ecliptic systems (as e.g. J2000 as the default for eq_FK5 or B1950 as the default for eq_FK4).</description>
+				<dataType xsi:type="vod:TAPType">VARCHAR</dataType>
+			</column>
+			<column>
+				<name>epoch</name>
+				<description>Epoch of the positions (if necessary).</description>
+				<dataType xsi:type="vod:TAPType">VARCHAR</dataType>
+			</column>
+		</table>
+		<table>
+			<name>TAP_SCHEMA.key_columns</name>
+			<description>List all foreign keys but provides just the columns linked by the foreign key. To know the table of these columns, see in TAP_SCHEMA.keys using the key_id.</description>
+			<column std="true">
+				<name>key_id</name>
+				<description>unique key identifier</description>
+				<dataType xsi:type="vod:TAPType">VARCHAR</dataType>
+				<flag>indexed</flag>
+				<flag>primary</flag>
+			</column>
+			<column std="true">
+				<name>from_column</name>
+				<description>key column name in the from_table</description>
+				<dataType xsi:type="vod:TAPType">VARCHAR</dataType>
+				<flag>indexed</flag>
+				<flag>primary</flag>
+			</column>
+			<column std="true">
+				<name>target_column</name>
+				<description>key column name in the target_table</description>
+				<dataType xsi:type="vod:TAPType">VARCHAR</dataType>
+				<flag>indexed</flag>
+				<flag>primary</flag>
+			</column>
+		</table>
+	</schema>
+	<schema>
+		<name>ivoa</name>
+		<table type="view" stat:size="3194">
+			<name>ivoa.ObsCore</name>
+			<description>[EXPERIMENTAL] ObsCore 1.1. On this TAP service, this table lists only TimeSeries corresponding to Gaia-DR1's Cepheids and RR-Lyrae sources. EXPERIMENTAL because metadata and format of the TimeSeries are still work in-progress.</description>
+			<column std="true">
+				<name>facility_name</name>
+				<description>The observatory or facility used to collect the data.</description>
+				<ucd>meta.id;instr.tel</ucd>
+				<utype>obscore:Provenance.ObsConfig.Facility.name</utype>
+				<dataType xsi:type="vod:TAPType">VARCHAR</dataType>
+				<flag>primary</flag>
+			</column>
+			<column std="true">
+				<name>instrument_name</name>
+				<description>The name of the instrument used for the observation.</description>
+				<ucd>meta.id;instr</ucd>
+				<utype>obscore:Provenance.ObsConfig.Instrument.name</utype>
+				<dataType xsi:type="vod:TAPType">VARCHAR</dataType>
+				<flag>primary</flag>
+			</column>
+			<column std="true">
+				<name>obs_collection</name>
+				<description>Name of the data collection.</description>
+				<ucd>meta.id</ucd>
+				<utype>obscore:DataID.collection</utype>
+				<dataType xsi:type="vod:TAPType">VARCHAR</dataType>
+				<flag>primary</flag>
+			</column>
+			<column std="true">
+				<name>obs_id</name>
+				<description>Internal ID given by the ObsTAP service.</description>
+				<ucd>meta.id</ucd>
+				<utype>obscore:DataID.observationID</utype>
+				<dataType xsi:type="vod:TAPType">VARCHAR</dataType>
+				<flag>primary</flag>
+			</column>
+			<column std="true">
+				<name>dataproduct_type</name>
+				<description>Data	product	(file	content) primary type. Possible values: image, cube, spectrum, sed, timeseries, visibility, event, measurements.</description>
+				<ucd>meta.id</ucd>
+				<utype>obscore:ObsDataset.dataProductType</utype>
+				<dataType xsi:type="vod:TAPType">VARCHAR</dataType>
+				<flag>primary</flag>
+			</column>
+			<column std="true">
+				<name>access_url</name>
+				<description>URL used to access dataset.</description>
+				<ucd>meta.ref.url</ucd>
+				<utype>obscore:Access.reference</utype>
+				<dataType xsi:type="vod:TAPType">CLOB</dataType>
+				<flag>primary</flag>
+			</column>
+			<column std="true">
+				<name>access_format</name>
+				<description>Content format of the dataset.</description>
+				<ucd>meta.code.mime</ucd>
+				<utype>obscore:Access.format</utype>
+				<dataType xsi:type="vod:TAPType">VARCHAR</dataType>
+				<flag>primary</flag>
+			</column>
+			<column std="true">
+				<name>access_estsize</name>
+				<description>Estimated size of dataset.</description>
+				<unit>kbyte</unit>
+				<ucd>phys.size;meta.file</ucd>
+				<utype>obscore:Access.size</utype>
+				<dataType xsi:type="vod:TAPType">BIGINT</dataType>
+				<flag>primary</flag>
+			</column>
+			<column std="true">
+				<name>target_name</name>
+				<description>Object of interest.</description>
+				<ucd>meta.id;src</ucd>
+				<utype>obscore:Target.name</utype>
+				<dataType xsi:type="vod:TAPType">VARCHAR</dataType>
+				<flag>primary</flag>
+			</column>
+			<column std="true">
+				<name>s_ra</name>
+				<description>Central Spatial Position in ICRS Right ascension.</description>
+				<unit>deg</unit>
+				<ucd>pos.eq.ra</ucd>
+				<utype>obscore:Char.SpatialAxis.Coverage.Location.Coord.Position2D.Value2.C1</utype>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+				<flag>primary</flag>
+			</column>
+			<column std="true">
+				<name>s_dec</name>
+				<description>Central Spatial Position in ICRS Declination.</description>
+				<unit>deg</unit>
+				<ucd>pos.eq.dec</ucd>
+				<utype>obscore:Char.SpatialAxis.Coverage.Location.Coord.Position2D.Value2.C2</utype>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+				<flag>primary</flag>
+			</column>
+			<column std="true">
+				<name>s_fov</name>
+				<description>Estimated size of the covered region as the diameter of a containing circle.</description>
+				<unit>deg</unit>
+				<ucd>phys.angSize;instr.fov</ucd>
+				<utype>obscore:Char.SpatialAxis.Coverage.Bounds.Extent.diameter</utype>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+				<flag>primary</flag>
+			</column>
+			<column std="true">
+				<name>s_region</name>
+				<description>Sky region covered by the data product (expressed in ICRS frame).</description>
+				<ucd>pos.outline;obs.field</ucd>
+				<utype>obscore:Char.SpatialAxis.Coverage.Support.Area</utype>
+				<dataType xsi:type="vod:TAPType">REGION</dataType>
+				<flag>primary</flag>
+			</column>
+			<column std="true">
+				<name>s_resolution</name>
+				<description>Spatial resolution of data as FWHM of PSF.</description>
+				<unit>arcsec</unit>
+				<ucd>pos.angResolution</ucd>
+				<utype>obscore:Char.SpatialAxis.Resolution.Refval.value</utype>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+				<flag>primary</flag>
+			</column>
+			<column std="true">
+				<name>s_xel1</name>
+				<description>Number of elements along the first coordinate of the spatial axis.</description>
+				<ucd>meta.number</ucd>
+				<utype>obscore:Char.SpatialAxis.numBins1</utype>
+				<dataType xsi:type="vod:TAPType">BIGINT</dataType>
+				<flag>primary</flag>
+			</column>
+			<column std="true">
+				<name>s_xel2</name>
+				<description>Number of elements along the second coordinate of the spatial axis.</description>
+				<ucd>meta.number</ucd>
+				<utype>obscore:Char.SpatialAxis.numBins2</utype>
+				<dataType xsi:type="vod:TAPType">BIGINT</dataType>
+				<flag>primary</flag>
+			</column>
+			<column std="true">
+				<name>t_min</name>
+				<description>Start time in MJD.</description>
+				<unit>d</unit>
+				<ucd>time.start;obs.exposure</ucd>
+				<utype>obscore:Char.TimeAxis.Coverage.Bounds.Limits.StartTime</utype>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+				<flag>primary</flag>
+			</column>
+			<column std="true">
+				<name>t_max</name>
+				<description>Stop time in MJD.</description>
+				<unit>d</unit>
+				<ucd>time.end;obs.exposure</ucd>
+				<utype>obscore:Char.TimeAxis.Coverage.Bounds.Limits.StopTime</utype>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+				<flag>primary</flag>
+			</column>
+			<column std="true">
+				<name>t_exptime</name>
+				<description>Total exposure time.</description>
+				<unit>s</unit>
+				<ucd>time.duration;obs.exposure</ucd>
+				<utype>obscore:Char.TimeAxis.Coverage.Support.Extent</utype>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+				<flag>primary</flag>
+			</column>
+			<column std="true">
+				<name>t_resolution</name>
+				<description>Minimal interpretable interval between two points along the time axis.</description>
+				<unit>s</unit>
+				<ucd>time.resolution</ucd>
+				<utype>obscore:Char.TimeAxis.Resolution.Refval.value</utype>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+				<flag>primary</flag>
+			</column>
+			<column std="true">
+				<name>t_xel</name>
+				<description>Number of elements along the time axis.</description>
+				<ucd>meta.number</ucd>
+				<utype>obscore:Char.TimeAxis.numBins</utype>
+				<dataType xsi:type="vod:TAPType">BIGINT</dataType>
+				<flag>primary</flag>
+			</column>
+			<column std="true">
+				<name>em_min</name>
+				<description>Start in spectral coordinates.</description>
+				<unit>m</unit>
+				<ucd>em.wl;stat.min</ucd>
+				<utype>obscore:Char.SpectralAxis.Coverage.Bounds.Limits.LoLimit</utype>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+				<flag>primary</flag>
+			</column>
+			<column std="true">
+				<name>em_max</name>
+				<description>Stop in spectral coordinates.</description>
+				<unit>m</unit>
+				<ucd>em.wl;stat.max</ucd>
+				<utype>obscore:Char.SpectralAxis.Coverage.Bounds.Limits.HiLimit</utype>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+				<flag>primary</flag>
+			</column>
+			<column std="true">
+				<name>em_res_power</name>
+				<description>Value of the resolving power along the spectral axis. (R).</description>
+				<ucd>spect.resolution</ucd>
+				<utype>obscore:Char.SpectralAxis.Resolution.ResolPower.refVal</utype>
+				<dataType xsi:type="vod:TAPType">DOUBLE</dataType>
+				<flag>primary</flag>
+			</column>
+			<column std="true">
+				<name>em_xel</name>
+				<description>Number of elements along the spectral axis.</description>
+				<ucd>meta.number</ucd>
+				<utype>obscore:Char.SpectralAxis.numBins</utype>
+				<dataType xsi:type="vod:TAPType">BIGINT</dataType>
+				<flag>primary</flag>
+			</column>
+			<column std="true">
+				<name>o_ucd</name>
+				<description>Nature of the observable axis.</description>
+				<ucd>meta.ucd</ucd>
+				<utype>obscore:Char.ObservableAxis.ucd</utype>
+				<dataType xsi:type="vod:TAPType">VARCHAR</dataType>
+				<flag>primary</flag>
+			</column>
+			<column std="true">
+				<name>pol_states</name>
+				<description>Units along the polarization axis.</description>
+				<ucd>meta.code;phys.polarization</ucd>
+				<utype>obscore:Char.PolarizationAxis.stateList</utype>
+				<dataType xsi:type="vod:TAPType">VARCHAR</dataType>
+				<flag>primary</flag>
+			</column>
+			<column std="true">
+				<name>pol_xel</name>
+				<description>Number of elements along the polarization axis.</description>
+				<ucd>meta.number</ucd>
+				<utype>obscore:Char.PolarizationAxis.numBins</utype>
+				<dataType xsi:type="vod:TAPType">BIGINT</dataType>
+				<flag>primary</flag>
+			</column>
+			<column std="true">
+				<name>obs_publisher_did</name>
+				<description>ID for the Dataset given by the publisher.</description>
+				<ucd>meta.ref.url;meta.curation</ucd>
+				<utype>obscore:Curation.publisherDID</utype>
+				<dataType xsi:type="vod:TAPType">VARCHAR</dataType>
+				<flag>primary</flag>
+			</column>
+			<column std="true">
+				<name>calib_level</name>
+				<description>Calibration level of the observation. Possible values: 0, 1, 2, 3, 4.</description>
+				<ucd>meta.code;obs.calib</ucd>
+				<utype>obscore:ObsDataset.calibLevel</utype>
+				<dataType xsi:type="vod:TAPType">INTEGER</dataType>
+				<flag>primary</flag>
+			</column>
+			<column std="true">
+				<name>obs_release_date</name>
+				<description>Observation release date (ISO 8601).</description>
+				<ucd>time.release</ucd>
+				<utype>obscore:Curation.releaseDate</utype>
+				<dataType xsi:type="vod:TAPType">TIMESTAMP</dataType>
+				<flag>primary</flag>
+			</column>
+		</table>
+	</schema>
+</vosi:tableset>

@@ -9,7 +9,7 @@ using System.Xml.Serialization;
 
 namespace Jhu.VO.VoDataService.V1_1
 {
-    [XmlType(Namespace = Constants.VoDataServiceNamespaceV1_1)]
+    [XmlType(TypeName = Constants.TypeTapDataType, Namespace = Constants.VoDataServiceNamespaceV1_1)]
     [XmlInclude(typeof(TapType))]
     public class TapDataType : TableDataType
     {

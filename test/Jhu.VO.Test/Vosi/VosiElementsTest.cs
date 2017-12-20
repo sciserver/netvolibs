@@ -40,7 +40,17 @@ namespace Jhu.VO.Vosi
 
             Assert.IsTrue(e.Available);
         }
-        
+
+        [TestMethod]
+        public void AvailabilityGaiaTest()
+        {
+            string path = GetTestFilePath(@"modules\netvolibs\test\files\vosi\gaia_availability.xml");
+            var xml = File.ReadAllText(path);
+            var e = ReadElementHelper<VO.Vosi.Availability.V1_0.Availability>(xml);
+
+            Assert.IsTrue(e.Available);
+        }
+
         [TestMethod]
         public void CapabilitiesVizierTest()
         {
@@ -50,9 +60,26 @@ namespace Jhu.VO.Vosi
         }
 
         [TestMethod]
+        public void CapabilitiesGaiaTest()
+        {
+            string path = GetTestFilePath(@"modules\netvolibs\test\files\vosi\gaia_capabilities.xml");
+            var xml = File.ReadAllText(path);
+            var e = ReadElementHelper<VO.Vosi.Capabilities.V1_0.Capabilities>(xml);
+        }
+
+
+        [TestMethod]
         public void TablesVizierTest()
         {
             string path = GetTestFilePath(@"modules\netvolibs\test\files\vosi\vizier_tables.xml");
+            var xml = File.ReadAllText(path);
+            var e = ReadElementHelper<VO.Vosi.Tables.V1_0.TableSet>(xml);
+        }
+
+        [TestMethod]
+        public void TablesGaiaTest()
+        {
+            string path = GetTestFilePath(@"modules\netvolibs\test\files\vosi\gaia_tables.xml");
             var xml = File.ReadAllText(path);
             var e = ReadElementHelper<VO.Vosi.Tables.V1_0.TableSet>(xml);
         }

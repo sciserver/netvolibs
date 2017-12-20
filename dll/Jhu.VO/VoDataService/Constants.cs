@@ -12,6 +12,8 @@ namespace Jhu.VO.VoDataService
         public const string VoDataServiceNamespaceV1_1 = "http://www.ivoa.net/xml/VODataService/v1.1";
 
         public const string TypeParamHttp = "ParamHTTP";
+        public const string TypeTapType = "TAPType";
+        public const string TypeTapDataType = "TAPDataType";
 
         public const string TagName = "name";
         public const string TagTitle = "title";
