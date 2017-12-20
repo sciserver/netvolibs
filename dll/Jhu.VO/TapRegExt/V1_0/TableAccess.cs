@@ -8,6 +8,7 @@ using System.Xml.Serialization;
 
 namespace Jhu.VO.TapRegExt.V1_0
 {
+    [XmlType(TypeName = Constants.TypeTableAccess, Namespace = Constants.TapRegExtNamespace)]
     [XmlRoot(VoResource.Constants.TagCapability, Namespace = Constants.TapRegExtNamespace)]
     public class TableAccess : TapCapRestriction
     {

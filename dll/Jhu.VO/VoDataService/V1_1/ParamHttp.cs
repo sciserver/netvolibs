@@ -7,9 +7,9 @@ using System.Xml;
 using System.Xml.Schema;
 using System.Xml.Serialization;
 
-namespace Jhu.VO.VoDataService.V1_0
+namespace Jhu.VO.VoDataService.V1_1
 {
-    [XmlType(Namespace = Constants.VoDataServiceNamespaceV1_0)]
+    [XmlType(TypeName = Constants.TypeParamHttp, Namespace = Constants.VoDataServiceNamespaceV1_0)]
     [XmlRoot(VoResource.Constants.TagInterface, Namespace = Constants.VoDataServiceNamespaceV1_0)]
     public class ParamHttp : VoResource.V1_0.Interface
     {

@@ -7,13 +7,16 @@ using System.Xml;
 using System.Xml.Schema;
 using System.Xml.Serialization;
 
-namespace Jhu.VO.VoDataService.V1_0
+namespace Jhu.VO.VoDataService.V1_1
 {
     [XmlType(Namespace = Constants.VoDataServiceNamespaceV1_0)]
-    public class TableParam : BaseParam
+    public class InputParam : BaseParam
     {
         [XmlElement(Constants.TagDataType, Form = XmlSchemaForm.Unqualified)]
-        public TableDataType DataType { get; set; }
+        public SimpleDataType DataType { get; set; }
+
+        [XmlAttribute(VoResource.Constants.AttributeUse, Form = XmlSchemaForm.Unqualified)]
+        public string Use { get; set; }
 
         [XmlAttribute(VoResource.Constants.AttributeStd, Form = XmlSchemaForm.Unqualified)]
         public bool Std { get; set; }

@@ -7,7 +7,7 @@ using System.Xml;
 using System.Xml.Schema;
 using System.Xml.Serialization;
 
-namespace Jhu.VO.VoDataService.V1_0
+namespace Jhu.VO.VoDataService.V1_1
 {
     [XmlType(Namespace = Constants.VoDataServiceNamespaceV1_0)]
     public class TableService : VoResource.V1_0.Service

@@ -10,6 +10,6 @@ namespace Jhu.VO.TapRegExt
     {
         public const string TapRegExtNamespace = "http://www.ivoa.net/xml/TAPRegExt/v1.0";
 
-
+        public const string TypeTableAccess = "TableAccess";
     }
 }

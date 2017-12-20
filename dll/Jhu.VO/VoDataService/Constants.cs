@@ -10,11 +10,14 @@ namespace Jhu.VO.VoDataService
     {
         public const string VoDataServiceNamespaceV1_0 = "http://www.ivoa.net/xml/VODataService/v1.0";
 
+        public const string TypeParamHttp = "paramHTTP";
+
         public const string TagName = "name";
         public const string TagDataType = "dataType";
         public const string TagDescription = "description";
         public const string TagUnit = "unit";
         public const string TagUcd = "ucd";
+        public const string TagUtype = "utype";
         public const string TagTable = "table";
         public const string TagFootprint = "footprint";
         public const string TagWaveband = "waveband";
