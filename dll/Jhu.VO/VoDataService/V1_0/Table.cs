@@ -21,7 +21,7 @@ namespace Jhu.VO.VoDataService.V1_0
         [XmlElement(Constants.TagColumn, Form = XmlSchemaForm.Unqualified)]
         public TableParam[] ColumnList { get; set; }
 
-        [XmlAttribute(Constants.AttributeRole, Form = XmlSchemaForm.Unqualified)]
+        [XmlAttribute(VoResource.Constants.AttributeRole, Form = XmlSchemaForm.Unqualified)]
         public string Role { get; set; }
     }
 }

@@ -5,6 +5,8 @@ using System.Xml.Serialization;
 
 namespace Jhu.VO.Vosi.Availability.V1_0
 {
+    [Serializable]
+    [XmlType(AnonymousType = true, Namespace = Constants.VosiAvailabilityNamespaceV1_0)]
     [XmlRoot(Constants.TagAvailability, Namespace = Constants.VosiAvailabilityNamespaceV1_0)]
     public class Availability
     {

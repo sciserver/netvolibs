@@ -15,7 +15,7 @@ namespace Jhu.VO.VoDataService.V1_0
         [XmlText]
         public string Value { get; set; }
 
-        [XmlAttribute(Constants.AttributeIvoID, Form = XmlSchemaForm.Unqualified)]
+        [XmlAttribute(VoResource.Constants.AttributeIvoID, Form = XmlSchemaForm.Unqualified)]
         public string IvoID { get; set; }
     }
 }

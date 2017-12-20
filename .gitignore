@@ -287,3 +287,4 @@ __pycache__/
 *.odx.cs
 *.xsd.cs
 /dll/Jhu.VO/Properties/AssemblyInfo.cs
+/test/Jhu.VO.Test/Properties/AssemblyInfo.cs

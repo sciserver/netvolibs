@@ -15,12 +15,9 @@ namespace Jhu.VO.VoDataService
         public const string TagDescription = "description";
         public const string TagUnit = "unit";
         public const string TagUcd = "ucd";
-        public const string TagTable = "ucd";
-        public const string TagFootprint = "ucd";
+        public const string TagTable = "table";
+        public const string TagFootprint = "footprint";
         public const string TagWaveband = "waveband";
-        public const string TagFacility = "facility";
-        public const string TagInstrument = "instrument";
-        public const string TagRights = "rights";
         public const string TagFormat = "format";
         public const string TagCoverage = "coverage";
         public const string TagCatalog = "catalog";
@@ -30,10 +27,6 @@ namespace Jhu.VO.VoDataService
         public const string TagColumn = "column";
 
         public const string AttributeIsMimeType = "isMIMEType";
-        public const string AttributeUse = "use";
-        public const string AttributeStd = "std";
-        public const string AttributeIvoID = "ivo-id";
         public const string AttributeArraySize = "arraysize";
-        public const string AttributeRole = "role";
     }
 }

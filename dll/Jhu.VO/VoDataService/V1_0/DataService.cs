@@ -13,10 +13,10 @@ namespace Jhu.VO.VoDataService.V1_0
     [XmlInclude(typeof(CatalogService))]
     public class DataService : VoResource.V1_0.Service
     {
-        [XmlElement(Constants.TagFacility, Form = XmlSchemaForm.Unqualified)]
+        [XmlElement(VoResource.Constants.TagFacility, Form = XmlSchemaForm.Unqualified)]
         public VoResource.V1_0.ResourceName[] FacilityList { get; set; }
 
-        [XmlElement(Constants.TagInstrument, Form = XmlSchemaForm.Unqualified)]
+        [XmlElement(VoResource.Constants.TagInstrument, Form = XmlSchemaForm.Unqualified)]
         public VoResource.V1_0.ResourceName[] InstrumentList { get; set; }
 
         [XmlElement(Constants.TagCoverage, Form = XmlSchemaForm.Unqualified)]

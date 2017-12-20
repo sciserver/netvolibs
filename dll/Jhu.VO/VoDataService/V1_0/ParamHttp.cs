@@ -10,6 +10,7 @@ using System.Xml.Serialization;
 namespace Jhu.VO.VoDataService.V1_0
 {
     [XmlType(Namespace = Constants.VoDataServiceNamespaceV1_0)]
+    [XmlRoot(VoResource.Constants.TagInterface, Namespace = Constants.VoDataServiceNamespaceV1_0)]
     public class ParamHttp : VoResource.V1_0.Interface
     {
         [XmlElement(Constants.TagQueryType, Form = XmlSchemaForm.Unqualified)]

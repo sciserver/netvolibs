@@ -99,7 +99,9 @@
     <Compile Include="Vosi\Capabilities\V1_0\Capabilities.cs" />
     <Compile Include="Vosi\Constants.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Vosi\Tables\" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="Stc\Resources\stc-v1.30.xsd">
       <SubType>Designer</SubType>

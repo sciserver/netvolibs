@@ -15,10 +15,10 @@ namespace Jhu.VO.VoDataService.V1_0
         [XmlElement(Constants.TagDataType, Form = XmlSchemaForm.Unqualified)]
         public SimpleDataType DataType { get; set; }
 
-        [XmlAttribute(Constants.AttributeUse, Form = XmlSchemaForm.Unqualified)]
+        [XmlAttribute(VoResource.Constants.AttributeUse, Form = XmlSchemaForm.Unqualified)]
         public string Use { get; set; }
 
-        [XmlAttribute(Constants.AttributeStd, Form = XmlSchemaForm.Unqualified)]
+        [XmlAttribute(VoResource.Constants.AttributeStd, Form = XmlSchemaForm.Unqualified)]
         public bool Std { get; set; }
     }
 }
