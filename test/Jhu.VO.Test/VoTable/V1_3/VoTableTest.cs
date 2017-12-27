@@ -14,20 +14,20 @@ namespace Jhu.VO.VoTable.V1_3
     [TestClass]
     public class VoTableTest : TestClassBase
     {
-        #region XSD-based validation tests
-
         protected XmlReader OpenReader(string xml)
         {
             // Read an XML file and validate against the xsd schema
-            var schema = XmlReader.Create(new StringReader(Resources.Schema_VoTable_v1_3));
+            var schema = XmlSchema.Read(XmlReader.Create(new StringReader(Resources.Schema_VoTable_v1_3)), new ValidationEventHandler(ValidationCallBack));
 
             var settings = new XmlReaderSettings();
+            settings.IgnoreWhitespace = true;
+            settings.IgnoreComments = true;
             settings.ValidationType = ValidationType.Schema;
             settings.ValidationFlags |= XmlSchemaValidationFlags.ProcessInlineSchema;
-            settings.ValidationFlags |= XmlSchemaValidationFlags.ProcessSchemaLocation;
+            //settings.ValidationFlags |= XmlSchemaValidationFlags.ProcessSchemaLocation;
             settings.ValidationFlags |= XmlSchemaValidationFlags.ReportValidationWarnings;
             settings.ValidationEventHandler += new ValidationEventHandler(ValidationCallBack);
-            settings.Schemas.Add(Constants.VOTableNamespaceV1_3, schema);
+            settings.Schemas.Add(schema);
 
             // Create the XmlReader object.
             XmlReader reader = XmlReader.Create(new StringReader(xml), settings);
@@ -49,7 +49,7 @@ namespace Jhu.VO.VoTable.V1_3
             var s = new XmlSerializer(typeof(VoTable));
             s.UnknownNode += delegate (object sender, XmlNodeEventArgs e)
             {
-                throw new NotImplementedException();
+                // Add breakpoint here to see parsing problems.
             };
             var t = (VoTable)s.Deserialize(r);
 
@@ -84,8 +84,34 @@ namespace Jhu.VO.VoTable.V1_3
             Deserialize(xml);
         }
 
-        // TODO: implement tests for votables from various sources
+        [TestMethod]
+        public void VoTableDeserializeBinaryTest()
+        {
+            var xml = File.ReadAllText(GetTestFilePath(@"test\files\votable\votable_binary.xml"));
+            Deserialize(xml);
+        }
 
-        #endregion
+        [TestMethod]
+        public void VoTableDeserializeBinary2Test()
+        {
+            var xml = File.ReadAllText(GetTestFilePath(@"test\files\votable\votable_binary2.xml"));
+            Deserialize(xml);
+        }
+
+        [TestMethod]
+        public void VoTableDeserializeFitsTest()
+        {
+            var xml = File.ReadAllText(GetTestFilePath(@"test\files\votable\votable_fits.xml"));
+            Deserialize(xml);
+        }
+
+        [TestMethod]
+        public void VoTableDeserializeMultiresourceTest()
+        {
+            var xml = File.ReadAllText(GetTestFilePath(@"test\files\votable\votable_multiresource.xml"));
+            Deserialize(xml);
+        }
+
+        // TODO: add tests for existing services: vizier, gaia, etc.
     }
 }
