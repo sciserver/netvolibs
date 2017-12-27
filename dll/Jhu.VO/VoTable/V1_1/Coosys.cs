@@ -8,9 +8,10 @@ using System.Xml.Serialization;
 
 namespace Jhu.VO.VoTable.V1_1
 {
+    [XmlType(Namespace = Constants.NamespaceVoTableV1_1)]
+    [XmlRoot(Constants.TagCoosys, Namespace = Constants.NamespaceVoTableV1_1)]
     public class Coosys
     {
-        
         [XmlText]
         public string Text { get; set; }
         
@@ -25,6 +26,5 @@ namespace Jhu.VO.VoTable.V1_1
 
         [XmlAttribute(Constants.AttributeSystem)]
         public string System { get; set; }
-
     }
 }

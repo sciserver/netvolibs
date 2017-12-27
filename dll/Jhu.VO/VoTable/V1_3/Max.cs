@@ -9,8 +9,8 @@ using System.Xml.Serialization;
 
 namespace Jhu.VO.VoTable.V1_3
 {
-    [XmlType(Namespace = Constants.VOTableNamespaceV1_3)]
-    [XmlRoot(Constants.TagMax, Namespace = Constants.VOTableNamespaceV1_3)]
+    [XmlType(Namespace = Constants.NamespaceVoTableV1_3)]
+    [XmlRoot(Constants.TagMax, Namespace = Constants.NamespaceVoTableV1_3)]
     public class Max
     {
         [XmlAttribute(Constants.AttributeValue)]

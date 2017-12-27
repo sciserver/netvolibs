@@ -7,16 +7,15 @@ using System.Xml;
 using System.Xml.Schema;
 using System.Xml.Serialization;
 
-namespace Jhu.VO.VoTable.V1_3
+namespace Jhu.VO.VoTable.V1_1
 {
-    [XmlType(Namespace = Constants.NamespaceVoTableV1_3)]
+    [XmlType(Namespace = Constants.NamespaceVoTableV1_1)]
     public class Data
     {
         #region TABLEDATA BINARY BINARY2 FITS
 
         [XmlElement(Constants.TagTableData, typeof(TableData))]
         [XmlElement(Constants.TagBinary, typeof(Binary))]
-        [XmlElement(Constants.TagBinary2, typeof(Binary2))]
         [XmlElement(Constants.TagFits, typeof(Fits))]
         public object Item_ForXml { get; set; }
 
@@ -33,14 +32,7 @@ namespace Jhu.VO.VoTable.V1_3
             get { return Item_ForXml as Binary; }
             set { Item_ForXml = value; }
         }
-
-        [XmlIgnore]
-        public Binary2 Binary2
-        {
-            get { return Item_ForXml as Binary2; }
-            set { Item_ForXml = value; }
-        }
-
+        
         [XmlIgnore]
         public Fits Fits
         {

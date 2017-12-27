@@ -297,13 +297,13 @@ namespace Jhu.VO.VoTable
 
             switch (XmlReader.NamespaceURI)
             {
-                case Constants.VOTableNamespaceV1_1:
+                case Constants.NamespaceVoTableV1_1:
                     version = VoTableVersion.V1_1;
                     break;
-                case Constants.VOTableNamespaceV1_2:
+                case Constants.NamespaceVoTableV1_2:
                     version = VoTableVersion.V1_2;
                     break;
-                case Constants.VOTableNamespaceV1_3:
+                case Constants.NamespaceVoTableV1_3:
                     version = VoTableVersion.V1_3;
                     break;
                 default:
@@ -317,7 +317,7 @@ namespace Jhu.VO.VoTable
             var ver = XmlReader.GetAttribute(Constants.AttributeVersion);
 
             // Finish reading tag and move to next content
-            XmlReader.ReadStartElement(Constants.TagVOTable);
+            XmlReader.ReadStartElement(Constants.TagVoTable);
             XmlReader.MoveToContent();
 
             // Read all tags inside VOTABLE but stop at any RESOURCE tag
@@ -436,7 +436,7 @@ namespace Jhu.VO.VoTable
             // closing RESOURCE element, whatever it is.
 
             while (XmlReader.NodeType != XmlNodeType.EndElement ||
-                   VoTable.Comparer.Compare(XmlReader.Name, Constants.TagVOTable) != 0)
+                   VoTable.Comparer.Compare(XmlReader.Name, Constants.TagVoTable) != 0)
             {
                 switch (version)
                 {

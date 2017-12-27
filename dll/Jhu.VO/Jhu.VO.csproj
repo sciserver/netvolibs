@@ -140,10 +140,13 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="VoTable\V1_1\AnyText.cs" />
+    <Compile Include="VoTable\V1_1\Binary.cs" />
     <Compile Include="VoTable\V1_1\Coosys.cs" />
+    <Compile Include="VoTable\V1_1\Data.cs" />
     <Compile Include="VoTable\V1_1\Definitions.cs" />
     <Compile Include="VoTable\V1_1\Field.cs" />
     <Compile Include="VoTable\V1_1\FieldRef.cs" />
+    <Compile Include="VoTable\V1_1\Fits.cs" />
     <Compile Include="VoTable\V1_1\Group.cs" />
     <Compile Include="VoTable\V1_1\Info.cs" />
     <Compile Include="VoTable\V1_1\Link.cs" />
@@ -152,7 +155,14 @@
     <Compile Include="VoTable\V1_1\Option.cs" />
     <Compile Include="VoTable\V1_1\Param.cs" />
     <Compile Include="VoTable\V1_1\ParamRef.cs" />
+    <Compile Include="VoTable\V1_1\Resource.cs" />
+    <Compile Include="VoTable\V1_1\Stream.cs" />
+    <Compile Include="VoTable\V1_1\Table.cs" />
+    <Compile Include="VoTable\V1_1\TableData.cs" />
+    <Compile Include="VoTable\V1_1\Td.cs" />
+    <Compile Include="VoTable\V1_1\Tr.cs" />
     <Compile Include="VoTable\V1_1\Values.cs" />
+    <Compile Include="VoTable\V1_1\VoTable.cs" />
     <Compile Include="VoTable\V1_2\AnyText.cs" />
     <Compile Include="VoTable\V1_2\Coosys.cs" />
     <Compile Include="VoTable\V1_2\Definitions.cs" />

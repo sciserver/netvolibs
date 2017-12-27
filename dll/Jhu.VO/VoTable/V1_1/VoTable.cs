@@ -7,10 +7,10 @@ using System.Xml;
 using System.Xml.Schema;
 using System.Xml.Serialization;
 
-namespace Jhu.VO.VoTable.V1_3
+namespace Jhu.VO.VoTable.V1_1
 {
-    [XmlRoot(ElementName = Constants.TagVoTable, Namespace = Constants.NamespaceVoTableV1_3)]
-    [XmlType(Namespace = Constants.NamespaceVoTableV1_3)]
+    [XmlRoot(ElementName = Constants.TagVoTable, Namespace = Constants.NamespaceVoTableV1_1)]
+    [XmlType(Namespace = Constants.NamespaceVoTableV1_1)]
     public class VoTable
     {
         [XmlElement(Constants.TagDescription, Order = 0)]
@@ -19,18 +19,17 @@ namespace Jhu.VO.VoTable.V1_3
         [XmlElement(Constants.TagDefinitions, Order = 1)]
         public Definitions Definitions { get; set; }
 
-        #region COOSYS GROUP PARAM INFO
+        #region COOSYS PARAM INFO
 
-        [XmlElement(Constants.TagCoosys, typeof(CoordinateSystem), Order = 2)]
-        [XmlElement(Constants.TagGroup, typeof(Group), Order = 2)]
+        [XmlElement(Constants.TagCoosys, typeof(Coosys), Order = 2)]
         [XmlElement(Constants.TagParam, typeof(Param), Order = 2)]
         [XmlElement(Constants.TagInfo, typeof(Info), Order = 2)]
         public List<object> ItemList_ForXml { get; set; }
 
         [XmlIgnore]
-        public ItemList<CoordinateSystem> CoosysList
+        public ItemList<Coosys> CoosysList
         {
-            get { return new ItemList<CoordinateSystem>(ItemList_ForXml); }
+            get { return new ItemList<Coosys>(ItemList_ForXml); }
         }
 
         [XmlIgnore]

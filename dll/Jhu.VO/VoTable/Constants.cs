@@ -11,20 +11,13 @@ namespace Jhu.VO.VoTable
         public const string FileExtensionVOTable = ".votable";
         public const string MimeTypeVOTable = "application/x-votable+xml";
 
-        public const string VOTableVersion = "1.3";
-
         // Name spaces
-        public const string VOTableXsi = "http://www.w3.org/2001/XMLSchema-instance";
-        public const string VOTableNamespaceV1_1 = "http://www.ivoa.net/xml/VOTable/v1.1";
-        public const string VOTableNamespaceV1_2 = "http://www.ivoa.net/xml/VOTable/v1.2";
-        public const string VOTableNamespaceV1_3 = "http://www.ivoa.net/xml/VOTable/v1.3";
-        public const string StcNs = "http://www.ivoa.net/xml/STC/v1.30";
+        public const string NamespaceXsi = "http://www.w3.org/2001/XMLSchema-instance";
+        public const string NamespaceVoTableV1_1 = "http://www.ivoa.net/xml/VOTable/v1.1";
+        public const string NamespaceVoTableV1_2 = "http://www.ivoa.net/xml/VOTable/v1.2";
+        public const string NamespaceVoTableV1_3 = "http://www.ivoa.net/xml/VOTable/v1.3";
 
-        //public const String dtdFilename = "http://www.ivoa.net/internal/IVOA/IvoaVOTable/VOTable-1.2.dtd";
-        //public const String xsdFileName = "http://www.ivoa.net/xml/VOTable/VOTable-1.2.xsd";
-        //public const String votableNameSpace = "http://www.ivoa.net/xml/VOTable/v1.2";
-
-        public const string TagVOTable = "VOTABLE";
+        public const string TagVoTable = "VOTABLE";
         public const string TagDescription = "DESCRIPTION";
         public const string TagDefinitions = "DEFINITIONS";
         public const string TagCoosys = "COOSYS";

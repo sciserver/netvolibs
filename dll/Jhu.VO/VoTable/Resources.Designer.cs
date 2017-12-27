@@ -74,9 +74,9 @@ namespace Jhu.VO.VoTable {
         ///   xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; elementFormDefault=&quot;qualified&quot;
         ///   targetNamespace=&quot;http://www.ivoa.net/xml [rest of string was truncated]&quot;;.
         /// </summary>
-        public static string Schema_VoTable_v1_1 {
+        public static string Schema_VOTable_v1_1 {
             get {
-                return ResourceManager.GetString("Schema_VoTable_v1_1", resourceCulture);
+                return ResourceManager.GetString("Schema_VOTable_v1_1", resourceCulture);
             }
         }
         
@@ -92,9 +92,9 @@ namespace Jhu.VO.VoTable {
         ///.Version 1.11: GL: 23-May-2006 remove most root elements, use name= type= iso ref= structure
         ///.Version 1.11: GL: 29-Aug-2006 review and added comment [rest of string was truncated]&quot;;.
         /// </summary>
-        public static string Schema_VoTable_v1_2 {
+        public static string Schema_VOTable_v1_2 {
             get {
-                return ResourceManager.GetString("Schema_VoTable_v1_2", resourceCulture);
+                return ResourceManager.GetString("Schema_VOTable_v1_2", resourceCulture);
             }
         }
         
@@ -110,9 +110,9 @@ namespace Jhu.VO.VoTable {
         ///.Version 1.11: GL: 23-May-2006 remove most root elements, use name= type= iso ref= structure
         ///.Version 1.11: GL: 29-Aug-2006 review and added comment [rest of string was truncated]&quot;;.
         /// </summary>
-        public static string Schema_VoTable_v1_3 {
+        public static string Schema_VOTable_v1_3 {
             get {
-                return ResourceManager.GetString("Schema_VoTable_v1_3", resourceCulture);
+                return ResourceManager.GetString("Schema_VOTable_v1_3", resourceCulture);
             }
         }
     }

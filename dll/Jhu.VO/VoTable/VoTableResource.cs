@@ -335,7 +335,7 @@ namespace Jhu.VO.VoTable
                         switch (File.XmlReader.Name)
                         {
                             case Constants.TagDescription:
-                                File.Deserialize<V1_3.AnyText>(Constants.TagDescription, Constants.VOTableNamespaceV1_3);
+                                File.Deserialize<V1_3.AnyText>(Constants.TagDescription, Constants.NamespaceVoTableV1_3);
                                 break;
                             case Constants.TagInfo:
                                 File.Deserialize<V1_3.Info>();

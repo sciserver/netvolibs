@@ -4,11 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
+using System.Xml.Schema;
 using System.Xml.Serialization;
 
 namespace Jhu.VO.VoTable.V1_1
 {
-    [XmlRoot(ElementName = Constants.TagField, Namespace = Constants.VOTableNamespaceV1_1)]
+    [XmlType(Namespace = Constants.NamespaceVoTableV1_1)]
+    [XmlRoot(Constants.TagField, Namespace = Constants.NamespaceVoTableV1_1)]
     public class Field : IField
     {
         [XmlElement(Constants.TagDescription)]
@@ -16,10 +18,10 @@ namespace Jhu.VO.VoTable.V1_1
 
         string IField.Description
         {
-            get { return Description.Text; }
+            get { return Description?.Text; }
         }
 
-        [XmlElement(Constants.TagValues, Form = System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        [XmlElement(Constants.TagValues)]
         public Values Values { get; set; }
 
         IValues IField.Values
@@ -28,7 +30,7 @@ namespace Jhu.VO.VoTable.V1_1
         }
 
         [XmlElement(Constants.TagLink)]
-        public Link Link { get; set; }
+        public List<Link> LinkList { get; set; }
 
         [XmlAttribute(Constants.AttributeID)]
         public string ID { get; set; }
@@ -44,7 +46,7 @@ namespace Jhu.VO.VoTable.V1_1
 
         [XmlAttribute(Constants.AttributeWidth)]
         public string Width { get; set; }
-
+        
         [XmlAttribute(Constants.AttributeRef)]
         public string Ref { get; set; }
 

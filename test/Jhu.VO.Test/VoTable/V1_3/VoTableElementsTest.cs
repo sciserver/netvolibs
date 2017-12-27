@@ -12,33 +12,14 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Jhu.VO.VoTable.V1_3
 {
     [TestClass]
-    public class VoTableElementsTest : TestClassBase
+    public class VoTableElementsTest : VoTableTestBase
     {
-        #region Element deserialization tests
-
-        private T ReadElementHelper<T>(string xml, string tag)
+        protected override Type VoTableType
         {
-            var root = new XmlRootAttribute()
-            {
-                ElementName = tag,
-                Namespace = Constants.VOTableNamespaceV1_3,
-            };
-            var s = new XmlSerializer(typeof(T), root);
-            s.UnknownNode += delegate (object sender, XmlNodeEventArgs e)
-            {
-                throw new NotImplementedException();
-            };
-            var r = new XmlTextReader(new StringReader(xml))
-            {
-                WhitespaceHandling = WhitespaceHandling.Significant
-            };
-
-            var t = (T)s.Deserialize(r);
-
-            Assert.IsTrue(r.EOF);
-
-            return t;
+            get { return typeof(VoTable); }
         }
+
+        #region Element deserialization tests
 
         [TestMethod]
         public void DeserializeDescriptionTest()

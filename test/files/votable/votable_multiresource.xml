@@ -12,7 +12,7 @@
       <FIELD datatype="float" name="i"/>
       <FIELD datatype="float" name="z"/>
       <DATA>
-        <TABLEDATA test="test">
+        <TABLEDATA>
           <TR>
             <TD>1237651758284999317</TD>
             <TD>270.000683875077</TD>
@@ -122,7 +122,7 @@
       <FIELD datatype="double" name="ra"/>
       <FIELD datatype="double" name="dec"/>
       <DATA>
-        <TABLEDATA test="test">
+        <TABLEDATA>
           <TR>
             <TD>270.000683875077</TD>
             <TD>0.00379192855675463</TD>

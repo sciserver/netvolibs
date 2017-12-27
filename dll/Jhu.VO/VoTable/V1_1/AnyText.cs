@@ -9,7 +9,6 @@ using System.Xml.Serialization;
 
 namespace Jhu.VO.VoTable.V1_1
 {
-
     public class AnyText : IXmlSerializable
     {
         public string Text { get; set; }

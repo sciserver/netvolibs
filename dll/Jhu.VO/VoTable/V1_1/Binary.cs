@@ -7,10 +7,10 @@ using System.Xml;
 using System.Xml.Schema;
 using System.Xml.Serialization;
 
-namespace Jhu.VO.VoTable.V1_3
+namespace Jhu.VO.VoTable.V1_1
 {
-    [XmlType(Namespace = Constants.NamespaceVoTableV1_3)]
-    public class Binary2
+    [XmlType(Namespace = Constants.NamespaceVoTableV1_1)]
+    public class Binary
     {
         [XmlElement(Constants.TagStream)]
         public Stream Stream { get; set; }
