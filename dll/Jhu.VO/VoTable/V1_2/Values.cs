@@ -4,11 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
+using System.Xml.Schema;
 using System.Xml.Serialization;
 
 namespace Jhu.VO.VoTable.V1_2
 {
-    [XmlRoot(Constants.TagValues, Namespace = Constants.VOTableNamespaceV1_2)]
+    [XmlType(Namespace = Constants.NamespaceVoTableV1_2)]
+    [XmlRoot(Constants.TagValues, Namespace = Constants.NamespaceVoTableV1_2)]
     public class Values : IValues
     {
         [XmlElement(Constants.TagMin)]
@@ -18,7 +20,7 @@ namespace Jhu.VO.VoTable.V1_2
         public Max Max { get; set; }
 
         [XmlElement(Constants.TagOption)]
-        public Option[] Options { get; set; }
+        public List<Option> OptionList { get; set; }
 
         [XmlAttribute(Constants.AttributeID)]
         public string ID { get; set; }

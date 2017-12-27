@@ -204,7 +204,7 @@ namespace Jhu.VO.VoTable
                                 File.Deserialize<V1_2.Info>();
                                 break;
                             case Constants.TagCoosys:
-                                File.Deserialize<V1_2.Coosys>();
+                                File.Deserialize<V1_2.CoordinateSystem>();
                                 break;
                             case Constants.TagGroup:
                                 File.Deserialize<V1_2.Group>();

@@ -9,14 +9,28 @@ using System.Xml.Serialization;
 
 namespace Jhu.VO.VoTable.V1_2
 {
-    [XmlRoot(Constants.TagDefinitions, Namespace = Constants.VOTableNamespaceV1_2)]
-    public class Definitions : V1_1.Definitions
+    [XmlType(Namespace = Constants.NamespaceVoTableV1_2)]
+    [XmlRoot(Constants.TagDefinitions, Namespace = Constants.NamespaceVoTableV1_2)]
+    public class Definitions
     {
-        /*[XmlElement(Constants.TagCoosys)]
-        public Coosys Coosys { get; set; }
+        #region COOSYS PARAM
 
-        [XmlElement(Constants.TagParam)]
-        public Param Param { get; set; }
-        */
+        [XmlElement(Constants.TagCoosys, typeof(CoordinateSystem))]
+        [XmlElement(Constants.TagParam, typeof(Param))]
+        public List<object> ItemList_ForXml { get; set; }
+
+        [XmlIgnore]
+        public ItemList<CoordinateSystem> CoosysList
+        {
+            get { return new ItemList<CoordinateSystem>(ItemList_ForXml); }
+        }
+
+        [XmlIgnore]
+        public ItemList<Param> ParamList
+        {
+            get { return new ItemList<Param>(ItemList_ForXml); }
+        }
+
+        #endregion
     }
 }

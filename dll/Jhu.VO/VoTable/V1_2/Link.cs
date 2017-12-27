@@ -4,14 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
+using System.Xml.Schema;
 using System.Xml.Serialization;
 
 namespace Jhu.VO.VoTable.V1_2
 {
-    [XmlRoot(Constants.TagLink, Namespace = Constants.VOTableNamespaceV1_2)]
-    public class Link : V1_1.Link
+    [XmlType(Namespace = Constants.NamespaceVoTableV1_2)]
+    [XmlRoot(Constants.TagLink, Namespace = Constants.NamespaceVoTableV1_2)]
+    public class Link
     {
-        /*
         [XmlAttribute(Constants.AttributeID)]
         public string ID { get; set; }
 
@@ -35,6 +36,5 @@ namespace Jhu.VO.VoTable.V1_2
 
         [XmlAttribute(Constants.AttributeAction)]
         public string Action { get; set; }
-        */
     }
 }

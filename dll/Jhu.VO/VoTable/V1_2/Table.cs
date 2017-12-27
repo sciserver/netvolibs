@@ -10,30 +10,25 @@ using System.Xml.Serialization;
 namespace Jhu.VO.VoTable.V1_2
 {
     [XmlType(Namespace = Constants.NamespaceVoTableV1_2)]
-    [XmlRoot(Constants.TagGroup, Namespace = Constants.NamespaceVoTableV1_2)]
-    public class Group
+    public class Table
     {
-        [XmlElement(Constants.TagDescription)]
+        [XmlElement(Constants.TagDescription, Order = 0)]
         public AnyText Description { get; set; }
 
-        #region PARAM GROUP FIELDref PARAMref
+        [XmlElement(Constants.TagInfo, Order = 1)]
+        public List<Info> InfoList1 { get; set; }
 
-        [XmlElement(Constants.TagParam, typeof(Param))]
-        [XmlElement(Constants.TagGroup, typeof(Group))]
-        [XmlElement(Constants.TagFieldRef, typeof(FieldRef))]
-        [XmlElement(Constants.TagParamRef, typeof(ParamRef))]
+        #region FIELD PARAM GROUP
+
+        [XmlElement(Constants.TagField, typeof(Field), Order = 2)]
+        [XmlElement(Constants.TagParam, typeof(Param), Order = 2)]
+        [XmlElement(Constants.TagGroup, typeof(Group), Order = 2)]
         public List<object> ItemList_ForXml { get; set; }
 
         [XmlIgnore]
-        public ItemList<FieldRef> FieldRefList
+        public ItemList<Field> FieldList
         {
-            get { return new ItemList<FieldRef>(ItemList_ForXml); }
-        }
-
-        [XmlIgnore]
-        public ItemList<ParamRef> ParamRefList
-        {
-            get { return new ItemList<ParamRef>(ItemList_ForXml); }
+            get { return new ItemList<Field>(ItemList_ForXml); }
         }
 
         [XmlIgnore]
@@ -50,6 +45,15 @@ namespace Jhu.VO.VoTable.V1_2
 
         #endregion
 
+        [XmlElement(Constants.TagLink, Order = 3)]
+        public List<Link> LinkList { get; set; }
+
+        [XmlElement(Constants.TagData, Order = 4)]
+        public Data Data { get; set; }
+
+        [XmlElement(Constants.TagInfo, Order = 5)]
+        public List<Info> InfoList2 { get; set; }
+
         [XmlAttribute(Constants.AttributeID)]
         public string ID { get; set; }
 
@@ -64,5 +68,8 @@ namespace Jhu.VO.VoTable.V1_2
 
         [XmlAttribute(Constants.AttributeUType)]
         public string UType { get; set; }
+
+        [XmlAttribute(Constants.AttributeNRows)]
+        public int NRows { get; set; }
     }
 }

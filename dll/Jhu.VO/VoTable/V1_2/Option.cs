@@ -4,22 +4,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
+using System.Xml.Schema;
 using System.Xml.Serialization;
 
 namespace Jhu.VO.VoTable.V1_2
 {
-    [XmlRoot(Constants.TagOption, Namespace = Constants.VOTableNamespaceV1_2)]
-    public class Option : V1_1.Option
+    [XmlType(Namespace = Constants.NamespaceVoTableV1_2)]
+    [XmlRoot(Constants.TagOption, Namespace = Constants.NamespaceVoTableV1_2)]
+    public class Option
     {
-        /*
+        [XmlElement(Constants.TagOption)]
+        public List<Option> OptionList { get; set; }
+
         [XmlAttribute(Constants.AttributeName)]
         public string Name { get; set; }
 
         [XmlAttribute(Constants.AttributeValue)]
         public string Value { get; set; }
-
-        [XmlElement(Constants.TagOption)]
-        public Option[] Options { get; set; }
-        */
     }
 }

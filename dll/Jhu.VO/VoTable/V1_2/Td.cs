@@ -10,10 +10,12 @@ using System.Xml.Serialization;
 namespace Jhu.VO.VoTable.V1_2
 {
     [XmlType(Namespace = Constants.NamespaceVoTableV1_2)]
-    [XmlRoot(Constants.TagParam, Namespace = Constants.NamespaceVoTableV1_2)]
-    public class Param : Field
+    public class Td
     {
-        [XmlAttribute(Constants.AttributeValue)]
+        [XmlText]
         public string Value { get; set; }
+
+        [XmlAttribute(Constants.AttributeEncoding)]
+        public string Encoding { get; set; }
     }
 }
