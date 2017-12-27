@@ -1,0 +1,104 @@
+<?xml version="1.0"?>
+<VOTABLE version="1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns="http://www.ivoa.net/xml/VOTable/v1.3"
+xmlns:stc="http://www.ivoa.net/xml/STC/v1.30" >
+  <RESOURCE name="myFavouriteGalaxies">
+    <TABLE name="results">
+      <DESCRIPTION>Velocities and Distance estimations</DESCRIPTION>
+      <GROUP ID="J2000" utype="stc:AstroCoords">
+        <PARAM datatype="char" arraysize="*" ucd="pos.frame" name="cooframe"
+        utype="stc:AstroCoords.coord_system_id" value="UTC-ICRS-TOPO" />
+        <FIELDref ref="col1"/>
+        <FIELDref ref="col2"/>
+      </GROUP>
+      <PARAM name="Telescope" datatype="float" ucd="phys.size;instr.tel"
+      unit="m" value="3.6"/>
+      
+      <FIELD name="boolean" datatype="boolean" />
+      <FIELD name="bit" datatype="bit" />
+      <FIELD name="unsignedByte" datatype="unsignedByte">
+        <VALUES null="99" />
+      </FIELD>
+      <FIELD name="short" datatype="short">
+        <VALUES null="99" />
+      </FIELD>
+      <FIELD name="int" datatype="int">
+        <VALUES null="99" />
+      </FIELD>
+      <FIELD name="long" datatype="long">
+        <VALUES null="99" />
+      </FIELD>
+      <FIELD name="char" datatype="char">
+        <VALUES null="n" />
+      </FIELD>
+      <FIELD name="unicodeChar" datatype="unicodeChar">
+        <VALUES null="n" />
+      </FIELD>
+      <FIELD name="varchar" datatype="char" arraysize="50*">
+        <VALUES null="null" />
+      </FIELD>
+      <FIELD name="varunicodeChar" datatype="unicodeChar" arraysize="50*">
+        <VALUES null="null" />
+      </FIELD>
+      <FIELD name="fixchar" datatype="char" arraysize="50">
+        <VALUES null="null" />
+      </FIELD>
+      <FIELD name="fixunicodeChar" datatype="unicodeChar" arraysize="50">
+        <VALUES null="null" />
+      </FIELD>
+      <FIELD name="float" datatype="float">
+        <VALUES null="-999" />
+      </FIELD>
+      <FIELD name="double" datatype="double">
+        <VALUES null="-999" />
+      </FIELD>
+      <FIELD name="floatComplex" datatype="floatComplex">
+        <VALUES null="-999 -999" />
+      </FIELD>
+      <FIELD name="doubleComplex" datatype="doubleComplex">
+        <VALUES null="-999 -999" />
+      </FIELD>
+      
+      <DATA>
+        <TABLEDATA>
+          <TR>
+            <TD>1</TD>
+            <TD>1</TD>
+            <TD>1</TD>
+            <TD>1</TD>
+            <TD>1</TD>
+            <TD>1</TD>
+            <TD>a</TD>
+            <TD>ő</TD>
+            <TD>almafa</TD>
+            <TD>körtefa</TD>
+            <TD>szilvafa</TD>
+            <TD>tréfa</TD>
+            <TD>0.1234567</TD>
+            <TD>0.1234567891</TD>
+            <TD>12.434 54.23</TD>
+            <TD>32.343 34.12</TD>
+          </TR>
+          <TR>
+            <TD>?</TD>
+            <TD></TD>
+            <TD>99</TD>
+            <TD>99</TD>
+            <TD>99</TD>
+            <TD>99</TD>
+            <TD>n</TD>
+            <TD>n</TD>
+            <TD>null</TD>
+            <TD>null</TD>
+            <TD>null</TD>
+            <TD>null</TD>
+            <TD>-999</TD>
+            <TD>-999</TD>
+            <TD>-999 -999</TD>
+            <TD>-999 -999</TD>
+          </TR>
+        </TABLEDATA>
+      </DATA>
+    </TABLE>
+  </RESOURCE>
+</VOTABLE>

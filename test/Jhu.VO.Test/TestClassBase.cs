@@ -10,13 +10,12 @@ namespace Jhu.VO
     public class TestClassBase
     {
         /// <summary>
-        /// Find the outmost directory with a solution file
+        /// Find the inmost directory with a solution file
         /// </summary>
         /// <returns></returns>
         protected static string GetSolutionDir()
         {
             var dir = Environment.CurrentDirectory;
-            string best = null;
 
             while (dir != null)
             {
@@ -24,13 +23,13 @@ namespace Jhu.VO
 
                 if (files != null && files.Length > 0)
                 {
-                    best = dir;
+                    return dir;
                 }
 
                 dir = Directory.GetParent(dir)?.FullName;
             }
 
-            return best;
+            return dir;
         }
 
         protected static string GetTestFilePath(string filename)

@@ -54,11 +54,17 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestClassBase.cs" />
     <Compile Include="Vosi\VosiElementsTest.cs" />
+    <Compile Include="VoTable\VoTableElementsTest.cs" />
+    <Compile Include="VoTable\VoTableReadTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\sharpfitsio\src\Jhu.SharpFitsIO\Jhu.SharpFitsIO.csproj">
+      <Project>{d9e54b0e-9e09-4e53-95fd-4161f9d61914}</Project>
+      <Name>Jhu.SharpFitsIO</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\dll\Jhu.VO\Jhu.VO.csproj">
       <Project>{0141ec6d-ccec-498c-a8e3-84c3938a8e53}</Project>
       <Name>Jhu.VO</Name>

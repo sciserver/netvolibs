@@ -23,7 +23,7 @@ namespace Jhu.VO.VoDataService.V1_1
         public string Description { get; set; }
 
         [XmlElement(Constants.TagUtype, Form = XmlSchemaForm.Unqualified)]
-        public string Utype { get; set; }
+        public string UType { get; set; }
 
         [XmlElement(Constants.TagColumn, Form = XmlSchemaForm.Unqualified)]
         public TableParam[] ColumnList { get; set; }

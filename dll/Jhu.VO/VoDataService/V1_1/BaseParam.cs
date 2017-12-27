@@ -27,7 +27,7 @@ namespace Jhu.VO.VoDataService.V1_1
         public string Ucd { get; set; }
 
         [XmlElement(Constants.TagUtype, Form = XmlSchemaForm.Unqualified)]
-        public string Utype { get; set; }
+        public string UType { get; set; }
 
         [XmlAnyAttribute]
         public XmlAttribute[] Attributes { get; set; }
