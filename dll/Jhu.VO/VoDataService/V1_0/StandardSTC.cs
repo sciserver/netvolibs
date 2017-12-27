@@ -14,6 +14,6 @@ namespace Jhu.VO.VoDataService.V1_0
     {
         // TODO StcResourceProfile ???
         [XmlElement(Stc.Constants.TagStcResourceProfile, Form = XmlSchemaForm.Unqualified)]
-        public Stc.V1_30.astroSTCDescriptionType[] StcResourceProfileList { get; set; }
+        public List<Stc.V1_30.astroSTCDescriptionType> StcResourceProfileList { get; set; }
     }
 }

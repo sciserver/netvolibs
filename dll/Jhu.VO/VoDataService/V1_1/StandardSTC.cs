@@ -13,6 +13,6 @@ namespace Jhu.VO.VoDataService.V1_1
     public class StandardStc : VoResource.V1_0.Resource
     {
         [XmlElement(Constants.TagStcDefinitions, Form = XmlSchemaForm.Unqualified)]
-        public Stc.V1_30.stcDescriptionType[] StcDefinitionsList { get; set; }
+        public List<Stc.V1_30.stcDescriptionType> StcDefinitionsList { get; set; }
     }
 }

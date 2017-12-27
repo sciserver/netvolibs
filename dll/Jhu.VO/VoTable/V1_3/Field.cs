@@ -10,64 +10,63 @@ using System.Xml.Serialization;
 namespace Jhu.VO.VoTable.V1_3
 {
     [XmlType(Namespace = Constants.VOTableNamespaceV1_3)]
+    [XmlRoot(Constants.TagField, Namespace = Constants.VOTableNamespaceV1_3)]
     [XmlInclude(typeof(Param))]
     public class Field : IField
     {
-        [XmlElement(Constants.TagDescription, Form = XmlSchemaForm.Unqualified)]
+        [XmlElement(Constants.TagDescription)]
         public AnyText Description { get; set; }
 
         string IField.Description
         {
-            get { return Description.Text; }
-            set { Description.Text = value; }
+            get { return Description?.Text; }
         }
 
-        [XmlElement(Constants.TagValues, Form = XmlSchemaForm.Unqualified)]
+        [XmlElement(Constants.TagValues)]
         public Values Values { get; set; }
 
         IValues IField.Values
         {
             get { return Values; }
-            set { Values = (V1_3.Values)value; }
         }
 
-        [XmlElement(Constants.TagLink, Form = XmlSchemaForm.Unqualified)]
-        public Link[] LinkList { get; set; }
+        [XmlElement(Constants.TagLink)]
+        public List<Link> LinkList { get; set; }
 
-        [XmlAttribute(Constants.AttributeID, Form = XmlSchemaForm.Unqualified)]
+        [XmlAttribute(Constants.AttributeID)]
         public string ID { get; set; }
 
-        [XmlAttribute(Constants.AttributeUnit, Form = XmlSchemaForm.Unqualified)]
+        [XmlAttribute(Constants.AttributeUnit)]
         public string Unit { get; set; }
 
-        [XmlAttribute(Constants.AttributeDatatype, Form = XmlSchemaForm.Unqualified)]
+        [XmlAttribute(Constants.AttributeDatatype)]
         public string Datatype { get; set; }
 
-        [XmlAttribute(Constants.AttributePrecision, Form = XmlSchemaForm.Unqualified)]
+        [XmlAttribute(Constants.AttributePrecision)]
         public string Precision { get; set; }
 
-        [XmlAttribute(Constants.AttributeWidth, Form = XmlSchemaForm.Unqualified)]
+        [XmlAttribute(Constants.AttributeWidth)]
         public string Width { get; set; }
 
-        [XmlAttribute(Constants.AttributeXType, Form = XmlSchemaForm.Unqualified)]
+        [XmlAttribute(Constants.AttributeXType)]
         public string Xtype { get; set; }
 
-        [XmlAttribute(Constants.AttributeRef, Form = XmlSchemaForm.Unqualified)]
+        [XmlAttribute(Constants.AttributeRef)]
         public string Ref { get; set; }
 
-        [XmlAttribute(Constants.AttributeName, Form = XmlSchemaForm.Unqualified)]
+        [XmlAttribute(Constants.AttributeName)]
         public string Name { get; set; }
 
-        [XmlAttribute(Constants.AttributeUcd, Form = XmlSchemaForm.Unqualified)]
+        [XmlAttribute(Constants.AttributeUcd)]
         public string Ucd { get; set; }
 
-        [XmlAttribute(Constants.AttributeUType, Form = XmlSchemaForm.Unqualified)]
+        [XmlAttribute(Constants.AttributeUType)]
         public string UType { get; set; }
 
-        [XmlAttribute(Constants.AttributeArraySize, Form = XmlSchemaForm.Unqualified)]
+        [XmlAttribute(Constants.AttributeArraySize)]
         public string Arraysize { get; set; }
 
-        [XmlAttribute(Constants.AttributeType, Form = XmlSchemaForm.Unqualified)]
+        [XmlAttribute(Constants.AttributeType)]
         public string Type { get; set; }
     }
 }

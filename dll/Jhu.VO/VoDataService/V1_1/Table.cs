@@ -26,15 +26,15 @@ namespace Jhu.VO.VoDataService.V1_1
         public string UType { get; set; }
 
         [XmlElement(Constants.TagColumn, Form = XmlSchemaForm.Unqualified)]
-        public TableParam[] ColumnList { get; set; }
+        public List<TableParam> ColumnList { get; set; }
 
         [XmlElement(Constants.TagForeignKey, Form = XmlSchemaForm.Unqualified)]
-        public ForeignKey[] ForeignKeyList { get; set; }
+        public List<ForeignKey> ForeignKeyList { get; set; }
 
         [XmlAttribute(Constants.AttributeIsMimeType, Form = XmlSchemaForm.Unqualified)]
         public string Type { get; set; }
 
         [XmlAnyAttribute]
-        public XmlAttribute[] Attributes { get; set; }
+        public List<XmlAttribute> Attributes { get; set; }
     }
 }

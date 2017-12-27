@@ -14,6 +14,6 @@ namespace Jhu.VO.VoDataService.V1_0
     public class Catalog
     {
         [XmlElement(Constants.TagTable, Form = XmlSchemaForm.Unqualified)]
-        public Table[] TableList { get; set; }
+        public List<Table> TableList { get; set; }
     }
 }

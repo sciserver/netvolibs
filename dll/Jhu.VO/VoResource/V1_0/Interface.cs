@@ -17,10 +17,10 @@ namespace Jhu.VO.VoResource.V1_0
     public class Interface
     {
         [XmlElement(Constants.TagAccessUrl, Form = XmlSchemaForm.Unqualified)]
-        public AccessUrl[] AccessUrlList { get; set; }
+        public List<AccessUrl> AccessUrlList { get; set; }
 
         [XmlElement(Constants.TagSecurityMethod, Form = XmlSchemaForm.Unqualified)]
-        public SecurityMethod[] SecurityMethodList { get; set; }
+        public List<SecurityMethod> SecurityMethodList { get; set; }
 
         [XmlAttribute(Constants.AttributeVersion, Form = XmlSchemaForm.Unqualified)]
         public string Version { get; set; }

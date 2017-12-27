@@ -12,7 +12,7 @@ namespace Jhu.VO.VoTable.V1_3
     [XmlType(Namespace = Constants.VOTableNamespaceV1_3)]
     public class Binary
     {
-        [XmlElement(Constants.TagStream, Form = XmlSchemaForm.Unqualified)]
+        [XmlElement(Constants.TagStream)]
         public Stream Stream { get; set; }
     }
 }

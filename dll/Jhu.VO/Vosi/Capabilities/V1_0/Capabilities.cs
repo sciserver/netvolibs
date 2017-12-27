@@ -15,6 +15,6 @@ namespace Jhu.VO.Vosi.Capabilities.V1_0
     public class Capabilities
     {
         [XmlElement(VoResource.Constants.TagCapability, Form = XmlSchemaForm.Unqualified)]
-        public VoResource.V1_0.Capability[] CapabilityList { get; set; }
+        public List<VoResource.V1_0.Capability> CapabilityList { get; set; }
     }
 }

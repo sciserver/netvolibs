@@ -13,7 +13,7 @@ namespace Jhu.VO.TapRegExt.V1_0
     public class LanguageFeatureList
     {
         [XmlElement(Constants.TagFeature, Form = XmlSchemaForm.Unqualified)]
-        public LanguageFeature[] FeatureList { get; set; }
+        public List<LanguageFeature> FeatureList { get; set; }
 
         [XmlAttribute(Constants.AttributeType, Form = XmlSchemaForm.Unqualified)]
         public string Type { get; set; }

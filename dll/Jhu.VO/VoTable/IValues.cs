@@ -8,6 +8,6 @@ namespace Jhu.VO.VoTable
 {
     public interface IValues
     {
-        string Null { get; set; }
+        string Null { get; }
     }
 }

@@ -16,7 +16,7 @@ namespace Jhu.VO.VoDataService.V1_1
         public string TargetTable { get; set; }
 
         [XmlElement(Constants.TagFKColumn, Form = XmlSchemaForm.Unqualified)]
-        public FKColumn[] FKColumnList { get; set; }
+        public List<FKColumn> FKColumnList { get; set; }
 
         [XmlElement(Constants.TagDescription, Form = XmlSchemaForm.Unqualified)]
         public string Description { get; set; }

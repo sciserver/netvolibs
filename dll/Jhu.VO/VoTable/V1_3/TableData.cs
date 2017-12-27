@@ -12,7 +12,7 @@ namespace Jhu.VO.VoTable.V1_3
     [XmlType(Namespace = Constants.VOTableNamespaceV1_3)]
     public class TableData
     {
-        [XmlElement(Constants.TagTR, Form = XmlSchemaForm.Unqualified)]
-        public Tr[] TrList { get; set; }
+        [XmlElement(Constants.TagTR)]
+        public List<Tr> TrList { get; set; }
     }
 }

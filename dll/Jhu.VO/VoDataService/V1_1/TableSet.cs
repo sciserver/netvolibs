@@ -14,9 +14,9 @@ namespace Jhu.VO.VoDataService.V1_1
     public class TableSet
     {
         [XmlElement(Constants.TagSchema, Form = XmlSchemaForm.Unqualified)]
-        public TableSchema[] SchemaList { get; set; }
+        public List<TableSchema> SchemaList { get; set; }
 
         [XmlAnyAttribute]
-        public XmlAttribute[] Attributes { get; set; }
+        public List<XmlAttribute> Attributes { get; set; }
     }
 }

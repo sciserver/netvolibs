@@ -16,18 +16,18 @@ namespace Jhu.VO.VoResource.V1_0
         public ResourceName Publisher { get; set; }
 
         [XmlElement(Constants.TagCreator, Form = XmlSchemaForm.Unqualified)]
-        public Creator[] CreatorList { get; set; }
+        public List<Creator> CreatorList { get; set; }
 
         [XmlElement(Constants.TagContributor, Form = XmlSchemaForm.Unqualified)]
-        public ResourceName[] ContributorList { get; set; }
+        public List<ResourceName> ContributorList { get; set; }
 
         [XmlElement(Constants.TagDate, Form = XmlSchemaForm.Unqualified)]
-        public Date[] DateList { get; set; }
+        public List<Date> DateList { get; set; }
 
         [XmlElement(Constants.TagVersion, Form = XmlSchemaForm.Unqualified)]
         public string Version { get; set; }
 
         [XmlElement(Constants.TagContact, Form = XmlSchemaForm.Unqualified)]
-        public Contact[] ContactList { get; set; }
+        public List<Contact> ContactList { get; set; }
     }
 }

@@ -30,6 +30,6 @@ namespace Jhu.VO.VoDataService.V1_1
         public string UType { get; set; }
 
         [XmlAnyAttribute]
-        public XmlAttribute[] Attributes { get; set; }
+        public List<XmlAttribute> Attributes { get; set; }
     }
 }

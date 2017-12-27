@@ -16,7 +16,7 @@ namespace Jhu.VO.TapRegExt.V1_0
         public string Mime { get; set; }
 
         [XmlElement(Constants.AttributeAlias, Form = XmlSchemaForm.Unqualified)]
-        public string[] Alias { get; set; }
+        public List<string> Alias { get; set; }
 
         [XmlAttribute(VoResource.Constants.AttributeIvoID, Form = XmlSchemaForm.Unqualified)]
         public string IvoID { get; set; }

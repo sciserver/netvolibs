@@ -10,15 +10,16 @@ using System.Xml.Serialization;
 namespace Jhu.VO.VoTable.V1_3
 {
     [XmlType(Namespace = Constants.VOTableNamespaceV1_3)]
+    [XmlRoot(Constants.TagFieldRef, Namespace = Constants.VOTableNamespaceV1_3)]
     public class FieldRef
     {
-        [XmlAttribute(Constants.AttributeRef, Form = XmlSchemaForm.Unqualified)]
+        [XmlAttribute(Constants.AttributeRef)]
         public string Ref { get; set; }
 
-        [XmlAttribute(Constants.AttributeUcd, Form = XmlSchemaForm.Unqualified)]
+        [XmlAttribute(Constants.AttributeUcd)]
         public string Ucd { get; set; }
 
-        [XmlAttribute(Constants.AttributeUType, Form = XmlSchemaForm.Unqualified)]
+        [XmlAttribute(Constants.AttributeUType)]
         public string UType { set; get; }
     }
 }

@@ -15,22 +15,22 @@ namespace Jhu.VO.VoTable.V1_3
         [XmlText]
         public string Value { get; set; }
 
-        [XmlAttribute(Constants.AttributeType, Form = XmlSchemaForm.Unqualified)]
+        [XmlAttribute(Constants.AttributeType)]
         public string Type { get; set; }
 
-        [XmlAttribute(Constants.AttributeHref, Form = XmlSchemaForm.Unqualified)]
+        [XmlAttribute(Constants.AttributeHref)]
         public string Href { get; set; }
 
-        [XmlAttribute(Constants.AttributeActuate, Form = XmlSchemaForm.Unqualified)]
+        [XmlAttribute(Constants.AttributeActuate)]
         public string Actuate { get; set; }
 
-        [XmlAttribute(Constants.AttributeEncoding, Form = XmlSchemaForm.Unqualified)]
+        [XmlAttribute(Constants.AttributeEncoding)]
         public string Encoding { get; set; }
 
-        [XmlAttribute(Constants.AttributeExpires, Form = XmlSchemaForm.Unqualified)]
+        [XmlAttribute(Constants.AttributeExpires)]
         public DateTime Expires { get; set; }
 
-        [XmlAttribute(Constants.AttributeRights, Form = XmlSchemaForm.Unqualified)]
+        [XmlAttribute(Constants.AttributeRights)]
         public string Rights { get; set; }
     }
 }

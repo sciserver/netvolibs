@@ -12,10 +12,10 @@ namespace Jhu.VO.VoTable.V1_3
     [XmlType(Namespace = Constants.VOTableNamespaceV1_3)]
     public class Fits
     {
-        [XmlElement(Constants.TagStream, Form = XmlSchemaForm.Unqualified)]
+        [XmlElement(Constants.TagStream)]
         public Stream Stream { get; set; }
 
-        [XmlAttribute(Constants.AttributeExtNum, Form = XmlSchemaForm.Unqualified)]
+        [XmlAttribute(Constants.AttributeExtNum)]
         public int ExtNum { get; set; }
     }
 }

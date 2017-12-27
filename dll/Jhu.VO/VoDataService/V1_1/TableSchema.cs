@@ -26,9 +26,9 @@ namespace Jhu.VO.VoDataService.V1_1
         public string UType { get; set; }
 
         [XmlElement(Constants.TagTable, Form = XmlSchemaForm.Unqualified)]
-        public Table[] TableList { get; set; }
+        public List<Table> TableList { get; set; }
 
         [XmlAnyAttribute]
-        public XmlAttribute[] Attributes { get; set; }
+        public List<XmlAttribute> Attributes { get; set; }
     }
 }

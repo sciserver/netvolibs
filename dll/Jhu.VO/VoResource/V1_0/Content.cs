@@ -13,7 +13,7 @@ namespace Jhu.VO.VoResource.V1_0
     public class Content
     {
         [XmlElement(Constants.TagSubject, Form = XmlSchemaForm.Unqualified)]
-        public string[] SubjectList { get; set; }
+        public List<string> SubjectList { get; set; }
 
         [XmlElement(Constants.TagDescription, Form = XmlSchemaForm.Unqualified)]
         public string Description { get; set; }
@@ -25,12 +25,12 @@ namespace Jhu.VO.VoResource.V1_0
         public string ReferenceUrl { get; set; }
 
         [XmlElement(Constants.TagType, Form = XmlSchemaForm.Unqualified)]
-        public string[] TypeList { get; set; }
+        public List<string> TypeList { get; set; }
 
         [XmlElement(Constants.TagContentLevel, Form = XmlSchemaForm.Unqualified)]
-        public string[] ContentLevelList { get; set; }
+        public List<string> ContentLevelList { get; set; }
 
         [XmlElement(Constants.TagRelationship, Form = XmlSchemaForm.Unqualified)]
-        public Relationship[] RelationshipList { get; set; }
+        public List<Relationship> RelationshipList { get; set; }
     }
 }

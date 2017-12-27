@@ -10,36 +10,59 @@ using System.Xml.Serialization;
 namespace Jhu.VO.VoTable.V1_3
 {
     [XmlType(Namespace = Constants.VOTableNamespaceV1_3)]
+    [XmlRoot(Constants.TagGroup, Namespace = Constants.VOTableNamespaceV1_3)]
     public class Group
     {
-        [XmlElement(Constants.TagDescription, Form = XmlSchemaForm.Unqualified)]
+        [XmlElement(Constants.TagDescription)]
         public AnyText Description { get; set; }
 
-        [XmlElement(Constants.TagFieldRef, Form = XmlSchemaForm.Unqualified)]
-        public FieldRef[] FieldRefList { get; set; }
+        #region PARAM GROUP FIELDref PARAMref
 
-        [XmlElement(Constants.TagParamRef, Form = XmlSchemaForm.Unqualified)]
-        public ParamRef[] ParamRefList { get; set; }
+        [XmlElement(Constants.TagParam, typeof(Param))]
+        [XmlElement(Constants.TagGroup, typeof(Group))]
+        [XmlElement(Constants.TagFieldRef, typeof(FieldRef))]
+        [XmlElement(Constants.TagParamRef, typeof(ParamRef))]
+        public List<object> ItemList_ForXml { get; set; }
 
-        [XmlElement(Constants.TagParam, Form = XmlSchemaForm.Unqualified)]
-        public Param[] ParamList { get; set; }
+        [XmlIgnore]
+        public ItemList<FieldRef> FieldRefList
+        {
+            get { return new ItemList<FieldRef>(ItemList_ForXml); }
+        }
 
-        [XmlElement(Constants.TagGroup, Form = XmlSchemaForm.Unqualified)]
-        public Group[] GroupList { get; set; }
+        [XmlIgnore]
+        public ItemList<ParamRef> ParamRefList
+        {
+            get { return new ItemList<ParamRef>(ItemList_ForXml); }
+        }
 
-        [XmlAttribute(Constants.AttributeID, Form = XmlSchemaForm.Unqualified)]
+        [XmlIgnore]
+        public ItemList<Param> ParamList
+        {
+            get { return new ItemList<Param>(ItemList_ForXml); }
+        }
+
+        [XmlIgnore]
+        public ItemList<Group> GroupList
+        {
+            get { return new ItemList<Group>(ItemList_ForXml); }
+        }
+
+        #endregion
+
+        [XmlAttribute(Constants.AttributeID)]
         public string ID { get; set; }
 
-        [XmlAttribute(Constants.AttributeName, Form = XmlSchemaForm.Unqualified)]
+        [XmlAttribute(Constants.AttributeName)]
         public string Name { get; set; }
 
-        [XmlAttribute(Constants.AttributeRef, Form = XmlSchemaForm.Unqualified)]
+        [XmlAttribute(Constants.AttributeRef)]
         public string Ref { get; set; }
 
-        [XmlAttribute(Constants.AttributeUcd, Form = XmlSchemaForm.Unqualified)]
+        [XmlAttribute(Constants.AttributeUcd)]
         public string Ucd { get; set; }
 
-        [XmlAttribute(Constants.AttributeUType, Form = XmlSchemaForm.Unqualified)]
+        [XmlAttribute(Constants.AttributeUType)]
         public string UType { get; set; }
     }
 }

@@ -10,33 +10,34 @@ using System.Xml.Serialization;
 namespace Jhu.VO.VoTable.V1_3
 {
     [XmlType(Namespace = Constants.VOTableNamespaceV1_3)]
+    [XmlRoot(Constants.TagInfo, Namespace = Constants.VOTableNamespaceV1_3)]
     public class Info
     {
         [XmlText]
         public string Text { get; set; }
 
-        [XmlAttribute(Constants.AttributeID, Form = XmlSchemaForm.Unqualified)]
+        [XmlAttribute(Constants.AttributeID)]
         public string ID { get; set; }
 
-        [XmlAttribute(Constants.AttributeName, Form = XmlSchemaForm.Unqualified)]
+        [XmlAttribute(Constants.AttributeName)]
         public string Name { get; set; }
 
-        [XmlAttribute(Constants.AttributeValue, Form = XmlSchemaForm.Unqualified)]
+        [XmlAttribute(Constants.AttributeValue)]
         public string Value { get; set; }
 
-        [XmlAttribute(Constants.AttributeUnit, Form = XmlSchemaForm.Unqualified)]
+        [XmlAttribute(Constants.AttributeUnit)]
         public string Unit { get; set; }
 
-        [XmlAttribute(Constants.AttributeXType, Form = XmlSchemaForm.Unqualified)]
+        [XmlAttribute(Constants.AttributeXType)]
         public string XType { get; set; }
 
-        [XmlAttribute(Constants.AttributeRef, Form = XmlSchemaForm.Unqualified)]
+        [XmlAttribute(Constants.AttributeRef)]
         public string Ref { get; set; }
 
-        [XmlAttribute(Constants.AttributeUcd, Form = XmlSchemaForm.Unqualified)]
+        [XmlAttribute(Constants.AttributeUcd)]
         public string Ucd { get; set; }
 
-        [XmlAttribute(Constants.AttributeUType, Form = XmlSchemaForm.Unqualified)]
+        [XmlAttribute(Constants.AttributeUType)]
         public string UType { get; set; }
     }
 }

@@ -13,31 +13,56 @@ namespace Jhu.VO.VoTable.V1_3
     [XmlType(Namespace = Constants.VOTableNamespaceV1_3)]
     public class VoTable
     {
-        [XmlElement(Constants.TagDescription, Form = XmlSchemaForm.Unqualified)]
+        [XmlElement(Constants.TagDescription, Order = 0)]
         public AnyText Description { get; set; }
 
-        [XmlElement(Constants.TagDefinitions, Form = XmlSchemaForm.Unqualified)]
+        [XmlElement(Constants.TagDefinitions, Order = 1)]
         public Definitions Definitions { get; set; }
 
-        [XmlElement(Constants.TagCoosys, Form = XmlSchemaForm.Unqualified)]
-        public CoordinateSystem[] CoosysList { get; set; }
+        #region COOSYS GROUP PARAM INFO
 
-        [XmlElement(Constants.TagGroup, Form = XmlSchemaForm.Unqualified)]
-        public Group[] GroupList { get; set; }
+        [XmlElement(Constants.TagCoosys, typeof(CoordinateSystem), Order = 2)]
+        [XmlElement(Constants.TagGroup, typeof(Group), Order = 2)]
+        [XmlElement(Constants.TagParam, typeof(Param), Order = 2)]
+        [XmlElement(Constants.TagInfo, typeof(Info), Order = 2)]
+        public List<object> ItemList_ForXml { get; set; }
 
-        [XmlElement(Constants.TagParam, Form = XmlSchemaForm.Unqualified)]
-        public Param[] ParamList { get; set; }
+        [XmlIgnore]
+        public ItemList<CoordinateSystem> CoosysList
+        {
+            get { return new ItemList<CoordinateSystem>(ItemList_ForXml); }
+        }
 
-        [XmlElement(Constants.TagInfo, Form = XmlSchemaForm.Unqualified)]
-        public Info[] InfoList { get; set; }
+        [XmlIgnore]
+        public ItemList<Group> GroupList
+        {
+            get { return new ItemList<Group>(ItemList_ForXml); }
+        }
 
-        [XmlElement(Constants.TagResource, Form = XmlSchemaForm.Unqualified)]
-        public Resource[] ResourceList { get; set; }
+        [XmlIgnore]
+        public ItemList<Param> ParamList
+        {
+            get { return new ItemList<Param>(ItemList_ForXml); }
+        }
 
-        [XmlAttribute(Constants.AttributeID, Form = XmlSchemaForm.Unqualified)]
+        [XmlIgnore]
+        public ItemList<Info> InfoList1
+        {
+            get { return new ItemList<Info>(ItemList_ForXml); }
+        }
+
+        #endregion
+
+        [XmlElement(Constants.TagResource, Order = 3)]
+        public List<Resource> ResourceList { get; set; }
+
+        [XmlElement(Constants.TagInfo, Order = 4)]
+        public List<Info> InfoList2 { get; set; }
+
+        [XmlAttribute(Constants.AttributeID)]
         public string ID { get; set; }
 
-        [XmlAttribute(Constants.AttributeVersion, Form = XmlSchemaForm.Unqualified)]
+        [XmlAttribute(Constants.AttributeVersion)]
         public string Version { get; set; }
     }
 }

@@ -16,12 +16,12 @@ namespace Jhu.VO.TapRegExt.V1_0
         public string Name { get; set; }
 
         [XmlElement(VoResource.Constants.TagVersion, Form = XmlSchemaForm.Unqualified)]
-        public Version[] VersionList { get; set; }
+        public List<Version> VersionList { get; set; }
 
         [XmlElement(VoResource.Constants.TagDescription, Form = XmlSchemaForm.Unqualified)]
         public string Description { get; set; }
 
         [XmlElement(Constants.TagLanguageFeatures, Form = XmlSchemaForm.Unqualified)]
-        public LanguageFeatureList[] LanguageFeaturesList { get; set; }
+        public List<LanguageFeatureList> LanguageFeaturesList { get; set; }
     }
 }

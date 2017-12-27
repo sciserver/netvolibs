@@ -13,6 +13,6 @@ namespace Jhu.VO.VoResource.V1_0
     public class WebService : Interface
     {
         [XmlElement(Constants.TagWsdlUrl, Form = XmlSchemaForm.Unqualified)]
-        public string[] WsdlUrlList { get; set; }
+        public List<string> WsdlUrlList { get; set; }
     }
 }

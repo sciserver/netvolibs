@@ -24,7 +24,7 @@ namespace Jhu.VO.VoTable.V1_1
         public Param Param { get; set; }
 
         [XmlElement(Constants.TagGroup)]
-        public Group[] Groups { get; set; }
+        public List<Group> Groups { get; set; }
 
         [XmlAttribute(Constants.AttributeID)]
         public string ID { get; set; }

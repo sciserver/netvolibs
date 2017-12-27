@@ -19,7 +19,7 @@ namespace Jhu.VO.VoDataService.V1_0
         public string Description { get; set; }
 
         [XmlElement(Constants.TagColumn, Form = XmlSchemaForm.Unqualified)]
-        public TableParam[] ColumnList { get; set; }
+        public List<TableParam> ColumnList { get; set; }
 
         [XmlAttribute(VoResource.Constants.AttributeRole, Form = XmlSchemaForm.Unqualified)]
         public string Role { get; set; }

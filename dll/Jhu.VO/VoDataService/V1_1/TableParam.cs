@@ -16,7 +16,7 @@ namespace Jhu.VO.VoDataService.V1_1
         public TableDataType DataType { get; set; }
 
         [XmlElement(Constants.TagFlag, Form = XmlSchemaForm.Unqualified)]
-        public string[] FlagList { get; set; }
+        public List<string> FlagList { get; set; }
 
         [XmlAttribute(VoResource.Constants.AttributeStd, Form = XmlSchemaForm.Unqualified)]
         public bool Std { get; set; }

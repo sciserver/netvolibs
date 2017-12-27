@@ -12,19 +12,45 @@ namespace Jhu.VO.VoTable.V1_3
     [XmlType(Namespace = Constants.VOTableNamespaceV1_3)]
     public class Data
     {
-        [XmlElement(Constants.TagTableData, Form = XmlSchemaForm.Unqualified)]
-        public TableData TableData { get; set; }
+        #region TABLEDATA BINARY BINARY2 FITS
 
-        [XmlElement(Constants.TagBinary, Form = XmlSchemaForm.Unqualified)]
-        public Binary Binary { get; set; }
+        [XmlElement(Constants.TagTableData, typeof(TableData))]
+        [XmlElement(Constants.TagBinary, typeof(Binary))]
+        [XmlElement(Constants.TagBinary2, typeof(Binary2))]
+        [XmlElement(Constants.TagFits, typeof(Fits))]
+        public object Item_ForXml { get; set; }
 
-        [XmlElement(Constants.TagBinary2, Form = XmlSchemaForm.Unqualified)]
-        public Binary2 Binary2 { get; set; }
+        [XmlIgnore]
+        public TableData TableData
+        {
+            get { return Item_ForXml as TableData; }
+            set { Item_ForXml = value; }
+        }
 
-        [XmlElement(Constants.TagFits, Form = XmlSchemaForm.Unqualified)]
-        public Fits Fits { get; set; }
+        [XmlIgnore]
+        public Binary Binary
+        {
+            get { return Item_ForXml as Binary; }
+            set { Item_ForXml = value; }
+        }
 
-        [XmlElement(Constants.TagInfo, Form = XmlSchemaForm.Unqualified)]
-        public Info[] InfoList { get; set; }
+        [XmlIgnore]
+        public Binary2 Binary2
+        {
+            get { return Item_ForXml as Binary2; }
+            set { Item_ForXml = value; }
+        }
+
+        [XmlIgnore]
+        public Fits Fits
+        {
+            get { return Item_ForXml as Fits; }
+            set { Item_ForXml = value; }
+        }
+
+        #endregion
+
+        [XmlElement(Constants.TagInfo)]
+        public List<Info> InfoList { get; set; }
     }
 }

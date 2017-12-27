@@ -12,43 +12,64 @@ namespace Jhu.VO.VoTable.V1_3
     [XmlType(Namespace = Constants.VOTableNamespaceV1_3)]
     public class Table
     {
-        [XmlElement(Constants.TagDescription, Form = XmlSchemaForm.Unqualified)]
+        [XmlElement(Constants.TagDescription, Order = 0)]
         public AnyText Description { get; set; }
 
-        [XmlElement(Constants.TagInfo, Form = XmlSchemaForm.Unqualified)]
-        public Info[] InfoList { get; set; }
+        [XmlElement(Constants.TagInfo, Order = 1)]
+        public List<Info> InfoList1 { get; set; }
 
-        [XmlElement(Constants.TagField, Form = XmlSchemaForm.Unqualified)]
-        public Field[] FieldList { get; set; }
+        #region FIELD PARAM GROUP
 
-        [XmlElement(Constants.TagParam, Form = XmlSchemaForm.Unqualified)]
-        public Param[] ParamList { get; set; }
+        [XmlElement(Constants.TagField, typeof(Field), Order = 2)]
+        [XmlElement(Constants.TagParam, typeof(Param), Order = 2)]
+        [XmlElement(Constants.TagGroup, typeof(Group), Order = 2)]
+        public List<object> ItemList_ForXml { get; set; }
 
-        [XmlElement(Constants.TagGroup, Form = XmlSchemaForm.Unqualified)]
-        public Group[] GroupList { get; set; }
+        [XmlIgnore]
+        public ItemList<Field> FieldList
+        {
+            get { return new ItemList<Field>(ItemList_ForXml); }
+        }
 
-        [XmlElement(Constants.TagLink, Form = XmlSchemaForm.Unqualified)]
-        public Link[] LinkList { get; set; }
+        [XmlIgnore]
+        public ItemList<Param> ParamList
+        {
+            get { return new ItemList<Param>(ItemList_ForXml); }
+        }
 
-        [XmlElement(Constants.TagData, Form = XmlSchemaForm.Unqualified)]
+        [XmlIgnore]
+        public ItemList<Group> GroupList
+        {
+            get { return new ItemList<Group>(ItemList_ForXml); }
+        }
+
+        #endregion
+
+        [XmlElement(Constants.TagLink, Order = 3)]
+        public List<Link> LinkList { get; set; }
+
+        [XmlElement(Constants.TagData, Order = 4)]
         public Data Data { get; set; }
 
-        [XmlAttribute(Constants.AttributeID, Form = XmlSchemaForm.Unqualified)]
+        [XmlElement(Constants.TagInfo, Order = 5)]
+        public List<Info> InfoList2 { get; set; }
+
+        [XmlAttribute(Constants.AttributeID)]
         public string ID { get; set; }
 
-        [XmlAttribute(Constants.AttributeName, Form = XmlSchemaForm.Unqualified)]
+        [XmlAttribute(Constants.AttributeName)]
         public string Name { get; set; }
 
-        [XmlAttribute(Constants.AttributeRef, Form = XmlSchemaForm.Unqualified)]
+        [XmlAttribute(Constants.AttributeRef)]
         public string Ref { get; set; }
 
-        [XmlAttribute(Constants.AttributeUcd, Form = XmlSchemaForm.Unqualified)]
+        [XmlAttribute(Constants.AttributeUcd)]
         public string Ucd { get; set; }
 
-        [XmlAttribute(Constants.AttributeUType, Form = XmlSchemaForm.Unqualified)]
+        [XmlAttribute(Constants.AttributeUType)]
         public string UType { get; set; }
 
-        [XmlAttribute(Constants.AttributeNRows, Form = XmlSchemaForm.Unqualified)]
+        [XmlAttribute(Constants.AttributeNRows)]
         public int NRows { get; set; }
     }
 }

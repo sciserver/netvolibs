@@ -13,13 +13,13 @@ namespace Jhu.VO.VoDataService.V1_1
     public class TableService : VoResource.V1_0.Service
     {
         [XmlElement(VoResource.Constants.TagFacility, Form = XmlSchemaForm.Unqualified)]
-        public VoResource.V1_0.ResourceName[] FacilityList { get; set; }
+        public List<VoResource.V1_0.ResourceName> FacilityList { get; set; }
 
         [XmlElement(VoResource.Constants.TagInstrument, Form = XmlSchemaForm.Unqualified)]
-        public VoResource.V1_0.ResourceName[] InstrumentList { get; set; }
+        public List<VoResource.V1_0.ResourceName> InstrumentList { get; set; }
 
         [XmlElement(Constants.TagTable, Form = XmlSchemaForm.Unqualified)]
-        public Table[] TableList { get; set; }
+        public List<Table> TableList { get; set; }
 
     }
 }

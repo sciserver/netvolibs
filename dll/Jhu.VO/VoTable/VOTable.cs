@@ -209,6 +209,8 @@ namespace Jhu.VO.VoTable
 
         private void OpenOwnXmlReader()
         {
+            // TODO: add validation
+
             var settings = new XmlReaderSettings()
             {
                 Async = true,
@@ -253,7 +255,30 @@ namespace Jhu.VO.VoTable
 
         public T Deserialize<T>()
         {
-            var s = new XmlSerializer(typeof(T));
+            return Deserialize<T>(null, null);
+        }
+
+        public T Deserialize<T>(string elementName, string @namespace)
+        {
+            XmlRootAttribute root = null;
+
+            if (elementName != null || @namespace != null)
+            {
+                root = new XmlRootAttribute()
+                {
+                    ElementName = elementName,
+                    Namespace = @namespace
+                };
+            }
+
+            var s = new XmlSerializer(typeof(T), root);
+
+            // TODO: debug code, delete
+            s.UnknownNode += delegate (object sender, XmlNodeEventArgs e)
+            {
+                throw new NotImplementedException();
+            };
+
             return (T)s.Deserialize(XmlReader);
         }
 

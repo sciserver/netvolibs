@@ -18,7 +18,7 @@ namespace Jhu.VO.VoResource.V1_0
     public class Resource
     {
         [XmlElement(Constants.TagValidationLevel, Form = XmlSchemaForm.Unqualified)]
-        public Validation[] ValidationLevelList { get; set; }
+        public List<Validation> ValidationLevelList { get; set; }
 
         [XmlElement(Constants.TagTitle, Form = XmlSchemaForm.Unqualified)]
         public string Title { get; set; }

@@ -18,6 +18,6 @@ namespace Jhu.VO.VoTable.V1_1
         public string Value { get; set; }
 
         [XmlElement(Constants.TagOption)]
-        public Option[] Options { get; set; }
+        public List<Option> Options { get; set; }
     }
 }

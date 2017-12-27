@@ -8,26 +8,26 @@ namespace Jhu.VO.VoTable
 {
     public interface IField
     {
-        string Description { get; set; }
+        string Description { get;}
 
-        IValues Values { get; set; }
+        IValues Values { get;}
 
-        string ID { get; set; }
+        string ID { get; }
 
-        string Unit { get; set; }
+        string Unit { get; }
 
-        string Datatype { get; set; }
+        string Datatype { get; }
 
-        string Precision { get; set; }
+        string Precision { get; }
 
-        string Width { get; set; }
+        string Width { get; }
 
-        string Name { get; set; }
+        string Name { get; }
 
-        string Ucd { get; set; }
+        string Ucd { get; }
 
-        string UType { get; set; }
+        string UType { get; }
 
-        string Arraysize { get; set; }
+        string Arraysize { get; }
     }
 }

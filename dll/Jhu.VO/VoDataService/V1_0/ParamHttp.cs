@@ -20,6 +20,6 @@ namespace Jhu.VO.VoDataService.V1_0
         public string ResultType { get; set; }
 
         [XmlElement(Constants.TagParam, Form = XmlSchemaForm.Unqualified)]
-        public InputParam[] ParamList { get; set; }
+        public List<InputParam> ParamList { get; set; }
     }
 }

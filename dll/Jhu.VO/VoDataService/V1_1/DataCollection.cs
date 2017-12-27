@@ -13,16 +13,16 @@ namespace Jhu.VO.VoDataService.V1_1
     public class DataCollection
     {
         [XmlElement(VoResource.Constants.TagFacility, Form = XmlSchemaForm.Unqualified)]
-        public VoResource.V1_0.ResourceName[] FacilityList { get; set; }
+        public List<VoResource.V1_0.ResourceName> FacilityList { get; set; }
 
         [XmlElement(VoResource.Constants.TagInstrument, Form = XmlSchemaForm.Unqualified)]
-        public VoResource.V1_0.ResourceName[] InstrumentList { get; set; }
+        public List<VoResource.V1_0.ResourceName> InstrumentList { get; set; }
 
         [XmlElement(VoResource.Constants.TagRights, Form = XmlSchemaForm.Unqualified)]
-        public string[] RightsList { get; set; }
+        public List<string> RightsList { get; set; }
 
         [XmlElement(Constants.TagFormat, Form = XmlSchemaForm.Unqualified)]
-        public Format[] FormatList { get; set; }
+        public List<Format> FormatList { get; set; }
 
         [XmlElement(Constants.TagCoverage, Form = XmlSchemaForm.Unqualified)]
         public Coverage Coverage { get; set; }

@@ -16,6 +16,6 @@ namespace Jhu.VO.VoResource.V1_0
         public string RelationshipType { get; set; }
 
         [XmlElement(Constants.TagRelatedResource, Form = XmlSchemaForm.Unqualified)]
-        public ResourceName[] RelatedResourceList { get; set; }
+        public List<ResourceName> RelatedResourceList { get; set; }
     }
 }

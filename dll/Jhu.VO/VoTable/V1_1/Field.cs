@@ -17,7 +17,6 @@ namespace Jhu.VO.VoTable.V1_1
         string IField.Description
         {
             get { return Description.Text; }
-            set { Description.Text = value; }
         }
 
         [XmlElement(Constants.TagValues, Form = System.Xml.Schema.XmlSchemaForm.Unqualified)]
@@ -26,7 +25,6 @@ namespace Jhu.VO.VoTable.V1_1
         IValues IField.Values
         {
             get { return Values; }
-            set { Values = (V1_1.Values)value; }
         }
 
         [XmlElement(Constants.TagLink)]

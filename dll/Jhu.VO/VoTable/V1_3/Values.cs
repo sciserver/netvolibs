@@ -10,27 +10,28 @@ using System.Xml.Serialization;
 namespace Jhu.VO.VoTable.V1_3
 {
     [XmlType(Namespace = Constants.VOTableNamespaceV1_3)]
+    [XmlRoot(Constants.TagValues, Namespace = Constants.VOTableNamespaceV1_3)]
     public class Values : IValues
     {
-        [XmlElement(Constants.TagMin, Form = XmlSchemaForm.Unqualified)]
+        [XmlElement(Constants.TagMin)]
         public Min Min { get; set; }
 
-        [XmlElement(Constants.TagMax, Form = XmlSchemaForm.Unqualified)]
+        [XmlElement(Constants.TagMax)]
         public Max Max { get; set; }
 
-        [XmlElement(Constants.TagOption, Form = XmlSchemaForm.Unqualified)]
-        public Option[] OptionList { get; set; }
+        [XmlElement(Constants.TagOption)]
+        public List<Option> OptionList { get; set; }
 
-        [XmlAttribute(Constants.AttributeID, Form = XmlSchemaForm.Unqualified)]
+        [XmlAttribute(Constants.AttributeID)]
         public string ID { get; set; }
 
-        [XmlAttribute(Constants.AttributeType, Form = XmlSchemaForm.Unqualified)]
+        [XmlAttribute(Constants.AttributeType)]
         public string Type { get; set; }
 
-        [XmlAttribute(Constants.AttributeNull, Form = XmlSchemaForm.Unqualified)]
+        [XmlAttribute(Constants.AttributeNull)]
         public string Null { get; set; }
 
-        [XmlAttribute(Constants.AttributeRef, Form = XmlSchemaForm.Unqualified)]
+        [XmlAttribute(Constants.AttributeRef)]
         public string Ref { get; set; }
     }
 }

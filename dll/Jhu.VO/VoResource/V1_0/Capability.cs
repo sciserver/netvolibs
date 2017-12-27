@@ -15,13 +15,13 @@ namespace Jhu.VO.VoResource.V1_0
     public class Capability
     {
         [XmlElement(Constants.TagValidationLevel, Form = XmlSchemaForm.Unqualified)]
-        public Validation[] ValidationLevelList { get; set; }
+        public List<Validation> ValidationLevelList { get; set; }
 
         [XmlElement(Constants.TagDescription, Form = XmlSchemaForm.Unqualified)]
         public string Description { get; set; }
 
         [XmlElement(Constants.TagInterface, Form = XmlSchemaForm.Unqualified)]
-        public Interface[] InterfaceList { get; set; }
+        public List<Interface> InterfaceList { get; set; }
 
         [XmlAttribute(Constants.AttributeStandardID)]
         public string StandardID { get; set; }

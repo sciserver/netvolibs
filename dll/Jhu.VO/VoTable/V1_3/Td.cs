@@ -15,7 +15,7 @@ namespace Jhu.VO.VoTable.V1_3
         [XmlText]
         public string Value { get; set; }
 
-        [XmlAttribute(Constants.AttributeEncoding, Form = XmlSchemaForm.Unqualified)]
+        [XmlAttribute(Constants.AttributeEncoding)]
         public string Encoding { get; set; }
     }
 }

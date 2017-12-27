@@ -16,9 +16,9 @@ namespace Jhu.VO.VoResource.V1_0
     public class Service : Resource
     {
         [XmlElement(Constants.TagRights, Form = XmlSchemaForm.Unqualified)]
-        public string[] RightsList { get; set; }
+        public List<string> RightsList { get; set; }
 
         [XmlElement(Constants.TagCapability, Form = XmlSchemaForm.Unqualified)]
-        public Capability[] CapabilityList { get; set; }
+        public List<Capability> CapabilityList { get; set; }
     }
 }

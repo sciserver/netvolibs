@@ -20,7 +20,7 @@ namespace Jhu.VO.VoDataService.V1_1
         public ServiceReference Footprint { get; set; }
 
         [XmlElement(Constants.TagWaveband, Form = XmlSchemaForm.Unqualified)]
-        public string[] WavebandList { get; set; }
+        public List<string> WavebandList { get; set; }
 
         [XmlElement(Constants.TagRegionOfRegard, Form = XmlSchemaForm.Unqualified)]
         public float? RegionOfRegard { get; set; }
