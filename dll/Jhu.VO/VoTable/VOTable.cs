@@ -5,6 +5,7 @@ using System.Text;
 using System.IO;
 using System.Globalization;
 using System.Xml;
+using System.Xml.Schema;
 using System.Xml.Serialization;
 using System.Collections;
 using System.Data;
@@ -210,13 +211,17 @@ namespace Jhu.VO.VoTable
         private void OpenOwnXmlReader()
         {
             // TODO: add validation
+            // but how to do it if version is not known?
 
             var settings = new XmlReaderSettings()
             {
                 Async = true,
                 IgnoreComments = true,
                 IgnoreWhitespace = true,
+                
                 // TODO: add schemas
+                ValidationType = ValidationType.Schema,
+                ValidationFlags = XmlSchemaValidationFlags.ProcessSchemaLocation
             };
             xmlReader = XmlReader.Create(WrappedStream, settings);
             ownsXmlReader = true;
@@ -285,15 +290,15 @@ namespace Jhu.VO.VoTable
         #endregion
         #region VOTable reader implementation
 
-        public void ReadHeader()
+        public Task ReadHeaderAsync()
         {
-            ReadVOTableElement();
+            return ReadVOTableElementAsync();
         }
 
-        private void ReadVOTableElement()
+        private async Task ReadVOTableElementAsync()
         {
             // Skip initial declarations
-            XmlReader.MoveToContent();
+            await XmlReader.MoveToContentAsync();
 
             switch (XmlReader.NamespaceURI)
             {
@@ -316,14 +321,11 @@ namespace Jhu.VO.VoTable
             var id = XmlReader.GetAttribute(Constants.AttributeID);
             var ver = XmlReader.GetAttribute(Constants.AttributeVersion);
 
-            // Finish reading tag and move to next content
-            XmlReader.ReadStartElement(Constants.TagVoTable);
-            XmlReader.MoveToContent();
+            await XmlReader.MoveAfterStartAsync(Constants.TagVoTable);
 
             // Read all tags inside VOTABLE but stop at any RESOURCE tag
             // because they are handled outside of this function
-            while (XmlReader.NodeType == XmlNodeType.Element &&
-                   Comparer.Compare(XmlReader.Name, Constants.TagResource) != 0)
+            while (!XmlReader.IsStartElement(Constants.TagResource))
             {
                 switch (version)
                 {
@@ -331,19 +333,22 @@ namespace Jhu.VO.VoTable
                         switch (XmlReader.Name)
                         {
                             case Constants.TagDescription:
-                                var d = Deserialize<V1_1.AnyText>();
+                                Deserialize<V1_1.AnyText>(Constants.TagDescription, Constants.NamespaceVoTableV1_1);
                                 break;
                             case Constants.TagDefinitions:
+                                Deserialize<V1_1.Definitions>();
+                                break;
                             case Constants.TagCoosys:
-                            case Constants.TagGroup:
+                                Deserialize<V1_1.Coosys>();
+                                break;
                             case Constants.TagParam:
+                                Deserialize<V1_1.Param>();
+                                break;
                             case Constants.TagInfo:
-                                // TODO: implement deserializets,
-                                // now just skip the tag
-                                XmlReader.Skip();
+                                Deserialize<V1_1.Info>();
                                 break;
                             default:
-                                throw new NotImplementedException();
+                                throw Error.InvalidFormat();
                         }
                         break;
 
@@ -351,19 +356,25 @@ namespace Jhu.VO.VoTable
                         switch (XmlReader.Name)
                         {
                             case Constants.TagDescription:
-                                var d = Deserialize<V1_2.AnyText>();
+                                Deserialize<V1_2.AnyText>(Constants.TagDescription, Constants.NamespaceVoTableV1_2);
                                 break;
                             case Constants.TagDefinitions:
+                                Deserialize<V1_2.Definitions>();
+                                break;
                             case Constants.TagCoosys:
+                                Deserialize<V1_2.CoordinateSystem>();
+                                break;
                             case Constants.TagGroup:
+                                Deserialize<V1_2.Group>();
+                                break;
                             case Constants.TagParam:
+                                Deserialize<V1_2.Param>();
+                                break;
                             case Constants.TagInfo:
-                                // TODO: implement deserializets,
-                                // now just skip the tag
-                                XmlReader.Skip();
+                                Deserialize<V1_2.Info>();
                                 break;
                             default:
-                                throw new NotImplementedException();
+                                throw Error.InvalidFormat();
                         }
                         break;
 
@@ -371,34 +382,33 @@ namespace Jhu.VO.VoTable
                         switch (XmlReader.Name)
                         {
                             case Constants.TagDescription:
-                                var d = Deserialize<V1_3.AnyText>();
+                                Deserialize<V1_3.AnyText>(Constants.TagDescription, Constants.NamespaceVoTableV1_3);
                                 break;
                             case Constants.TagDefinitions:
+                                Deserialize<V1_3.Definitions>();
+                                break;
                             case Constants.TagCoosys:
+                                Deserialize<V1_3.CoordinateSystem>();
+                                break;
                             case Constants.TagGroup:
+                                Deserialize<V1_3.Group>();
+                                break;
                             case Constants.TagParam:
+                                Deserialize<V1_3.Param>();
+                                break;
                             case Constants.TagInfo:
-                                // TODO: implement deserializets,
-                                // now just skip the tag
-                                XmlReader.Skip();
+                                Deserialize<V1_3.Info>();
                                 break;
                             default:
-                                throw new NotImplementedException();
+                                throw Error.InvalidFormat();
                         }
                         break;
                     default:
                         throw new NotImplementedException();
                 }
-
-                XmlReader.MoveToContent();
             }
 
-            // TODO: implement parsers for header info including these tags:
-            // * DESCRIPTION
-            // * DEFINITIONS -- just ignore because it's deprecated
-            // * COOSYS -- just ignore because it's deprecated
-            // * GROUP
-            // * PARAM
+            // TODO:
             // * INFO -- also parse TAP query status
 
             // Reader is positioned on the first RESOURCE tag now
@@ -417,8 +427,7 @@ namespace Jhu.VO.VoTable
             // and return it. Subsequent handling of tags until the closing RESOURCE tag will
             // be done inside the VOTableResource class
 
-            if (XmlReader.NodeType == XmlNodeType.Element &&
-                VoTable.Comparer.Compare(XmlReader.Name, Constants.TagResource) == 0)
+            if (XmlReader.IsStartElement(Constants.TagResource))
             {
                 return new VoTableResource(this);
             }
@@ -428,15 +437,14 @@ namespace Jhu.VO.VoTable
             }
         }
 
-        public void ReadFooter()
+        public Task ReadFooterAsync()
         {
             // The TABLE element and the RESOURCE element can contain
             // trailing INFO tags (what are these for?)
             // make sure that they are read and position the reader after the
             // closing RESOURCE element, whatever it is.
 
-            while (XmlReader.NodeType != XmlNodeType.EndElement ||
-                   VoTable.Comparer.Compare(XmlReader.Name, Constants.TagVoTable) != 0)
+            while (!XmlReader.IsEndElement(Constants.TagVoTable))
             {
                 switch (version)
                 {
@@ -455,6 +463,8 @@ namespace Jhu.VO.VoTable
             }
 
             XmlReader.ReadEndElement();
+
+            return Task.CompletedTask;
         }
 
         #endregion

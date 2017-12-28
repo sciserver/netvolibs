@@ -222,6 +222,7 @@
     <Compile Include="VoTable\VoTableResource.cs" />
     <Compile Include="VoTable\VoTableSerialization.cs" />
     <Compile Include="VoTable\VoTableVersion.cs" />
+    <Compile Include="VoTable\XmlReaderExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="VoTable\ExceptionMessage.resx">

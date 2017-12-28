@@ -21,13 +21,13 @@ namespace Jhu.VO.VoTable
 
             var file = GetTestFilePath(filename);
             vt = new VoTable(file, FileAccess.Read);
-            vt.ReadHeader();
+            vt.ReadHeaderAsync().Wait();
 
             int q = 0;
 
             while ((res = vt.ReadNextResource()) != null)
             {
-                res.ReadHeader();
+                res.ReadHeaderAsync().Wait();
                 var values = new object[res.Columns.Count];
 
                 if (gt != null && q == 0)
@@ -48,13 +48,13 @@ namespace Jhu.VO.VoTable
                     r++;
                 }
 
-                res.ReadToFinish();
-                res.ReadFooter();
+                res.ReadToFinishAsync().Wait();
+                res.ReadFooterAsync().Wait();
 
                 Assert.AreEqual(rows[q], r);
             }
 
-            vt.ReadFooter();
+            vt.ReadFooterAsync().Wait();
         }
 
         [TestMethod]
