@@ -25,7 +25,7 @@ namespace Jhu.VO.VoTable.V1_2
         [XmlElement(Constants.TagGroup, typeof(Group), Order = 2)]
         [XmlElement(Constants.TagParam, typeof(Param), Order = 2)]
         [XmlElement(Constants.TagInfo, typeof(Info), Order = 2)]
-        public List<object> ItemList_ForXml { get; set; }
+        public List<object> ItemList_ForXml { get; set; } = new List<object>();
 
         [XmlIgnore]
         public ItemList<CoordinateSystem> CoosysList
@@ -57,7 +57,7 @@ namespace Jhu.VO.VoTable.V1_2
         public List<Resource> ResourceList { get; set; }
 
         [XmlElement(Constants.TagInfo, Order = 4)]
-        public List<Info> InfoList2 { get; set; }
+        public List<Info> InfoList2 { get; set; } = new List<Info>();
 
         [XmlAttribute(Constants.AttributeID)]
         public string ID { get; set; }

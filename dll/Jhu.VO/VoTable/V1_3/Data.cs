@@ -51,6 +51,6 @@ namespace Jhu.VO.VoTable.V1_3
         #endregion
 
         [XmlElement(Constants.TagInfo)]
-        public List<Info> InfoList { get; set; }
+        public List<Info> InfoList { get; set; } = new List<Info>();
     }
 }

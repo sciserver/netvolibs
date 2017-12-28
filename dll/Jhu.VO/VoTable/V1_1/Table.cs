@@ -20,7 +20,7 @@ namespace Jhu.VO.VoTable.V1_1
         [XmlElement(Constants.TagField, typeof(Field), Order = 1)]
         [XmlElement(Constants.TagParam, typeof(Param), Order = 1)]
         [XmlElement(Constants.TagGroup, typeof(Group), Order = 1)]
-        public List<object> ItemList_ForXml { get; set; }
+        public List<object> ItemList_ForXml { get; set; } = new List<object>();
 
         [XmlIgnore]
         public ItemList<Field> FieldList
@@ -43,7 +43,7 @@ namespace Jhu.VO.VoTable.V1_1
         #endregion
 
         [XmlElement(Constants.TagLink, Order = 2)]
-        public List<Link> LinkList { get; set; }
+        public List<Link> LinkList { get; set; } = new List<Link>();
 
         [XmlElement(Constants.TagData, Order = 3)]
         public Data Data { get; set; }

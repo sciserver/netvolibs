@@ -19,13 +19,32 @@ namespace Jhu.VO.VoTable
     [Serializable]
     public class VoTableResource : ICloneable
     {
-        private static readonly char[] whitespace = new[] { ' ', '\t', '\r', '\n' };
         private static readonly System.Globalization.CultureInfo invariantCulture = System.Globalization.CultureInfo.InvariantCulture;
 
         private delegate object TextColumnReader(VoTableColumn column, string text);
         private delegate void TextColumnWriter(VoTableColumn column, XmlReader writer, object value);
         private delegate object BinaryColumnReader(VoTableColumn column, byte[] buffer, int length, SharpFitsIO.BitConverterBase bitConverter);
         private delegate void BinaryColumnWriter(VoTableColumn column, byte[] buffer, SharpFitsIO.BitConverterBase bitConverter, object value);
+
+        [NonSerialized]
+        private V1_1.Resource resource_v1_1;
+
+        [NonSerialized]
+        private V1_2.Resource resource_v1_2;
+
+        [NonSerialized]
+        private V1_3.Resource resource_v1_3;
+
+        // TODO: support one table per resource, no recursive resources
+
+        [NonSerialized]
+        private V1_1.Table table_v1_1;
+
+        [NonSerialized]
+        private V1_2.Table table_v1_2;
+
+        [NonSerialized]
+        private V1_3.Table table_v1_3;
 
         [NonSerialized]
         private Dictionary<Type, VoTableDataTypeMapping> dataTypeMappings;
@@ -125,6 +144,8 @@ namespace Jhu.VO.VoTable
 
         public void RegisterTypeMapping(VoTableDataTypeMapping mapping)
         {
+            // TODO implement mapping in reader functions
+
             if (dataTypeMappings == null)
             {
                 dataTypeMappings = new Dictionary<Type, VoTableDataTypeMapping>();
@@ -160,7 +181,7 @@ namespace Jhu.VO.VoTable
             if (!tableEndReached)
             {
                 CreateTextColumnReaders();
-                ParseMagicNull();
+                ParseMagicNulls();
 
                 if (serialization == VoTableSerialization.Binary ||
                     serialization == VoTableSerialization.Binary2)
@@ -174,6 +195,21 @@ namespace Jhu.VO.VoTable
 
         private Task ReadResourceElementAsync()
         {
+            switch (File.Version)
+            {
+                case VoTableVersion.V1_1:
+                    resource_v1_1 = new V1_1.Resource();
+                    break;
+                case VoTableVersion.V1_2:
+                    resource_v1_2 = new V1_2.Resource();
+                    break;
+                case VoTableVersion.V1_3:
+                    resource_v1_3 = new V1_3.Resource();
+                    break;
+                default:
+                    throw new NotImplementedException();
+            }
+
             // The reader is now positioned on the RESOURCE tag   
             File.XmlReader.ReadStartElement(Constants.TagResource);
 
@@ -197,19 +233,19 @@ namespace Jhu.VO.VoTable
                         switch (File.XmlReader.Name)
                         {
                             case Constants.TagDescription:
-                                File.Deserialize<V1_1.AnyText>(Constants.TagDescription, Constants.NamespaceVoTableV1_1);
+                                resource_v1_1.Description = File.Deserialize<V1_1.AnyText>(Constants.TagDescription, Constants.NamespaceVoTableV1_1);
                                 break;
                             case Constants.TagInfo:
-                                File.Deserialize<V1_1.Info>();
+                                resource_v1_1.InfoList.Add(File.Deserialize<V1_1.Info>());
                                 break;
                             case Constants.TagCoosys:
-                                File.Deserialize<V1_1.Coosys>();
+                                resource_v1_1.CoosysList.Add(File.Deserialize<V1_1.Coosys>());
                                 break;
                             case Constants.TagParam:
-                                File.Deserialize<V1_1.Param>();
+                                resource_v1_1.ParamList.Add(File.Deserialize<V1_1.Param>());
                                 break;
                             case Constants.TagLink:
-                                File.Deserialize<V1_1.Link>();
+                                resource_v1_1.LinkList.Add(File.Deserialize<V1_1.Link>());
                                 break;
                             case Constants.TagResource:
                                 throw Error.RecursiveResourceNotSupported();
@@ -221,22 +257,22 @@ namespace Jhu.VO.VoTable
                         switch (File.XmlReader.Name)
                         {
                             case Constants.TagDescription:
-                                File.Deserialize<V1_2.AnyText>(Constants.TagDescription, Constants.NamespaceVoTableV1_2);
+                                resource_v1_2.Description = File.Deserialize<V1_2.AnyText>(Constants.TagDescription, Constants.NamespaceVoTableV1_2);
                                 break;
                             case Constants.TagInfo:
-                                File.Deserialize<V1_2.Info>();
+                                resource_v1_2.InfoList1.Add(File.Deserialize<V1_2.Info>());
                                 break;
                             case Constants.TagCoosys:
-                                File.Deserialize<V1_2.CoordinateSystem>();
+                                resource_v1_2.CoosysList.Add(File.Deserialize<V1_2.CoordinateSystem>());
                                 break;
                             case Constants.TagGroup:
-                                File.Deserialize<V1_2.Group>();
+                                resource_v1_2.GroupList.Add(File.Deserialize<V1_2.Group>());
                                 break;
                             case Constants.TagParam:
-                                File.Deserialize<V1_2.Param>();
+                                resource_v1_2.ParamList.Add(File.Deserialize<V1_2.Param>());
                                 break;
                             case Constants.TagLink:
-                                File.Deserialize<V1_2.Link>();
+                                resource_v1_2.LinkList.Add(File.Deserialize<V1_2.Link>());
                                 break;
                             case Constants.TagResource:
                                 throw Error.RecursiveResourceNotSupported();
@@ -249,22 +285,22 @@ namespace Jhu.VO.VoTable
                         switch (File.XmlReader.Name)
                         {
                             case Constants.TagDescription:
-                                File.Deserialize<V1_3.AnyText>(Constants.TagDescription, Constants.NamespaceVoTableV1_3);
+                                resource_v1_3.Description = File.Deserialize<V1_3.AnyText>(Constants.TagDescription, Constants.NamespaceVoTableV1_3);
                                 break;
                             case Constants.TagInfo:
-                                File.Deserialize<V1_3.Info>();
+                                resource_v1_3.InfoList1.Add(File.Deserialize<V1_3.Info>());
                                 break;
                             case Constants.TagCoosys:
-                                File.Deserialize<V1_3.CoordinateSystem>();
+                                resource_v1_3.CoosysList.Add(File.Deserialize<V1_3.CoordinateSystem>());
                                 break;
                             case Constants.TagGroup:
-                                File.Deserialize<V1_3.Group>();
+                                resource_v1_3.GroupList.Add(File.Deserialize<V1_3.Group>());
                                 break;
                             case Constants.TagParam:
-                                File.Deserialize<V1_3.Param>();
+                                resource_v1_3.ParamList.Add(File.Deserialize<V1_3.Param>());
                                 break;
                             case Constants.TagLink:
-                                File.Deserialize<V1_3.Link>();
+                                resource_v1_3.LinkList.Add(File.Deserialize<V1_3.Link>());
                                 break;
                             case Constants.TagResource:
                                 throw Error.RecursiveResourceNotSupported();
@@ -282,6 +318,21 @@ namespace Jhu.VO.VoTable
 
         private Task ReadTableElementAsync()
         {
+            switch (File.Version)
+            {
+                case VoTableVersion.V1_1:
+                    table_v1_1 = new V1_1.Table();
+                    break;
+                case VoTableVersion.V1_2:
+                    table_v1_2 = new V1_2.Table();
+                    break;
+                case VoTableVersion.V1_3:
+                    table_v1_3 = new V1_3.Table();
+                    break;
+                default:
+                    throw new NotImplementedException();
+            }
+
             // While processing the above tags, collect info on columns
             columns = new List<VoTableColumn>();
 
@@ -303,19 +354,20 @@ namespace Jhu.VO.VoTable
                         switch (File.XmlReader.Name)
                         {
                             case Constants.TagDescription:
-                                File.Deserialize<V1_1.AnyText>(Constants.TagDescription, Constants.NamespaceVoTableV1_1);
+                                table_v1_1.Description = File.Deserialize<V1_1.AnyText>(Constants.TagDescription, Constants.NamespaceVoTableV1_1);
                                 break;
                             case Constants.TagField:
                                 field = File.Deserialize<V1_1.Field>();
+                                table_v1_1.FieldList.Add((V1_1.Field)field);
                                 break;
                             case Constants.TagParam:
-                                File.Deserialize<V1_1.Param>();
+                                table_v1_1.ParamList.Add(File.Deserialize<V1_1.Param>());
                                 break;
                             case Constants.TagGroup:
-                                File.Deserialize<V1_1.Group>();
+                                table_v1_1.GroupList.Add(File.Deserialize<V1_1.Group>());
                                 break;
                             case Constants.TagLink:
-                                File.Deserialize<V1_1.Link>();
+                                table_v1_1.LinkList.Add(File.Deserialize<V1_1.Link>());
                                 throw Error.LinksNotSupported();
                             default:
                                 throw Error.InvalidFormat();
@@ -326,22 +378,23 @@ namespace Jhu.VO.VoTable
                         switch (File.XmlReader.Name)
                         {
                             case Constants.TagDescription:
-                                File.Deserialize<V1_2.AnyText>(Constants.TagDescription, Constants.NamespaceVoTableV1_2);
+                                table_v1_2.Description = File.Deserialize<V1_2.AnyText>(Constants.TagDescription, Constants.NamespaceVoTableV1_2);
                                 break;
                             case Constants.TagInfo:
-                                File.Deserialize<V1_2.Info>();
+                                table_v1_2.InfoList1.Add(File.Deserialize<V1_2.Info>());
                                 break;
                             case Constants.TagField:
                                 field = File.Deserialize<V1_2.Field>();
+                                table_v1_2.FieldList.Add((V1_2.Field)field);
                                 break;
                             case Constants.TagParam:
-                                File.Deserialize<V1_2.Param>();
+                                table_v1_2.ParamList.Add(File.Deserialize<V1_2.Param>());
                                 break;
                             case Constants.TagGroup:
-                                File.Deserialize<V1_2.Group>();
+                                table_v1_2.GroupList.Add(File.Deserialize<V1_2.Group>());
                                 break;
                             case Constants.TagLink:
-                                File.Deserialize<V1_2.Link>();
+                                table_v1_2.LinkList.Add(File.Deserialize<V1_2.Link>());
                                 throw Error.LinksNotSupported();
                             default:
                                 throw Error.InvalidFormat();
@@ -352,22 +405,23 @@ namespace Jhu.VO.VoTable
                         switch (File.XmlReader.Name)
                         {
                             case Constants.TagDescription:
-                                File.Deserialize<V1_3.AnyText>(Constants.TagDescription, Constants.NamespaceVoTableV1_3);
+                                table_v1_3.Description = File.Deserialize<V1_3.AnyText>(Constants.TagDescription, Constants.NamespaceVoTableV1_3);
                                 break;
                             case Constants.TagInfo:
-                                File.Deserialize<V1_3.Info>();
+                                table_v1_3.InfoList1.Add(File.Deserialize<V1_3.Info>());
                                 break;
                             case Constants.TagField:
                                 field = File.Deserialize<V1_3.Field>();
+                                table_v1_3.FieldList.Add((V1_3.Field)field);
                                 break;
                             case Constants.TagParam:
-                                File.Deserialize<V1_3.Param>();
+                                table_v1_3.ParamList.Add(File.Deserialize<V1_3.Param>());
                                 break;
                             case Constants.TagGroup:
-                                File.Deserialize<V1_3.Group>();
+                                table_v1_3.GroupList.Add(File.Deserialize<V1_3.Group>());
                                 break;
                             case Constants.TagLink:
-                                File.Deserialize<V1_3.Link>();
+                                table_v1_3.LinkList.Add(File.Deserialize<V1_3.Link>());
                                 throw Error.LinksNotSupported();
                             default:
                                 throw Error.InvalidFormat();
@@ -516,7 +570,7 @@ namespace Jhu.VO.VoTable
         /// <summary>
         /// Completes reading of a resource by reading its closing tag.
         /// </summary>
-        public Task ReadFooterAsync()
+        public async Task ReadFooterAsync()
         {
             // Make sure the ending RESOURCE tag is read and the reader
             // is positioned at the next tag
@@ -531,13 +585,13 @@ namespace Jhu.VO.VoTable
                 switch (File.Version)
                 {
                     case VoTableVersion.V1_1:
-                        File.Deserialize<V1_1.Info>();
+                        // no additional INFO tags
                         break;
                     case VoTableVersion.V1_2:
-                        File.Deserialize<V1_2.Info>();
+                        table_v1_2.Data.InfoList.Add(File.Deserialize<V1_2.Info>());
                         break;
                     case VoTableVersion.V1_3:
-                        File.Deserialize<V1_3.Info>();
+                        table_v1_3.Data.InfoList.Add(File.Deserialize<V1_3.Info>());
                         break;
                     default:
                         throw new NotImplementedException();
@@ -551,13 +605,13 @@ namespace Jhu.VO.VoTable
                 switch (File.Version)
                 {
                     case VoTableVersion.V1_1:
-                        File.Deserialize<V1_1.Info>();
+                        // no additional INFO tags
                         break;
                     case VoTableVersion.V1_2:
-                        File.Deserialize<V1_2.Info>();
+                        table_v1_2.InfoList2.Add(File.Deserialize<V1_2.Info>());
                         break;
                     case VoTableVersion.V1_3:
-                        File.Deserialize<V1_3.Info>();
+                        table_v1_3.InfoList2.Add(File.Deserialize<V1_3.Info>());
                         break;
                     default:
                         throw new NotImplementedException();
@@ -571,30 +625,43 @@ namespace Jhu.VO.VoTable
                 switch (File.Version)
                 {
                     case VoTableVersion.V1_1:
-                        File.Deserialize<V1_1.Info>();
+                        // no additional INFO tags
+                        await File.XmlReader.MoveAfterEndAsync(file.XmlReader.Name);
                         break;
                     case VoTableVersion.V1_2:
-                        File.Deserialize<V1_2.Info>();
+                        switch (File.XmlReader.Name)
+                        {
+                            case Constants.TagInfo:
+                                resource_v1_2.InfoList2.Add(File.Deserialize<V1_2.Info>());
+                                break;
+                            default:
+                                await File.XmlReader.MoveAfterEndAsync(file.XmlReader.Name);
+                                break;
+                        }
                         break;
                     case VoTableVersion.V1_3:
-                        File.Deserialize<V1_3.Info>();
+                        switch (File.XmlReader.Name)
+                        {
+                            case Constants.TagInfo:
+                                resource_v1_3.InfoList2.Add(File.Deserialize<V1_3.Info>());
+                                break;
+                            default:
+                                await File.XmlReader.MoveAfterEndAsync(file.XmlReader.Name);
+                                break;
+                        }
                         break;
                     default:
                         throw new NotImplementedException();
                 }
-
-                // TODO: in reality, the RESOURCE tag could contain additional special tags
             }
 
             File.XmlReader.ReadEndElement();
-
-            return Task.CompletedTask;
         }
 
         #endregion
         #region Row reader functions
 
-        private void ParseMagicNull()
+        private void ParseMagicNulls()
         {
             for (int i = 0; i < columns.Count; i++)
             {
@@ -607,8 +674,9 @@ namespace Jhu.VO.VoTable
 
         public Task<bool> ReadNextRowAsync(object[] values, int startIndex)
         {
-            // TODO: take ID from attribute of TR tag
-            // TODO: use encoding from TD tag
+            // TODO: take ID from attribute of TR tag?
+            // TODO: use encoding from TD tag?
+            // According to the docs, these are just dummy attributes
 
             if (serialization == VoTableSerialization.TableData)
             {
@@ -649,9 +717,15 @@ namespace Jhu.VO.VoTable
                         {
                             File.XmlReader.ReadStartElement(Constants.TagTD);
 
+                            // TODO: add array support here. If arraysize is set and not a string,
+                            // split text and use parser on parts.
+
+                            // TODO: implement type mapping
+
                             var text = await File.XmlReader.ReadContentAsStringAsync();
                             values[startIndex + q] = textColumnReaders[q](columns[q], text);
 
+                            // Magic nulls
                             if (columns[q].DataType.NullValue != null &&
                                 columns[q].DataType.NullValue.Equals(values[startIndex + q]))
                             {
@@ -663,6 +737,7 @@ namespace Jhu.VO.VoTable
                         }
                         else
                         {
+                            // Standard null
                             values[startIndex + q] = null;
                             await File.XmlReader.ReadAsync();
                         }
@@ -802,7 +877,29 @@ namespace Jhu.VO.VoTable
                 // TODO: how to deal with bit arrays?
                 // TODO: how to deal with arrays in general?
 
-                if (type == typeof(Boolean))
+                if (type == typeof(SharpFitsIO.Bit))
+                {
+                    textColumnReaders[i] = delegate (VoTableColumn column, string text)
+                    {
+                        if (text == "1" || text == "t" || text == "T")
+                        {
+                            return new SharpFitsIO.Bit(true);
+                        }
+                        else if (text == "0" || text == "f" || text == "F")
+                        {
+                            return new SharpFitsIO.Bit(false);
+                        }
+                        else if (text == "" || text == " " || text == "?")
+                        {
+                            return null;
+                        }
+                        else
+                        {
+                            throw new FormatException();
+                        }
+                    };
+                }
+                else if (type == typeof(Boolean))
                 {
                     textColumnReaders[i] = delegate (VoTableColumn column, string text)
                     {
@@ -1065,24 +1162,6 @@ namespace Jhu.VO.VoTable
             await File.XmlWriter.WriteEndElementAsync();
             await File.XmlWriter.WriteEndElementAsync();
             await File.XmlWriter.WriteEndElementAsync();
-        }
-
-        #endregion
-        #region Read delegate generator functions
-        
-        private int ReadString(SharpFitsIO.BitConverterBase converter, VoTableColumn col, byte[] bytes, int startIndex, out object value)
-        {
-            throw new NotImplementedException();
-        }
-
-        private int ReadScalar(SharpFitsIO.BitConverterBase converter, VoTableColumn col, byte[] bytes, int startIndex, out object value)
-        {
-            throw new NotImplementedException();
-        }
-
-        private int ReadArray(SharpFitsIO.BitConverterBase converter, VoTableColumn col, byte[] bytes, int startIndex, out object value)
-        {
-            throw new NotImplementedException();
         }
 
         #endregion

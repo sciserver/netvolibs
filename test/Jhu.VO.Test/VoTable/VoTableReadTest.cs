@@ -63,7 +63,7 @@ namespace Jhu.VO.VoTable
             var gt = new object[][]
             {
                 new object [] {
-                    true, true, (byte)1, (short)1, 1, 1L, "a", "ő","almafa","körtefa","szilvafa","tréfa",
+                    true, new SharpFitsIO.Bit(true), (byte)1, (short)1, 1, 1L, "a", "ő","almafa","körtefa","szilvafa","tréfa",
                     0.1234567f, 0.1234567891,
                     new SharpFitsIO.SingleComplex(12.434f, 54.23f),
                     new SharpFitsIO.DoubleComplex(32.343, 34.12)
@@ -81,7 +81,7 @@ namespace Jhu.VO.VoTable
             var gt = new object[][]
             {
                 new object [] {
-                    true, true, (byte)1, (short)1, 1, 1L, "a", "ő","almafa","körtefa","szilvafa","tréfa",
+                    true, new SharpFitsIO.Bit(true), (byte)1, (short)1, 1, 1L, "a", "ő","almafa","körtefa","szilvafa","tréfa",
                     0.1234567f, 0.1234567891,
                     new SharpFitsIO.SingleComplex(12.434f, 54.23f),
                     new SharpFitsIO.DoubleComplex(32.343, 34.12)

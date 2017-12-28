@@ -16,14 +16,14 @@ namespace Jhu.VO.VoTable.V1_2
         public AnyText Description { get; set; }
 
         [XmlElement(Constants.TagInfo, Order = 1)]
-        public List<Info> InfoList1 { get; set; }
+        public List<Info> InfoList1 { get; set; } = new List<Info>();
 
         #region FIELD PARAM GROUP
 
         [XmlElement(Constants.TagField, typeof(Field), Order = 2)]
         [XmlElement(Constants.TagParam, typeof(Param), Order = 2)]
         [XmlElement(Constants.TagGroup, typeof(Group), Order = 2)]
-        public List<object> ItemList_ForXml { get; set; }
+        public List<object> ItemList_ForXml { get; set; } = new List<object>();
 
         [XmlIgnore]
         public ItemList<Field> FieldList
@@ -46,13 +46,13 @@ namespace Jhu.VO.VoTable.V1_2
         #endregion
 
         [XmlElement(Constants.TagLink, Order = 3)]
-        public List<Link> LinkList { get; set; }
+        public List<Link> LinkList { get; set; } = new List<Link>();
 
         [XmlElement(Constants.TagData, Order = 4)]
-        public Data Data { get; set; }
+        public Data Data { get; set; } = new Data();
 
         [XmlElement(Constants.TagInfo, Order = 5)]
-        public List<Info> InfoList2 { get; set; }
+        public List<Info> InfoList2 { get; set; } = new List<Info>();
 
         [XmlAttribute(Constants.AttributeID)]
         public string ID { get; set; }

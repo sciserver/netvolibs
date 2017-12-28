@@ -16,14 +16,14 @@ namespace Jhu.VO.VoTable.V1_2
         public AnyText Description { get; set; }
 
         [XmlElement(Constants.TagInfo, Order = 1)]
-        public List<Info> InfoList1 { get; set; }
+        public List<Info> InfoList1 { get; set; } = new List<Info>();
 
         #region COOSYS GROUP PARAM
 
         [XmlElement(Constants.TagCoosys, typeof(CoordinateSystem), Order = 2)]
         [XmlElement(Constants.TagGroup, typeof(Group), Order = 2)]
         [XmlElement(Constants.TagParam, typeof(Param), Order = 2)]
-        public List<object> ItemList1_ForXml { get; set; }
+        public List<object> ItemList1_ForXml { get; set; } = new List<object>();
 
         [XmlIgnore]
         public ItemList<CoordinateSystem> CoosysList
@@ -46,13 +46,13 @@ namespace Jhu.VO.VoTable.V1_2
         #endregion
 
         [XmlElement(Constants.TagLink, Order = 3)]
-        public List<Link> LinkList { get; set; }
+        public List<Link> LinkList { get; set; } = new List<Link>();
 
         #region TABLE RESOURCE
 
         [XmlElement(Constants.TagTable, typeof(Table), Order = 4)]
         [XmlElement(Constants.TagResource, typeof(Resource), Order = 4)]
-        public List<object> ItemList2_ForXml { get; set; }
+        public List<object> ItemList2_ForXml { get; set; } = new List<object>();
 
         [XmlIgnore]
         public ItemList<Table> TableList
@@ -67,7 +67,7 @@ namespace Jhu.VO.VoTable.V1_2
         }
 
         [XmlElement(Constants.TagInfo, Order = 5)]
-        public List<Info> InfoList2 { get; set; }
+        public List<Info> InfoList2 { get; set; } = new List<Info>();
 
         #endregion
 

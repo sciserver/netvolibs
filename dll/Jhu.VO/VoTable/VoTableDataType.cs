@@ -116,7 +116,10 @@ namespace Jhu.VO.VoTable
         {
             get
             {
-                if (isVariableSize || isUnboundSize || size == null || size.Length == 0)
+                // TODO: review this when implementing arrays
+                // It handles varchar and varbinary now.
+
+                if (isUnboundSize || size == null || size.Length == 0)
                 {
                     throw new InvalidOperationException();
                 }

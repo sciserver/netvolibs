@@ -39,6 +39,15 @@ namespace Jhu.VO.VoTable
         private VoTableVersion version;
 
         [NonSerialized]
+        private V1_1.VoTable votable_v1_1;
+
+        [NonSerialized]
+        private V1_2.VoTable votable_v1_2;
+
+        [NonSerialized]
+        private V1_3.VoTable votable_v1_3;
+
+        [NonSerialized]
         private List<VoTableResource> resources;
 
         [NonSerialized]
@@ -277,13 +286,6 @@ namespace Jhu.VO.VoTable
             }
 
             var s = new XmlSerializer(typeof(T), root);
-
-            // TODO: debug code, delete
-            s.UnknownNode += delegate (object sender, XmlNodeEventArgs e)
-            {
-                throw new NotImplementedException();
-            };
-
             return (T)s.Deserialize(XmlReader);
         }
 
@@ -304,12 +306,15 @@ namespace Jhu.VO.VoTable
             {
                 case Constants.NamespaceVoTableV1_1:
                     version = VoTableVersion.V1_1;
+                    votable_v1_1 = new V1_1.VoTable();
                     break;
                 case Constants.NamespaceVoTableV1_2:
                     version = VoTableVersion.V1_2;
+                    votable_v1_2 = new V1_2.VoTable();
                     break;
                 case Constants.NamespaceVoTableV1_3:
                     version = VoTableVersion.V1_3;
+                    votable_v1_3 = new V1_3.VoTable();
                     break;
                 default:
                     throw Error.UnsupportedVersion(XmlReader.NamespaceURI);
@@ -333,19 +338,19 @@ namespace Jhu.VO.VoTable
                         switch (XmlReader.Name)
                         {
                             case Constants.TagDescription:
-                                Deserialize<V1_1.AnyText>(Constants.TagDescription, Constants.NamespaceVoTableV1_1);
+                                votable_v1_1.Description = Deserialize<V1_1.AnyText>(Constants.TagDescription, Constants.NamespaceVoTableV1_1);
                                 break;
                             case Constants.TagDefinitions:
-                                Deserialize<V1_1.Definitions>();
+                                votable_v1_1.Definitions = Deserialize<V1_1.Definitions>();
                                 break;
                             case Constants.TagCoosys:
-                                Deserialize<V1_1.Coosys>();
+                                votable_v1_1.CoosysList.Add(Deserialize<V1_1.Coosys>());
                                 break;
                             case Constants.TagParam:
-                                Deserialize<V1_1.Param>();
+                                votable_v1_1.ParamList.Add(Deserialize<V1_1.Param>());
                                 break;
                             case Constants.TagInfo:
-                                Deserialize<V1_1.Info>();
+                                votable_v1_1.InfoList1.Add(Deserialize<V1_1.Info>());
                                 break;
                             default:
                                 throw Error.InvalidFormat();
@@ -356,22 +361,22 @@ namespace Jhu.VO.VoTable
                         switch (XmlReader.Name)
                         {
                             case Constants.TagDescription:
-                                Deserialize<V1_2.AnyText>(Constants.TagDescription, Constants.NamespaceVoTableV1_2);
+                                votable_v1_2.Description = Deserialize<V1_2.AnyText>(Constants.TagDescription, Constants.NamespaceVoTableV1_2);
                                 break;
                             case Constants.TagDefinitions:
-                                Deserialize<V1_2.Definitions>();
+                                votable_v1_2.Definitions = Deserialize<V1_2.Definitions>();
                                 break;
                             case Constants.TagCoosys:
-                                Deserialize<V1_2.CoordinateSystem>();
+                                votable_v1_2.CoosysList.Add(Deserialize<V1_2.CoordinateSystem>());
                                 break;
                             case Constants.TagGroup:
-                                Deserialize<V1_2.Group>();
+                                votable_v1_2.GroupList.Add(Deserialize<V1_2.Group>());
                                 break;
                             case Constants.TagParam:
-                                Deserialize<V1_2.Param>();
+                                votable_v1_2.ParamList.Add(Deserialize<V1_2.Param>());
                                 break;
                             case Constants.TagInfo:
-                                Deserialize<V1_2.Info>();
+                                votable_v1_2.InfoList1.Add(Deserialize<V1_2.Info>());
                                 break;
                             default:
                                 throw Error.InvalidFormat();
@@ -382,22 +387,22 @@ namespace Jhu.VO.VoTable
                         switch (XmlReader.Name)
                         {
                             case Constants.TagDescription:
-                                Deserialize<V1_3.AnyText>(Constants.TagDescription, Constants.NamespaceVoTableV1_3);
+                                votable_v1_3.Description = Deserialize<V1_3.AnyText>(Constants.TagDescription, Constants.NamespaceVoTableV1_3);
                                 break;
                             case Constants.TagDefinitions:
-                                Deserialize<V1_3.Definitions>();
+                                votable_v1_3.Definitions = Deserialize<V1_3.Definitions>();
                                 break;
                             case Constants.TagCoosys:
-                                Deserialize<V1_3.CoordinateSystem>();
+                                votable_v1_3.CoosysList.Add(Deserialize<V1_3.CoordinateSystem>());
                                 break;
                             case Constants.TagGroup:
-                                Deserialize<V1_3.Group>();
+                                votable_v1_3.GroupList.Add(Deserialize<V1_3.Group>());
                                 break;
                             case Constants.TagParam:
-                                Deserialize<V1_3.Param>();
+                                votable_v1_3.ParamList.Add(Deserialize<V1_3.Param>());
                                 break;
                             case Constants.TagInfo:
-                                Deserialize<V1_3.Info>();
+                                votable_v1_3.InfoList1.Add(Deserialize<V1_3.Info>());
                                 break;
                             default:
                                 throw Error.InvalidFormat();
@@ -413,8 +418,6 @@ namespace Jhu.VO.VoTable
 
             // Reader is positioned on the first RESOURCE tag now
             // Header is read completely, now wait for framework to call OnReadNextBlock
-
-            // TODO: make sure XSD validation fails when no RESOURCE tag found
         }
 
         /// <summary>
@@ -449,13 +452,13 @@ namespace Jhu.VO.VoTable
                 switch (version)
                 {
                     case VoTableVersion.V1_1:
-                        Deserialize<V1_1.Info>();
+                        // no additional info tags
                         break;
                     case VoTableVersion.V1_2:
-                        Deserialize<V1_2.Info>();
+                        votable_v1_2.InfoList2.Add(Deserialize<V1_2.Info>());
                         break;
                     case VoTableVersion.V1_3:
-                        Deserialize<V1_3.Info>();
+                        votable_v1_3.InfoList2.Add(Deserialize<V1_3.Info>());
                         break;
                     default:
                         throw new NotImplementedException();

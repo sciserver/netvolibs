@@ -20,7 +20,7 @@ namespace Jhu.VO.VoTable.V1_1
         [XmlElement(Constants.TagInfo, typeof(Info), Order = 1)]
         [XmlElement(Constants.TagCoosys, typeof(Coosys), Order = 1)]
         [XmlElement(Constants.TagParam, typeof(Param), Order = 1)]
-        public List<object> ItemList1_ForXml { get; set; }
+        public List<object> ItemList1_ForXml { get; set; } = new List<object>();
 
         [XmlIgnore]
         public ItemList<Info> InfoList
@@ -43,10 +43,10 @@ namespace Jhu.VO.VoTable.V1_1
         #endregion
 
         [XmlElement(Constants.TagLink, Order = 2)]
-        public List<Link> LinkList { get; set; }
+        public List<Link> LinkList { get; set; } = new List<Link>();
 
         [XmlElement(Constants.TagTable, Order = 3)]
-        public List<Table> TableList { get; set; }
+        public List<Table> TableList { get; set; } = new List<Table>();
 
         [XmlElement(Constants.TagResource, Order = 4)]
         public List<Table> ResourceList { get; set; }

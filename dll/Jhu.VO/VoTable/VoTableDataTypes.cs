@@ -29,8 +29,8 @@ namespace Jhu.VO.VoTable
                 return new VoTableDataType()
                 {
                     Name = Constants.TypeBit,
-                    Type = typeof(bool),
-                    ByteSize = sizeof(Byte)
+                    Type = typeof(SharpFitsIO.Bit),
+                    ByteSize = -1
                 };
             }
         }
