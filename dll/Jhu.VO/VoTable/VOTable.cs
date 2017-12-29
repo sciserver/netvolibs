@@ -100,22 +100,8 @@ namespace Jhu.VO.VoTable
             CopyMembers(old);
         }
 
-        public VoTable(string path, FileAccess fileAccess, VoTableVersion version, SharpFitsIO.Endianness endianness)
-            : base(path, fileAccess, endianness)
-        {
-            InitializeMembers(new StreamingContext());
-            this.version = version;
-            Open();
-        }
-
         public VoTable(string path, FileAccess fileAccess, VoTableVersion version)
-            : this(path, fileAccess, version, SharpFitsIO.Endianness.BigEndian)
-        {
-            // Overload
-        }
-
-        public VoTable(Stream stream, FileAccess fileAccess, VoTableVersion version, SharpFitsIO.Endianness endianness)
-            : base(stream, fileAccess, endianness)
+            : base(path, fileAccess, SharpFitsIO.Endianness.BigEndian)
         {
             InitializeMembers(new StreamingContext());
             this.version = version;
@@ -123,11 +109,13 @@ namespace Jhu.VO.VoTable
         }
 
         public VoTable(Stream stream, FileAccess fileAccess, VoTableVersion version)
-            : this(stream, fileAccess, version, SharpFitsIO.Endianness.BigEndian)
+            : base(stream, fileAccess, SharpFitsIO.Endianness.BigEndian)
         {
-            // Overload
+            InitializeMembers(new StreamingContext());
+            this.version = version;
+            Open();
         }
-
+        
         /// <summary>
         /// Initializes a VOTable object by re-using an already open xml reader.
         /// </summary>
@@ -216,6 +204,8 @@ namespace Jhu.VO.VoTable
         protected override void OpenForWrite()
         {
             base.OpenForWrite();
+
+            InitializeVersion();
 
             if (xmlWriter == null)
             {
@@ -335,9 +325,9 @@ namespace Jhu.VO.VoTable
 
         public async Task WriteAttributeAsync(string name, string value)
         {
-            if (value != null)
+            if (!String.IsNullOrEmpty(value))
             {
-                await XmlWriter.WriteAttributeStringAsync("", name, @namespace, value);
+                await XmlWriter.WriteAttributeStringAsync("", name, null, value);
             }
         }
 
@@ -347,7 +337,7 @@ namespace Jhu.VO.VoTable
             {
                 foreach (var a in attributes)
                 {
-                    await XmlWriter.WriteAttributeStringAsync("", a.Name, @namespace, a.Value);
+                    await XmlWriter.WriteAttributeStringAsync("", a.Name, null, a.Value);
                 }
             }
         }
@@ -528,7 +518,7 @@ namespace Jhu.VO.VoTable
                 default:
                     throw new NotImplementedException();
             }
-
+            
             await XmlWriter.WriteStartElementAsync(null, Constants.TagVoTable, @namespace);
             await XmlWriter.WriteAttributeStringAsync("xmlns", "xsd", null, Constants.NamespaceXsd);
             await XmlWriter.WriteAttributeStringAsync("xmlns", "xsi", null, Constants.NamespaceXsi);
@@ -537,29 +527,12 @@ namespace Jhu.VO.VoTable
             await WriteAttributeAsync(Constants.AttributeID, "votable_1");
             await WriteAttributeAsync(Constants.AttributeVersion, ver);
 
-            /*
-            switch (version)
-            {
-                case VoTableVersion.V1_1:
-                    WriteElement(votable_v1_1.Description, Constants.TagDescription, Constants.NamespaceVoTableV1_1);
-                    WriteElement(votable_v1_1.Definitions);
-                    WriteElements(votable_v1_1.ItemList_ForXml);
-                    WriteElements(votable_v1_1.InfoList1);
-                    break;
-                case VoTableVersion.V1_2:
-                    WriteElement(votable_v1_2.Description, Constants.TagDescription, Constants.NamespaceVoTableV1_2);
-                    WriteElement(votable_v1_2.Definitions);
-                    WriteElements(votable_v1_2.ItemList_ForXml);
-                    break;
-                case VoTableVersion.V1_3:
-                    WriteElement(votable_v1_3.Description, Constants.TagDescription, Constants.NamespaceVoTableV1_3);
-                    WriteElement(votable_v1_3.Definitions);
-                    WriteElements(votable_v1_3.ItemList_ForXml);
-                    break;
-                default:
-                    throw new NotImplementedException();
-            }
-            */
+            WriteElement(votable.Description, Constants.TagDescription, @namespace);
+            WriteElement(votable.Definitions);
+            WriteElements(votable.CoosysList);
+            WriteElements(votable.GroupList);
+            WriteElements(votable.ParamList);
+            WriteElements(votable.InfoList1);
         }
 
         public async Task WriteFooterAsync()

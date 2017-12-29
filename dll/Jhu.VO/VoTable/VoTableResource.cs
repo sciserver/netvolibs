@@ -23,7 +23,7 @@ namespace Jhu.VO.VoTable
         private static readonly System.Globalization.CultureInfo invariantCulture = System.Globalization.CultureInfo.InvariantCulture;
 
         private delegate object TextColumnReader(VoTableColumn column, string text);
-        private delegate void TextColumnWriter(VoTableColumn column, XmlReader writer, object value);
+        private delegate string TextColumnWriter(VoTableColumn column, object value);
         private delegate object BinaryColumnReader(VoTableColumn column, byte[] buffer, int length, SharpFitsIO.BitConverterBase bitConverter);
         private delegate void BinaryColumnWriter(VoTableColumn column, byte[] buffer, SharpFitsIO.BitConverterBase bitConverter, object value);
 
@@ -121,10 +121,11 @@ namespace Jhu.VO.VoTable
             return new VoTableResource(this);
         }
 
-        public static VoTableResource Create(VoTable votable)
+        public static VoTableResource Create(VoTable votable, VoTableSerialization serialization)
         {
             var resource = new VoTableResource(votable);
             resource.InitializeVersion(votable.Version);
+            resource.serialization = serialization;
             return resource;
         }
 
@@ -175,7 +176,9 @@ namespace Jhu.VO.VoTable
 
             for (int i = 0; i < columns.Count; i++)
             {
-                // TODO: create FIELD tags
+                var field = table.CreateField();
+                columns[i].ToField(field);
+                table.FieldList.Add(field);
             }
         }
 
@@ -378,7 +381,7 @@ namespace Jhu.VO.VoTable
 
                 if (field != null)
                 {
-                    var c = VoTableColumn.Create(field);
+                    var c = VoTableColumn.FromField(field);
                     columns.Add(c);
                 }
             }
@@ -1033,128 +1036,144 @@ namespace Jhu.VO.VoTable
         /// </summary>
         public async Task WriteHeaderAsync()
         {
+            CreateTextColumnWriters();
+            WriteMagicNulls();
+
+            if (serialization == VoTableSerialization.Binary ||
+                serialization == VoTableSerialization.Binary2)
+            {
+                CreateBinaryColumnWriters();
+            }
+
             await WriteResourceElementAsync();
             await WriteTableElementAsync();
             await WriteDataElementAsync();
-
-            /*
-
-
-            // Write columns
-            for (int i = 0; i < Columns.Count; i++)
-            {
-                await WriteColumnAsync(Columns[i]);
-            }
-
-            await File.XmlWriter.WriteStartElementAsync(null, Constants.TagTableData, null);
-            */
         }
 
         private async Task WriteResourceElementAsync()
         {
             await File.XmlWriter.WriteStartElementAsync("", Constants.TagResource, File.Namespace);
-            /*
-            switch (File.Version)
-            {
-                case VoTableVersion.V1_1:
-                    await File.WriteAttributeAsync(Constants.AttributeName, resource_v1_1.Name);
-                    await File.WriteAttributeAsync(Constants.AttributeName, resource_v1_1.ID);
-                    await File.WriteAttributeAsync(Constants.AttributeName, resource_v1_1.Utype);
-                    await File.WriteAttributeAsync(Constants.AttributeName, resource_v1_1.Type);
-                    await File.WriteAttributesAsync(resource_v1_1.Attributes);
 
-                    File.WriteElement(resource_v1_1.Description, Constants.TagDescription, Constants.NamespaceVoTableV1_1);
-                    File.WriteElements(resource_v1_1.InfoList);
-                    File.WriteElements(resource_v1_1.ItemList1_ForXml);
-                    File.WriteElements(resource_v1_1.LinkList);
-                    break;
-                case VoTableVersion.V1_2:
-                    await File.WriteAttributeAsync(Constants.AttributeName, resource_v1_2.Name);
-                    await File.WriteAttributeAsync(Constants.AttributeName, resource_v1_2.ID);
-                    await File.WriteAttributeAsync(Constants.AttributeName, resource_v1_2.Utype);
-                    await File.WriteAttributeAsync(Constants.AttributeName, resource_v1_2.Type);
-                    await File.WriteAttributesAsync(resource_v1_2.Attributes);
+            await File.WriteAttributeAsync(Constants.AttributeName, resource.Name);
+            await File.WriteAttributeAsync(Constants.AttributeID, resource.ID);
+            await File.WriteAttributeAsync(Constants.AttributeUType, resource.Utype);
+            await File.WriteAttributeAsync(Constants.AttributeType, resource.Type);
+            await File.WriteAttributesAsync(resource.Attributes);
 
-                    File.WriteElement(resource_v1_2.Description, Constants.TagDescription, Constants.NamespaceVoTableV1_2);
-                    File.WriteElements(resource_v1_2.InfoList1);
-                    File.WriteElements(resource_v1_2.ItemList1_ForXml);
-                    File.WriteElements(resource_v1_2.LinkList);
-                    break;
-                case VoTableVersion.V1_3:
-                    await File.WriteAttributeAsync(Constants.AttributeName, resource_v1_3.Name);
-                    await File.WriteAttributeAsync(Constants.AttributeName, resource_v1_3.ID);
-                    await File.WriteAttributeAsync(Constants.AttributeName, resource_v1_3.Utype);
-                    await File.WriteAttributeAsync(Constants.AttributeName, resource_v1_3.Type);
-                    await File.WriteAttributesAsync(resource_v1_3.Attributes);
-
-                    File.WriteElement(resource_v1_3.Description, Constants.TagDescription, Constants.NamespaceVoTableV1_3);
-                    File.WriteElements(resource_v1_3.InfoList1);
-                    File.WriteElements(resource_v1_3.ItemList1_ForXml);
-                    File.WriteElements(resource_v1_3.LinkList);
-                    break;
-                default:
-                    throw new NotImplementedException();
-            }
-            */
+            File.WriteElement(resource.Description, Constants.TagDescription, File.Namespace);
+            File.WriteElements(resource.InfoList1);
+            File.WriteElements(resource.CoosysList);
+            File.WriteElements(resource.GroupList);
+            File.WriteElements(resource.ParamList);
+            File.WriteElements(resource.LinkList);
         }
 
         private async Task WriteTableElementAsync()
         {
             await File.XmlWriter.WriteStartElementAsync("", Constants.TagTable, File.Namespace);
 
-            // TODO
+            await File.WriteAttributeAsync(Constants.AttributeID, table.ID);
+            await File.WriteAttributeAsync(Constants.AttributeName, table.Name);
+
+            File.WriteElement(table.Description, Constants.TagDescription, File.Namespace);
+            File.WriteElements(table.InfoList1);
+            File.WriteElements(table.ParamList);
+            File.WriteElements(table.GroupList);
+            File.WriteElements(table.FieldList);
+            File.WriteElements(table.LinkList);
         }
 
         private async Task WriteDataElementAsync()
         {
             await File.XmlWriter.WriteStartElementAsync("", Constants.TagData, File.Namespace);
 
-            // TODO
-        }
-
-        private async Task WriteColumnAsync(VoTableColumn column)
-        {
-            await File.XmlWriter.WriteStartElementAsync(null, Constants.TagField, null);
-
-            await File.XmlWriter.WriteAttributeStringAsync(null, Constants.AttributeName, null, column.Name);
-            // *** TODO: write other column properties
-
-            await File.XmlWriter.WriteEndElementAsync();
-        }
-
-
-        public async Task WriteNextRowAsync(params object[] values)
-        {
-            /*
-            await File.XmlWriter.WriteStartElementAsync(null, Constants.TagTR, null);
-
-            for (int i = 0; i < Columns.Count; i++)
+            switch (serialization)
             {
-                // TODO: Do not use format here, or use standard votable formatting
-                if (values[i] == DBNull.Value)
-                {
-                    // TODO: how to handle nulls in VOTable?
-                    // Leave field blank
-                }
-                else
-                {
-                    await File.XmlWriter.WriteElementStringAsync(null, Constants.TagTD, null, ColumnFormatters[i](values[i], "{0}"));
-                }
+                case VoTableSerialization.TableData:
+                    await File.XmlWriter.WriteStartElementAsync("", Constants.TagTableData, File.Namespace);
+                    break;
+                case VoTableSerialization.Binary:
+                    await File.XmlWriter.WriteStartElementAsync("", Constants.TagBinary, File.Namespace);
+                    break;
+                case VoTableSerialization.Binary2:
+                    await File.XmlWriter.WriteStartElementAsync("", Constants.TagBinary2, File.Namespace);
+                    break;
+                case VoTableSerialization.Fits:
+                default:
+                    throw new NotImplementedException();
             }
 
-            await File.XmlWriter.WriteEndElementAsync();
-            */
+            switch (serialization)
+            {
+                case VoTableSerialization.TableData:
+                    break;
+                case VoTableSerialization.Binary:
+                case VoTableSerialization.Binary2:
+                case VoTableSerialization.Fits:
+                    await WriteStreamElementAsync();
+                    break;
+                default:
+                    throw new NotImplementedException();
+            }
+        }
 
-            // TODO
+        private async Task WriteStreamElementAsync()
+        {
+            await File.XmlWriter.WriteStartElementAsync("", Constants.TagStream, File.Namespace);
+            await File.WriteAttributeAsync(Constants.AttributeEncoding, VoTableEncoding.Base64.ToString().ToLowerInvariant());
+
+            // TODO: open stream here
+        }
+        
+        public async Task WriteNextRowAsync(params object[] values)
+        {
+            switch (serialization)
+            {
+                case VoTableSerialization.TableData:
+                    await WriteNextRowToTableAsync(values);
+                    break;
+                case VoTableSerialization.Binary:
+                case VoTableSerialization.Binary2:
+                    await WriteNextRowToStreamAsync(values);
+                    break;
+                default:
+                    throw new NotImplementedException();
+            }
         }
 
         public async Task WriteFooterAsync()
         {
+            // Stream
+            switch (serialization)
+            {
+                case VoTableSerialization.TableData:
+                    break;
+                case VoTableSerialization.Binary:
+                case VoTableSerialization.Binary2:
+                case VoTableSerialization.Fits:
+                    await File.XmlWriter.WriteEndElementAsync();
+                    break;
+                default:
+                    throw new NotImplementedException();
+            }
+
+            // DataTable/Binary/Binary2/Fits
             await File.XmlWriter.WriteEndElementAsync();
+
+            // Data
+            File.WriteElements(table.Data.InfoList);
             await File.XmlWriter.WriteEndElementAsync();
+
+            // Table
+            File.WriteElements(table.InfoList2);
             await File.XmlWriter.WriteEndElementAsync();
-            /*await File.XmlWriter.WriteEndElementAsync();*/
+
+            // Resource
+            File.WriteElements(resource.InfoList2);
+            await File.XmlWriter.WriteEndElementAsync();
         }
+        
+
 
         public async Task WriteFromDataReaderAsync(DbDataReader dr)
         {
@@ -1177,21 +1196,229 @@ namespace Jhu.VO.VoTable
         }
 
         #endregion
-        #region Write delegate generator functions
+        #region Row writer functions
 
-        private int WriteString(SharpFitsIO.BitConverterBase converter, VoTableColumn col, byte[] bytes, int startIndex, object value)
+        private void WriteMagicNulls()
         {
+            for (int i = 0; i < columns.Count; i++)
+            {
+                if (columns[i].DataType.NullValue != null)
+                {
+                    columns[i].DataType.NullValue = textColumnWriters[i](columns[i], columns[i].DataType.NullValue);
+                }
+            }
+        }
+
+        private async Task WriteNextRowToTableAsync(params object[] values)
+        {
+            await File.XmlWriter.WriteStartElementAsync(null, Constants.TagTR, File.Namespace);
+
+            for (int i = 0; i < columns.Count; i++)
+            {
+                await File.XmlWriter.WriteStartElementAsync(null, Constants.TagTD, File.Namespace);
+
+                // TODO: Do not use format here, or use standard votable formatting
+                if (values[i] == null || values[i] == DBNull.Value)
+                {
+                    if (columns[i].DataType.NullValue != null)
+                    {
+                        await File.XmlWriter.WriteStringAsync((string)columns[i].DataType.NullValue);
+                    }
+                }
+                else
+                {
+                    var text = textColumnWriters[i](Columns[i], values[i]);
+                    await File.XmlWriter.WriteStringAsync(text);
+                }
+
+                // </TD>
+                await File.XmlWriter.WriteEndElementAsync();
+            }
+
+            // </TR>
+            await File.XmlWriter.WriteEndElementAsync();
+        }
+
+        private async Task WriteNextRowToStreamAsync(params object[] values)
+        {
+            // TODO
             throw new NotImplementedException();
         }
 
-        private int WriteScalar(SharpFitsIO.BitConverterBase converter, VoTableColumn col, byte[] bytes, int startIndex, object value)
+        private void CreateTextColumnWriters()
         {
-            throw new NotImplementedException();
+            textColumnWriters = new TextColumnWriter[Columns.Count];
+
+            for (int i = 0; i < textColumnWriters.Length; i++)
+            {
+                var datatype = Columns[i].DataType;
+                var type = datatype.Type;
+
+                // TODO: how to deal with bit arrays?
+                // TODO: how to deal with arrays in general?
+
+                if (type == typeof(SharpFitsIO.Bit))
+                {
+                    textColumnWriters[i] = delegate (VoTableColumn column, object value)
+                    {
+                        var v = (SharpFitsIO.Bit)value;
+                        return v.Value ? "1" : "0";
+                    };
+                }
+                else if (type == typeof(Boolean))
+                {
+                    textColumnWriters[i] = delegate (VoTableColumn column, object value)
+                    {
+                        var v = (Boolean)value;
+                        return v ? "T" : "F";
+                    };
+                }
+                else if (type == typeof(Byte) ||
+                         type == typeof(Int16) ||
+                         type == typeof(Int32) ||
+                         type == typeof(Int64) ||
+                         type == typeof(Single) ||
+                         type == typeof(Double))
+                {
+                    textColumnWriters[i] = delegate (VoTableColumn column, object value)
+                    {
+                        return String.Format(invariantCulture, column.Format, value);
+                    };
+                }
+                else if (type == typeof(SharpFitsIO.SingleComplex))
+                {
+                    textColumnWriters[i] = delegate (VoTableColumn column, object value)
+                    {
+                        var v = (SharpFitsIO.SingleComplex)value;
+                        return v.ToString(columns[i].Format, invariantCulture);
+                    };
+                }
+                else if (type == typeof(SharpFitsIO.DoubleComplex))
+                {
+                    textColumnWriters[i] = delegate (VoTableColumn column, object value)
+                    {
+                        var v = (SharpFitsIO.DoubleComplex)value;
+                        return v.ToString(columns[i].Format, invariantCulture);
+                    };
+                }
+                else if (type == typeof(string))
+                {
+                    textColumnWriters[i] = delegate (VoTableColumn column, object value)
+                    {
+                        // TODO: what if text is encoded?
+                        // what if fixed length?
+                        return (string)value;
+                    };
+                }
+                else
+                {
+                    throw new NotImplementedException();
+                }
+            }
         }
 
-        private int WriteArray(SharpFitsIO.BitConverterBase converter, VoTableColumn col, byte[] bytes, int startIndex, object value)
+        private void CreateBinaryColumnWriters()
         {
-            throw new NotImplementedException();
+            binaryColumnWriters = new BinaryColumnWriter[Columns.Count];
+
+            /*
+            for (int i = 0; i < binaryColumnReaders.Length; i++)
+            {
+                var datatype = Columns[i].DataType;
+                var type = datatype.Type;
+
+                // TODO: how to deal with bit arrays?
+                // TODO: how to deal with arrays in general?
+
+                if (type == typeof(Boolean))
+                {
+                    binaryColumnReaders[i] = delegate (VoTableColumn column, byte[] buffer, int length, SharpFitsIO.BitConverterBase bitConverter)
+                    {
+                        return buffer[0] != 0;
+                    };
+                }
+                else if (type == typeof(Byte))
+                {
+                    binaryColumnReaders[i] = delegate (VoTableColumn column, byte[] buffer, int length, SharpFitsIO.BitConverterBase bitConverter)
+                    {
+                        return buffer[0];
+                    };
+                }
+                else if (type == typeof(Int16))
+                {
+                    binaryColumnReaders[i] = delegate (VoTableColumn column, byte[] buffer, int length, SharpFitsIO.BitConverterBase bitConverter)
+                    {
+                        return bitConverter.ToInt16(buffer, 0);
+                    };
+                }
+                else if (type == typeof(Int32))
+                {
+                    binaryColumnReaders[i] = delegate (VoTableColumn column, byte[] buffer, int length, SharpFitsIO.BitConverterBase bitConverter)
+                    {
+                        return bitConverter.ToInt32(buffer, 0);
+                    };
+                }
+                else if (type == typeof(Int64))
+                {
+                    binaryColumnReaders[i] = delegate (VoTableColumn column, byte[] buffer, int length, SharpFitsIO.BitConverterBase bitConverter)
+                    {
+                        return bitConverter.ToInt64(buffer, 0);
+                    };
+                }
+                else if (type == typeof(Single))
+                {
+                    binaryColumnReaders[i] = delegate (VoTableColumn column, byte[] buffer, int length, SharpFitsIO.BitConverterBase bitConverter)
+                    {
+                        return bitConverter.ToSingle(buffer, 0);
+                    };
+                }
+                else if (type == typeof(Double))
+                {
+                    binaryColumnReaders[i] = delegate (VoTableColumn column, byte[] buffer, int length, SharpFitsIO.BitConverterBase bitConverter)
+                    {
+                        return bitConverter.ToDouble(buffer, 0);
+                    };
+                }
+                else if (type == typeof(SharpFitsIO.SingleComplex))
+                {
+                    binaryColumnReaders[i] = delegate (VoTableColumn column, byte[] buffer, int length, SharpFitsIO.BitConverterBase bitConverter)
+                    {
+                        return bitConverter.ToSingleComplex(buffer, 0);
+                    };
+                }
+                else if (type == typeof(SharpFitsIO.DoubleComplex))
+                {
+                    binaryColumnReaders[i] = delegate (VoTableColumn column, byte[] buffer, int length, SharpFitsIO.BitConverterBase bitConverter)
+                    {
+                        return bitConverter.ToDoubleComplex(buffer, 0);
+                    };
+                }
+                else if (type == typeof(string))
+                {
+                    if (datatype.IsUnicode)
+                    {
+                        // Unicode
+                        binaryColumnReaders[i] = delegate (VoTableColumn column, byte[] buffer, int length, SharpFitsIO.BitConverterBase bitConverter)
+                        {
+                            return Encoding.Unicode.GetChars(buffer, 0, 2 * length);
+                        };
+                    }
+                    else
+                    {
+                        // ASCII
+                        // Fixed length
+                        binaryColumnReaders[i] = delegate (VoTableColumn column, byte[] buffer, int length, SharpFitsIO.BitConverterBase bitConverter)
+                        {
+                            return Encoding.ASCII.GetChars(buffer, 0, length);
+                        };
+                    }
+                }
+                else
+                {
+                    throw new NotImplementedException();
+                }
+            }
+            */
         }
 
         #endregion

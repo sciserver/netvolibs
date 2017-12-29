@@ -8,6 +8,7 @@ namespace Jhu.VO.VoTable.Common
 {
     public interface ITable
     {
+
         IAnyText Description { get; set; }
         ElementList<IInfo> InfoList1 { get; }
         ElementList<IField> FieldList { get; }
@@ -18,5 +19,7 @@ namespace Jhu.VO.VoTable.Common
         IData Data { get; }
         string ID { get; set; }
         string Name { get; set; }
+
+        IField CreateField();
     }
 }

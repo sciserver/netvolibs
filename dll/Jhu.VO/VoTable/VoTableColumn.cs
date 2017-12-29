@@ -19,6 +19,7 @@ namespace Jhu.VO.VoTable
         private string unit;
         private string precision;
         private string width;
+        private string format;
 
         private VoTableDataType dataType;
 
@@ -73,6 +74,11 @@ namespace Jhu.VO.VoTable
             set { width = value; }
         }
 
+        internal string Format
+        {
+            get { return format; }
+        }
+
         public VoTableDataType DataType
         {
             get { return dataType; }
@@ -102,6 +108,7 @@ namespace Jhu.VO.VoTable
             this.unit = null;
             this.precision = null;
             this.width = null;
+            this.format = "{0}";
             this.dataType = null;
         }
 
@@ -115,6 +122,7 @@ namespace Jhu.VO.VoTable
             this.unit = old.unit;
             this.precision = old.precision;
             this.width = old.width;
+            this.format = old.format;
             this.dataType = old.dataType;
         }
 
@@ -137,7 +145,7 @@ namespace Jhu.VO.VoTable
             return column;
         }
 
-        internal static VoTableColumn Create(IField field)
+        internal static VoTableColumn FromField(IField field)
         {
             var column = new VoTableColumn()
             {
@@ -156,9 +164,24 @@ namespace Jhu.VO.VoTable
             return column;
         }
 
-        internal V1_1.Field ToField()
+        internal void ToField(IField field)
         {
-            throw new NotImplementedException();
+            field.ID = id;
+            field.Name = name;
+            field.Ucd = ucd;
+            field.UType = utype;
+            field.Unit = unit;
+            field.Precision = precision;
+            field.Width = width;
+
+            // TODO: field.Datatype
+
+            // TODO: add description
+
+            //if (!String.IsNullOrWhiteSpace(Description))
+            //{
+                //field.Description = new 
+                    //}
         }
     }
 }

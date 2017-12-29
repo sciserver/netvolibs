@@ -103,5 +103,10 @@ namespace Jhu.VO.VoTable.V1_3
 
         [XmlAttribute(Constants.AttributeNRows)]
         public int NRows { get; set; }
+
+        IField ITable.CreateField()
+        {
+            return new Field();
+        }
     }
 }
