@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Runtime.Serialization;
+using Jhu.VO.VoTable.Common;
 
 namespace Jhu.VO.VoTable
 {

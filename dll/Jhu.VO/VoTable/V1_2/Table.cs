@@ -6,17 +6,31 @@ using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Schema;
 using System.Xml.Serialization;
+using Jhu.VO.VoTable.Common;
 
 namespace Jhu.VO.VoTable.V1_2
 {
     [XmlType(Namespace = Constants.NamespaceVoTableV1_2)]
-    public class Table
+    public class Table : ITable
     {
         [XmlElement(Constants.TagDescription, Order = 0)]
         public AnyText Description { get; set; }
 
+        [XmlIgnore]
+        IAnyText ITable.Description
+        {
+            get { return Description; }
+            set { Description = (AnyText)value; }
+        }
+
         [XmlElement(Constants.TagInfo, Order = 1)]
         public List<Info> InfoList1 { get; set; } = new List<Info>();
+
+        [XmlIgnore]
+        ElementList<IInfo> ITable.InfoList1
+        {
+            get { return new ElementList<IInfo>(InfoList1); }
+        }
 
         #region FIELD PARAM GROUP
 
@@ -26,21 +40,21 @@ namespace Jhu.VO.VoTable.V1_2
         public List<object> ItemList_ForXml { get; set; } = new List<object>();
 
         [XmlIgnore]
-        public ItemList<Field> FieldList
+        public ElementList<IField> FieldList
         {
-            get { return new ItemList<Field>(ItemList_ForXml); }
+            get { return new ElementList<IField>(ItemList_ForXml); }
         }
 
         [XmlIgnore]
-        public ItemList<Param> ParamList
+        public ElementList<IParam> ParamList
         {
-            get { return new ItemList<Param>(ItemList_ForXml); }
+            get { return new ElementList<IParam>(ItemList_ForXml); }
         }
 
         [XmlIgnore]
-        public ItemList<Group> GroupList
+        public ElementList<IGroup> GroupList
         {
-            get { return new ItemList<Group>(ItemList_ForXml); }
+            get { return new ElementList<IGroup>(ItemList_ForXml); }
         }
 
         #endregion
@@ -48,11 +62,29 @@ namespace Jhu.VO.VoTable.V1_2
         [XmlElement(Constants.TagLink, Order = 3)]
         public List<Link> LinkList { get; set; } = new List<Link>();
 
+        [XmlIgnore]
+        ElementList<ILink> ITable.LinkList
+        {
+            get { return new ElementList<ILink>(LinkList); }
+        }
+
         [XmlElement(Constants.TagData, Order = 4)]
         public Data Data { get; set; } = new Data();
 
+        [XmlIgnore]
+        IData ITable.Data
+        {
+            get { return Data; }
+        }
+
         [XmlElement(Constants.TagInfo, Order = 5)]
         public List<Info> InfoList2 { get; set; } = new List<Info>();
+
+        [XmlIgnore]
+        ElementList<IInfo> ITable.InfoList2
+        {
+            get { return new ElementList<IInfo>(InfoList2); }
+        }
 
         [XmlAttribute(Constants.AttributeID)]
         public string ID { get; set; }

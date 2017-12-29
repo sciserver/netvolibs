@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Schema;
 using System.Xml.Serialization;
+using Jhu.VO.VoTable.Common;
 
 namespace Jhu.VO.VoTable.V1_1
 {
@@ -16,17 +17,21 @@ namespace Jhu.VO.VoTable.V1_1
         [XmlElement(Constants.TagDescription)]
         public AnyText Description { get; set; }
 
-        string IField.Description
+        [XmlIgnore]
+        IAnyText IField.Description
         {
-            get { return Description?.Text; }
+            get { return Description; }
+            set { Description = (AnyText)value; }
         }
 
         [XmlElement(Constants.TagValues)]
         public Values Values { get; set; }
 
+        [XmlIgnore]
         IValues IField.Values
         {
             get { return Values; }
+            set { Values = (Values)value; }
         }
 
         [XmlElement(Constants.TagLink)]

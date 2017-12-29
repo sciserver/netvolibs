@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Schema;
 using System.Xml.Serialization;
+using Jhu.VO.VoTable.Common;
 
 namespace Jhu.VO.VoTable.V1_3
 {
     [XmlType(Namespace = Constants.NamespaceVoTableV1_3)]
     [XmlRoot(Constants.TagFieldRef, Namespace = Constants.NamespaceVoTableV1_3)]
-    public class FieldRef
+    public class FieldRef : IFieldRef
     {
         [XmlAttribute(Constants.AttributeRef)]
         public string Ref { get; set; }

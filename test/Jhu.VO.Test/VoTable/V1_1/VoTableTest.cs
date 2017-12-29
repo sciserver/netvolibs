@@ -20,9 +20,9 @@ namespace Jhu.VO.VoTable.V1_1
         }
 
         [TestMethod]
-        public void VoTableDeserializeMultiresourceTest()
+        public void DeserializationTest()
         {
-            var xml = File.ReadAllText(GetTestFilePath(@"test\files\votable\votable_multiresource.xml"));
+            var xml = File.ReadAllText(GetTestFilePath(@"test\files\votable\votable_v1.1.xml"));
             Deserialize(xml);
         }
 

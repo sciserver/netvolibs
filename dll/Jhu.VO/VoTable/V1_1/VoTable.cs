@@ -6,18 +6,58 @@ using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Schema;
 using System.Xml.Serialization;
+using Jhu.VO.VoTable.Common;
 
 namespace Jhu.VO.VoTable.V1_1
 {
     [XmlRoot(ElementName = Constants.TagVoTable, Namespace = Constants.NamespaceVoTableV1_1)]
     [XmlType(Namespace = Constants.NamespaceVoTableV1_1)]
-    public class VoTable
+    public class VoTable : IVoTable
     {
+        private static readonly Dictionary<Type, Type> ifaceTypes = new Dictionary<Type, Type>()
+        {
+            { typeof(IAnyText), typeof(AnyText) },
+            { typeof(ICoordinateSystem), typeof(Coosys) },
+            { typeof(IData), typeof(Data) },
+            { typeof(IDefinitions), typeof(Definitions) },
+            { typeof(IField), typeof(Field) },
+            { typeof(IFieldRef), typeof(FieldRef) },
+            { typeof(IGroup), typeof(Group) },
+            { typeof(IInfo), typeof(Info) },
+            { typeof(ILink), typeof(Link) },
+            { typeof(IParam), typeof(Param) },
+            { typeof(IParamRef), typeof(ParamRef) },
+            { typeof(IResource), typeof(Resource) },
+            { typeof(ITable), typeof(Table) },
+            { typeof(ITableData), typeof(TableData) },
+            { typeof(IValues), typeof(Values) },
+            { typeof(IVoTable), typeof(VoTable) },
+        };
+
+        Type IVoTable.GetType(Type iface)
+        {
+            return ifaceTypes[iface];
+        }
+        
         [XmlElement(Constants.TagDescription, Order = 0)]
         public AnyText Description { get; set; }
 
+        [XmlIgnore]
+        IAnyText IVoTable.Description
+        {
+            get { return Description; }
+            set { Description = (AnyText)value; }
+        }
+
         [XmlElement(Constants.TagDefinitions, Order = 1)]
         public Definitions Definitions { get; set; }
+
+        [XmlIgnore]
+        IDefinitions IVoTable.Definitions
+        {
+            get { return Definitions; }
+            set { Definitions = (Definitions)value; }
+        }
 
         #region COOSYS PARAM INFO
 
@@ -27,33 +67,42 @@ namespace Jhu.VO.VoTable.V1_1
         public List<object> ItemList_ForXml { get; set; } = new List<object>();
 
         [XmlIgnore]
-        public ItemList<Coosys> CoosysList
+        public ElementList<ICoordinateSystem> CoosysList
         {
-            get { return new ItemList<Coosys>(ItemList_ForXml); }
+            get { return new ElementList<ICoordinateSystem>(ItemList_ForXml); }
         }
 
         [XmlIgnore]
-        public ItemList<Group> GroupList
+        public ElementList<IGroup> GroupList
         {
-            get { return new ItemList<Group>(ItemList_ForXml); }
+            get { return new ElementList<IGroup>(ItemList_ForXml); }
         }
 
         [XmlIgnore]
-        public ItemList<Param> ParamList
+        public ElementList<IParam> ParamList
         {
-            get { return new ItemList<Param>(ItemList_ForXml); }
+            get { return new ElementList<IParam>(ItemList_ForXml); }
         }
 
         [XmlIgnore]
-        public ItemList<Info> InfoList1
+        public ElementList<IInfo> InfoList1
         {
-            get { return new ItemList<Info>(ItemList_ForXml); }
+            get { return new ElementList<IInfo>(ItemList_ForXml); }
         }
 
         #endregion
 
         [XmlElement(Constants.TagResource, Order = 3)]
         public List<Resource> ResourceList { get; set; }
+
+        [XmlIgnore]
+        ElementList<IResource> IVoTable.ResourceList
+        {
+            get { return new ElementList<IResource>(ResourceList); }
+        }
+        
+        [XmlIgnore]
+        ElementList<IInfo> IVoTable.InfoList2 { get; } = null;
 
         [XmlAttribute(Constants.AttributeID)]
         public string ID { get; set; }

@@ -13,9 +13,15 @@ namespace Jhu.VO.VoTable
 
         // Name spaces
         public const string NamespaceXsi = "http://www.w3.org/2001/XMLSchema-instance";
-        public const string NamespaceVoTableV1_1 = "http://www.ivoa.net/xml/VOTable/v1.1";
+        public const string NamespaceXlink = "http://www.w3.org/1999/xlink";
+        public const string NamespaceXsd = "http://www.w3.org/2001/XMLSchema";
+        public const string NamespaceVoTableV1_1 = "";
         public const string NamespaceVoTableV1_2 = "http://www.ivoa.net/xml/VOTable/v1.2";
         public const string NamespaceVoTableV1_3 = "http://www.ivoa.net/xml/VOTable/v1.3";
+
+        public const string VersionV1_1 = "1.1";
+        public const string VersionV1_2 = "1.2";
+        public const string VersionV1_3 = "1.3";
 
         public const string TagVoTable = "VOTABLE";
         public const string TagDescription = "DESCRIPTION";

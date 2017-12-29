@@ -20,7 +20,7 @@ namespace Jhu.VO.VoTable
             VoTableResource res;
 
             var file = GetTestFilePath(filename);
-            vt = new VoTable(file, FileAccess.Read);
+            vt = new VoTable(file, FileAccess.Read, VoTableVersion.V1_3);
             vt.ReadHeaderAsync().Wait();
 
             int q = 0;

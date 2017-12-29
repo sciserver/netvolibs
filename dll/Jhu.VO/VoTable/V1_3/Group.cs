@@ -6,15 +6,23 @@ using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Schema;
 using System.Xml.Serialization;
+using Jhu.VO.VoTable.Common;
 
 namespace Jhu.VO.VoTable.V1_3
 {
     [XmlType(Namespace = Constants.NamespaceVoTableV1_3)]
     [XmlRoot(Constants.TagGroup, Namespace = Constants.NamespaceVoTableV1_3)]
-    public class Group
+    public class Group : IGroup
     {
         [XmlElement(Constants.TagDescription)]
         public AnyText Description { get; set; }
+
+        [XmlIgnore]
+        IAnyText IGroup.Description
+        {
+            get { return Description; }
+            set { Description = (AnyText)value; }
+        }
 
         #region PARAM GROUP FIELDref PARAMref
 
@@ -25,27 +33,27 @@ namespace Jhu.VO.VoTable.V1_3
         public List<object> ItemList_ForXml { get; set; }
 
         [XmlIgnore]
-        public ItemList<FieldRef> FieldRefList
+        public ElementList<IFieldRef> FieldRefList
         {
-            get { return new ItemList<FieldRef>(ItemList_ForXml); }
+            get { return new ElementList<IFieldRef>(ItemList_ForXml); }
         }
 
         [XmlIgnore]
-        public ItemList<ParamRef> ParamRefList
+        public ElementList<IParamRef> ParamRefList
         {
-            get { return new ItemList<ParamRef>(ItemList_ForXml); }
+            get { return new ElementList<IParamRef>(ItemList_ForXml); }
         }
 
         [XmlIgnore]
-        public ItemList<Param> ParamList
+        public ElementList<IParam> ParamList
         {
-            get { return new ItemList<Param>(ItemList_ForXml); }
+            get { return new ElementList<IParam>(ItemList_ForXml); }
         }
 
         [XmlIgnore]
-        public ItemList<Group> GroupList
+        public ElementList<IGroup> GroupList
         {
-            get { return new ItemList<Group>(ItemList_ForXml); }
+            get { return new ElementList<IGroup>(ItemList_ForXml); }
         }
 
         #endregion

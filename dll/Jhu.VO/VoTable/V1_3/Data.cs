@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Schema;
 using System.Xml.Serialization;
+using Jhu.VO.VoTable.Common;
 
 namespace Jhu.VO.VoTable.V1_3
 {
     [XmlType(Namespace = Constants.NamespaceVoTableV1_3)]
-    public class Data
+    public class Data : IData
     {
         #region TABLEDATA BINARY BINARY2 FITS
 
@@ -21,28 +22,28 @@ namespace Jhu.VO.VoTable.V1_3
         public object Item_ForXml { get; set; }
 
         [XmlIgnore]
-        public TableData TableData
+        public ITableData TableData
         {
             get { return Item_ForXml as TableData; }
             set { Item_ForXml = value; }
         }
 
         [XmlIgnore]
-        public Binary Binary
+        public ITableData Binary
         {
             get { return Item_ForXml as Binary; }
             set { Item_ForXml = value; }
         }
 
         [XmlIgnore]
-        public Binary2 Binary2
+        public ITableData Binary2
         {
             get { return Item_ForXml as Binary2; }
             set { Item_ForXml = value; }
         }
 
         [XmlIgnore]
-        public Fits Fits
+        public ITableData Fits
         {
             get { return Item_ForXml as Fits; }
             set { Item_ForXml = value; }
@@ -52,5 +53,11 @@ namespace Jhu.VO.VoTable.V1_3
 
         [XmlElement(Constants.TagInfo)]
         public List<Info> InfoList { get; set; } = new List<Info>();
+
+        [XmlIgnore]
+        ElementList<IInfo> IData.InfoList
+        {
+            get { return new ElementList<IInfo>(InfoList); }
+        }
     }
 }

@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Schema;
 using System.Xml.Serialization;
+using Jhu.VO.VoTable.Common;
 
 namespace Jhu.VO.VoTable.V1_2
 {
     [XmlType(Namespace = Constants.NamespaceVoTableV1_2)]
     [XmlRoot(Constants.TagDefinitions, Namespace = Constants.NamespaceVoTableV1_2)]
-    public class Definitions
+    public class Definitions : IDefinitions
     {
         #region COOSYS PARAM
 
@@ -20,15 +21,15 @@ namespace Jhu.VO.VoTable.V1_2
         public List<object> ItemList_ForXml { get; set; }
 
         [XmlIgnore]
-        public ItemList<CoordinateSystem> CoosysList
+        public ElementList<CoordinateSystem> CoosysList
         {
-            get { return new ItemList<CoordinateSystem>(ItemList_ForXml); }
+            get { return new ElementList<CoordinateSystem>(ItemList_ForXml); }
         }
 
         [XmlIgnore]
-        public ItemList<Param> ParamList
+        public ElementList<Param> ParamList
         {
-            get { return new ItemList<Param>(ItemList_ForXml); }
+            get { return new ElementList<Param>(ItemList_ForXml); }
         }
 
         #endregion

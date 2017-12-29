@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Jhu.VO.VoTable.Common;
 
 namespace Jhu.VO.VoTable
 {
@@ -142,7 +143,7 @@ namespace Jhu.VO.VoTable
             {
                 ID = field.ID,
                 Name = field.Name,
-                Description = field.Description,
+                Description = field.Description?.Text,
                 Ucd = field.Ucd,
                 UType = field.UType,
                 Unit = field.Unit,

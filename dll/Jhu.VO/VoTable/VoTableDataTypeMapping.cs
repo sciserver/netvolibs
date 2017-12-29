@@ -10,7 +10,7 @@ namespace Jhu.VO.VoTable
     {
         public abstract Type From { get; }
 
-        public abstract VoTableDataType MapType(int repeat, bool nullable);
+        public abstract VoTableDataType MapType(int[] size, bool isVariableSize, bool isUnboundSize);
         public abstract object MapValue(object value);
     }
 }

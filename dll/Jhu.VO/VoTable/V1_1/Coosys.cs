@@ -5,12 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Serialization;
+using Jhu.VO.VoTable.Common;
 
 namespace Jhu.VO.VoTable.V1_1
 {
     [XmlType(Namespace = Constants.NamespaceVoTableV1_1)]
     [XmlRoot(Constants.TagCoosys, Namespace = Constants.NamespaceVoTableV1_1)]
-    public class Coosys
+    public class Coosys : ICoordinateSystem
     {
         [XmlText]
         public string Text { get; set; }

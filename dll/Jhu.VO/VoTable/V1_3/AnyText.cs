@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Schema;
 using System.Xml.Serialization;
+using Jhu.VO.VoTable.Common;
 
 namespace Jhu.VO.VoTable.V1_3
 {
-    public class AnyText : IXmlSerializable
+    public class AnyText : IAnyText, IXmlSerializable
     {
         public string Text { get; set; }
 

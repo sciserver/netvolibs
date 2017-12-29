@@ -29,7 +29,21 @@ namespace Jhu.VO.VoTable.V1_3
         [TestMethod]
         public void DeserializationTest()
         {
+            var xml = File.ReadAllText(GetTestFilePath(@"test\files\votable\votable_v1.3.xml"));
+            Deserialize(xml);
+        }
+
+        [TestMethod]
+        public void DeserializeEverythingTest()
+        {
             var xml = File.ReadAllText(GetTestFilePath(@"test\files\votable\votable_everything.xml"));
+            Deserialize(xml);
+        }
+
+        [TestMethod]
+        public void VoTableDeserializeMultiresourceTest()
+        {
+            var xml = File.ReadAllText(GetTestFilePath(@"test\files\votable\votable_multiresource.xml"));
             Deserialize(xml);
         }
 

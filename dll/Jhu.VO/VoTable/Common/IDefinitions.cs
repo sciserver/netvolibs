@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Jhu.VO.VoTable
+namespace Jhu.VO.VoTable.Common
 {
-    public interface IValues
+    public interface IDefinitions
     {
-        string Null { get; }
     }
 }

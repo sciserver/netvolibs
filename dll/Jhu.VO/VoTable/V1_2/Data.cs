@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Schema;
 using System.Xml.Serialization;
+using Jhu.VO.VoTable.Common;
 
 namespace Jhu.VO.VoTable.V1_2
 {
     [XmlType(Namespace = Constants.NamespaceVoTableV1_2)]
-    public class Data
+    public class Data : IData
     {
         #region TABLEDATA BINARY BINARY2 FITS
 
@@ -44,5 +45,11 @@ namespace Jhu.VO.VoTable.V1_2
 
         [XmlElement(Constants.TagInfo)]
         public List<Info> InfoList { get; set; } = new List<Info>();
+
+        [XmlIgnore]
+        ElementList<IInfo> IData.InfoList
+        {
+            get { return new ElementList<IInfo>(InfoList); }
+        }
     }
 }

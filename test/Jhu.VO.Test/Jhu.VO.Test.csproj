@@ -54,6 +54,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestClassBase.cs" />
     <Compile Include="Vosi\VosiElementsTest.cs" />
+    <Compile Include="VoTable\V1_2\VoTableTest.cs" />
     <Compile Include="VoTable\XmlReaderExtensionsTest.cs" />
     <Compile Include="VoTable\V1_1\VoTableTest.cs" />
     <Compile Include="VoTable\V1_3\VoTableElementsTest.cs" />

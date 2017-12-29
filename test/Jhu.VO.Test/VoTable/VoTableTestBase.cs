@@ -23,12 +23,19 @@ namespace Jhu.VO.VoTable
             // http://www.ivoa.net/xml/VOTable/v1.1
             // Schema_VoTable_v1_1
 
-            var parts = ns.Split('/');
-            var res = String.Format("Schema_{0}_{1}",
-                parts[parts.Length - 2],
-                parts[parts.Length - 1].Replace('.', '_'));
-
-            return Resources.ResourceManager.GetString(res);
+            if (ns == "")
+            {
+                // V1.1 doesn't use namespace
+                return Resources.Schema_VOTable_v1_1;
+            }
+            else
+            {
+                var parts = ns.Split('/');
+                var res = String.Format("Schema_{0}_{1}",
+                    parts[parts.Length - 2],
+                    parts[parts.Length - 1].Replace('.', '_'));
+                return Resources.ResourceManager.GetString(res);
+            }
         }
 
         private XmlReader OpenReader(string xml)

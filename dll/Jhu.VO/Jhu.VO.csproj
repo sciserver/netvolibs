@@ -43,7 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ItemList.cs" />
+    <Compile Include="ElementList.cs" />
+    <Compile Include="ElementListEnumerator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Stc\Constants.cs" />
     <Compile Include="Stc\V1_30\Stc.cs" />
@@ -125,6 +126,24 @@
     <Compile Include="Vosi\Constants.cs" />
     <Compile Include="Vosi\Tables\V1_0\Table.cs" />
     <Compile Include="Vosi\Tables\V1_0\TableSet.cs" />
+    <Compile Include="VoTable\Common\IAnyText.cs" />
+    <Compile Include="VoTable\Common\ICoordinateSystem.cs" />
+    <Compile Include="VoTable\Common\IData.cs" />
+    <Compile Include="VoTable\Common\IDefinitions.cs" />
+    <Compile Include="VoTable\Common\IField.cs" />
+    <Compile Include="VoTable\Common\IFieldRef.cs" />
+    <Compile Include="VoTable\Common\IGroup.cs" />
+    <Compile Include="VoTable\Common\IInfo.cs" />
+    <Compile Include="VoTable\Common\ILink.cs" />
+    <Compile Include="VoTable\Common\IMax.cs" />
+    <Compile Include="VoTable\Common\IMin.cs" />
+    <Compile Include="VoTable\Common\IOption.cs" />
+    <Compile Include="VoTable\Common\IParam.cs" />
+    <Compile Include="VoTable\Common\IParamRef.cs" />
+    <Compile Include="VoTable\Common\IResource.cs" />
+    <Compile Include="VoTable\Common\ITable.cs" />
+    <Compile Include="VoTable\Common\ITableData.cs" />
+    <Compile Include="VoTable\Common\IValues.cs" />
     <Compile Include="VoTable\Constants.cs" />
     <Compile Include="VoTable\Error.cs" />
     <Compile Include="VoTable\ExceptionMessage.Designer.cs">
@@ -132,8 +151,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ExceptionMessage.resx</DependentUpon>
     </Compile>
-    <Compile Include="VoTable\IField.cs" />
-    <Compile Include="VoTable\IValues.cs" />
+    <Compile Include="VoTable\Common\IVoTable.cs" />
     <Compile Include="VoTable\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

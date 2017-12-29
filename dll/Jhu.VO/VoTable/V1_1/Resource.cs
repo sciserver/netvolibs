@@ -6,15 +6,23 @@ using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Schema;
 using System.Xml.Serialization;
+using Jhu.VO.VoTable.Common;
 
 namespace Jhu.VO.VoTable.V1_1
 {
     [XmlType(Namespace = Constants.NamespaceVoTableV1_1)]
-    public class Resource
+    public class Resource : IResource
     {
         [XmlElement(Constants.TagDescription, Order = 0)]
         public AnyText Description { get; set; }
 
+        [XmlIgnore]
+        IAnyText IResource.Description
+        {
+            get { return Description; }
+            set { Description = (AnyText)value; }
+        }
+        
         #region COOSYS GROUP PARAM
 
         [XmlElement(Constants.TagInfo, typeof(Info), Order = 1)]
@@ -23,34 +31,52 @@ namespace Jhu.VO.VoTable.V1_1
         public List<object> ItemList1_ForXml { get; set; } = new List<object>();
 
         [XmlIgnore]
-        public ItemList<Info> InfoList
+        public ElementList<IInfo> InfoList1
         {
-            get { return new ItemList<Info>(ItemList1_ForXml); }
+            get { return new ElementList<IInfo>(ItemList1_ForXml); }
         }
 
         [XmlIgnore]
-        public ItemList<Coosys> CoosysList
+        public ElementList<ICoordinateSystem> CoosysList
         {
-            get { return new ItemList<Coosys>(ItemList1_ForXml); }
+            get { return new ElementList<ICoordinateSystem>(ItemList1_ForXml); }
         }
         
         [XmlIgnore]
-        public ItemList<Param> ParamList
+        public ElementList<IParam> ParamList
         {
-            get { return new ItemList<Param>(ItemList1_ForXml); }
+            get { return new ElementList<IParam>(ItemList1_ForXml); }
         }
 
         #endregion
 
+        [XmlIgnore]
+        public ElementList<IGroup> GroupList
+        {
+            get { return null; }
+        }
+
         [XmlElement(Constants.TagLink, Order = 2)]
         public List<Link> LinkList { get; set; } = new List<Link>();
+
+        [XmlIgnore]
+        ElementList<ILink> IResource.LinkList
+        {
+            get { return new ElementList<ILink>(LinkList); }
+        }
 
         [XmlElement(Constants.TagTable, Order = 3)]
         public List<Table> TableList { get; set; } = new List<Table>();
 
         [XmlElement(Constants.TagResource, Order = 4)]
         public List<Table> ResourceList { get; set; }
-        
+
+        [XmlIgnore]
+        public ElementList<IInfo> InfoList2
+        {
+            get { return null; }
+        }
+
         [XmlAnyElement(Order = 5)]
         public List<XmlElement> Elements { get; set; }
 

@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Schema;
 using System.Xml.Serialization;
+using Jhu.VO.VoTable.Common;
 
 namespace Jhu.VO.VoTable.V1_1
 {
     [XmlType(Namespace = Constants.NamespaceVoTableV1_1)]
     [XmlRoot(Constants.TagOption, Namespace = Constants.NamespaceVoTableV1_1)]
-    public class Option
+    public class Option : IOption
     {
         [XmlElement(Constants.TagOption)]
         public List<Option> OptionList { get; set; }

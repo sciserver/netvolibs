@@ -6,17 +6,31 @@ using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Schema;
 using System.Xml.Serialization;
+using Jhu.VO.VoTable.Common;
 
 namespace Jhu.VO.VoTable.V1_3
 {
     [XmlType(Namespace = Constants.NamespaceVoTableV1_3)]
-    public class Resource
+    public class Resource : IResource
     {
         [XmlElement(Constants.TagDescription, Order = 0)]
         public AnyText Description { get; set; }
 
+        [XmlIgnore]
+        IAnyText IResource.Description
+        {
+            get { return Description; }
+            set { Description = (AnyText)value; }
+        }
+
         [XmlElement(Constants.TagInfo, Order = 1)]
         public List<Info> InfoList1 { get; set; } = new List<Info>();
+
+        [XmlIgnore]
+        ElementList<IInfo> IResource.InfoList1
+        {
+            get { return new ElementList<IInfo>(InfoList1); }
+        }
 
         #region COOSYS GROUP PARAM
 
@@ -26,27 +40,33 @@ namespace Jhu.VO.VoTable.V1_3
         public List<object> ItemList1_ForXml { get; set; } = new List<object>();
 
         [XmlIgnore]
-        public ItemList<CoordinateSystem> CoosysList
+        public ElementList<ICoordinateSystem> CoosysList
         {
-            get { return new ItemList<CoordinateSystem>(ItemList1_ForXml); }
+            get { return new ElementList<ICoordinateSystem>(ItemList1_ForXml); }
         }
 
         [XmlIgnore]
-        public ItemList<Group> GroupList
+        public ElementList<IGroup> GroupList
         {
-            get { return new ItemList<Group>(ItemList1_ForXml); }
+            get { return new ElementList<IGroup>(ItemList1_ForXml); }
         }
 
         [XmlIgnore]
-        public ItemList<Param> ParamList
+        public ElementList<IParam> ParamList
         {
-            get { return new ItemList<Param>(ItemList1_ForXml); }
+            get { return new ElementList<IParam>(ItemList1_ForXml); }
         }
 
         #endregion
 
         [XmlElement(Constants.TagLink, Order = 3)]
         public List<Link> LinkList { get; set; } = new List<Link>();
+
+        [XmlIgnore]
+        ElementList<ILink> IResource.LinkList
+        {
+            get { return new ElementList<ILink>(LinkList); }
+        }
 
         #region TABLE RESOURCE
 
@@ -55,21 +75,27 @@ namespace Jhu.VO.VoTable.V1_3
         public List<object> ItemList2_ForXml { get; set; }
 
         [XmlIgnore]
-        public ItemList<Table> TableList
+        public ElementList<Table> TableList
         {
-            get { return new ItemList<Table>(ItemList2_ForXml); }
+            get { return new ElementList<Table>(ItemList2_ForXml); }
         }
 
         [XmlIgnore]
-        public ItemList<Resource> ResourceList
+        public ElementList<Resource> ResourceList
         {
-            get { return new ItemList<Resource>(ItemList2_ForXml); }
+            get { return new ElementList<Resource>(ItemList2_ForXml); }
         }
+
+        #endregion
 
         [XmlElement(Constants.TagInfo, Order = 5)]
         public List<Info> InfoList2 { get; set; } = new List<Info>();
 
-        #endregion
+        [XmlIgnore]
+        ElementList<IInfo> IResource.InfoList2
+        {
+            get { return new ElementList<IInfo>(InfoList2); }
+        }
 
         [XmlAnyElement(Order = 6)]
         public List<XmlElement> Elements { get; set; }
