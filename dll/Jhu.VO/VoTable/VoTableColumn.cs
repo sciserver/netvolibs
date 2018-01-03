@@ -24,6 +24,8 @@ namespace Jhu.VO.VoTable
         private VoTableResource resource;
         private VoTableDataType dataType;
 
+        // TODO: add primary key info etc. based on GROUP/FIELDref
+
         #endregion
         #region Properties
 
