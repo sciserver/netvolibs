@@ -8,8 +8,6 @@ namespace Jhu.VO.VoTable.Common
 {
     interface IVoTable
     {
-        Type GetType(Type iface);
-
         IAnyText Description { get; set; }
         IDefinitions Definitions { get; set; }
         ElementList<ICoordinateSystem> CoosysList { get; }
@@ -20,5 +18,8 @@ namespace Jhu.VO.VoTable.Common
         ElementList<IInfo> InfoList2 { get; }
         string ID { get; set; }
         string Version { get; set; }
+
+        Type GetType(Type iface);
+        T CreateElement<T>();
     }
 }

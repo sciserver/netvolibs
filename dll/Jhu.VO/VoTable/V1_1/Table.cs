@@ -13,11 +13,6 @@ namespace Jhu.VO.VoTable.V1_1
     [XmlType(Namespace = Constants.NamespaceVoTableV1_1)]
     public class Table : ITable
     {
-        IField ITable.CreateField()
-        {
-            return new Field();
-        }
-
         [XmlElement(Constants.TagDescription, Order = 0)]
         public AnyText Description { get; set; }
 

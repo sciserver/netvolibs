@@ -21,6 +21,7 @@ namespace Jhu.VO.VoTable
         private string width;
         private string format;
 
+        private VoTableResource resource;
         private VoTableDataType dataType;
 
         #endregion
@@ -88,9 +89,10 @@ namespace Jhu.VO.VoTable
         #endregion
         #region Constructors and initializers
 
-        internal VoTableColumn()
+        internal VoTableColumn(VoTableResource resource)
         {
             InitializeMembers();
+            this.resource = resource;
         }
 
         internal VoTableColumn(VoTableColumn old)
@@ -109,7 +111,9 @@ namespace Jhu.VO.VoTable
             this.precision = null;
             this.width = null;
             this.format = "{0}";
+
             this.dataType = null;
+            this.resource = null;
         }
 
         private void CopyMembers(VoTableColumn old)
@@ -123,7 +127,9 @@ namespace Jhu.VO.VoTable
             this.precision = old.precision;
             this.width = old.width;
             this.format = old.format;
+
             this.dataType = old.dataType;
+            this.resource = old.resource;
         }
 
         public object Clone()
@@ -133,9 +139,9 @@ namespace Jhu.VO.VoTable
 
         #endregion
 
-        public static VoTableColumn Create(string id, string name, VoTableDataType dataType)
+        public static VoTableColumn Create(VoTableResource resource, string id, string name, VoTableDataType dataType)
         {
-            var column = new VoTableColumn()
+            var column = new VoTableColumn(resource)
             {
                 ID = id,
                 Name = name,
@@ -145,9 +151,9 @@ namespace Jhu.VO.VoTable
             return column;
         }
 
-        internal static VoTableColumn FromField(IField field)
+        internal static VoTableColumn FromField(VoTableResource resource, IField field)
         {
-            var column = new VoTableColumn()
+            var column = new VoTableColumn(resource)
             {
                 ID = field.ID,
                 Name = field.Name,
@@ -159,29 +165,33 @@ namespace Jhu.VO.VoTable
                 Width = field.Width,
             };
 
-            column.DataType = VoTableDataType.Create(field);
+            column.DataType = VoTableDataType.FromField(field);
 
             return column;
         }
 
         internal void ToField(IField field)
         {
-            field.ID = id;
-            field.Name = name;
-            field.Ucd = ucd;
-            field.UType = utype;
-            field.Unit = unit;
-            field.Precision = precision;
-            field.Width = width;
+            field.ID = String.IsNullOrWhiteSpace(id) ? null : id;
+            field.Name = String.IsNullOrWhiteSpace(name) ? null : name;
+            field.Ucd = String.IsNullOrWhiteSpace(ucd) ? null : ucd;
+            field.UType = String.IsNullOrWhiteSpace(utype) ? null : utype;
+            field.Unit = String.IsNullOrWhiteSpace(unit) ? null : unit;
+            field.Precision = String.IsNullOrWhiteSpace(precision) ? null : precision;
+            field.Width = String.IsNullOrWhiteSpace(width) ? null : width;
 
-            // TODO: field.Datatype
+            field.Datatype = dataType.Name;
+            field.Arraysize = dataType.FormatArraySize();
 
-            // TODO: add description
-
-            //if (!String.IsNullOrWhiteSpace(Description))
-            //{
-                //field.Description = new 
-                    //}
+            if (!String.IsNullOrWhiteSpace(description))
+            {
+                field.Description = resource.votable.votable.CreateElement<IAnyText>();
+                field.Description.Text = description;
+            }
+            else
+            {
+                field.Description = null;
+            }
         }
     }
 }

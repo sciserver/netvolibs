@@ -37,13 +37,13 @@ namespace Jhu.VO.VoTable
         private bool ownsXmlWriter;
 
         [NonSerialized]
-        private VoTableVersion version;
+        internal VoTableVersion version;
 
         [NonSerialized]
-        private IVoTable votable;
+        internal IVoTable votable;
 
         [NonSerialized]
-        private string @namespace;
+        internal string @namespace;
 
         [NonSerialized]
         private List<VoTableResource> resources;
@@ -59,18 +59,6 @@ namespace Jhu.VO.VoTable
         public XmlWriter XmlWriter
         {
             get { return xmlWriter; }
-        }
-
-        [IgnoreDataMember]
-        public VoTableVersion Version
-        {
-            get { return version; }
-        }
-
-        [IgnoreDataMember]
-        public string Namespace
-        {
-            get { return @namespace; }
         }
 
         [IgnoreDataMember]
@@ -347,8 +335,6 @@ namespace Jhu.VO.VoTable
 
         private void InitializeVersion()
         {
-            // TODO: move this to somewhere else (maybe create function?)
-            // Initialize internal objects
             switch (version)
             {
                 case VoTableVersion.V1_1:
@@ -439,9 +425,6 @@ namespace Jhu.VO.VoTable
                         throw Error.InvalidFormat();
                 }
             }
-
-            // TODO:
-            // * INFO -- also parse TAP query status
 
             // Reader is positioned on the first RESOURCE tag now
             // Header is read completely, now wait for framework to call OnReadNextBlock

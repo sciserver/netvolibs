@@ -209,13 +209,8 @@ namespace Jhu.VO.VoTable
 
         #endregion
         #region Static factory functions
-
-        public static VoTableDataType Create(Type type)
-        {
-            return Create(type, null, false, false);
-        }
-
-        public static VoTableDataType Create(Type type, int[] size, bool isVariableSize, bool isUnboundSize)
+        
+        public static VoTableDataType Create(Type type, int[] size, bool isVariableSize, bool isUnboundSize, bool isNullable)
         {
             VoTableDataType dt;
 
@@ -261,18 +256,19 @@ namespace Jhu.VO.VoTable
             }
             else
             {
-                throw  Error.UnsupportedDataType();
+                throw Error.UnsupportedDataType();
             }
 
             dt.size = size;
             dt.isArray = size != null || isVariableSize || isUnboundSize;
             dt.isVariableSize = isVariableSize;
             dt.isUnboundSize = isUnboundSize;
+            dt.isNullable = isNullable;
 
             return dt;
         }
 
-        internal static VoTableDataType Create(IField field)
+        internal static VoTableDataType FromField(IField field)
         {
             var dt = new VoTableDataType();
 
@@ -352,7 +348,7 @@ namespace Jhu.VO.VoTable
             {
                 isArray = true;
 
-                var parts = arraysize.Split(new char[] { ',', ' ' }, StringSplitOptions.RemoveEmptyEntries);
+                var parts = arraysize.Split(new char[] { ',', ' ', 'x', 'X' }, StringSplitOptions.RemoveEmptyEntries);
                 var lastpart = parts[parts.Length - 1];
 
                 if (lastpart == "*")
@@ -381,6 +377,45 @@ namespace Jhu.VO.VoTable
                 {
                     size[i] = Int32.Parse(parts[i].TrimEnd('*'));
                 }
+            }
+        }
+
+        public string FormatArraySize()
+        {
+            if (size == null || size.Length == 0 ||
+                size.Length == 1 && size[0] == 1 && !isVariableSize && !isUnboundSize)
+            {
+                return null;
+            }
+            else
+            {
+                var res = "";
+
+                for (int i = 0; i < size.Length; i++)
+                {
+                    if (res != "")
+                    {
+                        res += "x";
+                    }
+
+                    res += size[i].ToString();
+                }
+
+                if (isVariableSize)
+                {
+                    res += "*";
+                }
+                else if (isUnboundSize)
+                {
+                    if (res != "")
+                    {
+                        res += "x";
+                    }
+
+                    res += "*";
+                }
+
+                return res;
             }
         }
 

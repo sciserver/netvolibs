@@ -14,6 +14,8 @@ namespace Jhu.VO.VoTable.V1_1
     [XmlType(Namespace = Constants.NamespaceVoTableV1_1)]
     public class VoTable : IVoTable
     {
+        #region Constants
+
         private static readonly Dictionary<Type, Type> ifaceTypes = new Dictionary<Type, Type>()
         {
             { typeof(IAnyText), typeof(AnyText) },
@@ -34,11 +36,9 @@ namespace Jhu.VO.VoTable.V1_1
             { typeof(IVoTable), typeof(VoTable) },
         };
 
-        Type IVoTable.GetType(Type iface)
-        {
-            return ifaceTypes[iface];
-        }
-        
+        #endregion
+        #region Element properties
+
         [XmlElement(Constants.TagDescription, Order = 0)]
         public AnyText Description { get; set; }
 
@@ -104,10 +104,30 @@ namespace Jhu.VO.VoTable.V1_1
         [XmlIgnore]
         ElementList<IInfo> IVoTable.InfoList2 { get; } = null;
 
+        #endregion
+        #region Attribute properties
+
         [XmlAttribute(Constants.AttributeID)]
         public string ID { get; set; }
 
         [XmlAttribute(Constants.AttributeVersion)]
         public string Version { get; set; }
+
+        #endregion
+        #region Element generation functions
+
+        Type IVoTable.GetType(Type iface)
+        {
+            return ifaceTypes[iface];
+        }
+
+        T IVoTable.CreateElement<T>()
+        {
+            var t = ifaceTypes[typeof(T)];
+            return (T)Activator.CreateInstance(t);
+        }
+        
+        #endregion
+
     }
 }
