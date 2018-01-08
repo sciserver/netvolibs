@@ -241,6 +241,18 @@
     <Compile Include="VoTable\VoTableSerialization.cs" />
     <Compile Include="VoTable\VoTableVersion.cs" />
     <Compile Include="VoTable\XmlReaderExtensions.cs" />
+    <Compile Include="VoUnits\V1_0\BaseUnits.cs" />
+    <Compile Include="VoUnits\Constants.cs" />
+    <Compile Include="VoUnits\V1_0\Functions.cs" />
+    <Compile Include="VoUnits\V1_0\Unit.cs" />
+    <Compile Include="VoUnits\V1_0\Prefix.cs" />
+    <Compile Include="VoUnits\V1_0\Prefixes.cs" />
+    <Compile Include="VoUnits\V1_0\PrefixType.cs" />
+    <Compile Include="VoUnits\V1_0\BaseUnit.cs" />
+    <Compile Include="VoUnits\V1_0\CompositeUnit.cs" />
+    <Compile Include="VoUnits\V1_0\UnitElement.cs" />
+    <Compile Include="VoUnits\V1_0\Function.cs" />
+    <Compile Include="VoUnits\V1_0\UnitFunction.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="VoTable\ExceptionMessage.resx">
@@ -296,6 +308,7 @@
       <Name>Jhu.SharpFitsIO</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\build\Jhu.Graywulf.Build.targets" />
 </Project>
