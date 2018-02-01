@@ -265,6 +265,8 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="post-build.ps1" />
+    <None Include="pre-build.ps1" />
     <None Include="Stc\Resources\stc-v1.30.xsd">
       <SubType>Designer</SubType>
     </None>
