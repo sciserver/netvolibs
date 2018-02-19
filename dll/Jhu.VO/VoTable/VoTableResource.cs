@@ -183,6 +183,7 @@ namespace Jhu.VO.VoTable
 
         public void CreateColumns(Type structType)
         {
+            // TODO: implement similarly to FITS library
             throw new NotImplementedException();
         }
 
@@ -1028,7 +1029,7 @@ namespace Jhu.VO.VoTable
                         // Unicode
                         binaryColumnReaders[i] = delegate (VoTableColumn column, byte[] buffer, int length, SharpFitsIO.BitConverterBase bitConverter)
                         {
-                            return Encoding.Unicode.GetChars(buffer, 0, 2 * length);
+                            return Encoding.Unicode.GetString(buffer, 0, 2 * length);
                         };
                     }
                     else
@@ -1037,7 +1038,7 @@ namespace Jhu.VO.VoTable
                         // Fixed length
                         binaryColumnReaders[i] = delegate (VoTableColumn column, byte[] buffer, int length, SharpFitsIO.BitConverterBase bitConverter)
                         {
-                            return Encoding.ASCII.GetChars(buffer, 0, length);
+                            return Encoding.ASCII.GetString(buffer, 0, length);
                         };
                     }
                 }
