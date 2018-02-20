@@ -15,7 +15,7 @@ namespace Jhu.VO.VoTable
         public const string NamespaceXsi = "http://www.w3.org/2001/XMLSchema-instance";
         public const string NamespaceXlink = "http://www.w3.org/1999/xlink";
         public const string NamespaceXsd = "http://www.w3.org/2001/XMLSchema";
-        public const string NamespaceVoTableV1_1 = "";
+        public const string NamespaceVoTableV1_1 = "http://www.ivoa.net/xml/VOTable/v1.1";
         public const string NamespaceVoTableV1_2 = "http://www.ivoa.net/xml/VOTable/v1.2";
         public const string NamespaceVoTableV1_3 = "http://www.ivoa.net/xml/VOTable/v1.3";
 

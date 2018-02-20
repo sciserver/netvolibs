@@ -60,7 +60,7 @@ namespace Jhu.VO.VoTable.V1_3
             var xml = File.ReadAllText(GetTestFilePath(@"test\files\votable\votable_binary2.xml"));
             Deserialize(xml);
         }
-
+        
         [TestMethod]
         public void VoTableDeserializeFitsTest()
         {

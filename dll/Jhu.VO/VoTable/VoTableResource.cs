@@ -293,7 +293,7 @@ namespace Jhu.VO.VoTable
                         break;
                 }
             }
-            
+
             File.XmlReader.ReadStartElement(Constants.TagResource);
 
             // Read until the the TABLE tag is found and call the specific reader function
@@ -667,6 +667,9 @@ namespace Jhu.VO.VoTable
                     if (File.XmlReader.NodeType == XmlNodeType.Element &&
                         VoTable.Comparer.Compare(File.XmlReader.Name, Constants.TagTD) == 0)
                     {
+                        object value = null;
+                        var column = columns[q];
+                        var datatype = column.DataType;
 
                         if (!File.XmlReader.IsEmptyElement)
                         {
@@ -676,15 +679,29 @@ namespace Jhu.VO.VoTable
                             // split text and use parser on parts.
 
                             // TODO: implement type mapping
-
                             var text = await File.XmlReader.ReadContentAsStringAsync();
-                            values[startIndex + q] = textColumnReaders[q](columns[q], text);
 
-                            // Magic nulls
-                            if (columns[q].DataType.NullValue != null &&
-                                columns[q].DataType.NullValue.Equals(values[startIndex + q]))
+                            if (!String.IsNullOrEmpty(text) ||
+                                datatype.Type == typeof(string) ||
+                                !datatype.IsFixedLength)
                             {
-                                values[startIndex + q] = null;
+                                value = textColumnReaders[q](columns[q], text);
+
+                                // Magic nulls
+                                if (datatype.NullValue != null &&
+                                    datatype.NullValue.Equals(value))
+                                {
+                                    value = null;
+                                }
+                            }
+                            else
+                            {
+                                // Non standard null
+
+                                // TODO: verify if it complies with standard
+                                // Empty contents. This is a non-standard null for numeric values
+
+                                value = null;
                             }
 
                             // Consume closing tag
@@ -693,9 +710,11 @@ namespace Jhu.VO.VoTable
                         else
                         {
                             // Standard null
-                            values[startIndex + q] = null;
+                            value = null;
                             await File.XmlReader.ReadAsync();
                         }
+
+                        values[startIndex + q] = value;
                     }
                     else if (File.XmlReader.NodeType == XmlNodeType.EndElement &&
                         VoTable.Comparer.Compare(File.XmlReader.Name, Constants.TagTR) == 0)
@@ -756,56 +775,59 @@ namespace Jhu.VO.VoTable
 
                     for (int i = 0; i < Columns.Count; i++)
                     {
+                        var column = Columns[i];
+                        object value = null;
+
+                        if (column.DataType.IsFixedLength)
+                        {
+                            var l = column.DataType.ByteSize;
+
+                            if (column.DataType.HasLength)
+                            {
+                                l *= column.DataType.Length;
+                            }
+
+                            var s = await File.XmlReader.ReadContentAsBase64Async(binaryBuffer, 0, l);
+
+                            if (l != s)
+                            {
+                                return false;
+                            }
+
+                            value = binaryColumnReaders[i](column, binaryBuffer, l, File.BitConverter);
+                        }
+                        else
+                        {
+                            var l = 4;
+                            var s = await File.XmlReader.ReadContentAsBase64Async(binaryBuffer, 0, l);
+
+                            if (l != s)
+                            {
+                                return false;
+                            }
+
+                            var length = File.BitConverter.ToInt32(binaryBuffer, 0);
+                            l = column.DataType.ByteSize * length;
+
+                            // If stride buffer is not enough, increase
+                            if (l > binaryBuffer.Length)
+                            {
+                                binaryBuffer = new byte[l]; // TODO: round up to 64k blocks?
+                            }
+
+                            s = await File.XmlReader.ReadContentAsBase64Async(binaryBuffer, 0, l);
+
+                            if (l != s)
+                            {
+                                return false;
+                            }
+
+                            value = binaryColumnReaders[i](column, binaryBuffer, length, File.BitConverter);
+                        }
+
                         if (values[startIndex + i] != DBNull.Value)
                         {
-                            var column = Columns[i];
-
-                            if (column.DataType.IsFixedLength)
-                            {
-                                var l = column.DataType.ByteSize;
-
-                                if (column.DataType.HasLength)
-                                {
-                                    l *= column.DataType.Length;
-                                }
-
-                                var s = await File.XmlReader.ReadContentAsBase64Async(binaryBuffer, 0, l);
-
-                                if (l != s)
-                                {
-                                    return false;
-                                }
-
-                                values[startIndex + i] = binaryColumnReaders[i](column, binaryBuffer, l, File.BitConverter);
-                            }
-                            else
-                            {
-                                var l = 4;
-                                var s = await File.XmlReader.ReadContentAsBase64Async(binaryBuffer, 0, l);
-
-                                if (l != s)
-                                {
-                                    return false;
-                                }
-
-                                var length = File.BitConverter.ToInt32(binaryBuffer, 0);
-                                l = column.DataType.ByteSize * length;
-
-                                // If stride buffer is not enough, increase
-                                if (l > binaryBuffer.Length)
-                                {
-                                    binaryBuffer = new byte[l]; // TODO: round up to 64k blocks?
-                                }
-
-                                s = await File.XmlReader.ReadContentAsBase64Async(binaryBuffer, 0, l);
-
-                                if (l != s)
-                                {
-                                    return false;
-                                }
-
-                                values[startIndex + i] = binaryColumnReaders[i](column, binaryBuffer, length, File.BitConverter);
-                            }
+                            values[startIndex + i] = value;
                         }
                     }
 
@@ -1145,7 +1167,7 @@ namespace Jhu.VO.VoTable
 
             // TODO: open stream here
         }
-        
+
         public async Task WriteNextRowAsync(params object[] values)
         {
             switch (serialization)
@@ -1193,7 +1215,7 @@ namespace Jhu.VO.VoTable
             File.WriteElements(resource.InfoList2);
             await File.XmlWriter.WriteEndElementAsync();
         }
-        
+
 
 
         public async Task WriteFromDataReaderAsync(DbDataReader dr)
