@@ -9,7 +9,7 @@ using System.Xml.Serialization;
 
 namespace Jhu.VO.TapRegExt.V1_0
 {
-    [XmlType(Namespace = Constants.TapRegExtNamespace)]
+    [XmlType(Namespace = Constants.TapRegExtNamespaceV1_0)]
     public class OutputFormat
     {
         [XmlElement(Constants.AttributeMime, Form = XmlSchemaForm.Unqualified)]

@@ -9,8 +9,8 @@ using System.Xml.Serialization;
 
 namespace Jhu.VO.TapRegExt.V1_0
 {
-    [XmlType(TypeName = Constants.TypeTapCapRestriction, Namespace = Constants.TapRegExtNamespace)]
-    [XmlRoot(VoResource.Constants.TagCapability, Namespace = Constants.TapRegExtNamespace)]
+    [XmlType(TypeName = Constants.TypeTapCapRestriction, Namespace = Constants.TapRegExtNamespaceV1_0)]
+    [XmlRoot(VoResource.Constants.TagCapability, Namespace = Constants.TapRegExtNamespaceV1_0)]
     public abstract class TapCapRestriction : VoResource.V1_0.Capability
     {
         

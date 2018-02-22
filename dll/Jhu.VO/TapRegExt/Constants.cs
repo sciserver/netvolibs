@@ -8,7 +8,7 @@ namespace Jhu.VO.TapRegExt
 {
     public class Constants
     {
-        public const string TapRegExtNamespace = "http://www.ivoa.net/xml/TAPRegExt/v1.0";
+        public const string TapRegExtNamespaceV1_0 = "http://www.ivoa.net/xml/TAPRegExt/v1.0";
 
         public const string TypeTapCapRestriction = "TapCapRestriction";
         public const string TypeTableAccess = "TableAccess";

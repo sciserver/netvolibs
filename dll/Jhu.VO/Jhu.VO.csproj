@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Constants.cs" />
     <Compile Include="ElementList.cs" />
     <Compile Include="ElementListEnumerator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -253,6 +254,7 @@
     <Compile Include="VoUnits\V1_0\UnitElement.cs" />
     <Compile Include="VoUnits\V1_0\Function.cs" />
     <Compile Include="VoUnits\V1_0\UnitFunction.cs" />
+    <Compile Include="VoXmlReader.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="VoTable\ExceptionMessage.resx">

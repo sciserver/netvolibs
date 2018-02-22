@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<cap:capabilities xmlns:cap="http://www.ivoa.net/xml/VOSICapabilities/v1.0" xmlns:vr="http://www.ivoa.net/xml/VOResource/v1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:vs="http://www.ivoa.net/xml/VODataService/v1.0" xmlns:tr="http://www.ivoa.net/xml/TAP/v1.0" xmlns:vg="http://www.ivoa.net/xml/VORegistry/v1.0" xsi:schemaLocation="http://www.ivoa.net/xml/VOResource/v1.0 http://vo.ari.uni-heidelberg.de/docs/schemata/VOResource-v1.0.xsd http://www.ivoa.net/xml/VODataService/v1.0 http://vo.ari.uni-heidelberg.de/docs/schemata/VODataService-v1.0.xsd http://www.ivoa.net/xml/VORegistry/v1.0 http://vo.ari.uni-heidelberg.de/docs/schemata/VORegistry-v1.0.xsd http://www.ivoa.net/xml/VOSICapabilities/v1.0 http://vo.ari.uni-heidelberg.de/docs/schemata/VOSICapabilities-v1.0.xsd http://www.ivoa.net/xml/TAP/v1.0 http://vo.ari.uni-heidelberg.de/docs/schemata/TAPRegExt-v1.0.xsd">
+ <capability standardID="ivo://ivoa.net/std/TAP" xsi:type="tr:TableAccess">
+  <interface role="std" xsi:type="vs:ParamHTTP">
+   <accessURL use="base">http://heasarc.gsfc.nasa.gov:80/xamin/vo/tap</accessURL>
+  </interface>
+  <language>
+   <name>ADQL</name>
+   <version ivo-id="ivo://ivoa.net/PQL/0.5">2.0</version>
+   <description>ADQL 2.0</description>
+  </language>
+  <language>
+   <name>PQL</name>
+   <version>0.5</version>
+   <description>Test version of PQL</description>
+  </language>
+  <outputFormat ivo-id="ivo://ivoa.net/TAPRegEXT#output-votable-td">
+   <mime>text/xml</mime>
+  </outputFormat>
+  <uploadMethod ivo-id="ivo://ivoa.net/std/TAPRegExt#upload-http"/>
+  <uploadMethod ivo-id="ivo://ivoa.net/std/TAPRegExt#upload-inline"/>
+ </capability>
+ <capability standardID="ivo://ivoa.net/std/VOSI#capabilities">
+  <interface role="std" xsi:type="vs:ParamHTTP">
+   <accessURL use="full">http://heasarc.gsfc.nasa.gov:80/xamin/vo/tap/capabilities</accessURL>
+   <queryType>GET</queryType>
+   <resultType>application/xml</resultType>
+  </interface>
+ </capability>
+ <capability standardID="ivo://ivoa.net/std/VOSI#availability">
+  <interface role="std" xsi:type="vs:ParamHTTP">
+   <accessURL use="full">http://heasarc.gsfc.nasa.gov:80/xamin/vo/tap/availability</accessURL>
+   <queryType>GET</queryType>
+   <resultType>application/xml</resultType>
+  </interface>
+ </capability>
+ <capability standardID="ivo://ivoa.net/std/VOSI#tables">
+  <interface xsi:type="vs:ParamHTTP">
+   <accessURL use="full">http://heasarc.gsfc.nasa.gov:80/xamin/vo/tap/tables</accessURL>
+   <queryType>GET</queryType>
+   <resultType>application/xml</resultType>
+  </interface>
+ </capability>
+</cap:capabilities>
+* Connection #0 to host heasarc.gsfc.nasa.gov left intact

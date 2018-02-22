@@ -23,7 +23,7 @@ namespace Jhu.VO.Vosi
             {
                 
             };
-            var r = XmlReader.Create(new StringReader(xml));
+            var r = new VoXmlReader(XmlReader.Create(new StringReader(xml)));
             return (T)s.Deserialize(r);
         }
 
@@ -52,6 +52,16 @@ namespace Jhu.VO.Vosi
         }
 
         [TestMethod]
+        public void AvailabilityCadcrTest()
+        {
+            string path = GetTestFilePath(@"test\files\vosi\cadc_availability.xml");
+            var xml = File.ReadAllText(path);
+            var e = ReadElementHelper<VO.Vosi.Availability.V1_0.Availability>(xml);
+
+            Assert.IsTrue(e.Available);
+        }
+
+        [TestMethod]
         public void CapabilitiesVizierTest()
         {
             string path = GetTestFilePath(@"test\files\vosi\vizier_capabilities.xml");
@@ -67,6 +77,13 @@ namespace Jhu.VO.Vosi
             var e = ReadElementHelper<VO.Vosi.Capabilities.V1_0.Capabilities>(xml);
         }
 
+        [TestMethod]
+        public void CapabilitiesCadcTest()
+        {
+            string path = GetTestFilePath(@"test\files\vosi\cadc_capabilities.xml");
+            var xml = File.ReadAllText(path);
+            var e = ReadElementHelper<VO.Vosi.Capabilities.V1_0.Capabilities>(xml);
+        }
 
         [TestMethod]
         public void TablesVizierTest()
