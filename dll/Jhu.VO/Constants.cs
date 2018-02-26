@@ -7,7 +7,7 @@ using System.Xml.Schema;
 
 namespace Jhu.VO
 {
-    class Constants
+    public class Constants
     {
         public static readonly HashSet<string> SupportedNameSpaces = new HashSet<string>()
         {
@@ -25,5 +25,11 @@ namespace Jhu.VO
             VoTable.Constants.NamespaceVoTableV1_2,
             VoTable.Constants.NamespaceVoTableV1_3,
         };
+
+        public const string StandardIDTap = "ivo://ivoa.net/std/TAP";
+        public const string StandardIDVosiTables = "ivo://ivoa.net/std/VOSI#tables";
+        public const string StandardIDVosiCapabilities = "ivo://ivoa.net/std/VOSI#capabilities";
+        public const string StandardIDVosiAvailability = "ivo://ivoa.net/std/VOSI#availability";
+        public const string StanraddIDDaliExamples = "ivo://ivoa.net/std/DALI#examples";
     }
 }

@@ -6,13 +6,14 @@ using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Schema;
 using System.Xml.Serialization;
+using Jhu.VO.VoDataService.Common;
 
 namespace Jhu.VO.VoDataService.V1_0
 {
     [XmlType(Namespace = Constants.VoDataServiceNamespaceV1_0)]
     [XmlInclude(typeof(InputParam))]
     [XmlInclude(typeof(TableParam))]
-    public class BaseParam
+    public class BaseParam : IBaseParam
     {
         [XmlElement(Constants.TagName, Form = XmlSchemaForm.Unqualified)]
         public string Name { get; set; }

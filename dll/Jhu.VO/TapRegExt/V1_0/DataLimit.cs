@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Schema;
 using System.Xml.Serialization;
+using Jhu.VO.TapRegExt.Common;
 
 namespace Jhu.VO.TapRegExt.V1_0
 {
     [XmlType(Namespace = Constants.TapRegExtNamespaceV1_0)]
-    public class DataLimit
+    public class DataLimit : IDataLimit
     {
         [XmlText]
         public int Value { get; set; }

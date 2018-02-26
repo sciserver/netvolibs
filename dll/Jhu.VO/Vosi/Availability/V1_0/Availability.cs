@@ -2,13 +2,14 @@
 using System.ComponentModel;
 using System.Xml;
 using System.Xml.Serialization;
+using Jhu.VO.Vosi.Availability.Common;
 
 namespace Jhu.VO.Vosi.Availability.V1_0
 {
     [Serializable]
     [XmlType(AnonymousType = true, Namespace = Constants.VosiAvailabilityNamespaceV1_0)]
     [XmlRoot(Constants.TagAvailability, Namespace = Constants.VosiAvailabilityNamespaceV1_0)]
-    public class Availability
+    public class Availability : IAvailability
     {
         [XmlElement(Constants.TagAvailable)]
         public bool Available { get; set; }

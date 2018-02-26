@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Schema;
 using System.Xml.Serialization;
+using Jhu.VO.VoDataService.Common;
 
 namespace Jhu.VO.VoDataService.V1_0
 {
     [XmlType(Namespace = Constants.VoDataServiceNamespaceV1_0)]
-    public class SimpleDataType
+    public class SimpleDataType : ISimpleDataType
     {
         [XmlText]
         public string Value { get; set; }
