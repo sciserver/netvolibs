@@ -103,7 +103,7 @@ namespace Jhu.VO.VoTable
             this.version = version;
             Open();
         }
-        
+
         /// <summary>
         /// Initializes a VOTable object by re-using an already open xml reader.
         /// </summary>
@@ -216,7 +216,7 @@ namespace Jhu.VO.VoTable
                 ValidationType = ValidationType.Schema,
                 ValidationFlags = XmlSchemaValidationFlags.ProcessSchemaLocation
             };
-            xmlReader = XmlReader.Create(WrappedStream, settings);
+            xmlReader = VoTableXmlReader.Create(WrappedStream, settings);
             ownsXmlReader = true;
         }
 
@@ -333,21 +333,36 @@ namespace Jhu.VO.VoTable
         #endregion
         #region Version support
 
-        private void InitializeVersion()
+        internal static string GetNamespaceFromVersion(VoTableVersion version)
         {
             switch (version)
             {
                 case VoTableVersion.V1_1:
+                    return Constants.NamespaceVoTableV1_1;
+                case VoTableVersion.V1_2:
+                    return Constants.NamespaceVoTableV1_2;
+                case VoTableVersion.V1_3:
+                    return Constants.NamespaceVoTableV1_3;
+                    break;
+                default:
+                    throw Error.UnsupportedVersion(version.ToString());
+            }
+        }
+
+        private void InitializeVersion()
+        {
+            @namespace = GetNamespaceFromVersion(version);
+
+            switch (version)
+            {
+                case VoTableVersion.V1_1:
                     votable = new V1_1.VoTable();
-                    @namespace = Constants.NamespaceVoTableV1_1;
                     break;
                 case VoTableVersion.V1_2:
                     votable = new V1_2.VoTable();
-                    @namespace = Constants.NamespaceVoTableV1_2;
                     break;
                 case VoTableVersion.V1_3:
                     votable = new V1_3.VoTable();
-                    @namespace = Constants.NamespaceVoTableV1_3;
                     break;
                 default:
                     throw Error.UnsupportedVersion(version.ToString());
@@ -357,24 +372,47 @@ namespace Jhu.VO.VoTable
         #endregion
         #region VOTable reader implementation
 
+        internal static VoTableVersion GetVersionFromNamespace(string namespaceURI)
+        {
+            switch (namespaceURI)
+            {
+                case Constants.NamespaceVoTableV1_1:
+                    return VoTableVersion.V1_1;
+                case Constants.NamespaceVoTableV1_2:
+                    return VoTableVersion.V1_2;
+                case Constants.NamespaceVoTableV1_3:
+                    return VoTableVersion.V1_3;
+                default:
+                    return VoTableVersion.Unknown;
+            }
+        }
+
+        internal static VoTableVersion GetVersionFromVersionString(string version)
+        {
+            switch (version)
+            {
+                case Constants.VersionV1_1:
+                    return VoTableVersion.V1_1;
+                case Constants.VersionV1_2:
+                    return VoTableVersion.V1_2;
+                case Constants.VersionV1_3:
+                    return VoTableVersion.V1_3;
+                default:
+                    return VoTableVersion.Unknown;
+            }
+        }
+
         public async Task ReadHeaderAsync()
         {
             // Skip initial declarations
             await XmlReader.MoveToContentAsync();
 
-            switch (XmlReader.NamespaceURI)
+            // Try to figure out version from 
+            version = GetVersionFromNamespace(XmlReader.NamespaceURI);
+
+            if (version == VoTableVersion.Unknown)
             {
-                case Constants.NamespaceVoTableV1_1:
-                    version = VoTableVersion.V1_1;
-                    break;
-                case Constants.NamespaceVoTableV1_2:
-                    version = VoTableVersion.V1_2;
-                    break;
-                case Constants.NamespaceVoTableV1_3:
-                    version = VoTableVersion.V1_3;
-                    break;
-                default:
-                    throw Error.UnsupportedVersion(XmlReader.NamespaceURI);
+                throw Error.UnsupportedVersion(XmlReader.NamespaceURI);
             }
 
             InitializeVersion();
@@ -456,7 +494,7 @@ namespace Jhu.VO.VoTable
             // trailing INFO tags (what are these for?)
             // make sure that they are read and position the reader after the
             // closing RESOURCE element, whatever it is.
-            
+
             while (!XmlReader.IsEndElement(Constants.TagVoTable))
             {
                 switch (version)
@@ -472,7 +510,7 @@ namespace Jhu.VO.VoTable
                         throw new NotImplementedException();
                 }
             }
-            
+
             XmlReader.ReadEndElement();
 
             return Task.CompletedTask;
@@ -480,7 +518,7 @@ namespace Jhu.VO.VoTable
 
         #endregion
         #region VOTable writer implementation
-        
+
         public async Task WriteHeaderAsync()
         {
             await XmlWriter.WriteStartDocumentAsync();
@@ -501,7 +539,7 @@ namespace Jhu.VO.VoTable
                 default:
                     throw new NotImplementedException();
             }
-            
+
             await XmlWriter.WriteStartElementAsync(null, Constants.TagVoTable, @namespace);
             await XmlWriter.WriteAttributeStringAsync("xmlns", "xsd", null, Constants.NamespaceXsd);
             await XmlWriter.WriteAttributeStringAsync("xmlns", "xsi", null, Constants.NamespaceXsi);

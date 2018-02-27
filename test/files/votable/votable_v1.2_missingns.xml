@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VOTABLE xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:noNamespaceSchemaLocation="xmlns:http://www.ivoa.net/xml/VOTable-1.2.xsd" version="1.2">
+<RESOURCE type="results">
+<DESCRIPTION>DALServer TAP Query</DESCRIPTION>
+<INFO name="QUERY_STATUS" value="OK"/>
+<INFO name="QUERY" value="SELECT &quot;schema_name&quot;, &quot;table_name&quot;, &quot;description&quot;
+FROM tap_schema.tables
+WHERE &quot;table_type&quot; = 'table'"/>
+<INFO name="TableRows" value="173"/>
+<TABLE>
+<FIELD ID="schema_name" name="schema_name" datatype="char" arraysize="4096">
+<DESCRIPTION>Schema name from the TAP_SCHEMA.schemas table</DESCRIPTION>
+</FIELD>
+<FIELD ID="table_name" name="table_name" datatype="char" arraysize="4096">
+<DESCRIPTION>Tables name as it should be used in queries</DESCRIPTION>
+</FIELD>
+<FIELD ID="description" name="description" datatype="char" arraysize="4096">
+<DESCRIPTION>Brief description of table</DESCRIPTION>
+</FIELD>
+<DATA>
+<TABLEDATA>
+<TR><TD>ls_dr3</TD><TD>ls_dr3.apflux</TD><TD>Aperture flux values of tractor objects</TD></TR>
+<TR><TD>ls_dr3</TD><TD>ls_dr3.bricks</TD><TD>Table with RA, DEC bounds of each geometrical brick on the sky</TD></TR>
+<TR><TD>ls_dr3</TD><TD>ls_dr3.bricks_dr3</TD><TD>Table with information that summarizes the contents of each brick, as of DR3</TD></TR>
+<TR><TD>ls_dr3</TD><TD>ls_dr3.ccds_annotated</TD><TD>Additional information gathered during calibration pre-processing before running the Tractor reductions.</TD></TR>
+<TR><TD>ls_dr3</TD><TD>ls_dr3.depth</TD><TD>A concatenation of the depth histograms for each brick</TD></TR>
+<TR><TD>ls_dr3</TD><TD>ls_dr3.depth_summary</TD><TD>A summary of the depth histogram of the whole DR3 survey</TD></TR>
+<TR><TD>ls_dr3</TD><TD>ls_dr3.dr3_dr12q</TD><TD>Tractored survey photometry that is row-by-row-matched to the SDSS DR12 visually inspected quasar catalog (Paris et al. 2016) such that the photometric parameters in row &lt;N&gt; of survey-dr3-DR12Q.fits matches the spectroscopic parameters in row &lt;N&gt; of DR12Q.fits.</TD></TR>
+<TR><TD>ls_dr3</TD><TD>ls_dr3.dr3_dr7q</TD><TD>Tractored survey photometry that is row-by-row-matched to the SDSS DR7 visually inspected quasar catalog (Schneider et al. 2010) such that the photometric parameters in row &lt;N&gt; of survey-dr3-DR7Q.fits matches the spectroscopic parameters in row &lt;N&gt; of DR7qso.fits</TD></TR>
+<TR><TD>ls_dr3</TD><TD>ls_dr3.dr3_specobj_dr13</TD><TD>Tractored survey photometry that is row-by-row-matched to the SDSS DR13 spectrosopic pipeline file such that the photometric parameters in row &lt;N&gt; of survey-dr3-specObj-dr13.fits matches the spectroscopic parameters in row &lt;N&gt; of specObj-dr13.fits</TD></TR>
+<TR><TD>ls_dr3</TD><TD>ls_dr3.dr3_superset_dr12q</TD><TD>Tractored survey photometry that is row-by-row-matched to the superset of all SDSS DR12 spectroscopically confirmed objects that were visually inspected as possible quasars (Paris et al. 2016, in preparation, see also Paris et al. 2014) such that the photometric parameters in row &lt;N&gt; of survey-dr3-Superset_DR12Q.fits matches the spectroscopic parameters in row &lt;N&gt; of Superset_DR12Q.fits.</TD></TR>
+<TR><TD>ls_dr3</TD><TD>ls_dr3.neighbors</TD><TD>Table of all neighbors within 30-arcsec of each object</TD></TR>
+<TR><TD>ls_dr3</TD><TD>ls_dr3.survey_ccds</TD><TD>A table with almanac information (e.g. seeing, etc.) about each individual CCD image.</TD></TR>
+<TR><TD>ls_dr3</TD><TD>ls_dr3.tractor</TD><TD>Main Tractor catalog</TD></TR>
+<TR><TD>ls_dr3</TD><TD>ls_dr3.tractor_cs</TD><TD>Main Tractor catalog</TD></TR>
+<TR><TD>ls_dr3</TD><TD>ls_dr3.wise</TD><TD>WISE photometry of objects</TD></TR>
+<TR><TD>dad_dr1</TD><TD>dad_dr1.movds</TD><TD>This table describes the characteristics of the datasets (pointings). The time and position fields are for the start of the first observation exposure in the set. Position fields are for the center of the field.</TD></TR>
+<TR><TD>dad_dr1</TD><TD>dad_dr1.movdup</TD><TD></TD></TR>
+<TR><TD>dad_dr1</TD><TD>dad_dr1.movexp</TD><TD>The exposure table provides details of each exposure. The expname is a way to link to the image data in the NOAO Science Archive. The expid is the sequencial count of the exposures in a dataset. The separation time is a relative time for the middle of each exposure with an origin at the start of the first exposure.</TD></TR>
+<TR><TD>dad_dr1</TD><TD>dad_dr1.movgrp</TD><TD>This is the main tracklet table. It provides information about each connected set of observations corresponding to a moving object.</TD></TR>
+<TR><TD>dad_dr1</TD><TD>dad_dr1.movmpc</TD><TD>The MPC records are basically an encoding of the information in the exposure and observation tables in a specific format for reporting the time, position, and estimated magnitude for an observation.</TD></TR>
+<TR><TD>ivoa</TD><TD>ivoa.exposure</TD><TD>DECam Exposure information</TD></TR>
+<TR><TD>ivoa</TD><TD>ivoa.obscore</TD><TD>ObsCore metadata table</TD></TR>
+<TR><TD>ivoa</TD><TD>ivoa.siav1</TD><TD>SIA v1 metadata table</TD></TR>
+<TR><TD>ivoa</TD><TD>ivoa.siav2</TD><TD>SIA v2 metadata table</TD></TR>
+<TR><TD>ivoa_smash_dr1</TD><TD>ivoa_smash_dr1.exposure</TD><TD></TD></TR>
+<TR><TD>ivoa_smash_dr1</TD><TD>ivoa_smash_dr1.obscore</TD><TD></TD></TR>
+<TR><TD>ivoa_smash_dr1</TD><TD>ivoa_smash_dr1.siav1</TD><TD></TD></TR>
+<TR><TD>ivoa_smash_dr1</TD><TD>ivoa_smash_dr1.siav2</TD><TD></TD></TR>
+<TR><TD>nsc_dr1</TD><TD>nsc_dr1.chip</TD><TD>CCD information table</TD></TR>
+<TR><TD>nsc_dr1</TD><TD>nsc_dr1.coverage</TD><TD>Survey coverage table</TD></TR>
+<TR><TD>nsc_dr1</TD><TD>nsc_dr1.exposure</TD><TD>Exposures contributing to the catalog</TD></TR>
+<TR><TD>nsc_dr1</TD><TD>nsc_dr1.nsc_allwise</TD><TD>NSC vs ALLWISE 1-arcsec crossmatch</TD></TR>
+<TR><TD>nsc_dr1</TD><TD>nsc_dr1.nsc_des</TD><TD>NSC vs DES 1-arcsec crossmatch</TD></TR>
+<TR><TD>public</TD><TD>public.coadd_object_summary</TD><TD></TD></TR>
+<TR><TD>public</TD><TD>public.coadd_object_summary_cstore</TD><TD></TD></TR>
+<TR><TD>nsc_dr1</TD><TD>nsc_dr1.nsc_lsdr4</TD><TD>NSC vs DECaLS DR4 1-arcsec crossmatch</TD></TR>
+<TR><TD>nsc_dr1</TD><TD>nsc_dr1.nsc_lsdr5</TD><TD>NSC vs DECaLS DR5 1-arcsec crossmatch</TD></TR>
+<TR><TD>nsc_dr1</TD><TD>nsc_dr1.object</TD><TD>Primary object table</TD></TR>
+<TR><TD>usno</TD><TD>usno.a2</TD><TD>USNO-A2 catalog</TD></TR>
+<TR><TD>usno</TD><TD>usno.b1</TD><TD>USNO-B1 catalog</TD></TR>
+<TR><TD>sdss_dr13</TD><TD>sdss_dr13.calibobj_gal</TD><TD>Sweep of photObj -- galaxies</TD></TR>
+<TR><TD>sdss_dr13</TD><TD>sdss_dr13.calibobj_star</TD><TD>Sweep of photObj -- stars</TD></TR>
+<TR><TD>sdss_dr13</TD><TD>sdss_dr13.dr12qso</TD><TD>DR12 QSO Catalog</TD></TR>
+<TR><TD>sdss_dr13</TD><TD>sdss_dr13.emissionlinesport_dr12</TD><TD></TD></TR>
+<TR><TD>sdss_dr13</TD><TD>sdss_dr13.galspecline_dr8</TD><TD></TD></TR>
+<TR><TD>sdss_dr13</TD><TD>sdss_dr13.photoposplate</TD><TD>Photometry of DR13 spectral objects</TD></TR>
+<TR><TD>sdss_dr13</TD><TD>sdss_dr13.specobj</TD><TD>DR13 SpecObj catalog</TD></TR>
+<TR><TD>sdss_dr13</TD><TD>sdss_dr13.wisematch_gal</TD><TD>Sweep of photObj -- galaxies</TD></TR>
+<TR><TD>sdss_dr13</TD><TD>sdss_dr13.wisematch_star</TD><TD>Sweep of photObj -- stars</TD></TR>
+<TR><TD>allwise</TD><TD>allwise.source</TD><TD>AllWISE Source Table (747M objects)</TD></TR>
+<TR><TD>allwise</TD><TD>allwise.source_cs</TD><TD>AllWISE Source Table (747M objects, column store)</TD></TR>
+<TR><TD>tap_schema</TD><TD>tap_schema.columns</TD><TD>Columns Descriptions</TD></TR>
+<TR><TD>tap_schema</TD><TD>tap_schema.key_columns</TD><TD>Key Column Mappings</TD></TR>
+<TR><TD>tap_schema</TD><TD>tap_schema.keys</TD><TD>Table Key Columns</TD></TR>
+<TR><TD>tap_schema</TD><TD>tap_schema.schemas</TD><TD>Schema Descriptions</TD></TR>
+<TR><TD>tap_schema</TD><TD>tap_schema.tables</TD><TD>Table Descriptions</TD></TR>
+<TR><TD>dad_dr1</TD><TD>dad_dr1.movobs</TD><TD>These tables provide information for each separate detection of a moving object. They provide links to associated files (see below) and to what was reported to the MPC.</TD></TR>
+<TR><TD>dad_dr1</TD><TD>dad_dr1.movrate</TD><TD></TD></TR>
+<TR><TD>gaia_dr1</TD><TD>gaia_dr1.cepheid</TD><TD>This table describes the Cepheid stars identified in table VariableSummary as classification=CEP. In the analyses only observations with rejectedByVariabilityProcessing=false are included, as found in table PhotVariableTimeSeriesGfov.</TD></TR>
+<TR><TD>gaia_dr1</TD><TD>gaia_dr1.gaia_source</TD><TD>This table has an entry for every Gaia observed source as listed in the Main Database accumulating catalogue version from which the catalogue release has been generated. It contains the basic source parameters, that is only final data (no epoch data) and no spectra (neither final nor epoch).</TD></TR>
+<TR><TD>gaia_dr1</TD><TD>gaia_dr1.gaia_source_cs</TD><TD>This (column store) table has an entry for every Gaia observed source as listed in the Main Database accumulating catalogue version from which the catalogue release has been generated. It contains the basic source parameters, that is only final data (no epoch data) and no spectra (neither final nor epoch).</TD></TR>
+<TR><TD>gaia_dr1</TD><TD>gaia_dr1.phot_variable_time_series_gfov</TD><TD>FOV time series of sources that have phtoVariableFlag=VARIABLE</TD></TR>
+<TR><TD>gaia_dr1</TD><TD>gaia_dr1.phot_variable_time_series_gfov_statistical_parameters</TD><TD>Statistical parameter of FOV time series</TD></TR>
+<TR><TD>gaia_dr1</TD><TD>gaia_dr1.rrlyrae</TD><TD>This table describes the RRLyrae stars identified in table VariableSummary as classification=RRLYR. In the analyses only observations with rejectedByVariabilityProcessing=false are included, as found in table PhotVariableTimeSeriesGfov.</TD></TR>
+<TR><TD>gaia_dr1</TD><TD>gaia_dr1.tgas_source</TD><TD>This table is a subset of GaiaSource comprising those stars in the Hipparcos and Tycho-2 Catalogues for which a full 5-parameter astrometric solution has been possible in Gaia Data Release 1. This is possible because the early Hipparcos epoch positions break some degeneracies due to the limited Gaia time coverage.  This table contains a substantial fraction of the around 2.5 million stars in the Hipparcos and Tycho-2 catalogue. Many stars have been excluded due to several reasons, such as saturation, cross-match errors or bad astrometric solution.</TD></TR>
+<TR><TD>gaia_dr1</TD><TD>gaia_dr1.variable_summary</TD><TD>Variability summary of sources with photVariableFlag=VARIABLE</TD></TR>
+<TR><TD>ivoa_ls_dr3</TD><TD>ivoa_ls_dr3.exposure</TD><TD></TD></TR>
+<TR><TD>ivoa_ls_dr3</TD><TD>ivoa_ls_dr3.obscore</TD><TD></TD></TR>
+<TR><TD>ivoa_ls_dr3</TD><TD>ivoa_ls_dr3.siav1</TD><TD></TD></TR>
+<TR><TD>ivoa_ls_dr3</TD><TD>ivoa_ls_dr3.siav2</TD><TD></TD></TR>
+<TR><TD>phat_v2</TD><TD>phat_v2.phot_meas</TD><TD>Individual photometric measurements, one row per measurement</TD></TR>
+<TR><TD>phat_v2</TD><TD>phat_v2.phot_mod</TD><TD>Combined average photometry</TD></TR>
+<TR><TD>phat_v2</TD><TD>phat_v2.phot_v2</TD><TD>Individual photometric measurements in original table format</TD></TR>
+<TR><TD>phat_v2</TD><TD>phat_v2.star_v2</TD><TD>Combined average photometry in original table format</TD></TR>
+<TR><TD>smash_dr1</TD><TD>smash_dr1.chip</TD><TD>Info on each chip in the frame</TD></TR>
+<TR><TD>smash_dr1</TD><TD>smash_dr1.exposure</TD><TD>Info on each exposure</TD></TR>
+<TR><TD>smash_dr1</TD><TD>smash_dr1.field</TD><TD>Info on each target field (position, Num exposures, etc)</TD></TR>
+<TR><TD>smash_dr1</TD><TD>smash_dr1.object</TD><TD>Average photometry of each unique object</TD></TR>
+<TR><TD>smash_dr1</TD><TD>smash_dr1.source</TD><TD>All of the individual source measurements</TD></TR>
+<TR><TD>smash_dr1</TD><TD>smash_dr1.xmatch</TD><TD>Crossmatch of object against GAIA DR1 and WISE</TD></TR>
+<TR><TD>decaps_dr1</TD><TD>decaps_dr1.ccds</TD><TD>Brick CCD table</TD></TR>
+<TR><TD>decaps_dr1</TD><TD>decaps_dr1.depth</TD><TD>Brick depth table</TD></TR>
+<TR><TD>decaps_dr1</TD><TD>decaps_dr1.imdb</TD><TD>Image table contains the headers from all images composing the DECaPS survey.</TD></TR>
+<TR><TD>decaps_dr1</TD><TD>decaps_dr1.object</TD><TD>Band-merged catalogs for all objects</TD></TR>
+<TR><TD>decaps_dr1</TD><TD>decaps_dr1.zps</TD><TD>Zero points and flat fields from the photometric calibration, as well as some quality assurance information.</TD></TR>
+<TR><TD>ivoa_calibrated</TD><TD>ivoa_calibrated.all</TD><TD></TD></TR>
+<TR><TD>ivoa_calibrated</TD><TD>ivoa_calibrated.des_y1</TD><TD></TD></TR>
+<TR><TD>ivoa_calibrated</TD><TD>ivoa_calibrated.des_y2</TD><TD></TD></TR>
+<TR><TD>ivoa_calibrated</TD><TD>ivoa_calibrated.des_y3</TD><TD></TD></TR>
+<TR><TD>ivoa_calibrated</TD><TD>ivoa_calibrated.smash_dr1</TD><TD></TD></TR>
+<TR><TD>ivoa_ls_dr4</TD><TD>ivoa_ls_dr4.exposure</TD><TD></TD></TR>
+<TR><TD>ivoa_ls_dr4</TD><TD>ivoa_ls_dr4.obscore</TD><TD></TD></TR>
+<TR><TD>ivoa_ls_dr4</TD><TD>ivoa_ls_dr4.siav1</TD><TD></TD></TR>
+<TR><TD>ivoa_ls_dr4</TD><TD>ivoa_ls_dr4.siav2</TD><TD></TD></TR>
+<TR><TD>sdss_dr14</TD><TD>sdss_dr14.specobj</TD><TD></TD></TR>
+<TR><TD>des_dr1</TD><TD>des_dr1.des_allwise</TD><TD>ALLWISE 1-arcsec xmatch v. DES</TD></TR>
+<TR><TD>des_dr1</TD><TD>des_dr1.des_galex</TD><TD>GALEX (AIS) 1-arcsec xmatch v. DES</TD></TR>
+<TR><TD>des_dr1</TD><TD>des_dr1.des_hsc2</TD><TD>HSC2 1-arcsec xmatch v. DES</TD></TR>
+<TR><TD>des_dr1</TD><TD>des_dr1.des_simbad</TD><TD>SIMBAD 1-arcsec xmatch v. DES</TD></TR>
+<TR><TD>des_dr1</TD><TD>des_dr1.flux</TD><TD>Object flux table</TD></TR>
+<TR><TD>des_dr1</TD><TD>des_dr1.img2coadd</TD><TD>Images contributing to coadded tiles</TD></TR>
+<TR><TD>des_dr1</TD><TD>des_dr1.mag</TD><TD>Object magnitude table</TD></TR>
+<TR><TD>des_dr1</TD><TD>des_dr1.main</TD><TD>Main object table</TD></TR>
+<TR><TD>des_dr1</TD><TD>des_dr1.neighbors</TD><TD>Neighbors w/in 30-arcsec of each object</TD></TR>
+<TR><TD>des_dr1</TD><TD>des_dr1.tile_info</TD><TD>Survey tile information table</TD></TR>
+<TR><TD>ivoa_coadd</TD><TD>ivoa_coadd.all</TD><TD></TD></TR>
+<TR><TD>ivoa_coadd</TD><TD>ivoa_coadd.des_dr1</TD><TD></TD></TR>
+<TR><TD>ivoa_coadd</TD><TD>ivoa_coadd.ls_dr3</TD><TD></TD></TR>
+<TR><TD>ivoa_coadd</TD><TD>ivoa_coadd.ls_dr4</TD><TD></TD></TR>
+<TR><TD>ivoa_coadd</TD><TD>ivoa_coadd.ls_dr5</TD><TD></TD></TR>
+<TR><TD>ivoa_coadd</TD><TD>ivoa_coadd.smash_dr1</TD><TD></TD></TR>
+<TR><TD>ivoa_ls_dr5</TD><TD>ivoa_ls_dr5.exposure</TD><TD></TD></TR>
+<TR><TD>ivoa_ls_dr5</TD><TD>ivoa_ls_dr5.obscore</TD><TD></TD></TR>
+<TR><TD>ivoa_ls_dr5</TD><TD>ivoa_ls_dr5.siav1</TD><TD></TD></TR>
+<TR><TD>ivoa_ls_dr5</TD><TD>ivoa_ls_dr5.siav2</TD><TD></TD></TR>
+<TR><TD>ls_dr4</TD><TD>ls_dr4.apflux</TD><TD>Aperture flux values of tractor objects</TD></TR>
+<TR><TD>ls_dr4</TD><TD>ls_dr4.bricks</TD><TD>Table with RA, DEC bounds of each geometrical brick on the sky</TD></TR>
+<TR><TD>ls_dr4</TD><TD>ls_dr4.bricks_dr4</TD><TD>Table with information that summarizes the contents of each brick, as of DR3</TD></TR>
+<TR><TD>ls_dr4</TD><TD>ls_dr4.ccds_annotated</TD><TD>Additional information gathered during calibration pre-processing before running the Tractor reductions.</TD></TR>
+<TR><TD>ls_dr4</TD><TD>ls_dr4.depth</TD><TD>A concatenation of the depth histograms for each brick</TD></TR>
+<TR><TD>ls_dr4</TD><TD>ls_dr4.depth_summary</TD><TD>A summary of the depth histogram of the whole DR3 survey</TD></TR>
+<TR><TD>ls_dr4</TD><TD>ls_dr4.neighbors</TD><TD>Table of all neighbors within 30-arcsec of each object</TD></TR>
+<TR><TD>ls_dr4</TD><TD>ls_dr4.survey_ccds</TD><TD>A table with almanac information (e.g. seeing, etc.) about each individual CCD image.</TD></TR>
+<TR><TD>ls_dr4</TD><TD>ls_dr4.tractor</TD><TD>Main Tractor catalog</TD></TR>
+<TR><TD>ls_dr4</TD><TD>ls_dr4.tractor_cs</TD><TD>Main Tractor catalog</TD></TR>
+<TR><TD>ls_dr4</TD><TD>ls_dr4.wise</TD><TD>WISE photometry of objects</TD></TR>
+<TR><TD>des_sva1</TD><TD>des_sva1.gold_annz2_pdf</TD><TD></TD></TR>
+<TR><TD>des_sva1</TD><TD>des_sva1.gold_annz2_point</TD><TD></TD></TR>
+<TR><TD>des_sva1</TD><TD>des_sva1.gold_bpz_pdf</TD><TD></TD></TR>
+<TR><TD>des_sva1</TD><TD>des_sva1.gold_bpz_point</TD><TD></TD></TR>
+<TR><TD>des_sva1</TD><TD>des_sva1.gold_catalog</TD><TD></TD></TR>
+<TR><TD>des_sva1</TD><TD>des_sva1.gold_im3shape</TD><TD></TD></TR>
+<TR><TD>des_sva1</TD><TD>des_sva1.gold_ngmix</TD><TD></TD></TR>
+<TR><TD>des_sva1</TD><TD>des_sva1.gold_skynet_pdf</TD><TD></TD></TR>
+<TR><TD>des_sva1</TD><TD>des_sva1.gold_skynet_point</TD><TD></TD></TR>
+<TR><TD>des_sva1</TD><TD>des_sva1.gold_tpz_pdf</TD><TD></TD></TR>
+<TR><TD>des_sva1</TD><TD>des_sva1.gold_tpz_point</TD><TD></TD></TR>
+<TR><TD>des_sva1</TD><TD>des_sva1.gold_wlinfo</TD><TD></TD></TR>
+<TR><TD>des_sva1</TD><TD>des_sva1.redmagic_bright</TD><TD></TD></TR>
+<TR><TD>des_sva1</TD><TD>des_sva1.redmagic_faint</TD><TD></TD></TR>
+<TR><TD>des_sva1</TD><TD>des_sva1.redmapper_exp_area</TD><TD></TD></TR>
+<TR><TD>des_sva1</TD><TD>des_sva1.redmapper_exp_catalog</TD><TD></TD></TR>
+<TR><TD>des_sva1</TD><TD>des_sva1.redmapper_exp_members</TD><TD></TD></TR>
+<TR><TD>des_sva1</TD><TD>des_sva1.redmapper_exp_randoms</TD><TD></TD></TR>
+<TR><TD>des_sva1</TD><TD>des_sva1.redmapper_exp_zmask</TD><TD></TD></TR>
+<TR><TD>des_sva1</TD><TD>des_sva1.redmapper_pub_area</TD><TD></TD></TR>
+<TR><TD>des_sva1</TD><TD>des_sva1.redmapper_pub_catalog</TD><TD></TD></TR>
+<TR><TD>des_sva1</TD><TD>des_sva1.redmapper_pub_members</TD><TD></TD></TR>
+<TR><TD>des_sva1</TD><TD>des_sva1.redmapper_pub_randoms</TD><TD></TD></TR>
+<TR><TD>des_sva1</TD><TD>des_sva1.redmapper_pub_zmask</TD><TD></TD></TR>
+<TR><TD>ivoa_des_dr1</TD><TD>ivoa_des_dr1.exposure</TD><TD></TD></TR>
+<TR><TD>ivoa_des_dr1</TD><TD>ivoa_des_dr1.obscore</TD><TD></TD></TR>
+<TR><TD>ivoa_des_dr1</TD><TD>ivoa_des_dr1.siav1</TD><TD></TD></TR>
+<TR><TD>ivoa_des_dr1</TD><TD>ivoa_des_dr1.siav2</TD><TD></TD></TR>
+<TR><TD>ivoa_raw</TD><TD>ivoa_raw.all</TD><TD></TD></TR>
+<TR><TD>ivoa_raw</TD><TD>ivoa_raw.smash_dr1</TD><TD></TD></TR>
+<TR><TD>ls_dr5</TD><TD>ls_dr5.apflux</TD><TD>Aperture flux values of tractor objects</TD></TR>
+<TR><TD>ls_dr5</TD><TD>ls_dr5.bricks</TD><TD>Table with RA, DEC bounds of each geometrical brick on the sky</TD></TR>
+<TR><TD>ls_dr5</TD><TD>ls_dr5.bricks_dr5</TD><TD>Table with information that summarizes the contents of each brick, as of DR3</TD></TR>
+<TR><TD>ls_dr5</TD><TD>ls_dr5.ccds_annotated</TD><TD>Additional information gathered during calibration pre-processing before running the Tractor reductions.</TD></TR>
+<TR><TD>ls_dr5</TD><TD>ls_dr5.depth</TD><TD>A concatenation of the depth histograms for each brick</TD></TR>
+<TR><TD>ls_dr5</TD><TD>ls_dr5.depth_summary</TD><TD>A summary of the depth histogram of the whole DR3 survey</TD></TR>
+<TR><TD>ls_dr5</TD><TD>ls_dr5.neighbors</TD><TD>Table of all neighbors within 30-arcsec of each object</TD></TR>
+<TR><TD>ls_dr5</TD><TD>ls_dr5.survey_ccds</TD><TD>A table with almanac information (e.g. seeing, etc.) about each individual CCD image.</TD></TR>
+<TR><TD>ls_dr5</TD><TD>ls_dr5.tractor</TD><TD>Main Tractor catalog</TD></TR>
+<TR><TD>ls_dr5</TD><TD>ls_dr5.tractor_cs</TD><TD>Main Tractor catalog</TD></TR>
+<TR><TD>ls_dr5</TD><TD>ls_dr5.wise</TD><TD>WISE photometry of objects</TD></TR>
+<TR><TD>ls_dr5</TD><TD>ls_dr5.dr5_dr12q</TD><TD>SDSS DR12 QSO crossmatch</TD></TR>
+<TR><TD>ls_dr5</TD><TD>ls_dr5.dr5_dr7q</TD><TD>SDSS DR7 QSO crossmatch</TD></TR>
+<TR><TD>ls_dr5</TD><TD>ls_dr5.dr5_specobj_dr14</TD><TD>SDSS DR14 spectra</TD></TR>
+<TR><TD>ls_dr5</TD><TD>ls_dr5.dr5_superset_dr12q</TD><TD>SDSS DR12 QSO Superset</TD></TR>
+<TR><TD>twomass</TD><TD>twomass.psc</TD><TD>Point Source Catalog (470,992,970 rows)</TD></TR>
+<TR><TD>twomass</TD><TD>twomass.xsc</TD><TD>Extended Source Catalog (1,647,599 rows)</TD></TR>
+</TABLEDATA>
+</DATA>
+</TABLE>
+</RESOURCE>
+</VOTABLE>

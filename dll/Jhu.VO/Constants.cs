@@ -9,7 +9,7 @@ namespace Jhu.VO
 {
     public class Constants
     {
-        public static readonly HashSet<string> SupportedNameSpaces = new HashSet<string>()
+        public static readonly HashSet<string> SupportedNamespaces = new HashSet<string>()
         {
             "http://www.w3.org/1999/xlink",
             XmlSchema.InstanceNamespace,

@@ -10,18 +10,42 @@ namespace Jhu.VO
 {
     /// <summary>
     /// Wraps an xml reader to support custom logic, specifically
-    /// ignoring nodes with unsupported namespaces
+    /// ignoring nodes with unsupported namespaces and providing
+    /// default namespace support;
     /// </summary>
+    /// <remarks>
+    /// All names must be wrapped with NameTable.Add() when used
+    /// with XmlSerializer
+    /// </remarks>
     public class VoXmlReader : XmlReader
     {
         #region Private member variables
 
+        private HashSet<string> supportedNamespaces;
+        private string defaultNamespaceUri;
+
+        private bool overrideEmptyNamespace;
         private bool skipUnsupportedElements;
         private bool skipUnsupportedTypes;
+
+        private bool isFormatResolved;
+
         private XmlReader reader;
 
         #endregion
         #region Properties
+
+        public bool OverrideEmptyNamespace
+        {
+            get { return overrideEmptyNamespace; }
+            set { overrideEmptyNamespace = value; }
+        }
+
+        public string DefaultNamespaceUri
+        {
+            get { return defaultNamespaceUri; }
+            set { defaultNamespaceUri = NameTable.Add(value); }
+        }
 
         public bool SkipUnsupportedElements
         {
@@ -29,9 +53,34 @@ namespace Jhu.VO
             set { skipUnsupportedElements = value; }
         }
 
+        public bool SkipUnsupportedTypes
+        {
+            get { return skipUnsupportedTypes; }
+            set { skipUnsupportedTypes = value; }
+        }
+
         public override XmlNodeType NodeType
         {
             get { return reader.NodeType; }
+        }
+
+        public override string NamespaceURI
+        {
+            get
+            {
+                if (overrideEmptyNamespace && defaultNamespaceUri != null &&
+                    reader.NodeType == XmlNodeType.Element &&
+                    String.IsNullOrEmpty(reader.NamespaceURI))
+                {
+                    // http://www.ivoa.net/xml/VOTable/v1.2
+                    return defaultNamespaceUri;
+                }
+                else
+                {
+                    // http://www.ivoa.net/xml/VOTable/v1.2
+                    return reader.NamespaceURI;
+                }
+            }
         }
 
         #endregion
@@ -50,7 +99,6 @@ namespace Jhu.VO
         public override bool IsEmptyElement => reader.IsEmptyElement;
         public override string LocalName => reader.LocalName;
         public override string Name => reader.Name;
-        public override string NamespaceURI => reader.NamespaceURI;
         public override XmlNameTable NameTable => reader.NameTable;
         public override string Prefix => reader.Prefix;
         public override char QuoteChar => reader.QuoteChar;
@@ -68,6 +116,30 @@ namespace Jhu.VO
         #endregion
         #region Constructors and initializers
 
+        public static new VoXmlReader Create(System.IO.Stream input)
+        {
+            var xml = XmlReader.Create(input);
+            return new VoXmlReader(xml);
+        }
+
+        public static new VoXmlReader Create(System.IO.Stream input, XmlReaderSettings settings)
+        {
+            var xml = XmlReader.Create(input, settings);
+            return new VoXmlReader(xml);
+        }
+
+        public static new VoXmlReader Create(System.IO.TextReader input)
+        {
+            var xml = XmlReader.Create(input);
+            return new VoXmlReader(xml);
+        }
+
+        public static new VoXmlReader Create(System.IO.TextReader input, XmlReaderSettings settings)
+        {
+            var xml = XmlReader.Create(input, settings);
+            return new VoXmlReader(xml);
+        }
+
         public VoXmlReader(XmlReader reader)
         {
             InitializeMembers();
@@ -77,17 +149,56 @@ namespace Jhu.VO
 
         private void InitializeMembers()
         {
+            this.supportedNamespaces = new HashSet<string>(Constants.SupportedNamespaces);
+            this.defaultNamespaceUri = null;
+
+            this.overrideEmptyNamespace = false;
             this.skipUnsupportedElements = true;
             this.skipUnsupportedTypes = true;
+
+            this.isFormatResolved = false;
+
             this.reader = null;
         }
 
         #endregion
 
+        private void ResolveFormat()
+        {
+            // Read the very first element, figure out format then rewind
+            reader.MoveToContent();
+
+            var tagLocalName = reader.LocalName;
+            var tagNamespaceUri = reader.NamespaceURI;
+            var attributes = new VoXmlAttribute[reader.AttributeCount];
+
+            int q = 0;
+            while (reader.MoveToNextAttribute())
+            {
+                attributes[q] = new VoXmlAttribute()
+                {
+                    LocalName = reader.LocalName,
+                    NamespaceURI = reader.NamespaceURI,
+                    Value = reader.Value
+                };
+                q++;
+            }
+
+            OnResolveFormat(tagLocalName, tagNamespaceUri, attributes);
+
+            reader.MoveToElement();
+
+            isFormatResolved = true;
+        }
+
+        protected virtual void OnResolveFormat(string localName, string namespaceUri, VoXmlAttribute[] attributes)
+        {
+        }
+
         private bool SkipUnsupportedElement()
         {
             if (!String.IsNullOrEmpty(reader.NamespaceURI) &&
-                !Constants.SupportedNameSpaces.Contains(reader.NamespaceURI))
+                !supportedNamespaces.Contains(reader.NamespaceURI))
             {
                 reader.Skip();
                 return true;
@@ -114,7 +225,7 @@ namespace Jhu.VO
                         var prefix = value.Substring(0, idx);
                         var ns = LookupNamespace(prefix);
 
-                        if (!Constants.SupportedNameSpaces.Contains(ns))
+                        if (!supportedNamespaces.Contains(ns))
                         {
                             // This node references an unsupported type
                             reader.Skip();
@@ -133,7 +244,12 @@ namespace Jhu.VO
         {
             var res = reader.Read();
 
-            if (skipUnsupportedElements && reader.NodeType == XmlNodeType.Element && 
+            if (!isFormatResolved && reader.NodeType == XmlNodeType.Element)
+            {
+                ResolveFormat();
+            }
+
+            if (skipUnsupportedElements && reader.NodeType == XmlNodeType.Element &&
                 SkipUnsupportedElement())
             {
                 return !reader.EOF;
@@ -149,8 +265,38 @@ namespace Jhu.VO
             }
         }
 
+        public async override Task<bool> ReadAsync()
+        {
+            var res = await reader.ReadAsync();
+
+            if (!isFormatResolved && reader.NodeType == XmlNodeType.Element)
+            {
+                ResolveFormat();
+            }
+
+            if (skipUnsupportedElements && reader.NodeType == XmlNodeType.Element &&
+                SkipUnsupportedElement())
+            {
+                return !reader.EOF;
+            }
+            else if (skipUnsupportedTypes && reader.NodeType == XmlNodeType.Element &&
+                SkipUnsupportedType())
+            {
+                return !reader.EOF;
+            }
+            else
+            {
+                return res;
+            }
+        }
+        
         public override XmlNodeType MoveToContent()
         {
+            if (!isFormatResolved)
+            {
+                ResolveFormat();
+            }
+
             reader.MoveToContent();
 
             if (skipUnsupportedElements && reader.NodeType == XmlNodeType.Element &&
@@ -170,8 +316,34 @@ namespace Jhu.VO
             return reader.NodeType;
         }
 
+        public override async Task<XmlNodeType> MoveToContentAsync()
+        {
+            if (!isFormatResolved)
+            {
+                ResolveFormat();
+            }
+
+            await reader.MoveToContentAsync();
+
+            if (skipUnsupportedElements && reader.NodeType == XmlNodeType.Element &&
+                SkipUnsupportedElement())
+            {
+                await MoveToContentAsync();
+            }
+            else if (skipUnsupportedTypes && reader.NodeType == XmlNodeType.Element &&
+                SkipUnsupportedType())
+            {
+                await MoveToContentAsync();
+            }
+            else
+            {
+            }
+
+            return reader.NodeType;
+        }
+
         #region Wrapped methods not touched
-        
+
         public override string LookupNamespace(string prefix)
         {
             return reader.LookupNamespace(prefix);
@@ -239,5 +411,21 @@ namespace Jhu.VO
         }
 
         #endregion
+
+        public override Task<string> GetValueAsync()
+        {
+            return reader.GetValueAsync();
+        }
+        
+        public override int ReadContentAsBase64(byte[] buffer, int index, int count)
+        {
+            return reader.ReadContentAsBase64(buffer, index, count);
+        }
+
+        public override Task<int> ReadContentAsBase64Async(byte[] buffer, int index, int count)
+        {
+            return reader.ReadContentAsBase64Async(buffer, index, count);
+        }
+
     }
 }

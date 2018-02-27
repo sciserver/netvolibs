@@ -25,5 +25,12 @@ namespace Jhu.VO.VoTable.V1_2
             var xml = File.ReadAllText(GetTestFilePath(@"test\files\votable\votable_v1.2.xml"));
             Deserialize(xml);
         }
+
+        [TestMethod]
+        public void MissingNamespaceTest()
+        {
+            var xml = File.ReadAllText(GetTestFilePath(@"test\files\votable\votable_v1.2_missingns.xml"));
+            Deserialize(xml);
+        }
     }
 }

@@ -57,10 +57,11 @@ namespace Jhu.VO.VoTable
             settings.Schemas.Add(schema);
 
             // Create the XmlReader object.
-            XmlReader reader = XmlReader.Create(new StringReader(xml), settings);
+            var reader = VoTableXmlReader.Create(new StringReader(xml), settings);
 
             return reader;
         }
+        
 
         protected void Validate(string xml)
         {
