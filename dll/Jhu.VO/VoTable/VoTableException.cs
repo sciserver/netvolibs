@@ -22,5 +22,10 @@ namespace Jhu.VO.VoTable
             : base(message, innerException)
         {
         }
+
+        public VoTableException(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context)
+            : base(info, context)
+        {
+        }
     }
 }
