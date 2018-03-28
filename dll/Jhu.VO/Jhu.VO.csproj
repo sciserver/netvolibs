@@ -47,6 +47,14 @@
     <Compile Include="Constants.cs" />
     <Compile Include="ElementList.cs" />
     <Compile Include="ElementListEnumerator.cs" />
+    <Compile Include="Uws\Constants.cs" />
+    <Compile Include="Uws\V1_0\ErrorSummary.cs" />
+    <Compile Include="Uws\V1_0\ErrorType.cs" />
+    <Compile Include="Uws\V1_0\ExecutionPhase.cs" />
+    <Compile Include="Uws\V1_0\JobSummary.cs" />
+    <Compile Include="Uws\V1_0\Parameter.cs" />
+    <Compile Include="Uws\V1_0\ResultReference.cs" />
+    <Compile Include="Uws\V1_0\ShortJobDescription.cs" />
     <Compile Include="VoTable\VoTableXmlReader.cs" />
     <Compile Include="VoXmlAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -292,15 +300,21 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Common\Resources\xlink-v1999.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="post-build.ps1" />
     <None Include="pre-build.ps1" />
     <None Include="Stc\Resources\stc-v1.30.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Stc\Resources\xlink.xsd">
+    <None Include="TapRegExt\Resources\tapregext-v1.0.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="TapRegExt\Resources\tapregext-v1.0.xsd">
+    <None Include="Uws\Resources\uws_v1.0.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Uws\Resources\uws_v1.1.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="VoDataService\Resources\vodataservice-v1.0.xsd">
@@ -337,7 +351,9 @@
       <Name>Jhu.SharpFitsIO</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Uws\V1_1\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\build\Jhu.Graywulf.Build.targets" />
 </Project>
