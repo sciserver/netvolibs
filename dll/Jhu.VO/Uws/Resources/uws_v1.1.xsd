@@ -1,0 +1,14 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html><head>
+<title>300 Multiple Choices</title>
+</head><body>
+<h1>Multiple Choices</h1>
+The document name you requested (<code>/xml/UWS/v1.1</code>) could not be found on this server.
+However, we found documents with names similar to the one you requested.<p>Available documents:
+<ul>
+<li><a href="/xml/UWS/v1.0">/xml/UWS/v1.0</a> (common basename)
+<li><a href="/xml/UWS/v1.0_old">/xml/UWS/v1.0_old</a> (common basename)
+</ul>
+<hr>
+<address>Apache/2.2.15 (CentOS) Server at www.ivoa.net Port 80</address>
+</body></html>
